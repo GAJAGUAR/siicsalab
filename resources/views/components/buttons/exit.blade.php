@@ -1,0 +1,1 @@
+<a class="nav-link text-capitalize" href="{{ $slot }}">{{ __('salir') }}</a>

@@ -1,0 +1,1 @@
+<a class="nav-link text-capitalize" href="{{ $url ?? '#' }}" target="{{ $target ?? '' }}">{{ $slot }}</a>

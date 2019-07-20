@@ -1,0 +1,1 @@
+<th scope="col" class="text-capitalize {{ $textAlign ?? '' }}">{{ $slot }}</th>
