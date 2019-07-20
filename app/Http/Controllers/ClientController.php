@@ -1,6 +1,6 @@
 <?php
 
-namespace sislab\Http\Controllers;
+namespace Sislab\Http\Controllers;
 
 use sislab\Client;
 use Illuminate\Http\Request;
