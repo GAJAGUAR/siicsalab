@@ -1,6 +1,6 @@
 <?php
 
-namespace sislab;
+namespace Sislab;
 
 use Illuminate\Database\Eloquent\Model;
 
