@@ -1,1 +1,1 @@
-<option value="{{ $value }}">{{ $slot }}</option>
+<option value="{{ $value }}" {{ $selected }}>{{ $slot }}</option>
