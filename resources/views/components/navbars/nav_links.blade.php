@@ -23,6 +23,14 @@
 
       {{ __('obras') }}
     @endcomponent
+
+    @component('components.dropdowns.dropdown_item')
+      @slot('url')
+        {{ route('work_orders.index') }}
+      @endslot
+
+      {{ __('órdenes de trabajo') }}
+    @endcomponent
   @endcomponent
 
   @component('components.dropdowns.dropdown')
@@ -39,7 +47,7 @@
         {{ route('clients.create') }}
       @endslot
 
-      {{ __('clientes') }}
+      {{ __('cliente') }}
     @endcomponent
 
     @component('components.dropdowns.dropdown_item')
@@ -47,7 +55,15 @@
         {{ route('works.create') }}
       @endslot
 
-      {{ __('obras') }}
+      {{ __('obra') }}
+    @endcomponent
+
+    @component('components.dropdowns.dropdown_item')
+      @slot('url')
+        {{ route('work_orders.create') }}
+      @endslot
+
+      {{ __('orden de trabajo') }}
     @endcomponent
   @endcomponent
 </div>
