@@ -1,6 +1,17 @@
-// data tables initialization
+// plugins initialization
 $(document).ready(function () {
   $('#table-primary').DataTable();
+
+  $('.select2').select2({
+    theme: "bootstrap"
+  });
+
+  //Autofocus
+  $('input:first').focus();
+
+  $('textarea:first').focus();
+
+  $('.nav .nav-link:first').focus();
 });
 
 // home modal
@@ -11,19 +22,6 @@ $(document).ready(function () {
 $('#home-modal').on('shown.bs.modal', function () {
   $('.close').trigger('focus')
 })
-
-//Autofocus
-$(document).ready(function () {
-  $('input:first').focus();
-});
-
-$(document).ready(function () {
-  $('textarea:first').focus();
-});
-
-$(document).ready(function () {
-  $('.nav .nav-link:first').focus();
-});
 
 //Modal autofocus
 $('#new-modal').on('shown.bs.modal', function () {
