@@ -2,8 +2,10 @@
 
 namespace Sislab\Http\Controllers;
 
-use sislab\Client;
+use Sislab\Client;
+
 use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\DB;
 
 class ClientController extends Controller
@@ -55,10 +57,15 @@ class ClientController extends Controller
     ]);
 
     $report = new Client();
+
     $report->client_name = $request->get('client_name');
+
     $report->client_nickname = $request->get('client_nickname');
+
     $report->client_register = $request->get('client_register');
+
     $report->client_location = $request->get('client_location');
+
     $report->save();
 
     return back()->withInput()->with('status', 'Registro guardado exitosamente');
@@ -123,9 +130,13 @@ class ClientController extends Controller
     ]);
 
     $client->client_name = $request->get('client_name');
+
     $client->client_nickname = $request->get('client_nickname');
+
     $client->client_register = $request->get('client_register');
+
     $client->client_location = $request->get('client_location');
+
     $client->save();
 
     return back()->withInput()->with('status', 'Registro actualizado exitosamente');

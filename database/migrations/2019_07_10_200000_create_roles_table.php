@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Schema;
+
 use Illuminate\Database\Schema\Blueprint;
+
 use Illuminate\Database\Migrations\Migration;
 
 class CreateRolesTable extends Migration
@@ -14,6 +16,7 @@ class CreateRolesTable extends Migration
   public function up()
   {
     Schema::disableForeignKeyConstraints();
+
     Schema::create('roles', function (Blueprint $table) {
 
       // DDL
@@ -27,6 +30,7 @@ class CreateRolesTable extends Migration
       // Indexes
       $table->unique('role_name');
     });
+
     Schema::enableForeignKeyConstraints();
   }
 
@@ -38,7 +42,9 @@ class CreateRolesTable extends Migration
   public function down()
   {
     Schema::disableForeignKeyConstraints();
+
     Schema::dropIfExists('roles');
+
     Schema::enableForeignKeyConstraints();
   }
 }

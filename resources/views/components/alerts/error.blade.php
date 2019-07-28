@@ -1,7 +1,9 @@
 @if ($errors->any())
   <div class="alert alert-danger alert-dismissible fade show" role="alert">
     <h4 class="alert-heading">{{ __('Error') }}</h4>
+
     <hr>
+
     <ul>
       @foreach ($errors->all() as $error)
         <li>
@@ -9,6 +11,7 @@
         </li>
       @endforeach
     </ul>
+
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
