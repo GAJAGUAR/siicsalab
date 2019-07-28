@@ -23,3 +23,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('/clients', 'ClientController');
 
 Route::resource('/works', 'WorkController');
+
+Route::resource('/employees', 'EmployeeController');
+
+Route::resource('/work_orders', 'WorkOrderController');
+
+Route::resource('/samples', 'SampleController');
