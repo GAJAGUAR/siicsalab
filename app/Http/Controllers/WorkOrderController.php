@@ -35,7 +35,18 @@ class WorkOrderController extends Controller
    */
   public function create()
   {
-    //
+    $works = DB::table('works')
+      ->select('id', 'work_name')
+      ->get();
+
+    $employees = DB::table('employees')
+      ->select('id', 'employee_name')
+      ->get();
+
+    return view('work_orders.create', [
+      'works' => $works,
+      'employees' => $employees
+    ]);
   }
 
   /**
@@ -46,7 +57,21 @@ class WorkOrderController extends Controller
    */
   public function store(Request $request)
   {
-    //
+    $validatedData = $request->validate([
+      'id' => 'required|integer',
+      'work_id' => 'required|integer',
+      'employee_id' => 'required|integer',
+      'work_order_date' => 'required|date|before:tomorrow'
+    ]);
+
+    $workOrder = new WorkOrder();
+    $workOrder->id = $request->get('id');
+    $workOrder->work_id = $request->get('work_id');
+    $workOrder->employee_id = $request->get('employee_id');
+    $workOrder->work_order_date = $request->get('work_order_date');
+    $workOrder->save();
+
+    return back()->withInput()->with('status', 'Registro guardado exitosamente');
   }
 
   /**
