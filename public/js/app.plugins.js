@@ -1,6 +1,27 @@
 // plugins initialization
 $(document).ready(function () {
-  $('#table-primary').DataTable();
+  $('#table-primary').DataTable({
+    "language": {
+      "decimal": ",",
+      "thousands": " ",
+      "lengthMenu": "Mostrar _MENU_ registros",
+      "zeroRecords": "Ningún registro encontrado",
+      "info": "Página _PAGE_ de _PAGES_",
+      "infoEmpty": "Ningún registro disponible",
+      "infoFiltered": "(filtrados de _MAX_ totales)",
+      "search": "Búsqueda:",
+      "paginate": {
+        "first": "Primero",
+        "last": "Último",
+        "next": "Siguiente",
+        "previous": "Anterior"
+      }
+    },
+    "lengthMenu": [
+      [10, 25, 50, -1],
+      [10, 25, 50, "Todos"]
+    ]
+  });
 
   $('.select2').select2({
     theme: "bootstrap"
