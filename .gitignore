@@ -1,12 +1,18 @@
+# Default
 /node_modules
 /public/hot
 /public/storage
 /storage/*.key
 /vendor
-/.idea/
 .env
 .phpunit.result.cache
 Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
+
+# PHP Storm config directory
+/.idea/
+
+# Prepros config file
+**/prepros-6.config
