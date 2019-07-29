@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\DB;
 
 class SampleController extends Controller
 {
+  public function __construct()
+  {
+    $this->middleware('auth');
+  }
+
   /**
    * Display a listing of the resource.
    *
@@ -107,7 +112,7 @@ class SampleController extends Controller
     $sample->stratigraphic_file = $request->get('stratigraphic_file');
     $sample->save();
 
-    return redirect('/samples');
+    return back()->withInput()->with('status', 'Registro guardado exitosamente');
   }
 
   /**
