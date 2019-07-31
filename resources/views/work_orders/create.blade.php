@@ -1,6 +1,6 @@
 @extends('layouts.create')
 
-@section('title', 'nueva órden de trabajo')
+@section('title', 'nueva orden de trabajo')
 
 @section('formRoute', route('work_orders.store'))
 
