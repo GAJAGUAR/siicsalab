@@ -31,6 +31,14 @@
 
       {{ __('órdenes de trabajo') }}
     @endcomponent
+
+    @component('components.dropdowns.dropdown_item')
+      @slot('url')
+        {{ route('samples.index') }}
+      @endslot
+
+      {{ __('ensayes') }}
+    @endcomponent
   @endcomponent
 
   @component('components.dropdowns.dropdown')
@@ -64,6 +72,14 @@
       @endslot
 
       {{ __('orden de trabajo') }}
+    @endcomponent
+
+    @component('components.dropdowns.dropdown_item')
+      @slot('url')
+        {{ route('samples.create') }}
+      @endslot
+
+      {{ __('ensaye') }}
     @endcomponent
   @endcomponent
 </div>
