@@ -43,7 +43,38 @@ class SampleController extends Controller
    */
   public function create()
   {
-    //
+    $workOrders = DB::table('work_orders')
+      ->select('id')
+      ->get();
+
+    $banks = DB::table('banks')
+      ->select('id', 'bank_name')
+      ->get();
+
+    $purposes = DB::table('purposes')
+      ->select('id', 'purpose_name')
+      ->get();
+
+    $weathers = DB::table('weathers')
+      ->select('id', 'weather_name')
+      ->get();
+
+    $priorities = DB::table('priorities')
+      ->select('id', 'priority_name')
+      ->get();
+
+    $statuses = DB::table('statuses')
+      ->select('id', 'status_name')
+      ->get();
+
+    return view('samples.create', [
+      'workOrders' => $workOrders,
+      'banks' => $banks,
+      'purposes' => $purposes,
+      'weathers' => $weathers,
+      'priorities' => $priorities,
+      'statuses' => $statuses
+    ]);
   }
 
   /**
@@ -57,29 +88,29 @@ class SampleController extends Controller
     $validatedData = $request->validate([
       'id' => 'required|integer',
       'work_order_id' => 'required|integer',
-      'bank_id' => 'optional|integer',
+      'bank_id' => 'nullable|integer',
       'purpose_id' => 'required|integer',
-      'weather_id' => 'optional|integer',
+      'weather_id' => 'nullable|integer',
       'priority_id' => 'required|integer|min:1|max:3',
       'status_id' => 'required|integer|min:1|max:5',
       'sample_time' => 'required',
       'sample_description' => 'required|min:5|max:250',
-      'sample_location' => 'optional|min:5|max:100',
-      'road_name' => 'optional|min:5|max:100',
-      'road_station_start' => 'optional|max:11',
-      'road_station_end' => 'optional|max:11',
-      'road_station' => 'optional|max:11',
-      'road_body' => 'optional|max:20',
-      'road_side' => 'optional|max:10',
-      'phreatic_level' => 'optional|max:4',
-      'sampling_seq' => 'optional|numeric|min:1',
-      'env_temp' => 'optional|numeric|min:1|max:50',
-      'sample_seq' => 'optional|numeric|min:1',
-      'sample_tests' => 'optional|max:100',
-      'sample_notes' => 'optional|max:500',
+      'sample_location' => 'nullable|min:5|max:100',
+      'road_name' => 'nullable|min:5|max:100',
+      'road_station_start' => 'nullable|max:11',
+      'road_station_end' => 'nullable|max:11',
+      'road_station' => 'nullable|max:11',
+      'road_body' => 'nullable|max:20',
+      'road_side' => 'nullable|max:10',
+      'phreatic_level' => 'nullable|max:4',
+      'sampling_seq' => 'nullable|numeric|min:1',
+      'env_temp' => 'nullable|numeric|min:1|max:50',
+      'sample_seq' => 'nullable|numeric|min:1',
+      'sample_tests' => 'nullable|max:100',
+      'sample_notes' => 'nullable|max:500',
       'sample_receipt_date' => 'required|date|before:tomorrow',
-      'sketch_file' => 'optional|url|max:50',
-      'stratigraphic_file' => 'optional|url|max:50'
+      'sketch_file' => 'nullable|url|max:50',
+      'stratigraphic_file' => 'nullable|url|max:50'
     ]);
 
     $sample = new Sample();
@@ -91,8 +122,8 @@ class SampleController extends Controller
     $sample->priority_id = $request->get('priority_id');
     $sample->status_id = $request->get('status_id');
     $sample->sample_time = $request->get('sample_time');
-    $sample->sample_description = $request->get('sample_desc');
-    $sample->sample_location = $request->get('sample_loc');
+    $sample->sample_description = $request->get('sample_description');
+    $sample->sample_location = $request->get('sample_location');
     $sample->road_name = $request->get('road_name');
     $sample->road_station_start = $request->get('road_station_start');
     $sample->road_station_end = $request->get('road_station_end');
