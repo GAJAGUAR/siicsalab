@@ -7,6 +7,7 @@
 @section('indexRoute', route('work_orders.index'))
 
 @section('formContent')
+
   {{-- work id flield --}}
   @component('components.inputs.select')
     @slot('label', 'Obra')
