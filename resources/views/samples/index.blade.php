@@ -28,99 +28,75 @@
 
 {{-- main --}}
 @section('thead')
-  <tr>
+  @component('components.tables.tr')
     @component('components.tables.th')
-      @slot('textAlign')
-        {{ __('text-center') }}
-      @endslot
+      @slot('class', 'text-center')
 
       {{ __('#') }}
     @endcomponent
 
     @component('components.tables.th')
-      @slot('textAlign')
-        {{ __('text-center text-uppercase') }}
-      @endslot
+      @slot('class', 'text-center text-uppercase')
 
       {{ __('ot') }}
     @endcomponent
 
     @component('components.tables.th')
-      @slot('textAlign')
-        {{ __('text-center') }}
-      @endslot
+      @slot('class', 'text-center')
 
       {{ __('obra') }}
     @endcomponent
 
     @component('components.tables.th')
-      @slot('textAlign')
-        {{ __('text-center') }}
-      @endslot
+      @slot('class', 'text-center')
 
       {{ __('material') }}
     @endcomponent
 
     @component('components.tables.th')
-      @slot('textAlign')
-        {{ __('text-center') }}
-      @endslot
+      @slot('class', 'text-center')
 
       {{ __('empleo') }}
     @endcomponent
 
     @component('components.tables.th')
-      @slot('textAlign')
-        {{ __('text-center') }}
-      @endslot
+      @slot('class', 'text-center')
 
       {{ __('detalle') }}
     @endcomponent
-
-    @component('components.tables.th')
-      @slot('textAlign')
-        {{ __('text-center') }}
-      @endslot
-
-      {{ __('editar') }}
-    @endcomponent
-  </tr>
+  @endcomponent
 @endsection
 
 @section('tbody')
   @foreach ($samples as $sample)
-    <tr>
-      <td class="text-center">
+    @component('components.tables.tr')
+      @component('components.tables.td')
+        @slot('class', 'text-center')
+
         {{ $sample->id }}
-      </td>
+      @endcomponent
 
-      <td>
+      @component('components.tables.td')
         {{ $sample->work_order_id }}
-      </td>
+      @endcomponent
 
-      <td>
+      @component('components.tables.td')
         {{ $sample->work_nickname }}
-      </td>
+      @endcomponent
 
-      <td>
+      @component('components.tables.td')
         {{ $sample->sample_description }}
-      </td>
+      @endcomponent
 
-      <td>
+      @component('components.tables.td')
         {{ $sample->purpose_name }}
-      </td>
+      @endcomponent
 
-      <td class="text-center">
-        <a href="/samples/{{ $sample->id }}">
-          <i class="fas fa-search"></i>
-        </a>
-      </td>
+      @component('components.tables.td_detail')
+        @slot('class', 'text-center')
 
-      <td class="text-center">
-        <a href="/samples/{{ $sample->id }}/edit">
-          <i class="fas fa-edit"></i>
-        </a>
-      </td>
-    </tr>
+        /samples/{{ $sample->id }}
+      @endcomponent
+    @endcomponent
   @endforeach
 @endsection

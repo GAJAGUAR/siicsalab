@@ -28,87 +28,65 @@
 
 {{-- main --}}
 @section('thead')
-  <tr>
+  @component('components.tables.tr')
     @component('components.tables.th')
-      @slot('textAlign')
-        {{ __('text-center') }}
-      @endslot
+      @slot('class', 'text-center')
 
       {{ __('#') }}
     @endcomponent
 
     @component('components.tables.th')
-      @slot('textAlign')
-        {{ __('text-center th-date') }}
-      @endslot
+      @slot('class', 'text-center th-date')
 
       {{ __('fecha') }}
     @endcomponent
 
     @component('components.tables.th')
-      @slot('textAlign')
-        {{ __('text-center') }}
-      @endslot
+      @slot('class', 'text-center')
 
       {{ __('obra') }}
     @endcomponent
 
     @component('components.tables.th')
-      @slot('textAlign')
-        {{ __('text-center') }}
-      @endslot
+      @slot('class', 'text-center')
 
       {{ __('personal') }}
     @endcomponent
 
     @component('components.tables.th')
-      @slot('textAlign')
-        {{ __('text-center') }}
-      @endslot
+      @slot('class', 'text-center')
 
       {{ __('detalle') }}
     @endcomponent
-
-    @component('components.tables.th')
-      @slot('textAlign')
-        {{ __('text-center') }}
-      @endslot
-
-      {{ __('editar') }}
-    @endcomponent
-  </tr>
+  @endcomponent
 @endsection
 
 @section('tbody')
   @foreach ($workOrders as $workOrder)
-    <tr>
-      <td class="text-center">
+    @component('components.tables.tr')
+      @component('components.tables.td')
+        @slot('class', 'text-center')
+
         {{ $workOrder->id }}
-      </td>
+      @endcomponent
 
-      <td>
+      @component('components.tables.td')
         {{ $workOrder->work_order_date }}
-      </td>
+      @endcomponent
 
-      <td>
+      @component('components.tables.td')
         {{ $workOrder->work_name }}
-      </td>
+      @endcomponent
 
-      <td>
+      @component('components.tables.td')
         {{ $workOrder->employee_nickname }}
-      </td>
+      @endcomponent
 
-      <td class="text-center">
-        <a href="/work_orders/{{ $workOrder->id }}">
-          <i class="fas fa-search"></i>
-        </a>
-      </td>
+      @component('components.tables.td_detail')
+        @slot('class', 'text-center')
 
-      <td class="text-center">
-        <a href="/work_orders/{{ $workOrder->id }}/edit">
-          <i class="fas fa-edit"></i>
-        </a>
-      </td>
-    </tr>
+        /work_orders/{{ $workOrder->id }}
+      @endcomponent
+    @endcomponent
   @endforeach
 @endsection

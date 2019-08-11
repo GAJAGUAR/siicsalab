@@ -28,63 +28,45 @@
 
 {{-- main --}}
 @section('thead')
-  <tr>
+  @component('components.tables.tr')
     @component('components.tables.th')
-      @slot('textAlign')
-        {{ __('text-center') }}
-      @endslot
+      @slot('class', 'text-center')
 
       {{ __('#') }}
     @endcomponent
 
     @component('components.tables.th')
-      @slot('textAlign')
-        {{ __('text-center') }}
-      @endslot
+      @slot('class', 'text-center')
 
       {{ __('nombre') }}
     @endcomponent
 
     @component('components.tables.th')
-      @slot('textAlign')
-        {{ __('text-center') }}
-      @endslot
+      @slot('class', 'text-center')
 
       {{ __('detalle') }}
     @endcomponent
-
-    @component('components.tables.th')
-      @slot('textAlign')
-        {{ __('text-center') }}
-      @endslot
-
-      {{ __('editar') }}
-    @endcomponent
-  </tr>
+  @endcomponent
 @endsection
 
 @section('tbody')
   @foreach ($works as $work)
-    <tr>
-      <td class="text-center">
+    @component('components.tables.tr')
+      @component('components.tables.td')
+        @slot('class', 'text-center')
+
         {{ $loop->iteration }}
-      </td>
+      @endcomponent
 
-      <td>
+      @component('components.tables.td')
         {{ $work->work_name }}
-      </td>
+      @endcomponent
 
-      <td class="text-center">
-        <a href="/works/{{ $work->id }}">
-          <i class="fas fa-search"></i>
-        </a>
-      </td>
+      @component('components.tables.td_detail')
+        @slot('class', 'text-center')
 
-      <td class="text-center">
-        <a href="/works/{{ $work->id }}/edit">
-          <i class="fas fa-edit"></i>
-        </a>
-      </td>
-    </tr>
+        /works/{{ $work->id }}
+      @endcomponent
+    @endcomponent
   @endforeach
 @endsection

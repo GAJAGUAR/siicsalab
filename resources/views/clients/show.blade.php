@@ -50,7 +50,7 @@
 @endsection
 
 @section('thead')
-  <tr>
+  @component('components.tables.tr')
     @component('components.tables.th')
       {{ __('#') }}
     @endcomponent
@@ -58,19 +58,33 @@
     @component('components.tables.th')
       {{ __('Nombre') }}
     @endcomponent
-  </tr>
+
+    @component('components.tables.th')
+      @slot('class', 'text-center')
+
+      {{ __('detalle') }}
+    @endcomponent
+  @endcomponent
 @endsection
 
 @section('tbody')
   @foreach ($works as $work)
-    <tr>
-      <td class="text-center">
-        {{ $loop->iteration }}
-      </td>
+    @component('components.tables.tr')
+      @component('components.tables.td')
+        @slot('class', 'text-center')
 
-      <td>
+        {{ $loop->iteration }}
+      @endcomponent
+
+      @component('components.tables.td')
         {{ $work->work_name }}
-      </td>
-    </tr>
+      @endcomponent
+
+      @component('components.tables.td_detail')
+        @slot('class', 'text-center')
+
+        /works/{{ $work->id }}
+      @endcomponent
+    @endcomponent
   @endforeach
 @endsection
