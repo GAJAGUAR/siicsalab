@@ -30,13 +30,13 @@
 @section('thead')
   @component('components.tables.tr')
     @component('components.tables.th')
-      @slot('class', 'text-center')
+      @slot('class', 'text-center th-w-sm')
 
       {{ __('#') }}
     @endcomponent
 
     @component('components.tables.th')
-      @slot('class', 'text-center text-uppercase')
+      @slot('class', 'text-center text-uppercase th-w-sm')
 
       {{ __('ot') }}
     @endcomponent
@@ -60,7 +60,7 @@
     @endcomponent
 
     @component('components.tables.th')
-      @slot('class', 'text-center')
+      @slot('class', 'text-center th-w-sm')
 
       {{ __('detalle') }}
     @endcomponent

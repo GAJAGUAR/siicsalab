@@ -30,13 +30,13 @@
 @section('thead')
   @component('components.tables.tr')
     @component('components.tables.th')
-      @slot('class', 'text-center')
+      @slot('class', 'text-center th-w-sm')
 
       {{ __('#') }}
     @endcomponent
 
     @component('components.tables.th')
-      @slot('class', 'text-center th-date')
+      @slot('class', 'text-center th-w-md')
 
       {{ __('fecha') }}
     @endcomponent
@@ -54,7 +54,7 @@
     @endcomponent
 
     @component('components.tables.th')
-      @slot('class', 'text-center')
+      @slot('class', 'text-center th-w-sm')
 
       {{ __('detalle') }}
     @endcomponent

@@ -58,7 +58,7 @@
     @endcomponent
 
     @component('components.tables.th')
-      @slot('class', 'text-center th-w-sm')
+      @slot('class', 'text-center th-w-md')
 
       {{ __('fecha') }}
     @endcomponent

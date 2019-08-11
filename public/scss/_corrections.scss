@@ -4,6 +4,10 @@
 
 // Tables
 .th-w-sm {
+  width: 2rem !important;
+}
+
+.th-w-md {
   width: 5rem !important;
 }
 
@@ -15,6 +19,11 @@
 
 .dataTables_filter {
   padding-top: 0.2rem;
+  padding-right: 0.2rem;
+}
+
+.dataTables_paginate {
+  padding-bottom: 0.2rem;
   padding-right: 0.2rem;
 }
 
