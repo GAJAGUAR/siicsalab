@@ -87,19 +87,20 @@ class WorkController extends Controller
   {
     $work = DB::table('works')
       ->join('clients', 'clients.id', '=', 'works.client_id')
-      ->select('work_nickname', 'client_name', 'work_name', 'work_location')
+      ->select('works.id', 'work_nickname', 'client_name', 'work_name', 'work_location')
       ->where('works.id', $id)
       ->first();
 
     $workOrders = DB::table('work_orders')
       ->join('employees', 'employees.id', '=', 'work_orders.employee_id')
-      ->select('work_orders.id', 'employee_name', 'work_order_date')
+      ->join('samples', 'samples.work_order_id', '=', 'work_orders.id')
+      ->select('work_orders.id', 'work_order_date', 'employee_name', DB::raw('count(samples.id) as samples'))
       ->where('work_id', $id)
+      ->groupBy('work_orders.id')
       ->orderBy('work_orders.id', 'ASC')
       ->get();
 
     return view('works.show', [
-      'work_id' => $id,
       'work' => $work,
       'workOrders' => $workOrders
     ]);
