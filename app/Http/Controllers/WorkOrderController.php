@@ -25,7 +25,9 @@ class WorkOrderController extends Controller
     $workOrders = DB::table('work_orders')
       ->join('works', 'works.id', '=', 'work_orders.work_id')
       ->join('employees', 'employees.id', '=', 'work_orders.employee_id')
-      ->select('work_orders.id', 'work_order_date', 'work_name', 'employee_nickname')
+      ->join('samples', 'samples.work_order_id', '=', 'work_orders.id')
+      ->select('work_orders.id', 'work_order_date', 'work_nickname', 'employee_nickname', DB::raw('count(samples.id) as samples'))
+      ->groupBy('work_orders.id')
       ->get();
 
     return view('work_orders.index', [

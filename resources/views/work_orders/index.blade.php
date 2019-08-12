@@ -56,6 +56,12 @@
     @component('components.tables.th')
       @slot('class', 'text-center th-w-sm')
 
+      {{ __('ensayes') }}
+    @endcomponent
+
+    @component('components.tables.th')
+      @slot('class', 'text-center th-w-sm')
+
       {{ __('detalle') }}
     @endcomponent
   @endcomponent
@@ -75,11 +81,17 @@
       @endcomponent
 
       @component('components.tables.td')
-        {{ $workOrder->work_name }}
+        {{ $workOrder->work_nickname }}
       @endcomponent
 
       @component('components.tables.td')
         {{ $workOrder->employee_nickname }}
+      @endcomponent
+
+      @component('components.tables.td')
+        @slot('class', 'text-center')
+
+        {{ $workOrder->samples }}
       @endcomponent
 
       @component('components.tables.td_detail')
