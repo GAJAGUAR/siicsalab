@@ -11,7 +11,7 @@
 @endsection
 
 @section('urlAdd')
-  {{-- route('work_orders.create') --}}
+  {{ route('work_orders.create') }}
 @endsection
 
 @section('textAdd')
@@ -78,7 +78,7 @@
     @component('components.tables.th')
       @slot('class', 'text-center th-w-sm')
 
-      {{ __('detalle') }}
+      {{ __(' ') }}
     @endcomponent
   @endcomponent
 @endsection

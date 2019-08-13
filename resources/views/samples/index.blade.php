@@ -62,7 +62,7 @@
     @component('components.tables.th')
       @slot('class', 'text-center th-w-sm')
 
-      {{ __('detalle') }}
+      {{ __(' ') }}
     @endcomponent
   @endcomponent
 @endsection
