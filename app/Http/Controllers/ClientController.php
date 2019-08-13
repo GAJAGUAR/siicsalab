@@ -2,11 +2,9 @@
 
 namespace Sislab\Http\Controllers;
 
-use Sislab\Client;
+use Sislab\{Client, Work};
 
-use Illuminate\Http\Request;
-
-use Illuminate\Support\Facades\DB;
+use Illuminate\Http\{Request, Response};
 
 class ClientController extends Controller
 {
@@ -18,13 +16,11 @@ class ClientController extends Controller
   /**
    * Display a listing of the resource.
    *
-   * @return \Illuminate\Http\Response
+   * @return Response
    */
   public function index()
   {
-    $clients = DB::table('clients')
-      ->select('id', 'client_name')
-      ->get();
+    $clients = (new Client)->getClients();
 
     return view('clients.index', [
       'clients' => $clients
@@ -34,7 +30,7 @@ class ClientController extends Controller
   /**
    * Show the form for creating a new resource.
    *
-   * @return \Illuminate\Http\Response
+   * @return Response
    */
   public function create()
   {
@@ -44,29 +40,16 @@ class ClientController extends Controller
   /**
    * Store a newly created resource in storage.
    *
-   * @param \Illuminate\Http\Request $request
-   * @return \Illuminate\Http\Response
+   * @param Request $request
+   * @return Response
    */
   public function store(Request $request)
   {
-    $validatedData = $request->validate([
-      'client_name' => 'required|min:5|max:150',
-      'client_nickname' => 'required|min:3|max:50',
-      'client_register' => 'nullable|max:25',
-      'client_location' => 'nullable|max:250'
-    ]);
+    (new Client)->isValid($request);
 
-    $report = new Client();
+    $client = new Client();
 
-    $report->client_name = $request->get('client_name');
-
-    $report->client_nickname = $request->get('client_nickname');
-
-    $report->client_register = $request->get('client_register');
-
-    $report->client_location = $request->get('client_location');
-
-    $report->save();
+    (new Client)->saveClient($request, $client);
 
     return back()->withInput()->with('status', 'Registro guardado exitosamente');
   }
@@ -75,19 +58,13 @@ class ClientController extends Controller
    * Display the specified resource.
    *
    * @param int $id
-   * @return \Illuminate\Http\Response
+   * @return Response
    */
-  public function show($id)
+  public function show(int $id)
   {
-    $client = DB::table('clients')
-      ->select('id', 'client_nickname', 'client_name', 'client_register', 'client_location')
-      ->where('id', $id)
-      ->first();
+    $client = (new Client)->showClient($id);
 
-    $works = DB::table('works')
-      ->select('id', 'work_name')
-      ->where('client_id', $id)
-      ->get();
+    $works = (new Work)->showClientWorks($id);
 
     return view('clients.show', [
       'client' => $client,
@@ -99,14 +76,11 @@ class ClientController extends Controller
    * Show the form for editing the specified resource.
    *
    * @param int $id
-   * @return \Illuminate\Http\Response
+   * @return Response
    */
   public function edit(int $id)
   {
-    $client = DB::table('clients')
-      ->select('id', 'client_name', 'client_nickname', 'client_register', 'client_location')
-      ->where('id', $id)
-      ->first();
+    $client = (new Client)->showClient($id);
 
     return view('clients.edit', [
       'client' => $client
@@ -116,28 +90,17 @@ class ClientController extends Controller
   /**
    * Update the specified resource in storage.
    *
-   * @param \Illuminate\Http\Request $request
-   * @param \sislab\Client $client
-   * @return \Illuminate\Http\Response
+   * @param Request $request
+   * @param int $id
+   * @return Response
    */
-  public function update(Request $request, Client $client)
+  public function update(Request $request, int $id)
   {
-    $validatedData = $request->validate([
-      'client_name' => 'required|min:5|max:150',
-      'client_nickname' => 'required|min:3|max:50',
-      'client_register' => 'nullable|max:25',
-      'client_location' => 'nullable|max:250'
-    ]);
+    (new Client)->isValid($request);
 
-    $client->client_name = $request->get('client_name');
+    $client = (new Client)->showClient($id);
 
-    $client->client_nickname = $request->get('client_nickname');
-
-    $client->client_register = $request->get('client_register');
-
-    $client->client_location = $request->get('client_location');
-
-    $client->save();
+    (new Client)->saveClient($request, $client);
 
     return back()->withInput()->with('status', 'Registro actualizado exitosamente');
   }
@@ -145,12 +108,12 @@ class ClientController extends Controller
   /**
    * Remove the specified resource from storage.
    *
-   * @param \sislab\Client $client
-   * @return \Illuminate\Http\Response
+   * @param int $id
+   * @return Response
    */
-  public function destroy(Client $client)
+  public function destroy(int $id)
   {
-    $client->delete();
+    (new Client)->deleteClient($id);
 
     return redirect('/clients')->with('status', 'Registro eliminado exitosamente');
   }

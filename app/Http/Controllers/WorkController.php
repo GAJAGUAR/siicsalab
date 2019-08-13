@@ -2,11 +2,9 @@
 
 namespace Sislab\Http\Controllers;
 
-use Sislab\Work;
+use Sislab\{Client, Work, WorkOrder};
 
-use Illuminate\Http\Request;
-
-use Illuminate\Support\Facades\DB;
+use Illuminate\Http\{Request, Response};
 
 class WorkController extends Controller
 {
@@ -18,13 +16,11 @@ class WorkController extends Controller
   /**
    * Display a listing of the resource.
    *
-   * @return \Illuminate\Http\Response
+   * @return Response
    */
   public function index()
   {
-    $works = DB::table('works')
-      ->select('id', 'work_name')
-      ->get();
+    $works = (new Work)->getWorks();
 
     return view('works.index', [
       'works' => $works
@@ -34,13 +30,11 @@ class WorkController extends Controller
   /**
    * Show the form for creating a new resource.
    *
-   * @return \Illuminate\Http\Response
+   * @return Response
    */
   public function create()
   {
-    $clients = DB::table('clients')
-      ->select('id', 'client_name')
-      ->get();
+    $clients = (new Client)->getClients();
 
     return view('works.create', [
       'clients' => $clients
@@ -50,29 +44,16 @@ class WorkController extends Controller
   /**
    * Store a newly created resource in storage.
    *
-   * @param \Illuminate\Http\Request $request
-   * @return \Illuminate\Http\Response
+   * @param Request $request
+   * @return Response
    */
   public function store(Request $request)
   {
-    $validatedData = $request->validate([
-      'client_id' => 'required',
-      'work_name' => 'required|min:5|max:750',
-      'work_nickname' => 'required|min:3|max:50',
-      'work_location' => 'required|min:5|max:250'
-    ]);
+    (new Work)->isValid($request);
 
     $work = new Work();
 
-    $work->client_id = $request->get('client_id');
-
-    $work->work_name = $request->get('work_name');
-
-    $work->work_nickname = $request->get('work_nickname');
-
-    $work->work_location = $request->get('work_location');
-
-    $work->save();
+    (new Work)->saveWork($request, $work);
 
     return back()->withInput()->with('status', 'Registro guardado exitosamente');
   }
@@ -81,24 +62,13 @@ class WorkController extends Controller
    * Display the specified resource.
    *
    * @param int $id
-   * @return \Illuminate\Http\Response
+   * @return Response
    */
-  public function show($id)
+  public function show(int $id)
   {
-    $work = DB::table('works')
-      ->join('clients', 'clients.id', '=', 'works.client_id')
-      ->select('works.id', 'work_nickname', 'client_name', 'work_name', 'work_location')
-      ->where('works.id', $id)
-      ->first();
+    $work = (new Work)->showWork($id);
 
-    $workOrders = DB::table('work_orders')
-      ->join('employees', 'employees.id', '=', 'work_orders.employee_id')
-      ->join('samples', 'samples.work_order_id', '=', 'work_orders.id')
-      ->select('work_orders.id', 'work_order_date', 'employee_name', DB::raw('count(samples.id) as samples'))
-      ->where('work_id', $id)
-      ->groupBy('work_orders.id')
-      ->orderBy('work_orders.id', 'ASC')
-      ->get();
+    $workOrders = (new WorkOrder)->showWorkWorkOrders($id);
 
     return view('works.show', [
       'work' => $work,
@@ -110,46 +80,34 @@ class WorkController extends Controller
    * Show the form for editing the specified resource.
    *
    * @param int $id
-   * @return \Illuminate\Http\Response
+   * @return Response
    */
-  public function edit($id)
+  public function edit(int $id)
   {
-    $work = DB::table('works')
-      ->join('clients', 'clients.id', '=', 'works.client_id')
-      ->select('works.id', 'client_id', 'client_name', 'work_name', 'work_nickname', 'work_location')
-      ->where('works.id', $id)
-      ->first();
+    $work = (new Work)->showWork($id);
+
+    $clients = (new Client)->getClients();
 
     return view('works.edit', [
-      'work' => $work
+      'work' => $work,
+      'clients' => $clients
     ]);
   }
 
   /**
    * Update the specified resource in storage.
    *
-   * @param \Illuminate\Http\Request $request
-   * @param \Sislab\Work $work
-   * @return \Illuminate\Http\Response
+   * @param Request $request
+   * @param int $id
+   * @return Response
    */
-  public function update(Request $request, Work $work)
+  public function update(Request $request, int $id)
   {
-    $validatedData = $request->validate([
-      'client_id' => 'required',
-      'work_name' => 'required|min:5|max:750',
-      'work_nickname' => 'required|min:5|max:50',
-      'work_location' => 'required|min:5|max:250'
-    ]);
+    (new Work)->isValid($request);
 
-    $work->client_id = $request->get('client_id');
+    $work = (new Work)->showWork($id);
 
-    $work->work_name = $request->get('work_name');
-
-    $work->work_nickname = $request->get('work_nickname');
-
-    $work->work_location = $request->get('work_location');
-
-    $work->save();
+    (new Work)->saveWork($request, $work);
 
     return back()->withInput()->with('status', 'Registro actualizado exitosamente');
   }
@@ -157,12 +115,12 @@ class WorkController extends Controller
   /**
    * Remove the specified resource from storage.
    *
-   * @param \Sislab\Work $work
-   * @return \Illuminate\Http\Response
+   * @param int $id
+   * @return Response
    */
-  public function destroy(Work $work)
+  public function destroy(int $id)
   {
-    $work->delete();
+    (new Work)->deleteWork($id);
 
     return redirect('/works')->with('status', 'Registro eliminado exitosamente');
   }

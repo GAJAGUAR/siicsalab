@@ -2,11 +2,11 @@
 
 namespace Sislab\Http\Controllers;
 
-use Sislab\WorkOrder;
+use Sislab\{Employee, Sample, Work, WorkOrder};
 
-use Illuminate\Http\Request;
+use Illuminate\Http\{Request, Response};
 
-use Illuminate\Support\Facades\DB;
+use Exception;
 
 class WorkOrderController extends Controller
 {
@@ -18,17 +18,11 @@ class WorkOrderController extends Controller
   /**
    * Display a listing of the resource.
    *
-   * @return \Illuminate\Http\Response
+   * @return Response
    */
   public function index()
   {
-    $workOrders = DB::table('work_orders')
-      ->join('works', 'works.id', '=', 'work_orders.work_id')
-      ->join('employees', 'employees.id', '=', 'work_orders.employee_id')
-      ->join('samples', 'samples.work_order_id', '=', 'work_orders.id')
-      ->select('work_orders.id', 'work_order_date', 'work_nickname', 'employee_nickname', DB::raw('count(samples.id) as samples'))
-      ->groupBy('work_orders.id')
-      ->get();
+    $workOrders = (new WorkOrder)->getWorkOrders();
 
     return view('work_orders.index', [
       'workOrders' => $workOrders
@@ -38,17 +32,13 @@ class WorkOrderController extends Controller
   /**
    * Show the form for creating a new resource.
    *
-   * @return \Illuminate\Http\Response
+   * @return Response
    */
   public function create()
   {
-    $works = DB::table('works')
-      ->select('id', 'work_name')
-      ->get();
+    $works = (new Work)->getWorks();
 
-    $employees = DB::table('employees')
-      ->select('id', 'employee_name')
-      ->get();
+    $employees = (new Employee)->getEmployees();
 
     return view('work_orders.create', [
       'works' => $works,
@@ -59,12 +49,82 @@ class WorkOrderController extends Controller
   /**
    * Store a newly created resource in storage.
    *
-   * @param \Illuminate\Http\Request $request
-   * @return \Illuminate\Http\Response
+   * @param Request $request
+   * @return Response
    */
   public function store(Request $request)
   {
-    $validatedData = $request->validate([
+    $request->validate([
+      'id' => 'required|integer',
+      'work_id' => 'required|integer',
+      'employee_id' => 'required|integer',
+      'work_order_date' => 'required|date|before:tomorrow'
+    ]);
+
+    $workOrder = new WorkOrder();
+
+    $workOrder->id = $request->get('id');
+
+    $workOrder->work_id = $request->get('work_id');
+
+    $workOrder->employee_id = $request->get('employee_id');
+
+    $workOrder->work_order_date = $request->get('work_order_date');
+
+    $workOrder->save();
+
+    return back()->withInput()->with('status', 'Registro guardado exitosamente');
+  }
+
+  /**
+   * Display the specified resource.
+   *
+   * @param int $id
+   * @return void
+   */
+  public function show(int $id)
+  {
+    $workOrder = (new WorkOrder)->showWorkOrder($id);
+
+    $samples = (new Sample)->showWorkOrderSamples($id);
+
+    return view('workOrders.show', [
+      'workOrder' => $workOrder,
+      'samples' => $samples
+    ]);
+  }
+
+  /**
+   * Show the form for editing the specified resource.
+   *
+   * @param int $id
+   * @return Response
+   */
+  public function edit(int $id)
+  {
+    $workOrder = (new WorkOrder)->showWorkOrder($id);
+
+    $works = (new Work)->getWorks();
+
+    $employees = (new Employee)->getEmployees();
+
+    return view('work_orders.edit', [
+      'workOrder' => $workOrder,
+      'works' => $works,
+      'employees' => $employees
+    ]);
+  }
+
+  /**
+   * Update the specified resource in storage.
+   *
+   * @param Request $request
+   * @param WorkOrder $workOrder
+   * @return void
+   */
+  public function update(Request $request, WorkOrder $workOrder)
+  {
+    $request->validate([
       'id' => 'required|integer',
       'work_id' => 'required|integer',
       'employee_id' => 'required|integer',
@@ -78,51 +138,20 @@ class WorkOrderController extends Controller
     $workOrder->work_order_date = $request->get('work_order_date');
     $workOrder->save();
 
-    return back()->withInput()->with('status', 'Registro guardado exitosamente');
-  }
-
-  /**
-   * Display the specified resource.
-   *
-   * @param \Sislab\WorkOrder $workOrder
-   * @return \Illuminate\Http\Response
-   */
-  public function show(WorkOrder $workOrder)
-  {
-    //
-  }
-
-  /**
-   * Show the form for editing the specified resource.
-   *
-   * @param \Sislab\WorkOrder $workOrder
-   * @return \Illuminate\Http\Response
-   */
-  public function edit(WorkOrder $workOrder)
-  {
-    //
-  }
-
-  /**
-   * Update the specified resource in storage.
-   *
-   * @param \Illuminate\Http\Request $request
-   * @param \Sislab\WorkOrder $workOrder
-   * @return \Illuminate\Http\Response
-   */
-  public function update(Request $request, WorkOrder $workOrder)
-  {
-    //
+    return back()->withInput()->with('status', 'Registro actualizado exitosamente');
   }
 
   /**
    * Remove the specified resource from storage.
    *
-   * @param \Sislab\WorkOrder $workOrder
-   * @return \Illuminate\Http\Response
+   * @param WorkOrder $workOrder
+   * @return Response
+   * @throws Exception
    */
   public function destroy(WorkOrder $workOrder)
   {
-    //
+    $workOrder->delete();
+
+    return redirect('/work_orders')->with('status', 'Registro eliminado exitosamente');
   }
 }
