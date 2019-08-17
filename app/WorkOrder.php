@@ -47,7 +47,7 @@ class WorkOrder extends Model
       ->select('work_orders.id', 'work_order_date', 'work_nickname', 'employee_nickname', DB::raw('count(samples.id) as samples'))
       ->join('works', 'works.id', '=', 'work_orders.work_id')
       ->join('employees', 'employees.id', '=', 'work_orders.employee_id')
-      ->join('samples', 'samples.work_order_id', '=', 'work_orders.id')
+      ->leftJoin('samples', 'samples.work_order_id', '=', 'work_orders.id')
       ->groupBy('work_orders.id')
       ->get();
   }
