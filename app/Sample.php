@@ -132,7 +132,7 @@ class Sample extends Model
     //
   }
 
-  public function saveSample(Request $request, Work $work)
+  public function saveSample(Request $request, Sample $sample)
   {
     $sample->id = $request->get('id');
 
