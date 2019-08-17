@@ -32,13 +32,15 @@ class Client extends Model
 
   public function getClients()
   {
-    return $this->select('id', 'client_name')
+    return $this
+      ->select('id', 'client_name')
       ->get();
   }
 
   public function showClient(int $id)
   {
-    return $this->select('id', 'client_name', 'client_nickname', 'client_register', 'client_location')
+    return $this
+      ->select('id', 'client_name', 'client_nickname', 'client_register', 'client_location')
       ->where('id', $id)
       ->first();
   }
@@ -58,7 +60,8 @@ class Client extends Model
 
   public function deleteClient(int $id)
   {
-    $this->find($id)
+    $this
+      ->find($id)
       ->delete();
   }
 }

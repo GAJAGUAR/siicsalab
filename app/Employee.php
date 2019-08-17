@@ -13,7 +13,8 @@ class Employee extends Model
 
   public function getEmployees()
   {
-    return $this->select('id', 'employee_name')
+    return $this
+      ->select('id', 'employee_name')
       ->get();
   }
 

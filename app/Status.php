@@ -13,7 +13,8 @@ class Status extends Model
 
   public function getStatuses()
   {
-    return $this->select('id', 'status_name')
+    return $this
+      ->select('id', 'status_name')
       ->get();
   }
 }

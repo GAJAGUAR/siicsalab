@@ -13,7 +13,8 @@ class Weather extends Model
 
   public function getWeathers()
   {
-    return $this->select('id', 'weather_name')
+    return $this
+      ->select('id', 'weather_name')
       ->get();
   }
 }

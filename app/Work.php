@@ -37,13 +37,15 @@ class Work extends Model
 
   public function getWorks()
   {
-    return $this->select('id', 'work_name')
+    return $this
+      ->select('id', 'work_name')
       ->get();
   }
 
   public function showWork(int $id)
   {
-    return $this->select('works.id', 'client_id', 'client_name', 'work_name', 'work_nickname', 'work_location')
+    return $this
+      ->select('works.id', 'client_id', 'client_name', 'work_name', 'work_nickname', 'work_location')
       ->join('clients', 'clients.id', '=', 'works.client_id')
       ->where('works.id', $id)
       ->first();
@@ -51,7 +53,8 @@ class Work extends Model
 
   public function showClientWorks(int $id)
   {
-    return $this->select('id', 'work_name')
+    return $this
+      ->select('id', 'work_name')
       ->where('client_id', $id)
       ->get();
   }
@@ -72,7 +75,8 @@ class Work extends Model
 
   public function deleteWork(int $id)
   {
-    $this->find($id)
+    $this
+      ->find($id)
       ->delete();
   }
 }

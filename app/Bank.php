@@ -20,7 +20,8 @@ class Bank extends Model
 
   public function getBanks()
   {
-    return $this->select('id', 'bank_name')
+    return $this
+      ->select('id', 'bank_name')
       ->get();
   }
 

@@ -13,7 +13,8 @@ class Priority extends Model
 
   public function getPriorities()
   {
-    return $this->select('id', 'priority_name')
+    return $this
+      ->select('id', 'priority_name')
       ->get();
   }
 }

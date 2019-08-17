@@ -15,7 +15,8 @@ class Purpose extends Model
 
   public function getPurposes()
   {
-    return $this->select('id', 'purpose_name')
+    return $this
+      ->select('id', 'purpose_name')
       ->get();
   }
 }
