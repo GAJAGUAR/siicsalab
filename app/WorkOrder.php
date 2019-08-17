@@ -73,7 +73,7 @@ class WorkOrder extends Model
       ->get();
   }
 
-  public function saveWorkOrder(Request $request, Work $work)
+  public function saveWorkOrder(Request $request, WorkOrder $workOrder)
   {
     $workOrder->id = $request->get('id');
 
