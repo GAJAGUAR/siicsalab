@@ -41,19 +41,6 @@ class Work extends Model
       ->get();
   }
 
-  public function saveWork(Request $request, Work $work)
-  {
-    $work->client_id = $request->get('client_id');
-
-    $work->work_name = $request->get('work_name');
-
-    $work->work_nickname = $request->get('work_nickname');
-
-    $work->work_location = $request->get('work_location');
-
-    $work->save();
-  }
-
   public function showWork(int $id)
   {
     return $this->select('works.id', 'client_id', 'client_name', 'work_name', 'work_nickname', 'work_location')
@@ -68,6 +55,20 @@ class Work extends Model
       ->where('client_id', $id)
       ->get();
   }
+
+  public function saveWork(Request $request, Work $work)
+  {
+    $work->client_id = $request->get('client_id');
+
+    $work->work_name = $request->get('work_name');
+
+    $work->work_nickname = $request->get('work_nickname');
+
+    $work->work_location = $request->get('work_location');
+
+    $work->save();
+  }
+
 
   public function deleteWork(int $id)
   {

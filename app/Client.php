@@ -36,6 +36,13 @@ class Client extends Model
       ->get();
   }
 
+  public function showClient(int $id)
+  {
+    return $this->select('id', 'client_name', 'client_nickname', 'client_register', 'client_location')
+      ->where('id', $id)
+      ->first();
+  }
+
   public function saveClient(Request $request, Client $client)
   {
     $client->client_name = $request->get('client_name');
@@ -47,13 +54,6 @@ class Client extends Model
     $client->client_location = $request->get('client_location');
 
     $client->save();
-  }
-
-  public function showClient(int $id)
-  {
-    return $this->select('id', 'client_name', 'client_nickname', 'client_register', 'client_location')
-      ->where('id', $id)
-      ->first();
   }
 
   public function deleteClient(int $id)
