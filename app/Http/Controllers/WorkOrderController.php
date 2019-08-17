@@ -6,8 +6,6 @@ use Sislab\{Employee, Sample, Work, WorkOrder};
 
 use Illuminate\Http\{Request, Response};
 
-use Exception;
-
 class WorkOrderController extends Controller
 {
   public function __construct()
@@ -54,24 +52,11 @@ class WorkOrderController extends Controller
    */
   public function store(Request $request)
   {
-    $request->validate([
-      'id' => 'required|integer',
-      'work_id' => 'required|integer',
-      'employee_id' => 'required|integer',
-      'work_order_date' => 'required|date|before:tomorrow'
-    ]);
+    (new WorkOrder)->isValid($request);
 
     $workOrder = new WorkOrder();
 
-    $workOrder->id = $request->get('id');
-
-    $workOrder->work_id = $request->get('work_id');
-
-    $workOrder->employee_id = $request->get('employee_id');
-
-    $workOrder->work_order_date = $request->get('work_order_date');
-
-    $workOrder->save();
+    (new WorkOrder)->saveWorkOrder($request, $workOrder);
 
     return back()->withInput()->with('status', 'Registro guardado exitosamente');
   }
@@ -80,7 +65,7 @@ class WorkOrderController extends Controller
    * Display the specified resource.
    *
    * @param int $id
-   * @return void
+   * @return Response
    */
   public function show(int $id)
   {
@@ -119,24 +104,16 @@ class WorkOrderController extends Controller
    * Update the specified resource in storage.
    *
    * @param Request $request
-   * @param WorkOrder $workOrder
-   * @return void
+   * @param int $id
+   * @return Response
    */
-  public function update(Request $request, WorkOrder $workOrder)
+  public function update(Request $request, int $id)
   {
-    $request->validate([
-      'id' => 'required|integer',
-      'work_id' => 'required|integer',
-      'employee_id' => 'required|integer',
-      'work_order_date' => 'required|date|before:tomorrow'
-    ]);
+    (new WorkOrder)->isValid($request);
 
-    $workOrder = new WorkOrder();
-    $workOrder->id = $request->get('id');
-    $workOrder->work_id = $request->get('work_id');
-    $workOrder->employee_id = $request->get('employee_id');
-    $workOrder->work_order_date = $request->get('work_order_date');
-    $workOrder->save();
+    $workOrder = (new WorkOrder)->showWorkOrder($id);
+
+    (new WorkOrder)->saveWorkOrder($request, $workOrder);
 
     return back()->withInput()->with('status', 'Registro actualizado exitosamente');
   }
@@ -146,11 +123,10 @@ class WorkOrderController extends Controller
    *
    * @param WorkOrder $workOrder
    * @return Response
-   * @throws Exception
    */
   public function destroy(WorkOrder $workOrder)
   {
-    $workOrder->delete();
+    (new WorkOrder)->deleteWorkOrder($id);
 
     return redirect('/work_orders')->with('status', 'Registro eliminado exitosamente');
   }
