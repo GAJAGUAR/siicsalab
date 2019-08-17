@@ -37,3 +37,14 @@ ul.pagination {
     justify-content: flex-end !important;
   }
 }
+
+// Selelct 2
+.select2-container--bootstrap {
+  width: 100% !important;
+}
+
+.select2-container--bootstrap .select2-selection--single {
+  font-size: 1rem !important;
+  height: calc(1.5rem + 0.75rem + 2px) !important;
+  line-height: 1.5 !important;
+}
