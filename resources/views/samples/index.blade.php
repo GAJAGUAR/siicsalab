@@ -42,21 +42,21 @@
     @endcomponent
 
     @component('components.tables.th')
-      @slot('class', 'text-center')
+      @slot('class', 'text-center th-w-md')
 
-      {{ __('obra') }}
-    @endcomponent
-
-    @component('components.tables.th')
-      @slot('class', 'text-center')
-
-      {{ __('material') }}
+      {{ __('recibido') }}
     @endcomponent
 
     @component('components.tables.th')
       @slot('class', 'text-center')
 
       {{ __('empleo') }}
+    @endcomponent
+
+    @component('components.tables.th')
+      @slot('class', 'text-center')
+
+      {{ __('material') }}
     @endcomponent
 
     @component('components.tables.th')
@@ -81,15 +81,15 @@
       @endcomponent
 
       @component('components.tables.td')
-        {{ $sample->work_nickname }}
-      @endcomponent
-
-      @component('components.tables.td')
-        {{ $sample->sample_description }}
+        {{ $sample->sample_receipt_date }}
       @endcomponent
 
       @component('components.tables.td')
         {{ $sample->purpose_name }}
+      @endcomponent
+
+      @component('components.tables.td')
+        {{ $sample->sample_description }}
       @endcomponent
 
       @component('components.tables.td_detail')
