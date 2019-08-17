@@ -11,6 +11,8 @@
 |
 */
 
+use Illuminate\Support\Facades\{Auth, Route};
+
 Auth::routes();
 // Auth::routes(['register' => false]);
 
