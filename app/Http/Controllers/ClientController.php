@@ -2,7 +2,7 @@
 
 namespace Sislab\Http\Controllers;
 
-use Sislab\{Client, Work};
+use Sislab\{Client, vClient, vWork};
 
 use Illuminate\Http\{Request, Response};
 
@@ -20,7 +20,7 @@ class ClientController extends Controller
    */
   public function index()
   {
-    $clients = (new Client)->getClients();
+    $clients = (new vClient)->getClients();
 
     return view('clients.index', [
       'clients' => $clients
@@ -62,9 +62,9 @@ class ClientController extends Controller
    */
   public function show(int $id)
   {
-    $client = (new Client)->showClient($id);
+    $client = (new vClient)->showClient($id);
 
-    $works = (new Work)->showClientWorks($id);
+    $works = (new vWork)->showClientWorks($id);
 
     return view('clients.show', [
       'client' => $client,
@@ -80,7 +80,7 @@ class ClientController extends Controller
    */
   public function edit(int $id)
   {
-    $client = (new Client)->showClient($id);
+    $client = (new vClient)->showClient($id);
 
     return view('clients.edit', [
       'client' => $client
@@ -98,7 +98,7 @@ class ClientController extends Controller
   {
     (new Client)->isValid($request);
 
-    $client = (new Client)->showClient($id);
+    $client = (new vClient)->showClient($id);
 
     (new Client)->saveClient($request, $client);
 

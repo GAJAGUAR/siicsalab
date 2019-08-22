@@ -2,7 +2,7 @@
 
 namespace Sislab\Http\Controllers;
 
-use Sislab\{Bank, Priority, Purpose, Sample, Status, Weather, WorkOrder};
+use Sislab\{Bank, Priority, Purpose, Sample, Status, vSample, vWorkOrder, Weather};
 
 use Illuminate\Http\{Request, Response};
 
@@ -20,7 +20,7 @@ class SampleController extends Controller
    */
   public function index()
   {
-    $samples = (new Sample)->getSamples();
+    $samples = (new vSample)->getSamples();
 
     return view('samples.index', [
       'samples' => $samples
@@ -34,7 +34,7 @@ class SampleController extends Controller
    */
   public function create()
   {
-    $workOrders = (new WorkOrder)->getWorkOrders();
+    $workOrders = (new vWorkOrder)->getWorkOrders();
 
     $banks = (new Bank)->getBanks();
 
@@ -46,13 +46,28 @@ class SampleController extends Controller
 
     $statuses = (new Status)->getStatuses();
 
+    $descriptions = (new vSample)->getDescriptions();
+
+    $treatments = (new vSample)->getTreatments();
+
+    $roadNames = (new vSample)->getRoadNames();
+
+    $roadBodies = (new vSample)->getRoadBodies();
+
+    $roadSides = (new vSample)->getRoadSides();
+
     return view('samples.create', [
       'workOrders' => $workOrders,
       'banks' => $banks,
       'purposes' => $purposes,
       'weathers' => $weathers,
       'priorities' => $priorities,
-      'statuses' => $statuses
+      'statuses' => $statuses,
+      'descriptions' => $descriptions,
+      'treatments' => $treatments,
+      'roadNames' => $roadNames,
+      'roadBodies' => $roadBodies,
+      'roadSides' => $roadSides
     ]);
   }
 
@@ -67,7 +82,7 @@ class SampleController extends Controller
     (new Sample)->isValid($request);
 
     $sample = new Sample();
-    
+
     (new Sample)->saveSample($request, $sample);
 
     return back()->withInput()->with('status', 'Registro guardado exitosamente');
@@ -81,9 +96,9 @@ class SampleController extends Controller
    */
   public function show(int $id)
   {
-    $sample = (new Sample)->showSample($id);
+    $sample = (new vSample)->showSample($id);
 
-    return view('workOrders.show', [
+    return view('samples.show', [
       'sample' => $sample
     ]);
   }
@@ -96,19 +111,29 @@ class SampleController extends Controller
    */
   public function edit(int $id)
   {
-    $sample = (new Sample)->showSample($id);
+    $sample = (new vSample)->showSample($id);
 
-    $workOrders = (new WorkOrder)->getWorkOrders();
+    $workOrders = (new vWorkOrder)->getWorkOrders();
 
     $banks = (new Bank)->getBanks();
 
     $purposes = (new Purpose)->getPurposes();
 
-    $weathers = (new Wather)->getWeather();
+    $weathers = (new Weather)->getWeathers();
 
-    $priorities = (new Priority)->getPriority();
+    $priorities = (new Priority)->getPriorities();
 
     $statuses = (new Status)->getStatuses();
+
+    $descriptions = (new vSample)->getDescriptions();
+
+    $treatments = (new vSample)->getTreatments();
+
+    $roadNames = (new vSample)->getRoadNames();
+
+    $roadBodies = (new vSample)->getRoadBodies();
+
+    $roadSides = (new vSample)->getRoadSides();
 
     return view('samples.edit', [
       'sample' => $sample,
@@ -117,7 +142,12 @@ class SampleController extends Controller
       'purposes' => $purposes,
       'weathers' => $weathers,
       'priorities' => $priorities,
-      'statuses' => $statuses
+      'statuses' => $statuses,
+      'descriptions' => $descriptions,
+      'treatments' => $treatments,
+      'roadNames' => $roadNames,
+      'roadBodies' => $roadBodies,
+      'roadSides' => $roadSides
     ]);
   }
 
@@ -132,7 +162,7 @@ class SampleController extends Controller
   {
     (new Sample)->isValid($request);
 
-    $sample = (new Sample)->showSample($id);
+    $sample = (new vSample)->showSample($id);
 
     (new Sample)->saveSample($request, $sample);
 

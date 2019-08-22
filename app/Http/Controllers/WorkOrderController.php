@@ -2,7 +2,7 @@
 
 namespace Sislab\Http\Controllers;
 
-use Sislab\{Employee, Sample, Work, WorkOrder};
+use Sislab\{Employee, vSample, vWork, vWorkOrder, WorkOrder};
 
 use Illuminate\Http\{Request, Response};
 
@@ -20,7 +20,7 @@ class WorkOrderController extends Controller
    */
   public function index()
   {
-    $workOrders = (new WorkOrder)->getWorkOrders();
+    $workOrders = (new vWorkOrder)->getWorkOrders();
 
     return view('work_orders.index', [
       'workOrders' => $workOrders
@@ -34,7 +34,7 @@ class WorkOrderController extends Controller
    */
   public function create()
   {
-    $works = (new Work)->getWorks();
+    $works = (new vWork)->getWorks();
 
     $employees = (new Employee)->getEmployees();
 
@@ -69,11 +69,11 @@ class WorkOrderController extends Controller
    */
   public function show(int $id)
   {
-    $workOrder = (new WorkOrder)->showWorkOrder($id);
+    $workOrder = (new vWorkOrder)->showWorkOrder($id);
 
-    $samples = (new Sample)->showWorkOrderSamples($id);
+    $samples = (new vSample)->showWorkOrderSamples($id);
 
-    return view('workOrders.show', [
+    return view('work_orders.show', [
       'workOrder' => $workOrder,
       'samples' => $samples
     ]);
@@ -87,9 +87,9 @@ class WorkOrderController extends Controller
    */
   public function edit(int $id)
   {
-    $workOrder = (new WorkOrder)->showWorkOrder($id);
+    $workOrder = (new vWorkOrder)->showWorkOrder($id);
 
-    $works = (new Work)->getWorks();
+    $works = (new vWork)->getWorks();
 
     $employees = (new Employee)->getEmployees();
 
@@ -111,7 +111,7 @@ class WorkOrderController extends Controller
   {
     (new WorkOrder)->isValid($request);
 
-    $workOrder = (new WorkOrder)->showWorkOrder($id);
+    $workOrder = (new vWorkOrder)->showWorkOrder($id);
 
     (new WorkOrder)->saveWorkOrder($request, $workOrder);
 
