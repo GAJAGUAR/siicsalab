@@ -77,6 +77,14 @@
   @endcomponent
 
   @component('components.lists.term')
+    {{ __('Tratamiento:') }}
+  @endcomponent
+
+  @component('components.lists.description')
+    {{ $sample->sample_treatment }}
+  @endcomponent
+
+  @component('components.lists.term')
     {{ __('Tomada en:') }}
   @endcomponent
 
@@ -170,5 +178,21 @@
 
   @component('components.lists.description')
     {{ $sample->sample_notes }}
+  @endcomponent
+
+  @component('components.lists.term')
+    {{ __('Prioridad:') }}
+  @endcomponent
+
+  @component('components.lists.description')
+    {{ $sample->priority_name }}
+  @endcomponent
+
+  @component('components.lists.term')
+    {{ __('Estado:') }}
+  @endcomponent
+
+  @component('components.lists.description')
+    {{ $sample->status_name }}
   @endcomponent
 @endsection

@@ -2,38 +2,46 @@
 
 {{-- header --}}
 @section('title')
-  {{ $work->work_nickname }}
+  órden de trabajo {{ $workOrder->id }}
 @endsection
 
 {{-- nav --}}
 @section('urlEdit')
-  {{ $work->id }}/edit
+  {{ $workOrder->id }}/edit
 @endsection
 
 @section('urlAdd')
-  {{ route('work_orders.create') }}
+  {{ route('samples.create') }}
 @endsection
 
 @section('textAdd')
-  {{ __('Agregar orden de trabajo') }}
+  {{ __('Agregar ensaye') }}
 @endsection
 
 {{-- main --}}
 @section('detail')
   @component('components.lists.term')
+    {{ __('Fecha:') }}
+  @endcomponent
+
+  @component('components.lists.description')
+    {{ $workOrder->work_order_date }}
+  @endcomponent
+
+  @component('components.lists.term')
     {{ __('Cliente:') }}
   @endcomponent
 
   @component('components.lists.description')
-    {{ $work->client_name }}
+    {{ $workOrder->client_name }}
   @endcomponent
 
   @component('components.lists.term')
-    {{ __('Nombre:') }}
+    {{ __('Obra:') }}
   @endcomponent
 
   @component('components.lists.description')
-    {{ $work->work_name }}
+    {{ $workOrder->work_name }}
   @endcomponent
 
   @component('components.lists.term')
@@ -41,12 +49,20 @@
   @endcomponent
 
   @component('components.lists.description')
-    {{ $work->work_location }}
+    {{ $workOrder->work_location }}
+  @endcomponent
+
+  @component('components.lists.term')
+    {{ __('Personal:') }}
+  @endcomponent
+
+  @component('components.lists.description')
+    {{ $workOrder->employee_name }}
   @endcomponent
 @endsection
 
 @section('subtitle')
-  {{ __('órdenes de trabajo:') }}
+  {{ __('ensayes:') }}
 @endsection
 
 @section('thead')
@@ -60,19 +76,19 @@
     @component('components.tables.th')
       @slot('class', 'text-center th-w-md')
 
-      {{ __('fecha') }}
+      {{ __('recibido') }}
     @endcomponent
 
     @component('components.tables.th')
       @slot('class', 'text-center')
 
-      {{ __('personal') }}
+      {{ __('empleo') }}
     @endcomponent
 
     @component('components.tables.th')
-      @slot('class', 'text-center th-w-sm')
+      @slot('class', 'text-center')
 
-      {{ __('ensayes') }}
+      {{ __('material') }}
     @endcomponent
 
     @component('components.tables.th')
@@ -84,32 +100,30 @@
 @endsection
 
 @section('tbody')
-  @foreach ($workOrders as $workOrder)
+  @foreach ($samples as $sample)
     @component('components.tables.tr')
       @component('components.tables.td')
         @slot('class', 'text-center')
 
-        {{ $workOrder->id }}
+        {{ $sample->id }}
       @endcomponent
 
       @component('components.tables.td')
-        {{ $workOrder->work_order_date }}
+        {{ $sample->sample_receipt_date }}
       @endcomponent
 
       @component('components.tables.td')
-        {{ $workOrder->employee_name }}
+        {{ $sample->purpose_name }}
       @endcomponent
 
       @component('components.tables.td')
-        @slot('class', 'text-center')
-
-        {{ $workOrder->samples }}
+        {{ $sample->sample_description }}
       @endcomponent
 
       @component('components.tables.td_detail')
         @slot('class', 'text-center')
 
-        /work_orders/{{ $workOrder->id }}
+        /samples/{{ $sample->id }}
       @endcomponent
     @endcomponent
   @endforeach

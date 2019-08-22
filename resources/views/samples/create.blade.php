@@ -71,7 +71,7 @@
   @endcomponent
 
   {{-- sample description field --}}
-  @component('components.inputs.textarea')
+  @component('components.inputs.list')
     @slot('label', 'Descripción del material')
 
     @slot('fieldName', 'sample_description')
@@ -84,7 +84,50 @@
 
     @slot('textDescription', 'Información petrográfica del material.')
   @endcomponent
-  
+
+  @component('components.inputs.datalist')
+    @slot('fieldName', 'sample_description')
+
+    @foreach ($descriptions as $description)
+      @component('components.inputs.option')
+        @slot('value')
+          {{ $description->sample_description }}
+        @endslot
+
+        {{ $description->sample_description }}
+      @endcomponent
+    @endforeach
+  @endcomponent
+
+  {{-- sample treatment field --}}
+  @component('components.inputs.list')
+    @slot('label', 'Tratamiento previo al muestreo')
+
+    @slot('fieldName', 'sample_treatment')
+
+    @slot('value', old('sample_treatment'))
+
+    @slot('textHelp', 'treatmentHelp')
+
+    @slot('maxLength', '100')
+
+    @slot('textDescription', 'Información petrográfica del material.')
+  @endcomponent
+
+  @component('components.inputs.datalist')
+    @slot('fieldName', 'sample_treatment')
+
+    @foreach ($treatments as $treatment)
+      @component('components.inputs.option')
+        @slot('value')
+          {{ $treatment->sample_treatment }}
+        @endslot
+
+        {{ $treatment->sample_treatment }}
+      @endcomponent
+    @endforeach
+  @endcomponent
+
   {{-- sample location field --}}
   @component('components.inputs.textarea')
     @slot('label', 'Localización')
@@ -101,7 +144,7 @@
   @endcomponent
 
   {{-- road name field --}}
-  @component('components.inputs.text')
+  @component('components.inputs.list')
     @slot('label', 'Camino')
 
     @slot('fieldName', 'road_name')
@@ -115,6 +158,20 @@
     @slot('textDescription', 'Anotarlo si la muestra fue tomada en un camino o vía.')
   @endcomponent
 
+  @component('components.inputs.datalist')
+    @slot('fieldName', 'road_name')
+
+    @foreach ($roadNames as $roadName)
+      @component('components.inputs.option')
+        @slot('value')
+          {{ $roadName->road_name }}
+        @endslot
+
+        {{ $roadName->road_name }}
+      @endcomponent
+    @endforeach
+  @endcomponent
+
   @component('components.inputs.form_row')
 
     {{-- road station start field --}}
@@ -122,49 +179,49 @@
       @slot('style', 'col-12 col-md')
 
       @slot('label', 'Cadenamiento inicio')
-  
+
       @slot('fieldName', 'road_station_start')
-  
+
       @slot('value', old('road_station_start'))
-  
+
       @slot('textHelp', 'roadStartHelp')
-  
+
       @slot('maxLength', '11')
-  
+
       @slot('textDescription', 'Inicio del tramo que representa la muestra.')
     @endcomponent
-    
+
     {{-- road station end field --}}
     @component('components.inputs.text')
       @slot('style', 'col-12 col-md')
 
       @slot('label', 'Cadenamiento fin')
-  
+
       @slot('fieldName', 'road_station_end')
-  
+
       @slot('value', old('road_station_end'))
-  
+
       @slot('textHelp', 'roadEndHelp')
-  
+
       @slot('maxLength', '11')
-  
+
       @slot('textDescription', 'Fin del tramo que representa la muestra.')
     @endcomponent
-    
+
     {{-- road station field --}}
     @component('components.inputs.text')
       @slot('style', 'col-12 col-md')
-      
+
       @slot('label', 'Cadenamiento muestra')
-  
+
       @slot('fieldName', 'road_station')
-  
+
       @slot('value', old('road_station'))
-  
+
       @slot('textHelp', 'roadStationHelp')
-  
+
       @slot('maxLength', '11')
-  
+
       @slot('textDescription', 'Kilometraje exacto donde se tomó la muestra.')
     @endcomponent
   @endcomponent
@@ -172,38 +229,67 @@
   @component('components.inputs.form_row')
 
     {{-- road body field --}}
-    @component('components.inputs.text')
+    @component('components.inputs.list')
       @slot('style', 'col-12 col-md')
-      
+
       @slot('label', 'Cuerpo')
-  
+
       @slot('fieldName', 'road_body')
-  
+
       @slot('value', old('road_body'))
-  
+
       @slot('textHelp', 'bodyHelp')
-  
+
       @slot('maxLength', '20')
-  
+
       @slot('textDescription', 'Designación del cuerpo del camino.')
     @endcomponent
 
+
+    @component('components.inputs.datalist')
+      @slot('fieldName', 'road_body')
+
+      @foreach ($roadBodies as $roadBody)
+        @component('components.inputs.option')
+          @slot('value')
+            {{ $roadBody->road_body }}
+          @endslot
+
+          {{ $roadBody->road_body }}
+        @endcomponent
+      @endforeach
+    @endcomponent
+
     {{-- road side field --}}
-    @component('components.inputs.text')
+    @component('components.inputs.list')
       @slot('style', 'col-12 col-md')
-      
+
       @slot('label', 'Lado')
-  
+
       @slot('fieldName', 'road_side')
-  
+
       @slot('value', old('road_side'))
-  
+
       @slot('textHelp', 'sideHelp')
-  
+
       @slot('maxLength', '10')
-  
+
       @slot('textDescription', 'Lado o desviación del camino.')
     @endcomponent
+  @endcomponent
+
+  @component('components.inputs.datalist')
+    @slot('fieldName', 'road_side')
+
+    @foreach ($roadSides as $roadSide)
+      @component('components.inputs.option')
+        @slot('value')
+          {{ $roadSide->road_side }}
+        @endslot
+
+        {{ $roadSide->road_side }}
+      @endcomponent
+    @endforeach
   @endcomponent
 
   {{-- bank id field --}}
@@ -261,7 +347,7 @@
       @endcomponent
     @endforeach
   @endcomponent
-  
+
   @component('components.inputs.form_row')
 
     {{-- phreatic level field --}}
@@ -390,71 +476,71 @@
       @slot('style', 'col-12 col-md')
 
       @slot('label', 'Recibido')
-  
+
       @slot('fieldName', 'sample_receipt_date')
-  
+
       @slot('value', old('sample_receipt_date'))
-  
+
       @slot('textHelp', 'receiptHelp')
-  
+
       @slot('textDescription', 'Fecha de recibido en el laboratorio.')
     @endcomponent
-  
+
     {{-- priority id field --}}
     @component('components.inputs.select')
       @slot('style', 'col-12 col-md')
 
       @slot('label', 'Prioridad')
-  
+
       @slot('fieldName', 'priority_id')
-  
+
       @slot('value', old('priority_id'))
-  
+
       @slot('textHelp', 'priorityHelp')
-  
+
       @slot('textDescription', 'Relevancia con respecto de los demás trabajos.')
-  
+
       <option value="">Seleccionar</option>
       @foreach ($priorities as $priority)
         @component('components.inputs.option')
           @slot('value')
             {{ $priority->id }}
           @endslot
-  
+
           @slot('selected')
             {{ (old('priority_id') == $priority->id ? 'selected' : '') }}
           @endslot
-  
+
           {{ $priority->priority_name }}
         @endcomponent
       @endforeach
     @endcomponent
-  
+
     {{-- status id field --}}
     @component('components.inputs.select')
       @slot('style', 'col-12 col-md')
-      
+
       @slot('label', 'Estado')
-  
+
       @slot('fieldName', 'status_id')
-  
+
       @slot('value', old('status_id'))
-  
+
       @slot('textHelp', 'statusHelp')
-  
+
       @slot('textDescription', 'Empleo que se le dará al material.')
-  
+
       <option value="">Seleccionar</option>
       @foreach ($statuses as $status)
         @component('components.inputs.option')
           @slot('value')
             {{ $status->id }}
           @endslot
-  
+
           @slot('selected')
             {{ (old('status_id') == $status->id ? 'selected' : '') }}
           @endslot
-  
+
           {{ $status->status_name }}
         @endcomponent
       @endforeach
