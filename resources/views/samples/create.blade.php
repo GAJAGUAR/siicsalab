@@ -72,7 +72,7 @@
 
   {{-- sample description field --}}
   @component('components.inputs.list')
-    @slot('label', 'Descripción del material')
+    @slot('label', 'Descripción')
 
     @slot('fieldName', 'sample_description')
 
@@ -101,7 +101,7 @@
 
   {{-- sample treatment field --}}
   @component('components.inputs.list')
-    @slot('label', 'Tratamiento previo al muestreo')
+    @slot('label', 'Tratamiento')
 
     @slot('fieldName', 'sample_treatment')
 
@@ -111,7 +111,7 @@
 
     @slot('maxLength', '100')
 
-    @slot('textDescription', 'Información petrográfica del material.')
+    @slot('textDescription', 'Realizado sobre el material, previo al muestreo.')
   @endcomponent
 
   @component('components.inputs.datalist')
