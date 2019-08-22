@@ -41,38 +41,6 @@ class WorkOrder extends Model
     ]);
   }
 
-  public function getWorkOrders()
-  {
-    return $this
-      ->select('work_orders.id', 'work_order_date', 'work_nickname', 'employee_nickname', DB::raw('count(samples.id) as samples'))
-      ->join('works', 'works.id', '=', 'work_orders.work_id')
-      ->join('employees', 'employees.id', '=', 'work_orders.employee_id')
-      ->leftJoin('samples', 'samples.work_order_id', '=', 'work_orders.id')
-      ->groupBy('work_orders.id')
-      ->get();
-  }
-
-  public function showWorkOrder(int $id)
-  {
-    return $this
-      ->select('work_orders.id', 'work_order_date', 'client_name', 'employee_name', 'work_name', 'work_location')
-      ->join('works', 'works.id', '=', 'work_orders.work_id')
-      ->join('clients', 'clients.id', '=', 'works.client_id')
-      ->where('work_orders.id', $id)
-      ->first();
-  }
-
-  public function showWorkWorkOrders(int $id)
-  {
-    return $this
-      ->select('work_orders.id', 'work_order_date', 'employee_name', DB::raw('count(samples.id) as samples'))
-      ->join('employees', 'employees.id', '=', 'work_orders.employee_id')
-      ->join('samples', 'samples.work_order_id', '=', 'work_orders.id')
-      ->where('work_id', $id)
-      ->groupBy('work_orders.id')
-      ->get();
-  }
-
   public function saveWorkOrder(Request $request, WorkOrder $workOrder)
   {
     $workOrder->id = $request->get('id');

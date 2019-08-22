@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\DB;
  * @property mixed status_id
  * @property mixed sample_time
  * @property mixed sample_description
+ * @property mixed sample_treatment
  * @property mixed sample_location
  * @property mixed road_name
  * @property mixed road_station_start
@@ -81,6 +82,7 @@ class Sample extends Model
       'status_id' => 'required|integer|min:1|max:5',
       'sample_time' => 'required',
       'sample_description' => 'required|min:5|max:250',
+      'sample_treatment' => 'nullable|min:5|max:100',
       'sample_location' => 'nullable|min:5|max:100',
       'road_name' => 'nullable|min:5|max:100',
       'road_station_start' => 'nullable|max:11',
@@ -98,38 +100,6 @@ class Sample extends Model
       'sketch_file' => 'nullable|url|max:50',
       'stratigraphic_file' => 'nullable|url|max:50'
     ]);
-  }
-
-  public function getSamples()
-  {
-    return $this
-      ->select('samples.id', 'work_order_id', 'purpose_name', 'sample_description', 'sample_receipt_date')
-      ->join('work_orders', 'work_orders.id', '=', 'samples.work_order_id')
-      ->join('works', 'works.id', '=', 'work_orders.work_id')
-      ->join('clients', 'clients.id', '=', 'works.client_id')
-      ->join('purposes', 'purposes.id', '=', 'samples.purpose_id')
-      ->join('statuses', 'statuses.id', '=', 'samples.status_id')
-      ->get();
-  }
-
-  public function showSample(int $id)
-  {
-    return $this
-      ->select('samples.id', 'work_order_id', 'bank_name', 'purpose_name', 'weather_name', 'priority_name', 'status_name', 'sample_time','sample_description', 'sample_location', 'road_name', 'road_station_start', 'road_station_end', 'road_station', 'road_body', 'road_side', 'phreatic_level', 'sampling_seq', 'env_temp', 'sample_seq', 'sample_tests', 'sample_notes', 'sample_receipt_date')
-      ->join('work_orders', 'work_orders.id', '=', 'samples.work_order_id')
-      ->join('works', 'works.id', '=', 'work_orders.work_id')
-      ->join('clients', 'clients.id', '=', 'works.client_id')
-      ->join('banks', 'banks.id', '=', 'samples.bank_id')
-      ->join('purposes', 'purposes.id', '=', 'samples.purpose_id')
-      ->join('weathers', 'weathers.id', '=', 'samples.weather_id')
-      ->join('priorities', 'priorities.id', '=', 'samples.priority_id')
-      ->join('statuses', 'statuses.id', '=', 'samples.status_id')
-      ->first();
-  }
-
-  public function showWorkOrderSamples(int $id)
-  {
-    //
   }
 
   public function saveSample(Request $request, Sample $sample)
@@ -151,6 +121,8 @@ class Sample extends Model
     $sample->sample_time = $request->get('sample_time');
 
     $sample->sample_description = $request->get('sample_description');
+
+    $sample->sample_treatment = $request->get('sample_treatment');
 
     $sample->sample_location = $request->get('sample_location');
 
