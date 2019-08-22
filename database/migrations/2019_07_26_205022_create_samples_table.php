@@ -44,6 +44,8 @@ class CreateSamplesTable extends Migration
 
       $table->string('sample_description', 250);
 
+      $table->string('sample_treatment', 100);
+
       $table->string('sample_location', 100)->nullable()->default(null);
 
       $table->string('road_name', 100)->nullable()->default(null);
@@ -56,7 +58,18 @@ class CreateSamplesTable extends Migration
 
       $table->string('road_body', 20)->nullable()->default(null);
 
-      $table->string('road_side', 10)->nullable()->default(null);
+      $table->string('road_side', 20)->nullable()->default(null);
+
+      $table->string('road', 200)->virtualAs('
+        CONCAT(
+          IF(`road_name` <> "", `road_name`, ""),
+          IF(`road_station_start` <> "", CONCAT(" DEL KM ", `road_station_start`), ""),
+          IF(`road_station_end` <> "", CONCAT(" AL KM ", `road_station_end`), ""),
+          IF(`road_station` <> "", CONCAT(" KM ", `road_station`), ""),
+          IF(`road_body` <> "", CONCAT(" CUERPO ",`road_body`), ""),
+          IF(`road_side` <> "", CONCAT(" LADO ",`road_side`), "")
+        )
+      ');
 
       $table->decimal('phreatic_level', 4, 2)->nullable()->default(null);
 
