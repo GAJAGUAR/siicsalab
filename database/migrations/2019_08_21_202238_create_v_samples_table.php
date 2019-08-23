@@ -16,7 +16,7 @@ class CreateVSamplesTable extends Migration
     DB::statement('
       CREATE
         ALGORITHM = UNDEFINED
-        DEFINER = root@localhost
+        -- DEFINER = root@localhost
         SQL SECURITY DEFINER
         VIEW `v_samples` AS
         SELECT   `samples`.`id`,

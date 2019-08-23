@@ -16,7 +16,7 @@ class CreateVWorkOrdersTable extends Migration
     DB::statement('
       CREATE
         ALGORITHM = UNDEFINED
-        DEFINER = root@localhost
+        -- DEFINER = root@localhost
         SQL SECURITY DEFINER
         VIEW `v_work_orders` AS
         SELECT   `work_orders`.`id`,
@@ -25,6 +25,7 @@ class CreateVWorkOrdersTable extends Migration
                  `work_nickname`,
                  `work_location`,
                  `client_name`,
+                 `employee_id`,
                  `employee_name`,
                  `employee_nickname`,
                  `work_order_date`,

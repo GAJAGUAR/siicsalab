@@ -16,7 +16,7 @@ class CreateVWorksTable extends Migration
     DB::statement('
       CREATE
         ALGORITHM = UNDEFINED
-        DEFINER = root@localhost
+        -- DEFINER = root@localhost
         SQL SECURITY DEFINER
         VIEW `v_works` AS
         SELECT   `works`.`id`,
