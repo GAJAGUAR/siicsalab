@@ -44,7 +44,7 @@ class CreateSamplesTable extends Migration
 
       $table->string('sample_description', 250);
 
-      $table->string('sample_treatment', 100);
+      $table->string('sample_treatment', 100)->nullable()->default(1);
 
       $table->string('sample_location', 100)->nullable()->default(null);
 
