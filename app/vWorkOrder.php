@@ -27,7 +27,9 @@ class vWorkOrder extends Model
         'id',
         'work_order_date',
         'client_name',
+        'employee_id',
         'employee_name',
+        'work_id',
         'work_name',
         'work_location')
       ->where('id', $id)
