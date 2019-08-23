@@ -2,9 +2,30 @@
 
 namespace Sislab\Http\Controllers;
 
-use Sislab\{Bank, Priority, Purpose, Sample, Status, vSample, vWorkOrder, Weather};
+use Sislab\
+{
+  Bank,
+  Priority,
+  Purpose,
+  RoadBody,
+  RoadName,
+  RoadSide,
+  Sample,
+  SampleDescription,
+  SampleLocation,
+  SampleTest,
+  SampleTreatment,
+  Status,
+  vSample,
+  vWorkOrder,
+  Weather
+};
 
-use Illuminate\Http\{Request, Response};
+use Illuminate\Http\
+{
+  Request,
+  Response
+};
 
 class SampleController extends Controller
 {
@@ -46,15 +67,19 @@ class SampleController extends Controller
 
     $statuses = (new Status)->getStatuses();
 
-    $descriptions = (new vSample)->getDescriptions();
+    $descriptions = (new SampleDescription)->get();
 
-    $treatments = (new vSample)->getTreatments();
+    $treatments = (new SampleTreatment)->get();
 
-    $roadNames = (new vSample)->getRoadNames();
+    $locations = (new SampleLocation)->get();
 
-    $roadBodies = (new vSample)->getRoadBodies();
+    $roadNames = (new RoadName)->get();
 
-    $roadSides = (new vSample)->getRoadSides();
+    $roadBodies = (new RoadBody)->get();
+
+    $roadSides = (new RoadSide)->get();
+
+    $tests = (new SampleTest)->get();
 
     return view('samples.create', [
       'workOrders' => $workOrders,
@@ -65,9 +90,11 @@ class SampleController extends Controller
       'statuses' => $statuses,
       'descriptions' => $descriptions,
       'treatments' => $treatments,
+      'locations' => $locations,
       'roadNames' => $roadNames,
       'roadBodies' => $roadBodies,
-      'roadSides' => $roadSides
+      'roadSides' => $roadSides,
+      'tests' => $tests
     ]);
   }
 

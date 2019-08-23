@@ -20,46 +20,6 @@ class vSample extends Model
     ->get();
   }
 
-  public function getDescriptions()
-  {
-    return $this
-    ->select('sample_description')
-    ->groupBy('sample_description')
-    ->get();
-  }
-
-  public function getTreatments()
-  {
-    return $this
-    ->select('sample_treatment')
-    ->groupBy('sample_treatment')
-    ->get();
-  }
-
-  public function getRoadNames()
-  {
-    return $this
-    ->select('road_name')
-    ->groupBy('road_name')
-    ->get();
-  }
-
-  public function getRoadBodies()
-  {
-    return $this
-    ->select('road_body')
-    ->groupBy('road_body')
-    ->get();
-  }
-
-  public function getRoadSides()
-  {
-    return $this
-    ->select('road_side')
-    ->groupBy('road_side')
-    ->get();
-  }
-
   public function showSample(int $id)
   {
     return $this
