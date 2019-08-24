@@ -2,9 +2,20 @@
 
 namespace Sislab\Http\Controllers;
 
-use Sislab\{Employee, vSample, vWork, vWorkOrder, WorkOrder};
+use Sislab\
+{
+  Employee,
+  ExtendedSample,
+  ExtendedWork,
+  ExtendedWorkOrder,
+  WorkOrder
+};
 
-use Illuminate\Http\{Request, Response};
+use Illuminate\Http\
+{
+  Request,
+  Response
+};
 
 class WorkOrderController extends Controller
 {
@@ -20,7 +31,7 @@ class WorkOrderController extends Controller
    */
   public function index()
   {
-    $workOrders = (new vWorkOrder)->getWorkOrders();
+    $workOrders = (new ExtendedWorkOrder)->get();
 
     return view('work_orders.index', [
       'workOrders' => $workOrders
@@ -34,9 +45,9 @@ class WorkOrderController extends Controller
    */
   public function create()
   {
-    $works = (new vWork)->getWorks();
+    $works = (new ExtendedWork)->get();
 
-    $employees = (new Employee)->getEmployees();
+    $employees = (new Employee)->get();
 
     return view('work_orders.create', [
       'works' => $works,
@@ -69,9 +80,9 @@ class WorkOrderController extends Controller
    */
   public function show(int $id)
   {
-    $workOrder = (new vWorkOrder)->showWorkOrder($id);
+    $workOrder = (new ExtendedWorkOrder)->show($id);
 
-    $samples = (new vSample)->showWorkOrderSamples($id);
+    $samples = (new ExtendedSample)->showWorkOrderSamples($id);
 
     return view('work_orders.show', [
       'workOrder' => $workOrder,
@@ -87,11 +98,11 @@ class WorkOrderController extends Controller
    */
   public function edit(int $id)
   {
-    $workOrder = (new vWorkOrder)->showWorkOrder($id);
+    $workOrder = (new ExtendedWorkOrder)->show($id);
 
-    $works = (new vWork)->getWorks();
+    $works = (new ExtendedWork)->get();
 
-    $employees = (new Employee)->getEmployees();
+    $employees = (new Employee)->get();
 
     return view('work_orders.edit', [
       'workOrder' => $workOrder,
@@ -111,7 +122,7 @@ class WorkOrderController extends Controller
   {
     (new WorkOrder)->isValid($request);
 
-    $workOrder = (new vWorkOrder)->showWorkOrder($id);
+    $workOrder = (new WorkOrder)->show($id);
 
     (new WorkOrder)->saveWorkOrder($request, $workOrder);
 

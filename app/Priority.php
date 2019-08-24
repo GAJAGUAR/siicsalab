@@ -11,7 +11,7 @@ class Priority extends Model
     return $this->hasMany(Sample::class);
   }
 
-  public function getPriorities()
+  public function get()
   {
     return $this
       ->select('id', 'priority_name')

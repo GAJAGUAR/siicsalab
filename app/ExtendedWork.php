@@ -4,9 +4,9 @@ namespace Sislab;
 
 use Illuminate\Database\Eloquent\Model;
 
-class vWork extends Model
+class ExtendedWork extends Model
 {
-  public function getWorks()
+  public function get()
   {
     return $this
       ->select(
@@ -15,12 +15,11 @@ class vWork extends Model
       ->get();
   }
 
-  public function showWork(int $id)
+  public function show(int $id)
   {
     return $this
       ->select(
         'id',
-        'client_id',
         'client_name',
         'work_name',
         'work_nickname',

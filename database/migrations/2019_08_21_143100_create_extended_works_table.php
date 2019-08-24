@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 
 use Illuminate\Support\Facades\DB;
 
-class CreateVWorksTable extends Migration
+class CreateExtendedWorksTable extends Migration
 {
   /**
    * Run the migrations.
@@ -18,7 +18,7 @@ class CreateVWorksTable extends Migration
         ALGORITHM = UNDEFINED
         -- DEFINER = root@localhost
         SQL SECURITY DEFINER
-        VIEW `v_works` AS
+        VIEW `extended_works` AS
         SELECT   `works`.`id`,
                  `client_id`,
                  `client_name`,
@@ -39,6 +39,6 @@ class CreateVWorksTable extends Migration
    */
   public function down()
   {
-    DB::statement('DROP VIEW `v_works`;');
+    DB::statement('DROP VIEW `extended_works`;');
   }
 }

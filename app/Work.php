@@ -35,6 +35,19 @@ class Work extends Model
     ]);
   }
 
+  public function show(int $id)
+  {
+    return $this
+      ->select(
+        'id',
+        'client_id',
+        'work_name',
+        'work_nickname',
+        'work_location')
+      ->where('id', $id)
+      ->first();
+  }
+
   public function saveWork(Request $request, Work $work)
   {
     $work->client_id = $request->get('client_id');

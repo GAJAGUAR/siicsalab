@@ -102,6 +102,42 @@ class Sample extends Model
     ]);
   }
 
+  public function show(int $id)
+  {
+    return $this
+    ->select(
+      'id',
+      'work_order_id',
+      'bank_id',
+      'purpose_id',
+      'weather_id',
+      'priority_id',
+      'status_id',
+      'sample_time',
+      'sample_description',
+      'sample_treatment',
+      'sample_location',
+      'road_name',
+      'road_station_start',
+      'road_station_end',
+      'road_station',
+      'road_body',
+      'road_side',
+      'phreatic_level',
+      'sampling_seq',
+      'sample_seq',
+      'env_temp',
+      'sample_tests',
+      'sample_notes',
+      'sample_receipt_date',
+      'sample_loc_x',
+      'sample_loc_y',
+      'sketch_file',
+      'stratigraphic_file')
+    ->where('id', $id)
+    ->first();
+  }
+
   public function saveSample(Request $request, Sample $sample)
   {
     $sample->id = $request->get('id');
@@ -167,6 +203,6 @@ class Sample extends Model
   {
     $this
       ->find($id)
-      ->delete;
+      ->delete();
   }
 }

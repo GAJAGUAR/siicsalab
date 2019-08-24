@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 use Illuminate\Support\Facades\DB;
 
-class vSample extends Model
+class ExtendedSample extends Model
 {
-  public function getSamples()
+  public function get()
   {
     return $this
     ->select(
@@ -20,7 +20,7 @@ class vSample extends Model
     ->get();
   }
 
-  public function showSample(int $id)
+  public function show(int $id)
   {
     return $this
     ->select(

@@ -41,6 +41,18 @@ class WorkOrder extends Model
     ]);
   }
 
+  public function show(int $id)
+  {
+    return $this
+      ->select(
+        'id',
+        'work_id',
+        'employee_id',
+        'work_order_date')
+      ->where('id', $id)
+      ->first();
+  }
+
   public function saveWorkOrder(Request $request, WorkOrder $workOrder)
   {
     $workOrder->id = $request->get('id');

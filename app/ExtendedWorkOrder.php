@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 use Illuminate\Support\Facades\DB;
 
-class vWorkOrder extends Model
+class ExtendedWorkOrder extends Model
 {
-  public function getWorkOrders()
+  public function get()
   {
     return $this
       ->select(
@@ -20,7 +20,7 @@ class vWorkOrder extends Model
       ->get();
   }
 
-  public function showWorkOrder(int $id)
+  public function show(int $id)
   {
     return $this
       ->select(

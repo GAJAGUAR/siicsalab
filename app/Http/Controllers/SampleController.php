@@ -16,8 +16,8 @@ use Sislab\
   SampleTest,
   SampleTreatment,
   Status,
-  vSample,
-  vWorkOrder,
+  ExtendedSample,
+  ExtendedWorkOrder,
   Weather
 };
 
@@ -41,7 +41,7 @@ class SampleController extends Controller
    */
   public function index()
   {
-    $samples = (new vSample)->getSamples();
+    $samples = (new ExtendedSample)->get();
 
     return view('samples.index', [
       'samples' => $samples
@@ -55,17 +55,17 @@ class SampleController extends Controller
    */
   public function create()
   {
-    $workOrders = (new vWorkOrder)->getWorkOrders();
+    $workOrders = (new ExtendedWorkOrder)->get();
 
-    $banks = (new Bank)->getBanks();
+    $banks = (new Bank)->get();
 
-    $purposes = (new Purpose)->getPurposes();
+    $purposes = (new Purpose)->get();
 
-    $weathers = (new Weather)->getWeathers();
+    $weathers = (new Weather)->get();
 
-    $priorities = (new Priority)->getPriorities();
+    $priorities = (new Priority)->get();
 
-    $statuses = (new Status)->getStatuses();
+    $statuses = (new Status)->get();
 
     $descriptions = (new SampleDescription)->get();
 
@@ -123,7 +123,7 @@ class SampleController extends Controller
    */
   public function show(int $id)
   {
-    $sample = (new vSample)->showSample($id);
+    $sample = (new ExtendedSample)->show($id);
 
     return view('samples.show', [
       'sample' => $sample
@@ -138,29 +138,33 @@ class SampleController extends Controller
    */
   public function edit(int $id)
   {
-    $sample = (new vSample)->showSample($id);
+    $sample = (new Sample)->show($id);
 
-    $workOrders = (new vWorkOrder)->getWorkOrders();
+    $workOrders = (new ExtendedWorkOrder)->get();
 
-    $banks = (new Bank)->getBanks();
+    $banks = (new Bank)->get();
 
-    $purposes = (new Purpose)->getPurposes();
+    $purposes = (new Purpose)->get();
 
-    $weathers = (new Weather)->getWeathers();
+    $weathers = (new Weather)->get();
 
-    $priorities = (new Priority)->getPriorities();
+    $priorities = (new Priority)->get();
 
-    $statuses = (new Status)->getStatuses();
+    $statuses = (new Status)->get();
 
-    $descriptions = (new vSample)->getDescriptions();
+    $descriptions = (new SampleDescription)->get();
 
-    $treatments = (new vSample)->getTreatments();
+    $treatments = (new SampleTreatment)->get();
 
-    $roadNames = (new vSample)->getRoadNames();
+    $locations = (new SampleLocation)->get();
 
-    $roadBodies = (new vSample)->getRoadBodies();
+    $roadNames = (new RoadName)->get();
 
-    $roadSides = (new vSample)->getRoadSides();
+    $roadBodies = (new RoadBody)->get();
+
+    $roadSides = (new RoadSide)->get();
+
+    $tests = (new SampleTest)->get();
 
     return view('samples.edit', [
       'sample' => $sample,
@@ -172,9 +176,11 @@ class SampleController extends Controller
       'statuses' => $statuses,
       'descriptions' => $descriptions,
       'treatments' => $treatments,
+      'locations' => $locations,
       'roadNames' => $roadNames,
       'roadBodies' => $roadBodies,
-      'roadSides' => $roadSides
+      'roadSides' => $roadSides,
+      'tests' => $tests
     ]);
   }
 
@@ -189,7 +195,7 @@ class SampleController extends Controller
   {
     (new Sample)->isValid($request);
 
-    $sample = (new vSample)->showSample($id);
+    $sample = (new Sample)->show($id);
 
     (new Sample)->saveSample($request, $sample);
 

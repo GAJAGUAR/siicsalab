@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\DB;
 
 use Illuminate\Database\Migrations\Migration;
 
-class CreateVSamplesTable extends Migration
+class CreateExtendedSamplesTable extends Migration
 {
     /**
    * Run the migrations.
@@ -18,7 +18,7 @@ class CreateVSamplesTable extends Migration
         ALGORITHM = UNDEFINED
         -- DEFINER = root@localhost
         SQL SECURITY DEFINER
-        VIEW `v_samples` AS
+        VIEW `extended_samples` AS
         SELECT   `samples`.`id`,
                  `work_order_id`,
                  `work_order_date`,
@@ -75,6 +75,6 @@ class CreateVSamplesTable extends Migration
    */
   public function down()
   {
-    DB::statement('DROP VIEW `v_samples`;');
+    DB::statement('DROP VIEW `extended_samples`;');
   }
 }

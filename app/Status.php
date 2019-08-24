@@ -11,7 +11,7 @@ class Status extends Model
     return $this->hasMany(Sample::class);
   }
 
-  public function getStatuses()
+  public function get()
   {
     return $this
       ->select('id', 'status_name')

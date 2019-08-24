@@ -2,9 +2,19 @@
 
 namespace Sislab\Http\Controllers;
 
-use Sislab\{Work, vClient, vWork, vWorkOrder};
+use Sislab\
+{
+  Work,
+  ExtendedClient,
+  ExtendedWork,
+  ExtendedWorkOrder
+};
 
-use Illuminate\Http\{Request, Response};
+use Illuminate\Http\
+{
+  Request,
+  Response
+};
 
 class WorkController extends Controller
 {
@@ -20,7 +30,7 @@ class WorkController extends Controller
    */
   public function index()
   {
-    $works = (new vWork)->getWorks();
+    $works = (new ExtendedWork)->get();
 
     return view('works.index', [
       'works' => $works
@@ -34,7 +44,7 @@ class WorkController extends Controller
    */
   public function create()
   {
-    $clients = (new vClient)->getClients();
+    $clients = (new ExtendedClient)->get();
 
     return view('works.create', [
       'clients' => $clients
@@ -66,9 +76,9 @@ class WorkController extends Controller
    */
   public function show(int $id)
   {
-    $work = (new vWork)->showWork($id);
+    $work = (new ExtendedWork)->show($id);
 
-    $workOrders = (new vWorkOrder)->showWorkWorkOrders($id);
+    $workOrders = (new ExtendedWorkOrder)->showWorkWorkOrders($id);
 
     return view('works.show', [
       'work' => $work,
@@ -84,9 +94,9 @@ class WorkController extends Controller
    */
   public function edit(int $id)
   {
-    $work = (new vWork)->showWork($id);
+    $work = (new Work)->show($id);
 
-    $clients = (new vClient)->getClients();
+    $clients = (new ExtendedClient)->get();
 
     return view('works.edit', [
       'work' => $work,
@@ -105,7 +115,7 @@ class WorkController extends Controller
   {
     (new Work)->isValid($request);
 
-    $work = (new vWork)->showWork($id);
+    $work = (new Work)->show($id);
 
     (new Work)->saveWork($request, $work);
 

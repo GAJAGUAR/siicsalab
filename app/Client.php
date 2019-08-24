@@ -30,6 +30,19 @@ class Client extends Model
     ]);
   }
 
+  public function show(int $id)
+  {
+    return $this
+      ->select(
+        'id',
+        'client_name',
+        'client_nickname',
+        'client_register',
+        'client_location')
+      ->where('id', $id)
+      ->first();
+  }
+
   public function saveClient(Request $request, Client $client)
   {
     $client->client_name = $request->get('client_name');
