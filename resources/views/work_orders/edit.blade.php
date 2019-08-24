@@ -14,8 +14,6 @@
 
     @slot('fieldName', 'work_id')
 
-    {{-- @slot('value', $workOrder->work_id) --}}
-
     @slot('textHelp', 'workHelp')
 
     @slot('textDescription', 'Lugar dónde se llevarán a cabo los trabajos.')
@@ -53,8 +51,6 @@
     @slot('label', 'Personal')
 
     @slot('fieldName', 'employee_id')
-
-    @slot('value', $workOrder->employee_id)
 
     @slot('textHelp', 'workHelp')
 

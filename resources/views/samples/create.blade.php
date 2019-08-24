@@ -129,7 +129,7 @@
   @endcomponent
 
   {{-- sample location field --}}
-  @component('components.inputs.textarea')
+  @component('components.inputs.list')
     @slot('label', 'Localización')
 
     @slot('fieldName', 'sample_location')
@@ -141,6 +141,20 @@
     @slot('maxLength', '100')
 
     @slot('textDescription', 'Ubicación general de la muestra.')
+  @endcomponent
+
+  @component('components.inputs.datalist')
+    @slot('fieldName', 'sample_location')
+
+    @foreach ($locations as $location)
+      @component('components.inputs.option')
+        @slot('value')
+          {{ $location->sample_location }}
+        @endslot
+
+        {{ $location->sample_location }}
+      @endcomponent
+    @endforeach
   @endcomponent
 
   {{-- road name field --}}
