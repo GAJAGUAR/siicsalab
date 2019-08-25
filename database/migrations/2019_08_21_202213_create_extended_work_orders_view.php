@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\DB;
 
 use Illuminate\Database\Migrations\Migration;
 
-class CreateExtendedWorkOrdersTable extends Migration
+class CreateExtendedWorkOrdersView extends Migration
 {
   /**
    * Run the migrations.

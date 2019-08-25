@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\DB;
 
 use Illuminate\Database\Migrations\Migration;
 
-class CreateExtendedSamplesTable extends Migration
+class CreateExtendedSamplesView extends Migration
 {
     /**
    * Run the migrations.

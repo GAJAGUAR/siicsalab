@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 
 use Illuminate\Support\Facades\DB;
 
-class CreateExtendedClientsTable extends Migration
+class CreateExtendedClientsView extends Migration
 {
   /**
    * Run the migrations.
@@ -23,8 +23,12 @@ class CreateExtendedClientsTable extends Migration
                  `client_name`,
                  `client_nickname`,
                  `client_register`,
-                 `client_location`
+                 `client_location`,
+                 COUNT(`works`.`id`) AS `works`
         FROM     `clients`
+                 LEFT JOIN `works`
+                 ON `works`.`client_id` = `clients`.`id`
+        GROUP BY `clients`.`id`
         ORDER BY `id`;
     ');
   }
