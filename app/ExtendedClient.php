@@ -4,27 +4,13 @@ namespace Sislab;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @method static findOrFail(int $id)
+ */
 class ExtendedClient extends Model
 {
-  public function get()
+  public function extendedWorks()
   {
-    return $this
-      ->select(
-        'id',
-        'client_name')
-      ->get();
-  }
-
-  public function show(int $id)
-  {
-    return $this
-      ->select(
-        'id',
-        'client_name',
-        'client_nickname',
-        'client_register',
-        'client_location')
-      ->where('id', $id)
-      ->first();
+    return $this->hasMany(ExtendedWork::class);
   }
 }

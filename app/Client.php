@@ -12,35 +12,13 @@ use Illuminate\Http\Request;
  * @property mixed client_nickname
  * @property mixed client_register
  * @property mixed client_location
+ * @method static findOrFail(int $id)
  */
 class Client extends Model
 {
   public function works()
   {
     return $this->hasMany(Work::class);
-  }
-
-  public function isValid(Request $request)
-  {
-    $request->validate([
-      'client_name' => 'required|min:5|max:150',
-      'client_nickname' => 'required|min:3|max:50',
-      'client_register' => 'nullable|max:25',
-      'client_location' => 'nullable|max:250'
-    ]);
-  }
-
-  public function show(int $id)
-  {
-    return $this
-      ->select(
-        'id',
-        'client_name',
-        'client_nickname',
-        'client_register',
-        'client_location')
-      ->where('id', $id)
-      ->first();
   }
 
   public function saveClient(Request $request, Client $client)
@@ -54,12 +32,5 @@ class Client extends Model
     $client->client_location = $request->get('client_location');
 
     $client->save();
-  }
-
-  public function deleteClient(int $id)
-  {
-    $this
-      ->find($id)
-      ->delete();
   }
 }

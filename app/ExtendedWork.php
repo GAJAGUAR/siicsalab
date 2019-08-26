@@ -6,34 +6,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class ExtendedWork extends Model
 {
-  public function get()
+  public function extendedClient()
   {
-    return $this
-      ->select(
-        'id',
-        'work_name')
-      ->get();
+    return $this->belongsTo(ExtendedClient::class);
   }
 
-  public function show(int $id)
+  public function worksByClient(int $id)
   {
     return $this
       ->select(
         'id',
-        'client_name',
         'work_name',
-        'work_nickname',
-        'work_location')
-      ->where('id', $id)
-      ->first();
-  }
-
-  public function showClientWorks(int $id)
-  {
-    return $this
-      ->select(
-        'id',
-        'work_name')
+        'work_orders')
       ->where('client_id', $id)
       ->get();
   }

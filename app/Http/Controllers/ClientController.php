@@ -2,18 +2,11 @@
 
 namespace Sislab\Http\Controllers;
 
-use Sislab\
-{
-  Client,
-  ExtendedClient,
-  ExtendedWork
-};
+use Sislab\{Client, ExtendedClient, ExtendedWork};
 
-use Illuminate\Http\
-{
-  Request,
-  Response
-};
+use Sislab\Http\Requests\ClientFormRequest;
+
+use Illuminate\Http\Response;
 
 class ClientController extends Controller
 {
@@ -29,7 +22,7 @@ class ClientController extends Controller
    */
   public function index()
   {
-    $clients = (new ExtendedClient)->get();
+    $clients = ExtendedClient::all('id', 'client_name', 'works');
 
     return view('clients.index', [
       'clients' => $clients
@@ -49,14 +42,14 @@ class ClientController extends Controller
   /**
    * Store a newly created resource in storage.
    *
-   * @param Request $request
+   * @param ClientFormRequest $request
    * @return Response
    */
-  public function store(Request $request)
+  public function store(ClientFormRequest $request)
   {
-    (new Client)->isValid($request);
+    $request->validated();
 
-    $client = new Client();
+    $client = new Client;
 
     (new Client)->saveClient($request, $client);
 
@@ -71,9 +64,9 @@ class ClientController extends Controller
    */
   public function show(int $id)
   {
-    $client = (new ExtendedClient)->show($id);
+    $client = ExtendedClient::findOrFail($id);
 
-    $works = (new ExtendedWork)->showClientWorks($id);
+    $works = (new ExtendedWork)->worksByClient($id);
 
     return view('clients.show', [
       'client' => $client,
@@ -89,7 +82,7 @@ class ClientController extends Controller
    */
   public function edit(int $id)
   {
-    $client = (new ExtendedClient)->show($id);
+    $client = ExtendedClient::findOrFail($id);
 
     return view('clients.edit', [
       'client' => $client
@@ -99,15 +92,15 @@ class ClientController extends Controller
   /**
    * Update the specified resource in storage.
    *
-   * @param Request $request
+   * @param ClientFormRequest $request
    * @param int $id
    * @return Response
    */
-  public function update(Request $request, int $id)
+  public function update(ClientFormRequest $request, int $id)
   {
-    (new Client)->isValid($request);
+    $request->validated();
 
-    $client = (new Client)->show($id);
+    $client = Client::findOrFail($id);
 
     (new Client)->saveClient($request, $client);
 
@@ -122,7 +115,7 @@ class ClientController extends Controller
    */
   public function destroy(int $id)
   {
-    (new Client)->deleteClient($id);
+    Client::findOrFail($id)->delete();
 
     return redirect('/clients')->with('status', 'Registro eliminado exitosamente');
   }

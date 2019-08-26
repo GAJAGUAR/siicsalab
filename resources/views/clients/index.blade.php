@@ -44,6 +44,12 @@
     @component('components.tables.th')
       @slot('class', 'text-center th-w-sm')
 
+      {{ __('obras') }}
+    @endcomponent
+
+    @component('components.tables.th')
+      @slot('class', 'text-center th-w-sm')
+
       {{ __(' ') }}
     @endcomponent
   @endcomponent
@@ -60,6 +66,12 @@
 
       @component('components.tables.td')
         {{ $client->client_name }}
+      @endcomponent
+
+      @component('components.tables.td')
+        @slot('class', 'text-center')
+
+        {{ $client->works }}
       @endcomponent
 
       @component('components.tables.td_detail')

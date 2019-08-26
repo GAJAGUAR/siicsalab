@@ -52,13 +52,21 @@
 @section('thead')
   @component('components.tables.tr')
     @component('components.tables.th')
-      @slot('class', 'th-w-sm')
+      @slot('class', 'text-center th-w-sm')
 
       {{ __('#') }}
     @endcomponent
 
     @component('components.tables.th')
-      {{ __('Nombre') }}
+      @slot('class', 'text-center')
+
+      {{ __('nombre') }}
+    @endcomponent
+
+    @component('components.tables.th')
+      @slot('class', 'text-center th-w-sm')
+
+      {{ __('ot') }}
     @endcomponent
 
     @component('components.tables.th')
@@ -80,6 +88,12 @@
 
       @component('components.tables.td')
         {{ $work->work_name }}
+      @endcomponent
+
+      @component('components.tables.td')
+        @slot('class', 'text-center')
+
+        {{ $work->work_orders }}
       @endcomponent
 
       @component('components.tables.td_detail')
