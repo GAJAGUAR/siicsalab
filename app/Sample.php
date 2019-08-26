@@ -70,74 +70,6 @@ class Sample extends Model
     return $this->belongsTo(Status::class);
   }
 
-  public function isValid(Request $request)
-  {
-    $request->validate([
-      'id' => 'required|integer',
-      'work_order_id' => 'required|integer',
-      'bank_id' => 'nullable|integer',
-      'purpose_id' => 'required|integer',
-      'weather_id' => 'nullable|integer',
-      'priority_id' => 'required|integer|min:1|max:3',
-      'status_id' => 'required|integer|min:1|max:5',
-      'sample_time' => 'required',
-      'sample_description' => 'required|min:5|max:250',
-      'sample_treatment' => 'nullable|min:5|max:100',
-      'sample_location' => 'nullable|min:5|max:100',
-      'road_name' => 'nullable|min:5|max:100',
-      'road_station_start' => 'nullable|max:11',
-      'road_station_end' => 'nullable|max:11',
-      'road_station' => 'nullable|max:11',
-      'road_body' => 'nullable|max:20',
-      'road_side' => 'nullable|max:10',
-      'phreatic_level' => 'nullable|max:4',
-      'sampling_seq' => 'nullable|numeric|min:1',
-      'env_temp' => 'nullable|numeric|min:1|max:50',
-      'sample_seq' => 'nullable|numeric|min:1',
-      'sample_tests' => 'nullable|max:100',
-      'sample_notes' => 'nullable|max:500',
-      'sample_receipt_date' => 'required|date|before:tomorrow',
-      'sketch_file' => 'nullable|url|max:50',
-      'stratigraphic_file' => 'nullable|url|max:50'
-    ]);
-  }
-
-  public function show(int $id)
-  {
-    return $this
-    ->select(
-      'id',
-      'work_order_id',
-      'bank_id',
-      'purpose_id',
-      'weather_id',
-      'priority_id',
-      'status_id',
-      'sample_time',
-      'sample_description',
-      'sample_treatment',
-      'sample_location',
-      'road_name',
-      'road_station_start',
-      'road_station_end',
-      'road_station',
-      'road_body',
-      'road_side',
-      'phreatic_level',
-      'sampling_seq',
-      'sample_seq',
-      'env_temp',
-      'sample_tests',
-      'sample_notes',
-      'sample_receipt_date',
-      'sample_loc_x',
-      'sample_loc_y',
-      'sketch_file',
-      'stratigraphic_file')
-    ->where('id', $id)
-    ->first();
-  }
-
   public function saveSample(Request $request, Sample $sample)
   {
     $sample->id = $request->get('id');
@@ -197,12 +129,5 @@ class Sample extends Model
     $sample->stratigraphic_file = $request->get('stratigraphic_file');
 
     $sample->save();
-  }
-
-  public function deleteSample(int $id)
-  {
-    $this
-      ->find($id)
-      ->delete();
   }
 }

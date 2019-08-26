@@ -11,10 +11,12 @@ class Weather extends Model
     return $this->hasMany(Sample::class);
   }
 
-  public function get()
+  public function weatherNames()
   {
     return $this
-      ->select('id', 'weather_name')
+      ->select(
+        'id',
+        'weather_name')
       ->get();
   }
 }

@@ -25,29 +25,6 @@ class Work extends Model
     return $this->hasMany(WorkOrder::class);
   }
 
-  public function isValid(Request $request)
-  {
-    $request->validate([
-      'client_id' => 'required',
-      'work_name' => 'required|min:5|max:750',
-      'work_nickname' => 'required|min:3|max:50',
-      'work_location' => 'required|min:5|max:250'
-    ]);
-  }
-
-  public function show(int $id)
-  {
-    return $this
-      ->select(
-        'id',
-        'client_id',
-        'work_name',
-        'work_nickname',
-        'work_location')
-      ->where('id', $id)
-      ->first();
-  }
-
   public function saveWork(Request $request, Work $work)
   {
     $work->client_id = $request->get('client_id');
@@ -59,12 +36,5 @@ class Work extends Model
     $work->work_location = $request->get('work_location');
 
     $work->save();
-  }
-
-  public function deleteWork(int $id)
-  {
-    $this
-      ->find($id)
-      ->delete();
   }
 }

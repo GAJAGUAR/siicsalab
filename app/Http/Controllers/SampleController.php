@@ -2,30 +2,12 @@
 
 namespace Sislab\Http\Controllers;
 
-use Sislab\
-{
-  Bank,
-  Priority,
-  Purpose,
-  RoadBody,
-  RoadName,
-  RoadSide,
-  Sample,
-  SampleDescription,
-  SampleLocation,
-  SampleTest,
-  SampleTreatment,
-  Status,
-  ExtendedSample,
-  ExtendedWorkOrder,
-  Weather
-};
+use Sislab\{Bank, ExtendedSample, ExtendedWorkOrder, Priority,
+  Purpose, Sample, Status, Weather};
 
-use Illuminate\Http\
-{
-  Request,
-  Response
-};
+use Sislab\Http\Requests\SampleFormRequest;
+
+use Illuminate\Http\Response;
 
 class SampleController extends Controller
 {
@@ -41,7 +23,7 @@ class SampleController extends Controller
    */
   public function index()
   {
-    $samples = (new ExtendedSample)->get();
+    $samples = (new ExtendedSample)->indexSample();
 
     return view('samples.index', [
       'samples' => $samples
@@ -55,31 +37,31 @@ class SampleController extends Controller
    */
   public function create()
   {
-    $workOrders = (new ExtendedWorkOrder)->get();
+    $workOrders = (new ExtendedWorkOrder)->workOrderIds();
 
-    $banks = (new Bank)->get();
+    $banks = (new Bank)->bankNames();
 
-    $purposes = (new Purpose)->get();
+    $purposes = (new Purpose)->purposeNames();
 
-    $weathers = (new Weather)->get();
+    $weathers = (new Weather)->weatherNames();
 
-    $priorities = (new Priority)->get();
+    $priorities = (new Priority)->priorityNames();
 
-    $statuses = (new Status)->get();
+    $statuses = (new Status)->statusNames();
 
-    $descriptions = (new SampleDescription)->get();
+    $descriptions = (new ExtendedSample)->descriptionNames();
 
-    $treatments = (new SampleTreatment)->get();
+    $treatments = (new ExtendedSample)->treatmentNames();
 
-    $locations = (new SampleLocation)->get();
+    $locations = (new ExtendedSample)->locationNames();
 
-    $roadNames = (new RoadName)->get();
+    $roadNames = (new ExtendedSample)->roadNames();
 
-    $roadBodies = (new RoadBody)->get();
+    $roadBodies = (new ExtendedSample)->roadBodyNames();
 
-    $roadSides = (new RoadSide)->get();
+    $roadSides = (new ExtendedSample)->roadSideNames();
 
-    $tests = (new SampleTest)->get();
+    $tests = (new ExtendedSample)->testNames();
 
     return view('samples.create', [
       'workOrders' => $workOrders,
@@ -101,12 +83,12 @@ class SampleController extends Controller
   /**
    * Store a newly created resource in storage.
    *
-   * @param Request $request
+   * @param SampleFormRequest $request
    * @return Response
    */
-  public function store(Request $request)
+  public function store(SampleFormRequest $request)
   {
-    (new Sample)->isValid($request);
+    $request->validated();
 
     $sample = new Sample();
 
@@ -123,7 +105,7 @@ class SampleController extends Controller
    */
   public function show(int $id)
   {
-    $sample = (new ExtendedSample)->show($id);
+    $sample = (new ExtendedSample)->showSample($id);
 
     return view('samples.show', [
       'sample' => $sample
@@ -138,33 +120,33 @@ class SampleController extends Controller
    */
   public function edit(int $id)
   {
-    $sample = (new Sample)->show($id);
+    $sample = Sample::findOrFail($id);
 
-    $workOrders = (new ExtendedWorkOrder)->get();
+    $workOrders = (new ExtendedWorkOrder)->workOrderIds();
 
-    $banks = (new Bank)->get();
+    $banks = (new Bank)->bankNames();
 
-    $purposes = (new Purpose)->get();
+    $purposes = (new Purpose)->purposeNames();
 
-    $weathers = (new Weather)->get();
+    $weathers = (new Weather)->weatherNames();
 
-    $priorities = (new Priority)->get();
+    $priorities = (new Priority)->priorityNames();
 
-    $statuses = (new Status)->get();
+    $statuses = (new Status)->statusNames();
 
-    $descriptions = (new SampleDescription)->get();
+    $descriptions = (new ExtendedSample)->descriptionNames();
 
-    $treatments = (new SampleTreatment)->get();
+    $treatments = (new ExtendedSample)->treatmentNames();
 
-    $locations = (new SampleLocation)->get();
+    $locations = (new ExtendedSample)->locationNames();
 
-    $roadNames = (new RoadName)->get();
+    $roadNames = (new ExtendedSample)->roadNames();
 
-    $roadBodies = (new RoadBody)->get();
+    $roadBodies = (new ExtendedSample)->roadBodyNames();
 
-    $roadSides = (new RoadSide)->get();
+    $roadSides = (new ExtendedSample)->roadSideNames();
 
-    $tests = (new SampleTest)->get();
+    $tests = (new ExtendedSample)->testNames();
 
     return view('samples.edit', [
       'sample' => $sample,
@@ -187,15 +169,15 @@ class SampleController extends Controller
   /**
    * Update the specified resource in storage.
    *
-   * @param Request $request
+   * @param SampleFormRequest $request
    * @param int $id
    * @return Response
    */
-  public function update(Request $request, int $id)
+  public function update(SampleFormRequest $request, int $id)
   {
-    (new Sample)->isValid($request);
+    $request->validated();
 
-    $sample = (new Sample)->show($id);
+    $sample = Sample::findOrFail($id);
 
     (new Sample)->saveSample($request, $sample);
 
@@ -210,7 +192,7 @@ class SampleController extends Controller
    */
   public function destroy(int $id)
   {
-    (new Sample)->deleteSample($id);
+    Sample::findOrFail($id)->delete();
 
     return redirect('/samples')->with('status', 'Registro eliminado exitosamente');
   }

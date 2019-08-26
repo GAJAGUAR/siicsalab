@@ -2,20 +2,11 @@
 
 namespace Sislab\Http\Controllers;
 
-use Sislab\
-{
-  Employee,
-  ExtendedSample,
-  ExtendedWork,
-  ExtendedWorkOrder,
-  WorkOrder
-};
+use Sislab\{Employee, ExtendedSample, ExtendedWork, ExtendedWorkOrder, WorkOrder};
 
-use Illuminate\Http\
-{
-  Request,
-  Response
-};
+use Sislab\Http\Requests\WorkOrderFormRequest;
+
+use Illuminate\Http\Response;
 
 class WorkOrderController extends Controller
 {
@@ -31,7 +22,7 @@ class WorkOrderController extends Controller
    */
   public function index()
   {
-    $workOrders = (new ExtendedWorkOrder)->get();
+    $workOrders = (new ExtendedWorkOrder)->indexWorkOrder();
 
     return view('work_orders.index', [
       'workOrders' => $workOrders
@@ -45,9 +36,9 @@ class WorkOrderController extends Controller
    */
   public function create()
   {
-    $works = (new ExtendedWork)->get();
+    $works = (new ExtendedWork)->workNames();
 
-    $employees = (new Employee)->get();
+    $employees = (new Employee)->employeeNames();
 
     return view('work_orders.create', [
       'works' => $works,
@@ -58,12 +49,12 @@ class WorkOrderController extends Controller
   /**
    * Store a newly created resource in storage.
    *
-   * @param Request $request
+   * @param WorkOrderFormRequest $request
    * @return Response
    */
-  public function store(Request $request)
+  public function store(WorkOrderFormRequest $request)
   {
-    (new WorkOrder)->isValid($request);
+    $request->validated();
 
     $workOrder = new WorkOrder();
 
@@ -80,9 +71,9 @@ class WorkOrderController extends Controller
    */
   public function show(int $id)
   {
-    $workOrder = (new ExtendedWorkOrder)->show($id);
+    $workOrder = (new ExtendedWorkOrder)->showWorkOrder($id);
 
-    $samples = (new ExtendedSample)->showWorkOrderSamples($id);
+    $samples = (new ExtendedSample)->samplesByWorkOrder($id);
 
     return view('work_orders.show', [
       'workOrder' => $workOrder,
@@ -98,11 +89,11 @@ class WorkOrderController extends Controller
    */
   public function edit(int $id)
   {
-    $workOrder = (new ExtendedWorkOrder)->show($id);
+    $workOrder = (new ExtendedWorkOrder)->showWorkOrder($id);
 
-    $works = (new ExtendedWork)->get();
+    $works = (new ExtendedWork)->workNames();
 
-    $employees = (new Employee)->get();
+    $employees = (new Employee)->employeeNames();
 
     return view('work_orders.edit', [
       'workOrder' => $workOrder,
@@ -114,15 +105,15 @@ class WorkOrderController extends Controller
   /**
    * Update the specified resource in storage.
    *
-   * @param Request $request
+   * @param WorkOrderFormRequest $request
    * @param int $id
    * @return Response
    */
-  public function update(Request $request, int $id)
+  public function update(WorkOrderFormRequest $request, int $id)
   {
-    (new WorkOrder)->isValid($request);
+    $request->validated();
 
-    $workOrder = (new WorkOrder)->show($id);
+    $workOrder = WorkOrder::findOrFail($id);
 
     (new WorkOrder)->saveWorkOrder($request, $workOrder);
 
@@ -137,7 +128,7 @@ class WorkOrderController extends Controller
    */
   public function destroy(WorkOrder $workOrder)
   {
-    (new WorkOrder)->deleteWorkOrder($id);
+    WorkOrder::findOrFail($id)->delete();
 
     return redirect('/work_orders')->with('status', 'Registro eliminado exitosamente');
   }

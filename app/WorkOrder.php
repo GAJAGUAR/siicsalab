@@ -31,28 +31,6 @@ class WorkOrder extends Model
     return $this->hasMany(Sample::class);
   }
 
-  public function isValid(Request $request)
-  {
-    $request->validate([
-      'id' => 'required|integer',
-      'work_id' => 'required|integer',
-      'employee_id' => 'required|integer',
-      'work_order_date' => 'required|date|before:tomorrow'
-    ]);
-  }
-
-  public function show(int $id)
-  {
-    return $this
-      ->select(
-        'id',
-        'work_id',
-        'employee_id',
-        'work_order_date')
-      ->where('id', $id)
-      ->first();
-  }
-
   public function saveWorkOrder(Request $request, WorkOrder $workOrder)
   {
     $workOrder->id = $request->get('id');
@@ -64,12 +42,5 @@ class WorkOrder extends Model
     $workOrder->work_order_date = $request->get('work_order_date');
 
     $workOrder->save();
-  }
-
-  public function deleteWorkOrder(int $id)
-  {
-    $this
-      ->find($id)
-      ->delete();
   }
 }

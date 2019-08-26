@@ -19,7 +19,7 @@ class CreateExtendedClientsView extends Migration
         -- DEFINER = root@localhost
         SQL SECURITY DEFINER
         VIEW `extended_clients` AS
-        SELECT   `id`,
+        SELECT   `clients`.`id`,
                  `client_name`,
                  `client_nickname`,
                  `client_register`,
@@ -29,7 +29,7 @@ class CreateExtendedClientsView extends Migration
                  LEFT JOIN `works`
                  ON `works`.`client_id` = `clients`.`id`
         GROUP BY `clients`.`id`
-        ORDER BY `id`;
+        ORDER BY `clients`.`id`;
     ');
   }
 

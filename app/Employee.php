@@ -11,7 +11,7 @@ class Employee extends Model
     return $this->hasMany(WorkOrder::class);
   }
 
-  public function getEmployees()
+  public function indexEmployee()
   {
     return $this
       ->select('id', 'employee_name')
@@ -21,5 +21,14 @@ class Employee extends Model
   public function showEmployee(int $id)
   {
     //
+  }
+
+  public function employeeNames()
+  {
+    return $this
+      ->select(
+        'id',
+        'employee_name')
+      ->get();
   }
 }

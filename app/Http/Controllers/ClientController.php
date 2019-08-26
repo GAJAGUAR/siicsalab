@@ -22,7 +22,7 @@ class ClientController extends Controller
    */
   public function index()
   {
-    $clients = ExtendedClient::all('id', 'client_name', 'works');
+    $clients = (new ExtendedClient)->indexClient();
 
     return view('clients.index', [
       'clients' => $clients
@@ -64,7 +64,7 @@ class ClientController extends Controller
    */
   public function show(int $id)
   {
-    $client = ExtendedClient::findOrFail($id);
+    $client = (new ExtendedClient)->showClient($id);
 
     $works = (new ExtendedWork)->worksByClient($id);
 
@@ -82,7 +82,7 @@ class ClientController extends Controller
    */
   public function edit(int $id)
   {
-    $client = ExtendedClient::findOrFail($id);
+    $client = (new ExtendedClient)->showClient($id);
 
     return view('clients.edit', [
       'client' => $client

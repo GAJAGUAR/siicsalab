@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 class ExtendedSample extends Model
 {
-  public function get()
+  public function indexSample()
   {
     return $this
     ->select(
@@ -20,7 +20,7 @@ class ExtendedSample extends Model
     ->get();
   }
 
-  public function show(int $id)
+  public function showSample(int $id)
   {
     return $this
     ->select(
@@ -52,7 +52,7 @@ class ExtendedSample extends Model
     ->first();
   }
 
-  public function showWorkOrderSamples(int $id)
+  public function samplesByWorkOrder(int $id)
   {
     return $this
     ->select(
@@ -62,5 +62,75 @@ class ExtendedSample extends Model
       'sample_receipt_date')
     ->where('work_order_id', $id)
     ->get();
+  }
+
+  public function descriptionNames()
+  {
+    return $this
+      ->select('sample_description')
+      ->where('sample_description', 'NOT LIKE', '')
+      ->groupBy('sample_description')
+      ->orderBy('sample_description')
+      ->get();
+  }
+
+  public function treatmentNames()
+  {
+    return $this
+      ->select('sample_treatment')
+      ->where('sample_treatment', 'NOT LIKE', '')
+      ->groupBy('sample_treatment')
+      ->orderBy('sample_treatment')
+      ->get();
+  }
+
+  public function locationNames()
+  {
+    return $this
+      ->select('sample_location')
+      ->where('sample_location', 'NOT LIKE', '')
+      ->groupBy('sample_location')
+      ->orderBy('sample_location')
+      ->get();
+  }
+
+  public function roadNames()
+  {
+    return $this
+      ->select('road_name')
+      ->where('road_name', 'NOT LIKE', '')
+      ->groupBy('road_name')
+      ->orderBy('road_name')
+      ->get();
+  }
+
+  public function roadBodyNames()
+  {
+    return $this
+      ->select('road_body')
+      ->where('road_body', 'NOT LIKE', '')
+      ->groupBy('road_body')
+      ->orderBy('road_body')
+      ->get();
+  }
+
+  public function roadSideNames()
+  {
+    return $this
+      ->select('road_side')
+      ->where('road_side', 'NOT LIKE', '')
+      ->groupBy('road_side')
+      ->orderBy('road_side')
+      ->get();
+  }
+
+  public function testNames()
+  {
+    return $this
+      ->select('sample_tests')
+      ->where('sample_tests', 'NOT LIKE', '')
+      ->groupBy('sample_tests')
+      ->orderBy('sample_tests')
+      ->get();
   }
 }

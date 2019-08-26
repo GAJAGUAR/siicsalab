@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 class ExtendedWorkOrder extends Model
 {
-  public function get()
+  public function indexWorkOrder()
   {
     return $this
       ->select(
@@ -20,7 +20,7 @@ class ExtendedWorkOrder extends Model
       ->get();
   }
 
-  public function show(int $id)
+  public function showWorkOrder(int $id)
   {
     return $this
       ->select(
@@ -36,7 +36,7 @@ class ExtendedWorkOrder extends Model
       ->first();
   }
 
-  public function showWorkWorkOrders(int $id)
+  public function workOrdersByWork(int $id)
   {
     return $this
       ->select(
@@ -45,6 +45,13 @@ class ExtendedWorkOrder extends Model
         'employee_name',
         'samples')
       ->where('work_id', $id)
+      ->get();
+  }
+
+  public function workOrderIds()
+  {
+    return $this
+      ->select('id')
       ->get();
   }
 }

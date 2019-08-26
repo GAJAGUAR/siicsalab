@@ -18,10 +18,13 @@ class Bank extends Model
     //
   }
 
-  public function getBanks()
+  public function indexBank()
   {
     return $this
-      ->select('id', 'bank_name')
+      ->select(
+        'id',
+        'bank_name',
+        'bank_location')
       ->get();
   }
 
@@ -35,8 +38,12 @@ class Bank extends Model
     //
   }
 
-  public function deleteBank(int $id)
+  public function bankNames()
   {
-    //
+    return $this
+      ->select(
+        'id',
+        'bank_name')
+      ->get();
   }
 }

@@ -11,10 +11,12 @@ class Priority extends Model
     return $this->hasMany(Sample::class);
   }
 
-  public function get()
+  public function priorityNames()
   {
     return $this
-      ->select('id', 'priority_name')
+      ->select(
+        'id',
+        'priority_name')
       ->get();
   }
 }

@@ -2,19 +2,11 @@
 
 namespace Sislab\Http\Controllers;
 
-use Sislab\
-{
-  Work,
-  ExtendedClient,
-  ExtendedWork,
-  ExtendedWorkOrder
-};
+use Sislab\{Work, ExtendedClient, ExtendedWork, ExtendedWorkOrder};
 
-use Illuminate\Http\
-{
-  Request,
-  Response
-};
+use Sislab\Http\Requests\WorkFormRequest;
+
+use Illuminate\Http\Response;
 
 class WorkController extends Controller
 {
@@ -30,7 +22,7 @@ class WorkController extends Controller
    */
   public function index()
   {
-    $works = (new ExtendedWork)->get();
+    $works = (new ExtendedWork)->indexWork();
 
     return view('works.index', [
       'works' => $works
@@ -44,7 +36,7 @@ class WorkController extends Controller
    */
   public function create()
   {
-    $clients = (new ExtendedClient)->get();
+    $clients = (new ExtendedClient)->clientNames();
 
     return view('works.create', [
       'clients' => $clients
@@ -54,12 +46,12 @@ class WorkController extends Controller
   /**
    * Store a newly created resource in storage.
    *
-   * @param Request $request
+   * @param WorkFormRequest $request
    * @return Response
    */
-  public function store(Request $request)
+  public function store(WorkFormRequest $request)
   {
-    (new Work)->isValid($request);
+    $request->validated();
 
     $work = new Work();
 
@@ -76,9 +68,9 @@ class WorkController extends Controller
    */
   public function show(int $id)
   {
-    $work = (new ExtendedWork)->show($id);
+    $work = (new ExtendedWork)->showWork($id);
 
-    $workOrders = (new ExtendedWorkOrder)->showWorkWorkOrders($id);
+    $workOrders = (new ExtendedWorkOrder)->workOrdersByWork($id);
 
     return view('works.show', [
       'work' => $work,
@@ -94,9 +86,9 @@ class WorkController extends Controller
    */
   public function edit(int $id)
   {
-    $work = (new Work)->show($id);
+    $work = (new ExtendedWork)->showWork($id);
 
-    $clients = (new ExtendedClient)->get();
+    $clients = (new ExtendedClient)->clientNames();
 
     return view('works.edit', [
       'work' => $work,
@@ -107,15 +99,15 @@ class WorkController extends Controller
   /**
    * Update the specified resource in storage.
    *
-   * @param Request $request
+   * @param WorkFormRequest $request
    * @param int $id
    * @return Response
    */
-  public function update(Request $request, int $id)
+  public function update(WorkFormRequest $request, int $id)
   {
-    (new Work)->isValid($request);
+    $request->validated();
 
-    $work = (new Work)->show($id);
+    $work = Work::findOrFail($id);
 
     (new Work)->saveWork($request, $work);
 
@@ -130,7 +122,7 @@ class WorkController extends Controller
    */
   public function destroy(int $id)
   {
-    (new Work)->deleteWork($id);
+    Work::findOrFail($id)->delete();
 
     return redirect('/works')->with('status', 'Registro eliminado exitosamente');
   }

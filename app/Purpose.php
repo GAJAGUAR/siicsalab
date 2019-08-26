@@ -13,10 +13,12 @@ class Purpose extends Model
     return $this->hasMany(Sample::class);
   }
 
-  public function get()
+  public function purposeNames()
   {
     return $this
-      ->select('id', 'purpose_name')
+      ->select(
+        'id',
+        'purpose_name')
       ->get();
   }
 }
