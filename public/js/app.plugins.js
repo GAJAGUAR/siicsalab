@@ -20,7 +20,8 @@ $(document).ready(function () {
     "lengthMenu": [
       [10, 25, 50, -1],
       [10, 25, 50, "Todos"]
-    ]
+    ],
+    "order": [[0, "desc"]]
   });
 
   $('.select2').select2({
