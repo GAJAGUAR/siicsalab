@@ -1,0 +1,21 @@
+// stylelint-disable selector-no-qualifying-type
+
+//
+// Link buttons
+//
+
+// Make a button look and behave like a link
+.btn-link {
+  text-decoration: none;
+
+  @include hover {
+    text-decoration: none;
+  }
+
+  &:focus,
+  &.focus {
+    text-decoration: none;
+  }
+
+  // No need for an active state here
+}

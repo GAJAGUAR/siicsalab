@@ -165,6 +165,19 @@ $sizes: map-merge(
     $sizes
 );
 
+// Components
+//
+// Define common padding and border radius sizes and more.
+
+$border-width-lg: 5px;
+
+$borders: (
+  "top",
+  "right",
+  "bottom",
+  "left"
+);
+
 // Typography
 //
 // Font, line-height, and color for body text, headings, and more.

@@ -1,0 +1,11 @@
+//
+// Border
+//
+
+@each $border in $borders {
+  @each $color, $value in $theme-colors {
+    .border-#{$border}-#{$color}-lg {
+      border-#{$border}: $border-width-lg solid $value !important;
+    }
+  }
+}
