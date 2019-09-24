@@ -47,7 +47,8 @@ class ExtendedSample extends Model
       'sample_notes',
       'sample_receipt_date',
       'priority_name',
-      'status_name')
+      'status_name',
+      'sample_url')
     ->where('id', $id)
     ->first();
   }
