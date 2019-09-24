@@ -1,30 +1,50 @@
 {{-- trigger --}}
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#save-modal">
-  {{ __('Guardar') }}
+<button id="btn-save"
+        class="btn btn-primary text-capitalize {{ $style ?? '' }}"
+        type="button"
+        data-target="#modal-save"
+        data-toggle="modal">
+  {{ __('guardar') }}
 </button>
 
 {{-- modal --}}
-<div class="modal fade" id="save-modal" tabindex="-1" role="dialog" aria-labelledby="saveModalTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
+<div id="modal-save"
+     class="modal fade"
+     role="dialog"
+     tabindex="-1"
+     aria-labelledby="modalSaveTitle"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered"
+       role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="saveModalTitle">{{ __('Advertencia') }}</h5>
-
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <h5 id="modalSaveTitle"
+            class="modal-title text-capitalize">
+          {{ __('advertencia') }}
+        </h5>
+        <button id="btn-close"
+                class="close"
+                type="button"
+                data-dismiss="modal"
+                aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-
       <div class="modal-body">
         {{ __('¿Guardar el registro?') }}
       </div>
-
       <div class="modal-footer">
-        <button type="button" class="btn btn-outline-primary" id="btn-cancel-save" data-dismiss="modal">
+        <button id="btn-cancel-save"
+                class="btn btn-outline-primary"
+                type="button"
+                data-dismiss="modal"
+                data-auto-focus="true">
           {{ __('Cancelar') }}
         </button>
-
-        <button type="submit" class="btn btn-primary" form="form">
+        <button id="btn-accept-save"
+                class="btn btn-primary"
+                form="form"
+                type="submit">
           {{ __('Guardar') }}
         </button>
       </div>

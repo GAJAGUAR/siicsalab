@@ -2,17 +2,23 @@
   <label for="{{ $fieldName }}">
     {{ $label }}
   </label>
-
-  <input type="list" class="form-control {{ $errors->has($fieldName) ? ' is-invalid' : '' }}" list="{{ $fieldName }}"
-         name="{{ $fieldName }}" aria-describedby="{{ $textHelp }}" value="{{ $value }}" maxlength="{{ $maxLength }}"
-         autocomplete="off" {{ $readonly ?? '' }}>
-
+  <input class="form-control {{ $errors->has($fieldName) ? ' is-invalid' : '' }}"
+         autocomplete="off"
+         list="{{ $fieldName }}"
+         maxlength="{{ $maxLength }}"
+         name="{{ $fieldName }}"
+         type="list"
+         value="{{ $value }}"
+         aria-describedby="{{ $textHelp }}"
+         {{ $readonly ?? '' }}>
   @if ($errors->has($fieldName))
-    <span class="invalid-feedback" role="alert">
+    <span class="invalid-feedback"
+          role="alert">
       {{ $errors->first($fieldName) }}
     </span>
   @else
-    <small id="{{ $textHelp }}" class="form-text text-muted">
+    <small id="{{ $textHelp }}"
+           class="form-text text-muted">
       {{ $textDescription }}
     </small>
   @endif

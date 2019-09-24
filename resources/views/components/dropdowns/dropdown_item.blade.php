@@ -1,1 +1,4 @@
-<a class="dropdown-item text-capitalize" href="{{ $url ?? '#' }}">{{ $slot }}</a>
+<a class="dropdown-item text-capitalize"
+   href="{{ $url ?? '#' }}">
+  {{ $slot }}
+</a>

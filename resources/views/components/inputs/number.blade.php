@@ -1,18 +1,28 @@
+{{-- input type number --}}
 <div class="form-group {{ $style ?? '' }}">
-  <label for="{{ $fieldName }}">
+  <label
+    for="{{ $fieldName }}">
     {{ $label }}
   </label>
-
-  <input type="number" class="form-control {{ $errors->has($fieldName) ? ' is-invalid' : '' }}" id="{{ $fieldName }}"
-         name="{{ $fieldName }}" aria-describedby="{{ $textHelp }}" value="{{ $value }}" min="{{ $min ?? '' }}"
-         max="{{ $max ?? '' }}" step="{{ $step ?? '' }}" autocomplete="off" {{ $readonly ?? '' }}>
-
+  <input id="{{ $fieldName }}"
+         class="form-control {{ $errors->has($fieldName) ? ' is-invalid' : '' }}"
+         autocomplete="off"
+         max="{{ $max ?? '' }}"
+         min="{{ $min ?? '' }}"
+         name="{{ $fieldName }}"
+         step="{{ $step ?? '' }}"
+         type="number"
+         value="{{ $value }}"
+         aria-describedby="{{ $textHelp }}"
+         {{ $readonly ?? '' }}>
   @if ($errors->has($fieldName))
-    <span class="invalid-feedback" role="alert">
+    <span class="invalid-feedback"
+          role="alert">
       {{ $errors->first($fieldName) }}
     </span>
   @else
-    <small id="{{ $textHelp }}" class="form-text text-muted">
+    <small id="{{ $textHelp }}"
+           class="form-text text-muted">
       {{ $textDescription }}
     </small>
   @endif
