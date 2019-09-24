@@ -1,6 +1,30 @@
-// plugins initialization
+/*!
+ * SISLAB 
+ * Plugins and complements
+ */
+
+/**
+ * @bootstrap
+ */
+
+// home modal
 $(document).ready(function () {
-  $('#table-primary').DataTable({
+  $("#home-modal").modal("show")
+})
+
+// autofocus on defaul modal button
+$(".modal").on("shown.bs.modal", function() {
+  $(".btn-default:first").trigger("focus")
+  $(".btn-default:last").trigger("focus")
+})
+
+/**
+ * @datatables
+ */
+
+// changing default settings
+const datatablesInit = () => {
+  $("#table-primary").DataTable({
     "language": {
       "decimal": ",",
       "thousands": " ",
@@ -22,42 +46,86 @@ $(document).ready(function () {
       [10, 25, 50, "Todos"]
     ],
     "order": [[0, "desc"]]
-  });
+  })
+}
 
-  $('.select2').select2({
+// changing datatables DOM
+const moddingDatatablesDom = () => {
+  let tablePrimaryWrapper
+  
+  tablePrimaryWrapper = document.getElementById("table-primary_wrapper")
+  
+  // check if datatable plugin is active
+  if (typeof(tablePrimaryWrapper) !== undefined && tablePrimaryWrapper !== null) {
+    let dataTablesLenght
+    let dataTablesFilter
+    let labelSearch
+    let inputSearch
+
+    // change layout datatables lenght
+    dataTablesLenght = document.getElementById("table-primary_length")
+      .parentElement
+    dataTablesFilter = document.getElementById("table-primary_filter")
+      .parentElement
+
+    dataTablesLenght.classList.remove("col-md-6")
+    dataTablesLenght.classList.add("col-md-4")
+    dataTablesLenght.classList.add("d-print-none")
+    dataTablesFilter.classList.remove("col-md-6")
+    dataTablesFilter.classList.add("col-md-8")
+
+    // extract input element from label element
+    labelSearch = dataTablesFilter.firstElementChild.firstElementChild
+    inputSearch = labelSearch.firstElementChild
+    labelSearch.remove()
+    inputSearch.placeholder = "Filtro"
+    dataTablesFilter.firstElementChild.appendChild(inputSearch)
+
+    // extend input element
+    inputSearch.classList.add("w-80")
+  }
+}
+
+/**
+ * @select2
+ */
+
+// apply bootstrap theme
+const select2Init =() => {
+  $(".select2").select2({
     theme: "bootstrap"
-  });
+  })
+}
 
-  //Autofocus
-  $('input:first').focus();
+/**
+ * @complements
+ */
 
-  $('textarea:first').focus();
+// autofocus
+const setFocus = () => {
+  $("input[type='search']").focus()
+}
 
-  $('.nav .nav-link:first').focus();
-});
+// quick access
+const setQuickAccess =() => {
+  let btnCatalogue
+  let btnNew
 
-// home modal
+  btnCatalogue = document.getElementById("dropdown-catalogue")
+  btnNew = document.getElementById("dropdown-new")
+
+  btnCatalogue.accessKey = "c"
+  btnNew.accessKey = "n"
+}
+
+/**
+ * @initialization
+ */
+
 $(document).ready(function () {
-  $('#home-modal').modal('show');
-});
-
-$('#home-modal').on('shown.bs.modal', function () {
-  $('.close').trigger('focus')
+  datatablesInit()
+  select2Init()
+  moddingDatatablesDom()
+  setQuickAccess()
+  setFocus()
 })
-
-//Modal autofocus
-$('#new-modal').on('shown.bs.modal', function () {
-  $('#btn-cancel-new').trigger('focus')
-});
-
-$('#exit-modal').on('shown.bs.modal', function () {
-  $('#btn-cancel-exit').trigger('focus')
-});
-
-$('#save-modal').on('shown.bs.modal', function () {
-  $('#btn-cancel-save').trigger('focus')
-});
-
-$('#delete-modal').on('shown.bs.modal', function () {
-  $('#btn-cancel-delete').trigger('focus')
-});
