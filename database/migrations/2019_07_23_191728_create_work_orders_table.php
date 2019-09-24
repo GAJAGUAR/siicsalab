@@ -32,11 +32,13 @@ class CreateWorkOrdersTable extends Migration
 
       // Foreign keys
       $table->foreign('work_id')
-        ->references('id')->on('works')
+        ->references('id')
+        ->on('works')
         ->onDelete('cascade')
         ->onUpdate('cascade');
       $table->foreign('employee_id')
-        ->references('id')->on('employees')
+        ->references('id')
+        ->on('employees')
         ->onDelete('cascade')
         ->onUpdate('cascade');
     });

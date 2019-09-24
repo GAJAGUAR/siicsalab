@@ -21,11 +21,17 @@ class CreateUsersTable extends Migration
       $table->charset = 'utf8mb4';
       $table->collation = 'utf8mb4_spanish_ci';
       $table->smallIncrements('id');
-      $table->unsignedSmallInteger('role_id')->nullable()->default(null);
-      $table->unsignedSmallInteger('employee_id')->nullable()->default(null);
+      $table->unsignedSmallInteger('role_id')
+        ->nullable()
+        ->default(null);
+      $table->unsignedSmallInteger('employee_id')
+        ->nullable()
+        ->default(null);
       $table->string('name', 25);
       $table->string('email', 50);
-      $table->timestamp('email_verified_at')->nullable()->default(null);
+      $table->timestamp('email_verified_at')
+        ->nullable()
+        ->default(null);
       $table->string('password', 75);
       $table->rememberToken();
       $table->timestamps();

@@ -21,17 +21,38 @@ class CreateEmployeesTable extends Migration
       $table->charset = 'utf8mb4';
       $table->collation = 'utf8mb4_spanish_ci';
       $table->smallIncrements('id');
-      $table->unsignedSmallInteger('scholarship_id')->nullable()->default('00005');
+      $table->unsignedSmallInteger('scholarship_id')
+        ->nullable()
+        ->default('00005');
       $table->string('employee_nickname', 30);
-      $table->string('employee_title', 5)->nullable()->default('C');
+      $table->string('employee_title', 5)
+        ->nullable()
+        ->default('C');
       $table->string('first_name_1', 15);
-      $table->string('first_name_2', 15)->nullable()->default(null);
+      $table->string('first_name_2', 15)
+        ->nullable()
+        ->default(null);
       $table->string('last_name_1', 15);
-      $table->string('last_name_2', 15)->nullable()->default(null);
-      $table->string('position', 30)->nullable()->default(null);
-      $table->string('employee_name', 70)->virtualAs('CONCAT_WS(" ",`first_name_1`,`first_name_2`,   `last_name_1`,`last_name_2`)');
-      $table->timestamp('birthdate')->nullable()->default(null);
-      $table->boolean('gender')->nullable()->default('0');
+      $table->string('last_name_2', 15)
+        ->nullable()
+        ->default(null);
+      $table->string('position', 30)
+        ->nullable()
+        ->default(null);
+      $table->string('employee_name', 70)
+        ->virtualAs('
+          CONCAT_WS(" ",
+            `first_name_1`,
+            `first_name_2`,
+            `last_name_1`,
+            `last_name_2`)
+          ');
+      $table->timestamp('birthdate')
+        ->nullable()
+        ->default(null);
+      $table->boolean('gender')
+        ->nullable()
+        ->default('0');
       $table->timestamps();
 
       // Indexes
@@ -39,7 +60,8 @@ class CreateEmployeesTable extends Migration
 
       // Foreign keys
       $table->foreign('scholarship_id')
-        ->references('id')->on('scholarship')
+        ->references('id')
+        ->on('scholarship')
         ->onDelete('cascade')
         ->onUpdate('cascade');
     });

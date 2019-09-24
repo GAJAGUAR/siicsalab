@@ -23,8 +23,12 @@ class CreateClientsTable extends Migration
       $table->smallIncrements('id');
       $table->string('client_name', 150);
       $table->string('client_nickname', 50);
-      $table->string('client_register', 25)->nullable()->default(null);
-      $table->string('client_location', 250)->nullable()->default(null);
+      $table->string('client_register', 25)
+        ->nullable()
+        ->default(null);
+      $table->string('client_location', 250)
+        ->nullable()
+        ->default(null);
       $table->timestamps();
 
       // Indexes

@@ -33,7 +33,8 @@ class CreateWorksTable extends Migration
 
       // Foreign keys
       $table->foreign('client_id')
-        ->references('id')->on('clients')
+        ->references('id')
+        ->on('clients')
         ->onDelete('cascade')
         ->onUpdate('cascade');
     });

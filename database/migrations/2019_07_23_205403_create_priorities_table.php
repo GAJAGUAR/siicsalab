@@ -21,7 +21,7 @@ class CreatePrioritiesTable extends Migration
       $table->charset = 'utf8mb4';
       $table->collation = 'utf8mb4_spanish_ci';
       $table->smallIncrements('id');
-      $table->string('priority_name', 50)->nullable()->default(null);
+      $table->string('priority_name', 50);
       $table->timestamps();
 
       // Indexes
