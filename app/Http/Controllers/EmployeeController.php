@@ -3,14 +3,9 @@
 namespace Sislab\Http\Controllers;
 
 use Sislab\Employee;
-
 use Illuminate\Http\Request;
-
 use Illuminate\Http\Response;
-
 use Illuminate\Support\Facades\DB;
-
-
 
 class EmployeeController extends Controller
 {

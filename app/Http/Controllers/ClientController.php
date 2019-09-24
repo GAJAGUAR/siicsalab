@@ -3,9 +3,7 @@
 namespace Sislab\Http\Controllers;
 
 use Sislab\{Client, ExtendedClient, ExtendedWork};
-
 use Sislab\Http\Requests\ClientFormRequest;
-
 use Illuminate\Http\Response;
 
 class ClientController extends Controller
@@ -48,11 +46,9 @@ class ClientController extends Controller
   public function store(ClientFormRequest $request)
   {
     $request->validated();
-
     $client = new Client;
 
     (new Client)->saveClient($request, $client);
-
     return back()->withInput()->with('status', 'Registro guardado exitosamente');
   }
 
@@ -65,7 +61,6 @@ class ClientController extends Controller
   public function show(int $id)
   {
     $client = (new ExtendedClient)->showClient($id);
-
     $works = (new ExtendedWork)->worksByClient($id);
 
     return view('clients.show', [
@@ -99,11 +94,9 @@ class ClientController extends Controller
   public function update(ClientFormRequest $request, int $id)
   {
     $request->validated();
-
     $client = Client::findOrFail($id);
 
     (new Client)->saveClient($request, $client);
-
     return back()->withInput()->with('status', 'Registro actualizado exitosamente');
   }
 
@@ -116,7 +109,6 @@ class ClientController extends Controller
   public function destroy(int $id)
   {
     Client::findOrFail($id)->delete();
-
     return redirect('/clients')->with('status', 'Registro eliminado exitosamente');
   }
 }

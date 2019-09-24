@@ -3,9 +3,7 @@
 namespace Sislab\Http\Controllers;
 
 use Sislab\{Work, ExtendedClient, ExtendedWork, ExtendedWorkOrder};
-
 use Sislab\Http\Requests\WorkFormRequest;
-
 use Illuminate\Http\Response;
 
 class WorkController extends Controller
@@ -52,11 +50,9 @@ class WorkController extends Controller
   public function store(WorkFormRequest $request)
   {
     $request->validated();
-
     $work = new Work();
 
     (new Work)->saveWork($request, $work);
-
     return back()->withInput()->with('status', 'Registro guardado exitosamente');
   }
 
@@ -69,7 +65,6 @@ class WorkController extends Controller
   public function show(int $id)
   {
     $work = (new ExtendedWork)->showWork($id);
-
     $workOrders = (new ExtendedWorkOrder)->workOrdersByWork($id);
 
     return view('works.show', [
@@ -87,7 +82,6 @@ class WorkController extends Controller
   public function edit(int $id)
   {
     $work = (new ExtendedWork)->showWork($id);
-
     $clients = (new ExtendedClient)->clientNames();
 
     return view('works.edit', [
@@ -106,11 +100,9 @@ class WorkController extends Controller
   public function update(WorkFormRequest $request, int $id)
   {
     $request->validated();
-
     $work = Work::findOrFail($id);
 
     (new Work)->saveWork($request, $work);
-
     return back()->withInput()->with('status', 'Registro actualizado exitosamente');
   }
 
@@ -123,7 +115,6 @@ class WorkController extends Controller
   public function destroy(int $id)
   {
     Work::findOrFail($id)->delete();
-
     return redirect('/works')->with('status', 'Registro eliminado exitosamente');
   }
 }

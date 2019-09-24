@@ -4,9 +4,7 @@ namespace Sislab\Http\Controllers;
 
 use Sislab\{Bank, ExtendedSample, ExtendedWorkOrder, Priority,
   Purpose, Sample, Status, Weather};
-
 use Sislab\Http\Requests\SampleFormRequest;
-
 use Illuminate\Http\Response;
 
 class SampleController extends Controller
@@ -38,29 +36,17 @@ class SampleController extends Controller
   public function create()
   {
     $workOrders = (new ExtendedWorkOrder)->workOrderIds();
-
     $banks = (new Bank)->bankNames();
-
     $purposes = (new Purpose)->purposeNames();
-
     $weathers = (new Weather)->weatherNames();
-
     $priorities = (new Priority)->priorityNames();
-
     $statuses = (new Status)->statusNames();
-
     $descriptions = (new ExtendedSample)->descriptionNames();
-
     $treatments = (new ExtendedSample)->treatmentNames();
-
     $locations = (new ExtendedSample)->locationNames();
-
     $roadNames = (new ExtendedSample)->roadNames();
-
     $roadBodies = (new ExtendedSample)->roadBodyNames();
-
     $roadSides = (new ExtendedSample)->roadSideNames();
-
     $tests = (new ExtendedSample)->testNames();
 
     return view('samples.create', [
@@ -89,11 +75,9 @@ class SampleController extends Controller
   public function store(SampleFormRequest $request)
   {
     $request->validated();
-
     $sample = new Sample();
 
     (new Sample)->saveSample($request, $sample);
-
     return back()->withInput()->with('status', 'Registro guardado exitosamente');
   }
 
@@ -121,31 +105,18 @@ class SampleController extends Controller
   public function edit(int $id)
   {
     $sample = Sample::findOrFail($id);
-
     $workOrders = (new ExtendedWorkOrder)->workOrderIds();
-
     $banks = (new Bank)->bankNames();
-
     $purposes = (new Purpose)->purposeNames();
-
     $weathers = (new Weather)->weatherNames();
-
     $priorities = (new Priority)->priorityNames();
-
     $statuses = (new Status)->statusNames();
-
     $descriptions = (new ExtendedSample)->descriptionNames();
-
     $treatments = (new ExtendedSample)->treatmentNames();
-
     $locations = (new ExtendedSample)->locationNames();
-
     $roadNames = (new ExtendedSample)->roadNames();
-
     $roadBodies = (new ExtendedSample)->roadBodyNames();
-
     $roadSides = (new ExtendedSample)->roadSideNames();
-
     $tests = (new ExtendedSample)->testNames();
 
     return view('samples.edit', [
@@ -176,11 +147,9 @@ class SampleController extends Controller
   public function update(SampleFormRequest $request, int $id)
   {
     $request->validated();
-
     $sample = Sample::findOrFail($id);
 
     (new Sample)->saveSample($request, $sample);
-
     return back()->withInput()->with('status', 'Registro actualizado exitosamente');
   }
 
@@ -193,7 +162,6 @@ class SampleController extends Controller
   public function destroy(int $id)
   {
     Sample::findOrFail($id)->delete();
-
     return redirect('/samples')->with('status', 'Registro eliminado exitosamente');
   }
 }

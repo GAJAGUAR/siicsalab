@@ -9,19 +9,15 @@
     @slot('url')
       {{ route('works.create') }}
     @endslot
-
     {{ __('nueva') }}
   @endcomponent
-
   @component('components.navs.nav_link')
     @slot('url')
       {{--{{ route('print.works') }}--}}
     @endslot
-
     @slot('target')
       {{ __('_blank') }}
     @endslot
-
     {{ __('imprimir') }}
   @endcomponent
 @endsection
@@ -31,52 +27,38 @@
   @component('components.tables.tr')
     @component('components.tables.th')
       @slot('class', 'text-center th-w-sm')
-
       {{ __('#') }}
     @endcomponent
-
     @component('components.tables.th')
       @slot('class', 'text-center')
-
       {{ __('nombre') }}
     @endcomponent
-
     @component('components.tables.th')
       @slot('class', 'text-center th-w-sm')
-
       {{ __('ot') }}
     @endcomponent
-
     @component('components.tables.th')
       @slot('class', 'text-center th-w-sm')
-
       {{ __(' ') }}
     @endcomponent
   @endcomponent
 @endsection
-
 @section('tbody')
   @foreach ($works as $work)
     @component('components.tables.tr')
       @component('components.tables.td')
         @slot('class', 'text-center')
-
         {{ $loop->iteration }}
       @endcomponent
-
       @component('components.tables.td')
         {{ $work->work_name }}
       @endcomponent
-
       @component('components.tables.td')
         @slot('class', 'text-center')
-
         {{ $work->work_orders }}
       @endcomponent
-
       @component('components.tables.td_detail')
         @slot('class', 'text-center')
-
         /works/{{ $work->id }}
       @endcomponent
     @endcomponent

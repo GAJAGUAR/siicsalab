@@ -34,13 +34,9 @@ class WorkOrder extends Model
   public function saveWorkOrder(Request $request, WorkOrder $workOrder)
   {
     $workOrder->id = $request->get('id');
-
     $workOrder->work_id = $request->get('work_id');
-
     $workOrder->employee_id = $request->get('employee_id');
-
     $workOrder->work_order_date = $request->get('work_order_date');
-
     $workOrder->save();
   }
 }

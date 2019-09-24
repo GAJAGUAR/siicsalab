@@ -16,7 +16,6 @@
     @component('components.navs.nav')
       @yield('navLinks')
     @endcomponent
-
     @component('components.miscellaneous.hr')
     @endcomponent
 
@@ -25,11 +24,9 @@
       @slot('responsive')
         @yield('responsive')
       @endslot
-
       @slot('thead')
         @yield('thead')
       @endslot
-
       @yield('tbody')
     @endcomponent
   @endcomponent

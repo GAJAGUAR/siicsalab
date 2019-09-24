@@ -3,7 +3,6 @@
 namespace Sislab;
 
 use Illuminate\Database\Eloquent\Model;
-
 use Illuminate\Http\Request;
 
 /**
@@ -24,13 +23,9 @@ class Client extends Model
   public function saveClient(Request $request, Client $client)
   {
     $client->client_name = $request->get('client_name');
-
     $client->client_nickname = $request->get('client_nickname');
-
     $client->client_register = $request->get('client_register');
-
     $client->client_location = $request->get('client_location');
-
     $client->save();
   }
 }

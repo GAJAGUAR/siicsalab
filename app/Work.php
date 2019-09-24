@@ -28,13 +28,9 @@ class Work extends Model
   public function saveWork(Request $request, Work $work)
   {
     $work->client_id = $request->get('client_id');
-
     $work->work_name = $request->get('work_name');
-
     $work->work_nickname = $request->get('work_nickname');
-
     $work->work_location = $request->get('work_location');
-
     $work->save();
   }
 }

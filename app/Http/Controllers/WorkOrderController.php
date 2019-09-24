@@ -3,9 +3,7 @@
 namespace Sislab\Http\Controllers;
 
 use Sislab\{Employee, ExtendedSample, ExtendedWork, ExtendedWorkOrder, WorkOrder};
-
 use Sislab\Http\Requests\WorkOrderFormRequest;
-
 use Illuminate\Http\Response;
 
 class WorkOrderController extends Controller
@@ -37,7 +35,6 @@ class WorkOrderController extends Controller
   public function create()
   {
     $works = (new ExtendedWork)->workNames();
-
     $employees = (new Employee)->employeeNames();
 
     return view('work_orders.create', [
@@ -55,11 +52,9 @@ class WorkOrderController extends Controller
   public function store(WorkOrderFormRequest $request)
   {
     $request->validated();
-
     $workOrder = new WorkOrder();
 
     (new WorkOrder)->saveWorkOrder($request, $workOrder);
-
     return back()->withInput()->with('status', 'Registro guardado exitosamente');
   }
 
@@ -72,7 +67,6 @@ class WorkOrderController extends Controller
   public function show(int $id)
   {
     $workOrder = (new ExtendedWorkOrder)->showWorkOrder($id);
-
     $samples = (new ExtendedSample)->samplesByWorkOrder($id);
 
     return view('work_orders.show', [
@@ -90,9 +84,7 @@ class WorkOrderController extends Controller
   public function edit(int $id)
   {
     $workOrder = (new ExtendedWorkOrder)->showWorkOrder($id);
-
     $works = (new ExtendedWork)->workNames();
-
     $employees = (new Employee)->employeeNames();
 
     return view('work_orders.edit', [
@@ -112,11 +104,9 @@ class WorkOrderController extends Controller
   public function update(WorkOrderFormRequest $request, int $id)
   {
     $request->validated();
-
     $workOrder = WorkOrder::findOrFail($id);
 
     (new WorkOrder)->saveWorkOrder($request, $workOrder);
-
     return back()->withInput()->with('status', 'Registro actualizado exitosamente');
   }
 
@@ -129,7 +119,6 @@ class WorkOrderController extends Controller
   public function destroy(WorkOrder $workOrder)
   {
     WorkOrder::findOrFail($id)->delete();
-
     return redirect('/work_orders')->with('status', 'Registro eliminado exitosamente');
   }
 }

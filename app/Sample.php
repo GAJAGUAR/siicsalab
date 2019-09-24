@@ -73,61 +73,33 @@ class Sample extends Model
   public function saveSample(Request $request, Sample $sample)
   {
     $sample->id = $request->get('id');
-
     $sample->work_order_id = $request->get('work_order_id');
-
     $sample->bank_id = $request->get('bank_id');
-
     $sample->purpose_id = $request->get('purpose_id');
-
     $sample->weather_id = $request->get('weather_id');
-
     $sample->priority_id = $request->get('priority_id');
-
     $sample->status_id = $request->get('status_id');
-
     $sample->sample_time = $request->get('sample_time');
-
     $sample->sample_description = $request->get('sample_description');
-
     $sample->sample_treatment = $request->get('sample_treatment');
-
     $sample->sample_location = $request->get('sample_location');
-
     $sample->road_name = $request->get('road_name');
-
     $sample->road_station_start = $request->get('road_station_start');
-
     $sample->road_station_end = $request->get('road_station_end');
-
     $sample->road_station = $request->get('road_station');
-
     $sample->road_body = $request->get('road_body');
-
     $sample->road_side = $request->get('road_side');
-
     $sample->phreatic_level = $request->get('phreatic_level');
-
     $sample->sampling_seq = $request->get('sampling_seq');
-
     $sample->env_temp = $request->get('env_temp');
-
     $sample->sample_seq = $request->get('sample_seq');
-
     $sample->sample_tests = $request->get('sample_tests');
-
     $sample->sample_notes = $request->get('sample_notes');
-
     $sample->sample_receipt_date = $request->get('sample_receipt_date');
-
     $sample->sample_loc_x = $request->get('sample_loc_x');
-
     $sample->sample_loc_y = $request->get('sample_loc_y');
-
     $sample->sketch_file = $request->get('sketch_file');
-
     $sample->stratigraphic_file = $request->get('stratigraphic_file');
-
     $sample->save();
   }
 }
