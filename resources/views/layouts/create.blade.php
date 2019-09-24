@@ -6,7 +6,6 @@
     {{-- alerts --}}
     @component('components.alerts.save')
     @endcomponent
-
     @component('components.alerts.error')
     @endcomponent
 
@@ -20,11 +19,7 @@
       @component('components.buttons.exit')
         @yield('indexRoute')
       @endcomponent
-
-      @component('components.buttons.clear')
-      @endcomponent
     @endcomponent
-
     @component('components.miscellaneous.hr')
     @endcomponent
 
@@ -33,7 +28,6 @@
       @csrf
       @yield('formContent')
     </form>
-
     @component('components.miscellaneous.hr')
     @endcomponent
 
