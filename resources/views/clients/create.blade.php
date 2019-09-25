@@ -2,7 +2,7 @@
 
 @section('title', 'nuevo cliente')
 @section('formRoute', route('clients.store'))
-@section('indexRoute', route('clients.index'))
+@section('exitUrl', route('clients.index'))
 @section('formContent')
 
   {{-- client name field --}}

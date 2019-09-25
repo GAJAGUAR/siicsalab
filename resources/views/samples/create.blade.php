@@ -2,7 +2,7 @@
 
 @section('title', 'nuevo ensaye')
 @section('formRoute', route('samples.store'))
-@section('indexRoute', route('samples.index'))
+@section('exitUrl', route('samples.index'))
 @section('formContent')
   @component('components.inputs.form_row')
 

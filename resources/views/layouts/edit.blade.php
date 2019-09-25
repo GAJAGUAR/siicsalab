@@ -16,10 +16,11 @@
 
     {{-- nav --}}
     @component('components.navs.nav')
-      @component('components.buttons.exit')
-        @yield('indexRoute')
+      @component('components.buttons.close')
+        @yield('closeUrl')
       @endcomponent
-      @component('components.buttons.clear')
+      @component('components.buttons.exit')
+        @yield('exitUrl')
       @endcomponent
     @endcomponent
     @component('components.miscellaneous.hr')

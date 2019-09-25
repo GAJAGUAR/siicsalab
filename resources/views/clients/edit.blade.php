@@ -2,7 +2,8 @@
 
 @section('title', 'editar cliente')
 @section('formRoute', route('clients.index').'/'.$client->id)
-@section('indexRoute', route('clients.index'))
+@section('closeUrl', route('clients.index').'/'.$client->id)
+@section('exitUrl', route('clients.index'))
 @section('formContent')
 
   {{-- client name field --}}

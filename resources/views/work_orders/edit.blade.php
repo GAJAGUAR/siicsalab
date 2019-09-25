@@ -2,7 +2,8 @@
 
 @section('title', 'editar orden de trabajo')
 @section('formRoute', route('work_orders.index').'/'.$workOrder->id)
-@section('indexRoute', route('work_orders.index'))
+@section('closeUrl', route('work_orders.index').'/'.$workOrder->id)
+@section('exitUrl', route('work_orders.index'))
 @section('formContent')
 
   {{-- work id flield --}}

@@ -17,7 +17,7 @@
     {{-- nav --}}
     @component('components.navs.nav')
       @component('components.buttons.exit')
-        @yield('indexRoute')
+        @yield('exitUrl')
       @endcomponent
     @endcomponent
     @component('components.miscellaneous.hr')

@@ -2,7 +2,8 @@
 
 @section('title', 'editar obra')
 @section('formRoute', route('works.index').'/'.$work->id)
-@section('indexRoute', route('works.index'))
+@section('closeUrl', route('works.index').'/'.$work->id)
+@section('exitUrl', route('works.index'))
 @section('formContent')
 
   {{-- client id flield --}}

@@ -1,8 +1,9 @@
 @extends('layouts.edit')
 
-@section('title', 'nuevo ensaye')
+@section('title', 'editar ensaye')
 @section('formRoute', route('samples.index').'/'.$sample->id)
-@section('indexRoute', route('samples.index'))
+@section('closeUrl', route('samples.index').'/'.$sample->id)
+@section('exitUrl', route('samples.index'))
 @section('formContent')
   @component('components.inputs.form_row')
 
