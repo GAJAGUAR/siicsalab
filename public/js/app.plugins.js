@@ -4,7 +4,7 @@
  */
 
 /**
- * @bootstrap
+ * $bootstrap
  */
 
 // home modal
@@ -19,7 +19,7 @@ $(".modal").on("shown.bs.modal", function() {
 })
 
 /**
- * @datatables
+ * $datatables
  */
 
 // changing default settings
@@ -87,7 +87,7 @@ const moddingDatatablesDom = () => {
 }
 
 /**
- * @select2
+ * $select2
  */
 
 // apply bootstrap theme
@@ -98,7 +98,7 @@ const select2Init =() => {
 }
 
 /**
- * @complements
+ * $complements
  */
 
 // autofocus
@@ -106,20 +106,8 @@ const setFocus = () => {
   $("input[type='search']").focus()
 }
 
-// quick access
-const setQuickAccess =() => {
-  let btnCatalogue
-  let btnNew
-
-  btnCatalogue = document.getElementById("dropdown-catalogue")
-  btnNew = document.getElementById("dropdown-new")
-
-  btnCatalogue.accessKey = "c"
-  btnNew.accessKey = "n"
-}
-
 /**
- * @initialization
+ * $initialization
  */
 
 $(document).ready(function () {
