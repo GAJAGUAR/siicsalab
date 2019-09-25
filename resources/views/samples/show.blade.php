@@ -154,8 +154,6 @@
     {{ __('URL:') }}
   @endcomponent
   @component('components.lists.description')
-    <a href="{{ asset('storage').'/'.$sample->sample_url.'.pdf' }}"
-       target="_blank">{{ $sample->sample_url }}
-    </a>
+    {{ $sample->sample_url }}
   @endcomponent
 @endsection
