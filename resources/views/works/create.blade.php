@@ -2,7 +2,7 @@
 
 @section('title', 'nueva obra')
 @section('formRoute', route('works.store'))
-@section('indexRoute', route('works.index'))
+@section('exitUrl', route('works.index'))
 @section('formContent')
 
   {{-- client id flield --}}

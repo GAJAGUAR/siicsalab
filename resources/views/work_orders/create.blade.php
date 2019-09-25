@@ -2,7 +2,7 @@
 
 @section('title', 'nueva orden de trabajo')
 @section('formRoute', route('work_orders.store'))
-@section('indexRoute', route('work_orders.index'))
+@section('exitUrl', route('work_orders.index'))
 @section('formContent')
 
   {{-- work id flield --}}
