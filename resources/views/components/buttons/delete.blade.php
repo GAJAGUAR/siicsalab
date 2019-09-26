@@ -35,8 +35,9 @@
       </div>
       <div class="modal-footer">
         <button type="button"
-                class="btn btn-outline-primary text-capitalize auto-focus"
+                class="btn btn-outline-primary text-capitalize"
                 id="btn-cancel-delete"
+                data-autofocus="true"
                 data-dismiss="modal">
           {{ __('cancelar') }}
         </button>

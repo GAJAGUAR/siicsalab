@@ -1,18 +1,30 @@
-<div class="form-group {{ $style ?? '' }}">
+<div class="form-group
+            {{ $style ?? '' }}">
   <label for="{{ $fieldName }}">
     {{ $label }}
   </label>
 
-  <input type="text" class="form-control {{ $errors->has($fieldName) ? ' is-invalid' : '' }}" id="{{ $fieldName }}"
-         name="{{ $fieldName }}" aria-describedby="{{ $textHelp }}" value="{{ $value }}" maxlength="{{ $maxLength }}"
-         autocomplete="off" {{ $readonly ?? '' }}>
+  <input id="{{ $fieldName }}"
+         class="form-control
+                {{ $errors->has($fieldName) ? ' is-invalid' : '' }}"
+         autocomplete="off"
+         maxlength="{{ $maxLength }}"
+         name="{{ $fieldName }}"
+         {{ $readonly ?? '' }}
+         type="text"
+         value="{{ $value }}"
+         data-autofocus="{{ $autofocus ?? 'false' }}"
+         aria-describedby="{{ $textHelp }}">
 
   @if ($errors->has($fieldName))
-    <span class="invalid-feedback" role="alert">
+    <span class="invalid-feedback"
+          role="alert">
       {{ $errors->first($fieldName) }}
     </span>
   @else
-    <small id="{{ $textHelp }}" class="form-text text-muted">
+    <small id="{{ $textHelp }}"
+           class="form-text
+                  text-muted">
       {{ $textDescription }}
     </small>
   @endif

@@ -1,20 +1,22 @@
-{{-- input type number --}}
-<div class="form-group {{ $style ?? '' }}">
+<div class="form-group
+            {{ $style ?? '' }}">
   <label
     for="{{ $fieldName }}">
     {{ $label }}
   </label>
   <input id="{{ $fieldName }}"
-         class="form-control {{ $errors->has($fieldName) ? ' is-invalid' : '' }}"
+         class="form-control
+                {{ $errors->has($fieldName) ? ' is-invalid' : '' }}"
          autocomplete="off"
          max="{{ $max ?? '' }}"
-         min="{{ $min ?? '' }}"
+         min="{{ $min ?? '0' }}"
          name="{{ $fieldName }}"
+         {{ $readonly ?? '' }}
          step="{{ $step ?? '' }}"
          type="number"
          value="{{ $value }}"
-         aria-describedby="{{ $textHelp }}"
-         {{ $readonly ?? '' }}>
+         data-autofocus="{{ $autofocus ?? 'false' }}"
+         aria-describedby="{{ $textHelp }}">
   @if ($errors->has($fieldName))
     <span class="invalid-feedback"
           role="alert">
@@ -22,7 +24,8 @@
     </span>
   @else
     <small id="{{ $textHelp }}"
-           class="form-text text-muted">
+           class="form-text
+                  text-muted">
       {{ $textDescription }}
     </small>
   @endif

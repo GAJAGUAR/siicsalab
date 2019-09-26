@@ -11,6 +11,7 @@
     @slot('label', 'Obra')
     @slot('fieldName', 'work_id')
     @slot('textHelp', 'workHelp')
+    @slot('autofocus', 'true')
     @slot('textDescription', 'Lugar dónde se llevarán a cabo los trabajos.')
     @foreach ($works as $work)
       @component('components.inputs.option')

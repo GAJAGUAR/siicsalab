@@ -37,8 +37,8 @@
         <button id="btn-cancel-save"
                 class="btn btn-outline-primary"
                 type="button"
-                data-dismiss="modal"
-                data-auto-focus="true">
+                data-autofocus="true"
+                data-dismiss="modal">
           {{ __('Cancelar') }}
         </button>
         <button id="btn-accept-save"

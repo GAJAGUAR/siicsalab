@@ -1,18 +1,26 @@
-<div class="form-group {{ $style ?? '' }}">
+<div class="form-group
+            {{ $style ?? '' }}">
   <label for="{{ $fieldName }}">
     {{ $label }}
   </label>
 
-  <input type="time" class="form-control {{ $errors->has($fieldName) ? ' is-invalid' : '' }}" id="{{ $fieldName }}"
+  <input id="{{ $fieldName }}"
+         class="form-control
+                {{ $errors->has($fieldName) ? ' is-invalid' : '' }}"
+         type="time"  
          name="{{ $fieldName }}" aria-describedby="{{ $textHelp }}" value="{{ $value }}"
+         data-autofocus="{{ $autofocus ?? 'false' }}"
          autocomplete="off" {{ $readonly ?? '' }}>
 
   @if ($errors->has($fieldName))
-    <span class="invalid-feedback" role="alert">
+    <span class="invalid-feedback"
+          role="alert">
       {{ $errors->first($fieldName) }}
     </span>
   @else
-    <small id="{{ $textHelp }}" class="form-text text-muted">
+    <small id="{{ $textHelp }}"
+           class="form-text
+                  text-muted">
       {{ $textDescription }}
     </small>
   @endif

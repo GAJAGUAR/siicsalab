@@ -11,6 +11,7 @@
     @slot('label', 'Cliente')
     @slot('fieldName', 'client_id')
     @slot('textHelp', 'clientHelp')
+    @slot('autofocus', 'true')
     @slot('textDescription', 'Encargado de llevar a cabo los trabajos.')
     @foreach ($clients as $client)
       @component('components.inputs.option')

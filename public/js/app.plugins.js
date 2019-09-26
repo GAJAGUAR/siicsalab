@@ -8,14 +8,14 @@
  */
 
 // home modal
-$(document).ready(function () {
+const showHomeModal = () => {
   $("#home-modal").modal("show")
-})
+}
 
 // autofocus on defaul modal button
 $(".modal").on("shown.bs.modal", function() {
-  $(".btn-default:first").trigger("focus")
-  $(".btn-default:last").trigger("focus")
+  $("button[data-autofocus='true']:first").trigger("focus")
+  $("button[data-autofocus='true']:last").trigger("focus")
 })
 
 /**
@@ -79,6 +79,7 @@ const moddingDatatablesDom = () => {
     inputSearch = labelSearch.firstElementChild
     labelSearch.remove()
     inputSearch.placeholder = "Filtro"
+    inputSearch.setAttribute('data-autofocus', 'true')
     dataTablesFilter.firstElementChild.appendChild(inputSearch)
 
     // extend input element
@@ -103,7 +104,7 @@ const select2Init =() => {
 
 // autofocus
 const setFocus = () => {
-  $("input[type='search']").focus()
+  $("*[data-autofocus='true']").focus()
 }
 
 /**
@@ -111,9 +112,9 @@ const setFocus = () => {
  */
 
 $(document).ready(function () {
+  showHomeModal()
   datatablesInit()
   select2Init()
   moddingDatatablesDom()
-  setQuickAccess()
   setFocus()
 })

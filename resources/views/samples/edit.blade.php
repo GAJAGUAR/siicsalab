@@ -13,6 +13,7 @@
       @slot('label', 'Orden de trabajo')
       @slot('fieldName', 'work_order_id')
       @slot('textHelp', 'workOrderHelp')
+      @slot('autofocus', 'true')
       @slot('textDescription', 'Orden de trabajo a la que pertenece el ensaye.')
       <option value="">Seleccionar</option>
       @foreach ($workOrders as $workOrder)

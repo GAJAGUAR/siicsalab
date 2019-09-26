@@ -11,6 +11,7 @@
     @slot('fieldName', 'work_id')
     @slot('value', old('work_id'))
     @slot('textHelp', 'workHelp')
+    @slot('autofocus', 'true')
     @slot('textDescription', 'Lugar dónde se llevarán a cabo los trabajos.')
     <option>Seleccionar</option>
     @foreach ($works as $work)

@@ -13,6 +13,7 @@
     @slot('value', $client->client_name))
     @slot('textHelp', 'nameHelp')
     @slot('maxLength', '150')
+    @slot('autofocus', 'true')
     @slot('textDescription', 'Nombre completo tal como aparecerá en los informes.')
   @endcomponent
 
