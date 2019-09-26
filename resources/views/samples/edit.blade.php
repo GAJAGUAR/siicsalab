@@ -15,7 +15,6 @@
       @slot('textHelp', 'workOrderHelp')
       @slot('autofocus', 'true')
       @slot('textDescription', 'Orden de trabajo a la que pertenece el ensaye.')
-      <option value="">Seleccionar</option>
       @foreach ($workOrders as $workOrder)
         @component('components.inputs.option')
           @slot('value')
@@ -224,6 +223,7 @@
     @slot('value', $sample->bank_id)
     @slot('textHelp', 'bankHelp')
     @slot('textDescription', 'Banco de donde procede el material.')
+    <option value="">Seleccionar</option>
     @foreach ($banks as $bank)
       @component('components.inputs.option')
         @slot('value')
