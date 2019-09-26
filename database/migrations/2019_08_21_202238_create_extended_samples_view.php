@@ -44,7 +44,13 @@ class CreateExtendedSamplesView extends Migration
                  `sample_notes`,
                  `sample_receipt_date`,
                  `priority_name`,
-                 `status_name` 
+                 `status_name`,
+                 CONCAT_WS("-",
+                           `client_id`,
+                           `work_id`,
+                           `work_order_id`,
+                           `samples`.`id`,
+                           `purpose_id`) AS `sample_url`
         FROM     `samples` 
                  LEFT JOIN `work_orders` 
                  ON `samples`.`work_order_id` = `work_orders`.`id` 
