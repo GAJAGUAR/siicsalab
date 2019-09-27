@@ -49,4 +49,10 @@
       {{ __('ensaye') }}
     @endcomponent
   @endcomponent
+
+  {{-- pendings --}}
+  @component('components.navs.nav_link')
+    @slot('url', route('pendings'))
+    {{ __('pendientes') }}
+  @endcomponent
 </div>

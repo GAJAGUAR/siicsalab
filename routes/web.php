@@ -31,3 +31,5 @@ Route::resource('/employees', 'EmployeeController');
 Route::resource('/work_orders', 'WorkOrderController');
 
 Route::resource('/samples', 'SampleController');
+
+Route::get('/pendings', 'PendingController@index')->name('pendings');
