@@ -19,7 +19,7 @@
           {{ $client->id }}
         @endslot
         @slot('selected')
-          {{ (old('client_id') == $client->id ? 'selected' : '') }}
+          {{ old('client_id') == $client->id ? 'selected' : '' }}
         @endslot
         {{ $client->client_name }}
       @endcomponent

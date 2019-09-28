@@ -22,7 +22,7 @@
             {{ $workOrder->id }}
           @endslot
           @slot('selected')
-            {{ (old('work_order_id') == $workOrder->id ? 'selected' : '') }}
+            {{ old('work_order_id') == $workOrder->id ? 'selected' : '' }}
           @endslot
           {{ $workOrder->id }}
         @endcomponent
@@ -229,7 +229,7 @@
           {{ $bank->id }}
         @endslot
         @slot('selected')
-          {{ (old('bank_id') == $bank->id ? 'selected' : '') }}
+          {{ old('bank_id') == $bank->id ? 'selected' : '' }}
         @endslot
         {{ $bank->bank_name }}
       @endcomponent
@@ -250,7 +250,7 @@
           {{ $purpose->id }}
         @endslot
         @slot('selected')
-          {{ (old('purpose_id') == $purpose->id ? 'selected' : '') }}
+          {{ old('purpose_id') == $purpose->id ? 'selected' : '' }}
         @endslot
         {{ $purpose->purpose_name }}
       @endcomponent
@@ -313,7 +313,7 @@
           {{ $weather->id }}
         @endslot
         @slot('selected')
-          {{ (old('weather_id') == $weather->id ? 'selected' : '') }}
+          {{ old('weather_id') == $weather->id ? 'selected' : '' }}
         @endslot
         {{ $weather->weather_name }}
       @endcomponent
@@ -366,7 +366,7 @@
             {{ $priority->id }}
           @endslot
           @slot('selected')
-            {{ (old('priority_id') == $priority->id ? 'selected' : '') }}
+            {{ old('priority_id') == $priority->id ? 'selected' : '' }}
           @endslot
           {{ $priority->priority_name }}
         @endcomponent
@@ -388,7 +388,7 @@
             {{ $status->id }}
           @endslot
           @slot('selected')
-            {{ (old('status_id') == $status->id ? 'selected' : '') }}
+            {{ old('status_id') == $status->id ? 'selected' : '' }}
           @endslot
           {{ $status->status_name }}
         @endcomponent

@@ -20,7 +20,7 @@
           {{ $work->id }}
         @endslot
         @slot('selected')
-          {{ (old('work_id') == $work->id ? 'selected' : '') }}
+          {{ old('work_id') == $work->id ? 'selected' : '' }}
         @endslot
         {{ $work->work_name }}
       @endcomponent
@@ -50,7 +50,7 @@
           {{ $employee->id }}
         @endslot
         @slot('selected')
-          {{ (old('employee_id') == $employee->id ? 'selected' : '') }}
+          {{ old('employee_id') == $employee->id ? 'selected' : '' }}
         @endslot
         {{ $employee->employee_name }}
       @endcomponent
