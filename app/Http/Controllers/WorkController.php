@@ -81,7 +81,7 @@ class WorkController extends Controller
    */
   public function edit(int $id)
   {
-    $work = (new ExtendedWork)->showWork($id);
+    $work = Work::findOrFail($id);
     $clients = (new ExtendedClient)->clientNames();
 
     return view('works.edit', [

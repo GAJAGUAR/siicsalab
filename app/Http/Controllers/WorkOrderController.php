@@ -83,7 +83,7 @@ class WorkOrderController extends Controller
    */
   public function edit(int $id)
   {
-    $workOrder = (new ExtendedWorkOrder)->showWorkOrder($id);
+    $workOrder = WorkOrder::findOrFail($id);
     $works = (new ExtendedWork)->workNames();
     $employees = (new Employee)->employeeNames();
 
@@ -113,10 +113,10 @@ class WorkOrderController extends Controller
   /**
    * Remove the specified resource from storage.
    *
-   * @param WorkOrder $workOrder
+   * @param Int $id
    * @return Response
    */
-  public function destroy(WorkOrder $workOrder)
+  public function destroy(Int $id)
   {
     WorkOrder::findOrFail($id)->delete();
     return redirect('/work_orders')->with('status', 'Registro eliminado exitosamente');
