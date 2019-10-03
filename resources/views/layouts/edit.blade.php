@@ -23,6 +23,7 @@
         @yield('exitUrl')
       @endcomponent
     @endcomponent
+
     @component('components.miscellaneous.hr_top')
     @endcomponent
 
@@ -32,6 +33,7 @@
       @method('put')
       @yield('formContent')
     </form>
+
     @component('components.miscellaneous.hr_bottom')
     @endcomponent
 

@@ -30,5 +30,8 @@
       @endslot
       @yield('tbody')
     @endcomponent
+
+    @component('components.miscellaneous.hr_bottom')
+    @endcomponent
   @endcomponent
 @endsection

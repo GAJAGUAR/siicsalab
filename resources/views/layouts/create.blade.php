@@ -20,6 +20,7 @@
         @yield('exitUrl')
       @endcomponent
     @endcomponent
+
     @component('components.miscellaneous.hr_top')
     @endcomponent
 
@@ -28,6 +29,7 @@
       @csrf
       @yield('formContent')
     </form>
+
     @component('components.miscellaneous.hr_bottom')
     @endcomponent
 
