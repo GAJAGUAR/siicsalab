@@ -13,7 +13,7 @@
       @yield('navLinks')
     @endcomponent
 
-    @component('components.miscellaneous.hr')
+    @component('components.miscellaneous.hr_top')
     @endcomponent
 
     {{-- main --}}

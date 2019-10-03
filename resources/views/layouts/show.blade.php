@@ -23,7 +23,7 @@
         @yield('textAdd')
       @endcomponent
     @endcomponent
-    @component('components.miscellaneous.hr')
+    @component('components.miscellaneous.hr_top')
     @endcomponent
 
     {{-- main --}}
@@ -33,7 +33,7 @@
     @component('components.headings.subtitle')
       @yield('subtitle')
     @endcomponent
-    @component('components.miscellaneous.hr')
+    @component('components.miscellaneous.hr_top')
     @endcomponent
     @component('components.tables.table_primary')
       @slot('thead')
