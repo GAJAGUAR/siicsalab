@@ -26,6 +26,7 @@ use Illuminate\Support\Facades\DB;
  * @property mixed road_station
  * @property mixed road_body
  * @property mixed road_side
+ * @property mixed road_stripe
  * @property mixed phreatic_level
  * @property mixed sampling_seq
  * @property mixed env_temp
@@ -33,8 +34,8 @@ use Illuminate\Support\Facades\DB;
  * @property mixed sample_tests
  * @property mixed sample_notes
  * @property mixed sample_receipt_date
- * @property mixed sample_loc_x
- * @property mixed sample_loc_y
+ * @property mixed sample_latitude
+ * @property mixed sample_longitude
  * @property mixed sketch_file
  * @property mixed stratigraphic_file
  */
@@ -89,6 +90,7 @@ class Sample extends Model
     $sample->road_station = $request->get('road_station');
     $sample->road_body = $request->get('road_body');
     $sample->road_side = $request->get('road_side');
+    $sample->road_stripe = $request->get('road_stripe');
     $sample->phreatic_level = $request->get('phreatic_level');
     $sample->sampling_seq = $request->get('sampling_seq');
     $sample->env_temp = $request->get('env_temp');
@@ -96,8 +98,8 @@ class Sample extends Model
     $sample->sample_tests = $request->get('sample_tests');
     $sample->sample_notes = $request->get('sample_notes');
     $sample->sample_receipt_date = $request->get('sample_receipt_date');
-    $sample->sample_loc_x = $request->get('sample_loc_x');
-    $sample->sample_loc_y = $request->get('sample_loc_y');
+    $sample->sample_latitude = $request->get('sample_latitude');
+    $sample->sample_longitude = $request->get('sample_longitude');
     $sample->sketch_file = $request->get('sketch_file');
     $sample->stratigraphic_file = $request->get('stratigraphic_file');
     $sample->save();

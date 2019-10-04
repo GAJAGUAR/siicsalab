@@ -125,6 +125,16 @@ class ExtendedSample extends Model
       ->get();
   }
 
+  public function roadStripeNames()
+  {
+    return $this
+      ->select('road_stripe')
+      ->where('road_stripe', 'NOT LIKE', '')
+      ->groupBy('road_stripe')
+      ->orderBy('road_stripe')
+      ->get();
+  }
+
   public function testNames()
   {
     return $this

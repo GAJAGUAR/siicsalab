@@ -202,17 +202,39 @@
       @slot('maxLength', '10')
       @slot('textDescription', 'Lado o desviación del camino.')
     @endcomponent
-  @endcomponent
-  @component('components.inputs.datalist')
-    @slot('fieldName', 'road_side')
-    @foreach ($roadSides as $roadSide)
-      @component('components.inputs.option')
-        @slot('value')
+    @component('components.inputs.datalist')
+      @slot('fieldName', 'road_side')
+      @foreach ($roadSides as $roadSide)
+        @component('components.inputs.option')
+          @slot('value')
+            {{ $roadSide->road_side }}
+          @endslot
           {{ $roadSide->road_side }}
-        @endslot
-        {{ $roadSide->road_side }}
-      @endcomponent
-    @endforeach
+        @endcomponent
+      @endforeach
+    @endcomponent
+
+    {{-- road stripe field --}}
+    @component('components.inputs.list')
+      @slot('style', 'col-12 col-md')
+      @slot('label', 'Franja')
+      @slot('fieldName', 'road_stripe')
+      @slot('value', old('road_stripe'))
+      @slot('textHelp', 'stripeHelp')
+      @slot('maxLength', '10')
+      @slot('textDescription', 'Sección longitudinal.')
+    @endcomponent
+    @component('components.inputs.datalist')
+      @slot('fieldName', 'road_stripe')
+      @foreach ($roadStripes as $roadStripe)
+        @component('components.inputs.option')
+          @slot('value')
+            {{ $roadStripe->road_stripe }}
+          @endslot
+          {{ $roadStripe->road_stripe }}
+        @endcomponent
+      @endforeach
+    @endcomponent
   @endcomponent
 
   {{-- bank id field --}}

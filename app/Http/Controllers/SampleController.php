@@ -47,6 +47,7 @@ class SampleController extends Controller
     $roadNames = (new ExtendedSample)->roadNames();
     $roadBodies = (new ExtendedSample)->roadBodyNames();
     $roadSides = (new ExtendedSample)->roadSideNames();
+    $roadStripes = (new ExtendedSample)->roadStripeNames();
     $tests = (new ExtendedSample)->testNames();
 
     return view('samples.create', [
@@ -62,6 +63,7 @@ class SampleController extends Controller
       'roadNames' => $roadNames,
       'roadBodies' => $roadBodies,
       'roadSides' => $roadSides,
+      'roadStripes' => $roadStripes,
       'tests' => $tests
     ]);
   }
@@ -117,6 +119,7 @@ class SampleController extends Controller
     $roadNames = (new ExtendedSample)->roadNames();
     $roadBodies = (new ExtendedSample)->roadBodyNames();
     $roadSides = (new ExtendedSample)->roadSideNames();
+    $roadStripes = (new ExtendedSample)->roadStripeNames();
     $tests = (new ExtendedSample)->testNames();
 
     return view('samples.edit', [
@@ -133,6 +136,7 @@ class SampleController extends Controller
       'roadNames' => $roadNames,
       'roadBodies' => $roadBodies,
       'roadSides' => $roadSides,
+      'roadStripes' => $roadStripes,
       'tests' => $tests
     ]);
   }
