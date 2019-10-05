@@ -98,40 +98,40 @@ class ExtendedSample extends Model
   public function roadNames()
   {
     return $this
-      ->select('road_name')
-      ->where('road_name', 'NOT LIKE', '')
-      ->groupBy('road_name')
-      ->orderBy('road_name')
+      ->select('sample_road_name')
+      ->where('sample_road_name', 'NOT LIKE', '')
+      ->groupBy('sample_road_name')
+      ->orderBy('sample_road_name')
       ->get();
   }
 
   public function roadBodyNames()
   {
     return $this
-      ->select('road_body')
-      ->where('road_body', 'NOT LIKE', '')
-      ->groupBy('road_body')
-      ->orderBy('road_body')
+      ->select('sample_road_body')
+      ->where('sample_road_body', 'NOT LIKE', '')
+      ->groupBy('sample_road_body')
+      ->orderBy('sample_road_body')
       ->get();
   }
 
   public function roadSideNames()
   {
     return $this
-      ->select('road_side')
-      ->where('road_side', 'NOT LIKE', '')
-      ->groupBy('road_side')
-      ->orderBy('road_side')
+      ->select('sample_road_side')
+      ->where('sample_road_side', 'NOT LIKE', '')
+      ->groupBy('sample_road_side')
+      ->orderBy('sample_road_side')
       ->get();
   }
 
   public function roadStripeNames()
   {
     return $this
-      ->select('road_stripe')
-      ->where('road_stripe', 'NOT LIKE', '')
-      ->groupBy('road_stripe')
-      ->orderBy('road_stripe')
+      ->select('sample_road_stripe')
+      ->where('sample_road_stripe', 'NOT LIKE', '')
+      ->groupBy('sample_road_stripe')
+      ->orderBy('sample_road_stripe')
       ->get();
   }
 

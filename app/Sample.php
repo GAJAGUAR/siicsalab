@@ -20,13 +20,13 @@ use Illuminate\Support\Facades\DB;
  * @property mixed sample_description
  * @property mixed sample_treatment
  * @property mixed sample_location
- * @property mixed road_name
- * @property mixed road_station_start
- * @property mixed road_station_end
- * @property mixed road_station
- * @property mixed road_body
- * @property mixed road_side
- * @property mixed road_stripe
+ * @property mixed sample_road_name
+ * @property mixed sample_road_station_start
+ * @property mixed sample_road_station_end
+ * @property mixed sample_road_station
+ * @property mixed sample_road_body
+ * @property mixed sample_road_side
+ * @property mixed sample_road_stripe
  * @property mixed phreatic_level
  * @property mixed sampling_seq
  * @property mixed env_temp
@@ -84,13 +84,13 @@ class Sample extends Model
     $sample->sample_description = $request->get('sample_description');
     $sample->sample_treatment = $request->get('sample_treatment');
     $sample->sample_location = $request->get('sample_location');
-    $sample->road_name = $request->get('road_name');
-    $sample->road_station_start = $request->get('road_station_start');
-    $sample->road_station_end = $request->get('road_station_end');
-    $sample->road_station = $request->get('road_station');
-    $sample->road_body = $request->get('road_body');
-    $sample->road_side = $request->get('road_side');
-    $sample->road_stripe = $request->get('road_stripe');
+    $sample->sample_road_name = $request->get('sample_road_name');
+    $sample->sample_road_station_start = $request->get('sample_road_station_start');
+    $sample->sample_road_station_end = $request->get('sample_road_station_end');
+    $sample->sample_road_station = $request->get('sample_road_station');
+    $sample->sample_road_body = $request->get('sample_road_body');
+    $sample->sample_road_side = $request->get('sample_road_side');
+    $sample->sample_road_stripe = $request->get('sample_road_stripe');
     $sample->phreatic_level = $request->get('phreatic_level');
     $sample->sampling_seq = $request->get('sampling_seq');
     $sample->env_temp = $request->get('env_temp');

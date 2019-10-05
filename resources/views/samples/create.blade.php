@@ -116,20 +116,20 @@
   {{-- road name field --}}
   @component('components.inputs.list')
     @slot('label', 'Camino')
-    @slot('fieldName', 'road_name')
-    @slot('value', old('road_name'))
+    @slot('fieldName', 'sample_road_name')
+    @slot('value', old('sample_road_name'))
     @slot('textHelp', 'roadNameHelp')
     @slot('maxLength', '100')
     @slot('textDescription', 'Anotarlo si la muestra fue tomada en un camino o vía.')
   @endcomponent
   @component('components.inputs.datalist')
-    @slot('fieldName', 'road_name')
+    @slot('fieldName', 'sample_road_name')
     @foreach ($roadNames as $roadName)
       @component('components.inputs.option')
         @slot('value')
-          {{ $roadName->road_name }}
+          {{ $roadName->sample_road_name }}
         @endslot
-        {{ $roadName->road_name }}
+        {{ $roadName->sample_road_name }}
       @endcomponent
     @endforeach
   @endcomponent
@@ -139,8 +139,8 @@
     @component('components.inputs.text')
       @slot('style', 'col-12 col-md')
       @slot('label', 'Cadenamiento inicio')
-      @slot('fieldName', 'road_station_start')
-      @slot('value', old('road_station_start'))
+      @slot('fieldName', 'sample_road_station_start')
+      @slot('value', old('sample_road_station_start'))
       @slot('textHelp', 'roadStartHelp')
       @slot('maxLength', '11')
       @slot('textDescription', 'Inicio del tramo que representa la muestra.')
@@ -150,8 +150,8 @@
     @component('components.inputs.text')
       @slot('style', 'col-12 col-md')
       @slot('label', 'Cadenamiento fin')
-      @slot('fieldName', 'road_station_end')
-      @slot('value', old('road_station_end'))
+      @slot('fieldName', 'sample_road_station_end')
+      @slot('value', old('sample_road_station_end'))
       @slot('textHelp', 'roadEndHelp')
       @slot('maxLength', '11')
       @slot('textDescription', 'Fin del tramo que representa la muestra.')
@@ -161,8 +161,8 @@
     @component('components.inputs.text')
       @slot('style', 'col-12 col-md')
       @slot('label', 'Cadenamiento muestra')
-      @slot('fieldName', 'road_station')
-      @slot('value', old('road_station'))
+      @slot('fieldName', 'sample_road_station')
+      @slot('value', old('sample_road_station'))
       @slot('textHelp', 'roadStationHelp')
       @slot('maxLength', '11')
       @slot('textDescription', 'Kilometraje exacto donde se tomó la muestra.')
@@ -174,20 +174,20 @@
     @component('components.inputs.list')
       @slot('style', 'col-12 col-md')
       @slot('label', 'Cuerpo')
-      @slot('fieldName', 'road_body')
-      @slot('value', old('road_body'))
+      @slot('fieldName', 'sample_road_body')
+      @slot('value', old('sample_road_body'))
       @slot('textHelp', 'bodyHelp')
       @slot('maxLength', '20')
       @slot('textDescription', 'Designación del cuerpo del camino.')
     @endcomponent
     @component('components.inputs.datalist')
-      @slot('fieldName', 'road_body')
+      @slot('fieldName', 'sample_road_body')
       @foreach ($roadBodies as $roadBody)
         @component('components.inputs.option')
           @slot('value')
-            {{ $roadBody->road_body }}
+            {{ $roadBody->sample_road_body }}
           @endslot
-          {{ $roadBody->road_body }}
+          {{ $roadBody->sample_road_body }}
         @endcomponent
       @endforeach
     @endcomponent
@@ -196,20 +196,20 @@
     @component('components.inputs.list')
       @slot('style', 'col-12 col-md')
       @slot('label', 'Lado')
-      @slot('fieldName', 'road_side')
-      @slot('value', old('road_side'))
+      @slot('fieldName', 'sample_road_side')
+      @slot('value', old('sample_road_side'))
       @slot('textHelp', 'sideHelp')
       @slot('maxLength', '10')
       @slot('textDescription', 'Lado o desviación del camino.')
     @endcomponent
     @component('components.inputs.datalist')
-      @slot('fieldName', 'road_side')
+      @slot('fieldName', 'sample_road_side')
       @foreach ($roadSides as $roadSide)
         @component('components.inputs.option')
           @slot('value')
-            {{ $roadSide->road_side }}
+            {{ $roadSide->sample_road_side }}
           @endslot
-          {{ $roadSide->road_side }}
+          {{ $roadSide->sample_road_side }}
         @endcomponent
       @endforeach
     @endcomponent
@@ -218,20 +218,20 @@
     @component('components.inputs.list')
       @slot('style', 'col-12 col-md')
       @slot('label', 'Franja')
-      @slot('fieldName', 'road_stripe')
-      @slot('value', old('road_stripe'))
+      @slot('fieldName', 'sample_road_stripe')
+      @slot('value', old('sample_road_stripe'))
       @slot('textHelp', 'stripeHelp')
       @slot('maxLength', '10')
       @slot('textDescription', 'Sección longitudinal.')
     @endcomponent
     @component('components.inputs.datalist')
-      @slot('fieldName', 'road_stripe')
+      @slot('fieldName', 'sample_road_stripe')
       @foreach ($roadStripes as $roadStripe)
         @component('components.inputs.option')
           @slot('value')
-            {{ $roadStripe->road_stripe }}
+            {{ $roadStripe->sample_road_stripe }}
           @endslot
-          {{ $roadStripe->road_stripe }}
+          {{ $roadStripe->sample_road_stripe }}
         @endcomponent
       @endforeach
     @endcomponent

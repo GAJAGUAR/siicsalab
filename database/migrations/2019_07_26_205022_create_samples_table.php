@@ -41,37 +41,37 @@ class CreateSamplesTable extends Migration
       $table->string('sample_location', 100)
         ->nullable()
         ->default(null);
-      $table->string('road_name', 100)
+      $table->string('sample_road_name', 100)
         ->nullable()
         ->default(null);
-      $table->string('road_station_start', 11)
+      $table->string('sample_road_station_start', 11)
         ->nullable()
         ->default(null);
-      $table->string('road_station_end', 11)
+      $table->string('sample_road_station_end', 11)
         ->nullable()
         ->default(null);
-      $table->string('road_station', 11)
+      $table->string('sample_road_station', 11)
         ->nullable()
         ->default(null);
-      $table->string('road_body', 20)
+      $table->string('sample_road_body', 20)
         ->nullable()
         ->default(null);
-      $table->string('road_side', 20)
+      $table->string('sample_road_side', 20)
         ->nullable()
         ->default(null);
-      $table->string('road_stripe', 20)
+      $table->string('sample_road_stripe', 20)
         ->nullable()
         ->default(null);
-      $table->string('road', 200)
+      $table->string('sample_road', 200)
         ->virtualAs('
           CONCAT(
-            IF(`road_name` <> "", `road_name`, ""),
-            IF(`road_station_start` <> "", CONCAT(" DEL KM ", `road_station_start`), ""),
-            IF(`road_station_end` <> "", CONCAT(" AL KM ", `road_station_end`), ""),
-            IF(`road_station` <> "", CONCAT(" KM ", `road_station`), ""),
-            IF(`road_body` <> "", CONCAT(" CUERPO ",`road_body`), ""),
-            IF(`road_side` <> "", CONCAT(" LADO ",`road_side`), ""),
-            IF(`road_stripe` <> "", CONCAT(" FRANJA ",`road_stripe`), "")
+            IF(`sample_road_name` <> "", `sample_road_name`, ""),
+            IF(`sample_road_station_start` <> "", CONCAT(" DEL KM ", `sample_road_station_start`), ""),
+            IF(`sample_road_station_end` <> "", CONCAT(" AL KM ", `sample_road_station_end`), ""),
+            IF(`sample_road_station` <> "", CONCAT(" KM ", `sample_road_station`), ""),
+            IF(`sample_road_body` <> "", CONCAT(" CUERPO ",`sample_road_body`), ""),
+            IF(`sample_road_side` <> "", CONCAT(" LADO ",`sample_road_side`), ""),
+            IF(`sample_road_stripe` <> "", CONCAT(" FRANJA ",`sample_road_stripe`), "")
           )
         ');
       $table->decimal('phreatic_level', 4, 2)
