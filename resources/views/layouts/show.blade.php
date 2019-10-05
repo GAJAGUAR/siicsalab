@@ -28,7 +28,7 @@
     @endcomponent
 
     {{-- main --}}
-    @component('components.lists.definition')
+    @component('components.lists.container')
       @yield('detail')
     @endcomponent
     @component('components.headings.subtitle')
