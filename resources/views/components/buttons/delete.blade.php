@@ -1,6 +1,7 @@
 {{-- trigger --}}
-<button id="btn-delet" type="button"
+<button id="btn-delet"
         class="btn btn-outline-primary text-capitalize ml-2 {{ $style ?? '' }}"
+        type="button"
         data-toggle="modal"
         data-target="#delete-modal">
   {{ __('borrar') }}
@@ -17,12 +18,12 @@
        role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title text-capitalize"
-            id="deleteModalTitle">
+        <h5 id="deleteModalTitle"
+            class="modal-title text-capitalize">
           {{ __('advertencia') }}
         </h5>
-        <button type="button"
-                class="close"
+        <button class="close"
+                type="button"
                 data-dismiss="modal"
                 aria-label="Close">
           <span aria-hidden="true">&times;</span>
@@ -34,15 +35,15 @@
         {{ __('Si lo hace también se eliminarán TODOS los registros dependientes.') }}
       </div>
       <div class="modal-footer">
-        <button type="button"
+        <button id="btn-cancel-delete"
                 class="btn btn-outline-primary text-capitalize"
-                id="btn-cancel-delete"
+                type="button"
                 data-autofocus="true"
                 data-dismiss="modal">
           {{ __('cancelar') }}
         </button>
-        <button type="submit"
-                class="btn btn-primary text-capitalize"
+        <button class="btn btn-primary text-capitalize"
+                type="submit"
                 form="delete-form">
           {{ __('aceptar') }}
         </button>
@@ -52,9 +53,9 @@
 </div>
 
 {{-- delete form --}}
-<form action="{{ $slot }}"
-      method="POST"
-      id="delete-form">
+<form id="delete-form"
+      action="{{ $slot }}"
+      method="POST">
   @csrf
   @method('delete')
 </form>

@@ -1,16 +1,14 @@
-<div class="form-group
-            {{ $style ?? '' }}">
+<div class="form-group {{ $style ?? '' }}">
   <label for="{{ $fieldName }}">
     {{ $label }}
   </label>
 
   <input id="{{ $fieldName }}"
-         class="form-control
-                {{ $errors->has($fieldName) ? ' is-invalid' : '' }}"
+         class="form-control {{ $errors->has($fieldName) ? ' is-invalid' : '' }}"
          autocomplete="off"
          maxlength="{{ $maxLength }}"
          name="{{ $fieldName }}"
-         {{ $readonly ?? '' }}
+         {{ isset($readonly) && $readonly ? 'readonly' : '' }}
          type="text"
          value="{{ $value }}"
          data-autofocus="{{ $autofocus ?? 'false' }}"
@@ -23,8 +21,7 @@
     </span>
   @else
     <small id="{{ $textHelp }}"
-           class="form-text
-                  text-muted">
+           class="form-text text-muted">
       {{ $textDescription }}
     </small>
   @endif

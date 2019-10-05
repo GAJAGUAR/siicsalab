@@ -1,16 +1,14 @@
-<div class="form-group
-            {{ $style ?? '' }}">
+<div class="form-group {{ $style ?? '' }}">
   <label for="{{ $fieldName }}">
     {{ $label }}
   </label>
 
   <textarea id="{{ $fieldName }}"
-            class="form-control
-                   {{ $errors->has($fieldName) ? ' is-invalid' : '' }}"
+            class="form-control {{ $errors->has($fieldName) ? ' is-invalid' : '' }}"
             autocomplete="off"
             name="{{ $fieldName }}"
             maxlength="{{ $maxLength }}"
-            {{ $readonly ?? '' }}
+            {{ isset($readonly) && $readonly ? 'readonly' : '' }}
             rows="5" 
             data-autofocus="{{ $autofocus ?? 'false' }}"
             aria-describedby="{{ $textHelp }}">{{ $value }}</textarea>
@@ -22,8 +20,7 @@
     </span>
   @else
     <small id="{{ $textHelp }}"
-           class="form-text
-                  text-muted">
+           class="form-text text-muted">
       {{ $textDescription }}
     </small>
   @endif

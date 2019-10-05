@@ -1,19 +1,18 @@
-<div class="form-group
-            {{ $style ?? '' }}">
+<div class="form-group {{ $style ?? '' }}">
   <label for="{{ $fieldName }}">
     {{ $label }}
   </label>
-  <input class="form-control
-                {{ $errors->has($fieldName) ? ' is-invalid' : '' }}"
+  <input class="form-control {{ $errors->has($fieldName) ? ' is-invalid' : '' }}"
          autocomplete="off"
          list="{{ $fieldName }}"
          maxlength="{{ $maxLength }}"
          name="{{ $fieldName }}"
-         {{ $readonly ?? '' }}
+         {{ isset($readonly) && $readonly ? 'readonly' : '' }}
          type="list"
          value="{{ $value }}"
          data-autofocus="{{ $autofocus ?? 'false' }}"
          aria-describedby="{{ $textHelp }}">
+
   @if ($errors->has($fieldName))
     <span class="invalid-feedback"
           role="alert">
@@ -21,8 +20,7 @@
     </span>
   @else
     <small id="{{ $textHelp }}"
-           class="form-text
-                  text-muted">
+           class="form-text text-muted">
       {{ $textDescription }}
     </small>
   @endif

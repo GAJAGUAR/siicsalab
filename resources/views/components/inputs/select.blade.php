@@ -1,17 +1,16 @@
-<div class="form-group
-            {{ $style ?? '' }}">
+<div class="form-group {{ $style ?? '' }}">
   <label for="{{ $fieldName }}">
     {{ $label }}
   </label>
   <select id="{{ $fieldName }}"
-          class="custom-select
-                 select2
-                 {{ $errors->has($fieldName) ? ' is-invalid' : '' }}"
+          class="custom-select select2 {{ $errors->has($fieldName) ? ' is-invalid' : '' }}"
           name="{{ $fieldName }}"
+          {{ isset($readonly) && $readonly ? 'readonly' : '' }}
           data-autofocus="{{ $autofocus ?? 'false' }}"
           aria-describedby="{{ $textHelp }}">
     {{ $slot }}
   </select>
+
   @if ($errors->has($fieldName))
     <span class="invalid-feedback"
           role="alert">
@@ -19,8 +18,7 @@
     </span>
   @else
     <small id="{{ $textHelp }}"
-           class="form-text
-                  text-muted">
+           class="form-text text-muted">
       {{ $textDescription }}
     </small>
   @endif

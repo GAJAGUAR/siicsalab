@@ -1,2 +1,5 @@
-<link rel="dns-prefetch" href="//fonts.gstatic.com">
-<link rel="stylesheet" type="text/css" href="{{ asset('css/vendor/googleapis/nunito.css') }}">
+<link href="//fonts.gstatic.com"
+      rel="dns-prefetch">
+<link href="{{ asset('css/vendor/googleapis/nunito.css') }}"
+      rel="stylesheet"
+      type="text/css">
