@@ -34,7 +34,7 @@ class ExtendedSample extends Model
       'sample_description',
       'sample_treatment',
       'sample_location',
-      'road',
+      'sample_road',
       'bank_name',
       'bank_location',
       'purpose_name',
