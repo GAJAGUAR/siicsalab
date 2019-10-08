@@ -3,6 +3,8 @@
  * Plugins and complements
  */
 
+require( 'datatables.net-bs4' )();
+
 /**
  * $bootstrap
  */

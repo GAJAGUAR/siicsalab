@@ -12,4 +12,11 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css');
+   .extract([
+     'vue',
+     'select2',
+     'datatables.net',
+     'datatables.net-bs4'
+   ])
+   .sass('resources/sass/app.scss', 'public/css');
+mix.scripts(['resources/js/complement.js'], 'public/js/complement.js');

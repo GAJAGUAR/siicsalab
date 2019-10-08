@@ -1,9 +1,9 @@
 <?php
 
-namespace Sislab\Http\Controllers;
+namespace App\Http\Controllers;
 
-use Sislab\{Employee, ExtendedSample, ExtendedWork, ExtendedWorkOrder, WorkOrder};
-use Sislab\Http\Requests\WorkOrderFormRequest;
+use App\{Employee, ExtendedSample, ExtendedWork, ExtendedWorkOrder, WorkOrder};
+use App\Http\Requests\WorkOrderFormRequest;
 use Illuminate\Http\Response;
 
 class WorkOrderController extends Controller

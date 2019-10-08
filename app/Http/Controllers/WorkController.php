@@ -1,9 +1,9 @@
 <?php
 
-namespace Sislab\Http\Controllers;
+namespace App\Http\Controllers;
 
-use Sislab\{Work, ExtendedClient, ExtendedWork, ExtendedWorkOrder};
-use Sislab\Http\Requests\WorkFormRequest;
+use App\{Work, ExtendedClient, ExtendedWork, ExtendedWorkOrder};
+use App\Http\Requests\WorkFormRequest;
 use Illuminate\Http\Response;
 
 class WorkController extends Controller

@@ -1,9 +1,9 @@
 <?php
 
-namespace Sislab\Http\Controllers;
+namespace App\Http\Controllers;
 
-use Sislab\{Client, ExtendedClient, ExtendedWork};
-use Sislab\Http\Requests\ClientFormRequest;
+use App\{Client, ExtendedClient, ExtendedWork};
+use App\Http\Requests\ClientFormRequest;
 use Illuminate\Http\Response;
 
 class ClientController extends Controller

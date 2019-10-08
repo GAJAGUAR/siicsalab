@@ -1,10 +1,10 @@
 <?php
 
-namespace Sislab\Http\Controllers;
+namespace App\Http\Controllers;
 
-use Sislab\{Bank, ExtendedSample, ExtendedWorkOrder, Priority,
+use App\{Bank, ExtendedSample, ExtendedWorkOrder, Priority,
   Purpose, Sample, Status, Weather};
-use Sislab\Http\Requests\SampleFormRequest;
+use App\Http\Requests\SampleFormRequest;
 use Illuminate\Http\Response;
 
 class SampleController extends Controller

@@ -1,8 +1,8 @@
 <?php
 
-namespace Sislab\Http\Controllers;
+namespace App\Http\Controllers;
 
-use Sislab\Pending;
+use App\Pending;
 
 class PendingController extends Controller
 {

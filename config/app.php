@@ -169,11 +169,11 @@ return [
         /*
          * Application Service Providers...
          */
-        Sislab\Providers\AppServiceProvider::class,
-        Sislab\Providers\AuthServiceProvider::class,
-        // Sislab\Providers\BroadcastServiceProvider::class,
-        Sislab\Providers\EventServiceProvider::class,
-        Sislab\Providers\RouteServiceProvider::class,
+        App\Providers\AppServiceProvider::class,
+        App\Providers\AuthServiceProvider::class,
+        // App\Providers\BroadcastServiceProvider::class,
+        App\Providers\EventServiceProvider::class,
+        App\Providers\RouteServiceProvider::class,
 
     ],
 

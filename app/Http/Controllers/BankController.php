@@ -1,10 +1,10 @@
 <?php
 
-namespace Sislab\Http\Controllers;
+namespace App\Http\Controllers;
 
 use Illuminate\Http\Response;
 
-use Sislab\Bank;
+use App\Bank;
 
 use Illuminate\Http\Request;
 
