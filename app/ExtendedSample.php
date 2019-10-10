@@ -30,6 +30,7 @@ class ExtendedSample extends Model
       'client_name',
       'work_name',
       'work_location',
+      'employee_name',
       'sample_time',
       'sample_description',
       'sample_treatment',

@@ -24,6 +24,7 @@ class CreateExtendedSamplesView extends Migration
                  `client_name`,
                  `work_name`,
                  `work_location`,
+                 `emploee_name`,
                  `sample_time`,
                  `sample_description`,
                  `sample_treatment`,
@@ -59,7 +60,9 @@ class CreateExtendedSamplesView extends Migration
                  ON `work_orders`.`work_id` = `works`.`id` 
                  LEFT JOIN `clients` 
                  ON `works`.`client_id` = `clients`.`id` 
-                 LEFT JOIN `banks` 
+                 LEFT JOIN `employees`
+                 ON `work_orders`.`employee_id` = `employees`.`id`
+                 LEFT JOIN `banks`
                  ON `samples`.`bank_id` = `banks`.`id` 
                  LEFT JOIN `purposes` 
                  ON `samples`.`purpose_id` = `purposes`.`id` 

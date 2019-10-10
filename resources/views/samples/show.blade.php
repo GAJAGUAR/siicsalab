@@ -55,6 +55,12 @@
     {{ $sample->work_location }}
   @endcomponent
   @component('components.lists.term')
+    {{ __('Personal:') }}
+  @endcomponent
+  @component('components.lists.description')
+    {{ $sample->employee_name }}
+  @endcomponent
+  @component('components.lists.term')
     {{ __('Descripción:') }}
   @endcomponent
   @component('components.lists.description')
