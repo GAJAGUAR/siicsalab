@@ -26,27 +26,27 @@
 @section('thead')
   @component('components.tables.tr')
     @component('components.tables.th')
-      @slot('class', 'text-center th-w-sm')
+      @slot('style', 'text-center th-w-sm')
       {{ __('#') }}
     @endcomponent
     @component('components.tables.th')
-      @slot('class', 'text-center text-uppercase th-w-sm')
+      @slot('style', 'text-center text-uppercase th-w-sm')
       {{ __('ot') }}
     @endcomponent
     @component('components.tables.th')
-      @slot('class', 'text-center th-w-md')
+      @slot('style', 'text-center th-w-md')
       {{ __('recibido') }}
     @endcomponent
     @component('components.tables.th')
-      @slot('class', 'text-center')
+      @slot('style', 'text-center')
       {{ __('empleo') }}
     @endcomponent
     @component('components.tables.th')
-      @slot('class', 'text-center')
+      @slot('style', 'text-center')
       {{ __('material') }}
     @endcomponent
     @component('components.tables.th')
-      @slot('class', 'text-center th-w-sm')
+      @slot('style', 'text-center th-w-sm')
       {{ __(' ') }}
     @endcomponent
   @endcomponent
@@ -56,7 +56,7 @@
   @foreach ($samples as $sample)
     @component('components.tables.tr')
       @component('components.tables.td')
-        @slot('class', 'text-center')
+        @slot('style', 'text-center')
         {{ $sample->id }}
       @endcomponent
       @component('components.tables.td')
@@ -72,7 +72,7 @@
         {{ $sample->sample_description }}
       @endcomponent
       @component('components.tables.td_detail')
-        @slot('class', 'text-center')
+        @slot('style', 'text-center')
         /samples/{{ $sample->id }}
       @endcomponent
     @endcomponent

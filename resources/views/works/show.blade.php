@@ -44,23 +44,23 @@
 @section('thead')
   @component('components.tables.tr')
     @component('components.tables.th')
-      @slot('class', 'text-center th-w-sm')
+      @slot('style', 'text-center th-w-sm')
       {{ __('#') }}
     @endcomponent
     @component('components.tables.th')
-      @slot('class', 'text-center th-w-md')
+      @slot('style', 'text-center th-w-md')
       {{ __('fecha') }}
     @endcomponent
     @component('components.tables.th')
-      @slot('class', 'text-center')
+      @slot('style', 'text-center')
       {{ __('personal') }}
     @endcomponent
     @component('components.tables.th')
-      @slot('class', 'text-center th-w-sm')
+      @slot('style', 'text-center th-w-sm')
       {{ __('ensayes') }}
     @endcomponent
     @component('components.tables.th')
-      @slot('class', 'text-center th-w-sm')
+      @slot('style', 'text-center th-w-sm')
       {{ __(' ') }}
     @endcomponent
   @endcomponent
@@ -70,7 +70,7 @@
   @foreach ($workOrders as $workOrder)
     @component('components.tables.tr')
       @component('components.tables.td')
-        @slot('class', 'text-center')
+        @slot('style', 'text-center')
         {{ $workOrder->id }}
       @endcomponent
       @component('components.tables.td')
@@ -80,11 +80,11 @@
         {{ $workOrder->employee_name }}
       @endcomponent
       @component('components.tables.td')
-        @slot('class', 'text-center')
+        @slot('style', 'text-center')
         {{ $workOrder->samples }}
       @endcomponent
       @component('components.tables.td_detail')
-        @slot('class', 'text-center')
+        @slot('style', 'text-center')
         /work_orders/{{ $workOrder->id }}
       @endcomponent
     @endcomponent

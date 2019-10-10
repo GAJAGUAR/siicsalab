@@ -12,11 +12,11 @@
   <title>{{ config('app.name', 'Sislab') }}</title>
 
   {{-- fonts --}}
-  @component('components.miscellaneous.fonts_local')
+  @component('components.miscellaneous.fonts')
   @endcomponent
 
   {{-- styles --}}
-  @component('components.miscellaneous.styles_local')
+  @component('components.miscellaneous.styles')
   @endcomponent
 </head>
 
@@ -50,7 +50,7 @@
 </div>
 
 {{-- scripts --}}
-@component('components.miscellaneous.scripts_local')
+@component('components.miscellaneous.scripts')
 @endcomponent
 </body>
 

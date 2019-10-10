@@ -1,4 +1,4 @@
-<th class="text-capitalize {{ $class ?? '' }}"
+<th class="text-capitalize {{ $style ?? '' }}"
     scope="col">
   {{ $slot }}
 </th>

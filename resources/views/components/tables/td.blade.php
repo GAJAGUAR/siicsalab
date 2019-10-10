@@ -1,3 +1,3 @@
-<td class="{{ $class ?? ''  }}">
+<td class="{{ $style ?? ''  }}">
   {{ $slot }}
 </td>
