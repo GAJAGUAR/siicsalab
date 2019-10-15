@@ -24,7 +24,7 @@ class CreateExtendedSamplesView extends Migration
                  `client_name`,
                  `work_name`,
                  `work_location`,
-                 `emploee_name`,
+                 `employee_name`,
                  `sample_time`,
                  `sample_description`,
                  `sample_treatment`,
