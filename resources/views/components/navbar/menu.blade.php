@@ -25,6 +25,11 @@
       @slot('accesskey', 'y')
       {{ __('ensayes') }}
     @endcomponent
+    @component('components.dropdowns.item')
+      @slot('url', route('employees.index'))
+      @slot('accesskey', 'p')
+      {{ __('personal') }}
+    @endcomponent
   @endcomponent
 
   {{-- dropdown new --}}
