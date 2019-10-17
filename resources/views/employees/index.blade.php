@@ -35,6 +35,10 @@
     @endcomponent
     @component('components.tables.th')
       @slot('style', 'text-center th-w-sm')
+      {{ __('ot') }}
+    @endcomponent
+    @component('components.tables.th')
+      @slot('style', 'text-center th-w-sm')
       {{ __(' ') }}
     @endcomponent
   @endcomponent
@@ -49,6 +53,10 @@
       @endcomponent
       @component('components.tables.td')
         {{ $employee->employee_name }}
+      @endcomponent
+      @component('components.tables.td')
+        @slot('style', 'text-center')
+        {{ $employee->work_orders }}
       @endcomponent
       @component('components.tables.td_detail')
         @slot('style', 'text-center')

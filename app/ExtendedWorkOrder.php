@@ -4,8 +4,6 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-use Illuminate\Support\Facades\DB;
-
 class ExtendedWorkOrder extends Model
 {
   public function indexWorkOrder()
@@ -33,8 +31,7 @@ class ExtendedWorkOrder extends Model
         'work_id',
         'work_name',
         'work_location')
-      ->where('id', $id)
-      ->first();
+      ->findOrFail($id);
   }
 
   public function workOrdersByWork(int $id)

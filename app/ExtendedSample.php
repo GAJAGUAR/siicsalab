@@ -4,8 +4,6 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-use Illuminate\Support\Facades\DB;
-
 class ExtendedSample extends Model
 {
   public function indexSample()
@@ -52,8 +50,7 @@ class ExtendedSample extends Model
       'priority_name',
       'status_name',
       'sample_url')
-    ->where('id', $id)
-    ->first();
+    ->findOrFail($id);
   }
 
   public function samplesByWorkOrder(int $id)

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Employee;
+use App\{Employee, ExtendedEmployee};
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
@@ -21,9 +21,7 @@ class EmployeeController extends Controller
    */
   public function index()
   {
-    $employees = DB::table('employees')
-      ->select('id', 'employee_name')
-      ->get();
+    $employees = (new ExtendedEmployee)->indexEmployee();
 
     return view('employees.index', [
       'employees' => $employees
