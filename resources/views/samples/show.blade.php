@@ -163,3 +163,39 @@
     {{ $sample->sample_url }}
   @endcomponent
 @endsection
+
+{{-- footer --}}
+@section('breadcrumb')
+  @component('components.breadcrumbs.item')
+    @slot('url', route('clients.index'))
+    {{ __('clientes') }}
+  @endcomponent
+  @component('components.breadcrumbs.item')
+    @slot('url', route('clients.index').'/'.$sample->client_id)
+    {{ $sample->client_id }}
+  @endcomponent
+  @component('components.breadcrumbs.item')
+    @slot('url', route('works.index'))
+    {{ __('obras') }}
+  @endcomponent
+  @component('components.breadcrumbs.item')
+  @slot('url', route('works.index').'/'.$sample->work_id)
+    {{ $sample->work_id }}
+  @endcomponent
+  @component('components.breadcrumbs.item')
+    @slot('url', route('work_orders.index'))
+    {{ __('órdenes de trabajo') }}
+  @endcomponent
+  @component('components.breadcrumbs.item')
+    @slot('url', route('work_orders.index').'/'.$sample->work_order_id)
+    {{ $sample->work_order_id }}
+  @endcomponent
+  @component('components.breadcrumbs.item')
+    @slot('url', route('samples.index'))
+    {{ __('ensayes') }}
+  @endcomponent
+  @component('components.breadcrumbs.item')
+    @slot('active', true)
+    {{ $sample->id }}
+  @endcomponent
+@endsection

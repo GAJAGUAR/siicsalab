@@ -17,10 +17,10 @@
     {{-- nav --}}
     @component('components.navs.nav')
       @component('components.buttons.close')
-        @yield('closeUrl')
+        @yield('urlToClose')
       @endcomponent
       @component('components.buttons.exit')
-        @yield('exitUrl')
+        @yield('urlToExit')
       @endcomponent
     @endcomponent
 
@@ -28,20 +28,24 @@
     @endcomponent
 
     {{-- main --}}
-    <form action="@yield('formRoute')" method="POST" id="form">
+    <form action="@yield('action')" method="POST" id="form">
       @csrf
       @method('put')
       @yield('formContent')
     </form>
-
-    @component('components.miscellaneous.hr_bottom')
-    @endcomponent
-
-    {{-- footer --}}
+    
     @component('components.buttons.save')
     @endcomponent
     @component('components.buttons.delete')
-      @yield('formRoute')
+      @yield('action')
+    @endcomponent
+
+    {{-- footer --}}
+    @component('components.miscellaneous.hr_bottom')
+    @endcomponent
+    
+    @component('components.breadcrumbs.container')
+      @yield('breadcrumb')
     @endcomponent
   @endcomponent
 @endsection

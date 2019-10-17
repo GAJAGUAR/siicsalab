@@ -90,3 +90,23 @@
     @endcomponent
   @endforeach
 @endsection
+
+{{-- footer --}}
+@section('breadcrumb')
+  @component('components.breadcrumbs.item')
+    @slot('url', route('clients.index'))
+    {{ __('clientes') }}
+  @endcomponent
+  @component('components.breadcrumbs.item')
+    @slot('url', route('clients.index').'/'.$work->client_id)
+    {{ $work->client_id }}
+  @endcomponent
+  @component('components.breadcrumbs.item')
+    @slot('url', route('works.index'))
+    {{ __('obras') }}
+  @endcomponent
+  @component('components.breadcrumbs.item')
+    @slot('active', true)
+    {{ $work->id }}
+  @endcomponent
+@endsection

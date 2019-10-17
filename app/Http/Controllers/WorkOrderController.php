@@ -86,11 +86,13 @@ class WorkOrderController extends Controller
     $workOrder = WorkOrder::findOrFail($id);
     $works = (new ExtendedWork)->workNames();
     $employees = (new Employee)->employeeNames();
+    $clientId = (new ExtendedWorkOrder)->showWorkOrder($id)->client_id;
 
     return view('work_orders.edit', [
       'workOrder' => $workOrder,
       'works' => $works,
-      'employees' => $employees
+      'employees' => $employees,
+      'clientId' => $clientId
     ]);
   }
 

@@ -121,6 +121,8 @@ class SampleController extends Controller
     $roadSides = (new ExtendedSample)->roadSideNames();
     $roadStripes = (new ExtendedSample)->roadStripeNames();
     $tests = (new ExtendedSample)->testNames();
+    $clientId = (new ExtendedSample)->showSample($id)->client_id;
+    $workId = (new ExtendedSample)->showSample($id)->work_id;
 
     return view('samples.edit', [
       'sample' => $sample,
@@ -137,7 +139,9 @@ class SampleController extends Controller
       'roadBodies' => $roadBodies,
       'roadSides' => $roadSides,
       'roadStripes' => $roadStripes,
-      'tests' => $tests
+      'tests' => $tests,
+      'clientId' => $clientId,
+      'workId' => $workId
     ]);
   }
 

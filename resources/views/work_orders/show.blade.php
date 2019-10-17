@@ -102,3 +102,31 @@
     @endcomponent
   @endforeach
 @endsection
+
+{{-- footer --}}
+@section('breadcrumb')
+  @component('components.breadcrumbs.item')
+    @slot('url', route('clients.index'))
+    {{ __('clientes') }}
+  @endcomponent
+  @component('components.breadcrumbs.item')
+    @slot('url', route('clients.index').'/'.$workOrder->client_id)
+    {{ $workOrder->client_id }}
+  @endcomponent
+  @component('components.breadcrumbs.item')
+    @slot('url', route('works.index'))
+    {{ __('obras') }}
+  @endcomponent
+  @component('components.breadcrumbs.item')
+  @slot('url', route('works.index').'/'.$workOrder->work_id)
+    {{ $workOrder->work_id }}
+  @endcomponent
+  @component('components.breadcrumbs.item')
+    @slot('url', route('work_orders.index'))
+    {{ __('órdenes de trabajo') }}
+  @endcomponent
+  @component('components.breadcrumbs.item')
+    @slot('active', true)
+    {{ $workOrder->id }}
+  @endcomponent
+@endsection

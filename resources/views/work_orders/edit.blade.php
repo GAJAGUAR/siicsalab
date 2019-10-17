@@ -1,9 +1,9 @@
 @extends('layouts.edit')
 
 @section('title', 'editar orden de trabajo')
-@section('formRoute', route('work_orders.index').'/'.$workOrder->id)
-@section('closeUrl', route('work_orders.index').'/'.$workOrder->id)
-@section('exitUrl', route('work_orders.index'))
+@section('action', route('work_orders.index').'/'.$workOrder->id)
+@section('urlToClose', route('work_orders.index').'/'.$workOrder->id)
+@section('urlToExit', route('work_orders.index'))
 @section('formContent')
 
   {{-- work id flield --}}
@@ -61,5 +61,37 @@
     @slot('value', $workOrder->work_order_date)
     @slot('textHelp', 'dateHelp')
     @slot('textDescription', 'Fecha de toma de la muestra.')
+  @endcomponent
+@endsection
+
+{{-- footer --}}
+@section('breadcrumb')
+  @component('components.breadcrumbs.item')
+    @slot('url', route('clients.index'))
+    {{ __('clientes') }}
+  @endcomponent
+  @component('components.breadcrumbs.item')
+    @slot('url', route('clients.index').'/'.$clientId)
+    {{ $clientId }}
+  @endcomponent
+  @component('components.breadcrumbs.item')
+    @slot('url', route('works.index'))
+    {{ __('obras') }}
+  @endcomponent
+  @component('components.breadcrumbs.item')
+  @slot('url', route('works.index').'/'.$workOrder->work_id)
+    {{ $workOrder->work_id }}
+  @endcomponent
+  @component('components.breadcrumbs.item')
+    @slot('url', route('work_orders.index'))
+    {{ __('órdenes de trabajo') }}
+  @endcomponent
+  @component('components.breadcrumbs.item')
+    @slot('url', route('work_orders.index').'/'.$workOrder->id)
+    {{ $workOrder->id }}
+  @endcomponent
+  @component('components.breadcrumbs.item')
+    @slot('active', true)
+    {{ __('editar') }}
   @endcomponent
 @endsection

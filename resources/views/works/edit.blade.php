@@ -1,9 +1,9 @@
 @extends('layouts.edit')
 
 @section('title', 'editar obra')
-@section('formRoute', route('works.index').'/'.$work->id)
-@section('closeUrl', route('works.index').'/'.$work->id)
-@section('exitUrl', route('works.index'))
+@section('action', route('works.index').'/'.$work->id)
+@section('urlToClose', route('works.index').'/'.$work->id)
+@section('urlToExit', route('works.index'))
 @section('formContent')
 
   {{-- client id flield --}}
@@ -55,5 +55,29 @@
     @slot('textHelp', 'locationHelp')
     @slot('maxLength', '250')
     @slot('textDescription', 'Calle, número, localidad, ciudad, estado, código postal.')
+  @endcomponent
+@endsection
+
+{{-- footer --}}
+@section('breadcrumb')
+  @component('components.breadcrumbs.item')
+    @slot('url', route('clients.index'))
+    {{ __('clientes') }}
+  @endcomponent
+  @component('components.breadcrumbs.item')
+    @slot('url', route('clients.index').'/'.$work->client_id)
+    {{ $work->client_id }}
+  @endcomponent
+  @component('components.breadcrumbs.item')
+    @slot('url', route('works.index'))
+    {{ __('obras') }}
+  @endcomponent
+  @component('components.breadcrumbs.item')
+    @slot('url', route('clients.index').'/'.$work->id)
+    {{ $work->id }}
+  @endcomponent
+  @component('components.breadcrumbs.item')
+    @slot('active', true)
+    {{ __('editar') }}
   @endcomponent
 @endsection

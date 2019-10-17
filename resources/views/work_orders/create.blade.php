@@ -1,8 +1,8 @@
 @extends('layouts.create')
 
 @section('title', 'nueva orden de trabajo')
-@section('formRoute', route('work_orders.store'))
-@section('exitUrl', route('work_orders.index'))
+@section('action', route('work_orders.store'))
+@section('urlToExit', route('work_orders.index'))
 @section('formContent')
 
   {{-- work id flield --}}
@@ -64,5 +64,17 @@
     @slot('value', old('work_order_date'))
     @slot('textHelp', 'dateHelp')
     @slot('textDescription', 'Fecha de toma de la muestra.')
+  @endcomponent
+@endsection
+
+{{-- footer --}}
+@section('breadcrumb')
+  @component('components.breadcrumbs.item')
+    @slot('url', route('work_orders.index'))
+    {{ __('órdenes de trabajo') }}
+  @endcomponent
+  @component('components.breadcrumbs.item')
+    @slot('active', true)
+    {{ __('nueva') }}
   @endcomponent
 @endsection

@@ -1,9 +1,9 @@
 @extends('layouts.edit')
 
 @section('title', 'editar ensaye')
-@section('formRoute', route('samples.index').'/'.$sample->id)
-@section('closeUrl', route('samples.index').'/'.$sample->id)
-@section('exitUrl', route('samples.index'))
+@section('action', route('samples.index').'/'.$sample->id)
+@section('urlToClose', route('samples.index').'/'.$sample->id)
+@section('urlToExit', route('samples.index'))
 @section('formContent')
   @component('components.inputs.form_row')
 
@@ -417,5 +417,45 @@
         @endcomponent
       @endforeach
     @endcomponent
+  @endcomponent
+@endsection
+
+{{-- footer --}}
+@section('breadcrumb')
+  @component('components.breadcrumbs.item')
+    @slot('url', route('clients.index'))
+    {{ __('clientes') }}
+  @endcomponent
+  @component('components.breadcrumbs.item')
+    @slot('url', route('clients.index').'/'.$clientId)
+    {{ $clientId }}
+  @endcomponent
+  @component('components.breadcrumbs.item')
+    @slot('url', route('works.index'))
+    {{ __('obras') }}
+  @endcomponent
+  @component('components.breadcrumbs.item')
+  @slot('url', route('works.index').'/'.$workId)
+    {{ $workId }}
+  @endcomponent
+  @component('components.breadcrumbs.item')
+    @slot('url', route('work_orders.index'))
+    {{ __('órdenes de trabajo') }}
+  @endcomponent
+  @component('components.breadcrumbs.item')
+    @slot('url', route('work_orders.index').'/'.$sample->work_order_id)
+    {{ $sample->work_order_id }}
+  @endcomponent
+  @component('components.breadcrumbs.item')
+    @slot('url', route('samples.index'))
+    {{ __('ensayes') }}
+  @endcomponent
+  @component('components.breadcrumbs.item')
+    @slot('url', route('samples.index').'/'.$sample->id)
+    {{ $sample->id }}
+  @endcomponent
+  @component('components.breadcrumbs.item')
+    @slot('active', true)
+    {{ __('editar') }}
   @endcomponent
 @endsection

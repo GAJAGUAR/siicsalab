@@ -41,7 +41,12 @@
       @yield('tbody')
     @endcomponent
 
+    {{-- footer --}}
     @component('components.miscellaneous.hr_bottom')
+    @endcomponent
+
+    @component('components.breadcrumbs.container')
+      @yield('breadcrumb')
     @endcomponent
   @endcomponent
 @endsection

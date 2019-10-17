@@ -26,6 +26,7 @@ class ExtendedWorkOrder extends Model
       ->select(
         'id',
         'work_order_date',
+        'client_id',
         'client_name',
         'employee_id',
         'employee_name',

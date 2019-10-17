@@ -57,3 +57,11 @@
     @endcomponent
   @endforeach
 @endsection
+
+{{-- footer --}}
+@section('breadcrumb')
+  @component('components.breadcrumbs.item')
+    @slot('active', true)
+    {{ __('personal') }}
+  @endcomponent
+@endsection

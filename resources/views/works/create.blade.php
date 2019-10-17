@@ -1,8 +1,8 @@
 @extends('layouts.create')
 
 @section('title', 'nueva obra')
-@section('formRoute', route('works.store'))
-@section('exitUrl', route('works.index'))
+@section('action', route('works.store'))
+@section('urlToExit', route('works.index'))
 @section('formContent')
 
   {{-- client id flield --}}
@@ -55,5 +55,17 @@
     @slot('textHelp', 'locationHelp')
     @slot('maxLength', '250')
     @slot('textDescription', 'Calle, número, localidad, ciudad, estado, código postal.')
+  @endcomponent
+@endsection
+
+{{-- footer --}}
+@section('breadcrumb')
+  @component('components.breadcrumbs.item')
+    @slot('url', route('works.index'))
+    {{ __('obras') }}
+  @endcomponent
+  @component('components.breadcrumbs.item')
+    @slot('active', true)
+    {{ __('nueva') }}
   @endcomponent
 @endsection

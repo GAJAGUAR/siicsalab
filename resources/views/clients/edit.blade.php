@@ -1,9 +1,9 @@
 @extends('layouts.edit')
 
 @section('title', 'editar cliente')
-@section('formRoute', route('clients.index').'/'.$client->id)
-@section('closeUrl', route('clients.index').'/'.$client->id)
-@section('exitUrl', route('clients.index'))
+@section('action', route('clients.index').'/'.$client->id)
+@section('urlToClose', route('clients.index').'/'.$client->id)
+@section('urlToExit', route('clients.index'))
 @section('formContent')
 
   {{-- client name field --}}
@@ -47,5 +47,21 @@
     @slot('textHelp', 'locationHelp')
     @slot('maxLength', '250')
     @slot('textDescription', 'Calle, número, localidad, ciudad, estado, código postal.')
+  @endcomponent
+@endsection
+
+{{-- footer --}}
+@section('breadcrumb')
+  @component('components.breadcrumbs.item')
+    @slot('url', route('clients.index'))
+    {{ __('clientes') }}
+  @endcomponent
+  @component('components.breadcrumbs.item')
+    @slot('url', route('clients.index').'/'.$client->id)
+    {{ $client->id }}
+  @endcomponent
+  @component('components.breadcrumbs.item')
+    @slot('active', true)
+    {{ __('editar') }}
   @endcomponent
 @endsection

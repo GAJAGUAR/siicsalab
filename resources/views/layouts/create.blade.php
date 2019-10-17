@@ -17,7 +17,7 @@
     {{-- nav --}}
     @component('components.navs.nav')
       @component('components.buttons.exit')
-        @yield('exitUrl')
+        @yield('urlToExit')
       @endcomponent
     @endcomponent
 
@@ -25,16 +25,19 @@
     @endcomponent
 
     {{-- main --}}
-    <form action="@yield('formRoute')" method="POST" id="form">
+    <form action="@yield('action')" method="POST" id="form">
       @csrf
       @yield('formContent')
     </form>
-
-    @component('components.miscellaneous.hr_bottom')
+    @component('components.buttons.save')
     @endcomponent
 
     {{-- footer --}}
-    @component('components.buttons.save')
+    @component('components.miscellaneous.hr_bottom')
+    @endcomponent
+
+    @component('components.breadcrumbs.container')
+      @yield('breadcrumb')
     @endcomponent
   @endcomponent
 @endsection

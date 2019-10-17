@@ -26,6 +26,7 @@ class ExtendedWork extends Model
     return $this
       ->select(
         'id',
+        'client_id',
         'client_name',
         'work_name',
         'work_nickname',

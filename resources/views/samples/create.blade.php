@@ -1,8 +1,8 @@
 @extends('layouts.create')
 
 @section('title', 'nuevo ensaye')
-@section('formRoute', route('samples.store'))
-@section('exitUrl', route('samples.index'))
+@section('action', route('samples.store'))
+@section('urlToExit', route('samples.index'))
 @section('formContent')
   @component('components.inputs.form_row')
 
@@ -416,5 +416,17 @@
         @endcomponent
       @endforeach
     @endcomponent
+  @endcomponent
+@endsection
+
+{{-- footer --}}
+@section('breadcrumb')
+  @component('components.breadcrumbs.item')
+    @slot('url', route('samples.index'))
+    {{ __('ensayes') }}
+  @endcomponent
+  @component('components.breadcrumbs.item')
+    @slot('active', true)
+    {{ __('nuevo') }}
   @endcomponent
 @endsection
