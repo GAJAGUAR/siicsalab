@@ -23,6 +23,7 @@ class CreateExtendedWorkOrdersView extends Migration
                  `work_name`,
                  `work_nickname`,
                  `work_location`,
+                 `client_id`,
                  `client_name`,
                  `employee_id`,
                  `employee_name`,
