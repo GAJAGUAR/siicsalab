@@ -13,7 +13,7 @@
     @endcomponent
 
     {{-- nav --}}
-    @component('components.navs.nav')
+    @component('components.navs.containter')
       @yield('navLinks')
     @endcomponent
 

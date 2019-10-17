@@ -15,7 +15,7 @@
     @endcomponent
 
     {{-- nav --}}
-    @component('components.navs.nav')
+    @component('components.navs.containter')
       @component('components.buttons.close')
         @yield('urlToClose')
       @endcomponent

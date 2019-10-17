@@ -9,14 +9,14 @@
     @endcomponent
 
     {{-- nav --}}
-    @component('components.navs.nav')
-      @component('components.navs.nav_link')
+    @component('components.navs.containter')
+      @component('components.navs.item')
         @slot('url')
           @yield('urlEdit')
         @endslot
         {{ __('Editar') }}
       @endcomponent
-      @component('components.navs.nav_link')
+      @component('components.navs.item')
         @slot('url')
           @yield('urlAdd')
         @endslot

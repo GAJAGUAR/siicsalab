@@ -5,13 +5,13 @@
 
 {{-- nav --}}
 @section('navLinks')
-  @component('components.navs.nav_link')
+  @component('components.navs.item')
     @slot('url')
       {{ route('work_orders.create') }}
     @endslot
     {{ __('nueva') }}
   @endcomponent
-  @component('components.navs.nav_link')
+  @component('components.navs.item')
     @slot('url')
       {{--{{ route('print.work_orders') }}--}}
     @endslot

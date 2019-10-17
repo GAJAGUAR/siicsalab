@@ -34,11 +34,11 @@
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         {{-- nav links --}}
-        @component('components.navbars.nav_links')
+        @component('components.navbar.menu')
         @endcomponent
 
         {{-- auth links --}}
-        @component('components.navbars.auth_links')
+        @component('components.navbar.auth')
         @endcomponent
       </div>
     </div>
