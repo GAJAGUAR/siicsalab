@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 class CreateExtendedEmployeesView extends Migration
@@ -37,6 +36,6 @@ class CreateExtendedEmployeesView extends Migration
    */
   public function down()
   {
-    Schema::dropIfExists('extended_employees');
+    DB::statement('DROP VIEW `extended_employees`;');
   }
 }

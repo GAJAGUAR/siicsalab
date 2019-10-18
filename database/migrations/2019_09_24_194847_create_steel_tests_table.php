@@ -7,10 +7,10 @@ use Illuminate\Database\Migrations\Migration;
 class CreateSteelTestsTable extends Migration
 {
   /**
-  * Run the migrations.
-  *
-  * @return void
-  */
+   * Run the migrations.
+   *
+   * @return void
+   */
   public function up()
   {
     Schema::disableForeignKeyConstraints();
@@ -22,6 +22,7 @@ class CreateSteelTestsTable extends Migration
       $table->collation = 'utf8mb4_spanish_ci';
       $table->smallIncrements('id');
       $table->unsignedSmallInteger('sample_id');
+      $table->unsignedSmallInteger('scale_id');
       $table->unsignedSmallInteger('steel_type_id');
       $table->unsignedSmallInteger('steel_grade_id');
       $table->unsignedSmallInteger('steel_caliber_id');
@@ -59,6 +60,11 @@ class CreateSteelTestsTable extends Migration
         ->on('samples')
         ->onDelete('cascade')
         ->onUpdate('cascade');
+      $table->foreign('scale_id')
+        ->references('id')
+        ->on('scales')
+        ->onDelete('cascade')
+        ->onUpdate('cascade');
       $table->foreign('steel_type_id')
         ->references('id')
         ->on('steel_types')
@@ -84,10 +90,10 @@ class CreateSteelTestsTable extends Migration
   }
   
   /**
-  * Reverse the migrations.
-  *
-  * @return void
-  */
+   * Reverse the migrations.
+   *
+   * @return void
+   */
   public function down()
   {
     Schema::disableForeignKeyConstraints();

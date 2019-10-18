@@ -7,10 +7,10 @@ use Illuminate\Database\Migrations\Migration;
 class CreateSteelGradesTable extends Migration
 {
   /**
-  * Run the migrations.
-  *
-  * @return void
-  */
+   * Run the migrations.
+   *
+   * @return void
+   */
   public function up()
   {
     Schema::disableForeignKeyConstraints();
@@ -31,10 +31,10 @@ class CreateSteelGradesTable extends Migration
   }
   
   /**
-  * Reverse the migrations.
-  *
-  * @return void
-  */
+   * Reverse the migrations.
+   *
+   * @return void
+   */
   public function down()
   {
     Schema::disableForeignKeyConstraints();
