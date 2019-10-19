@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\{Employee, ExtendedEmployee};
+use App\{Employee, ExtendedEmployee, ExtendedWorkOrder};
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Illuminate\Support\Facades\DB;
 
 class EmployeeController extends Controller
 {
@@ -52,12 +51,18 @@ class EmployeeController extends Controller
   /**
    * Display the specified resource.
    *
-   * @param Employee $employee
-   * @return void
+   * @param int $id
+   * @return Response
    */
-  public function show(Employee $employee)
+  public function show(int $id)
   {
-    //
+    $employee = (new ExtendedEmployee)->showEmployee($id);
+    $workOrders = (new ExtendedWorkOrder)->workOrdersByEmployee($id);
+
+    return view('employees.show', [
+      'employee' => $employee,
+      'workOrders' => $workOrders
+    ]);
   }
 
   /**

@@ -26,7 +26,11 @@ class ExtendedEmployee extends Model
     return $this
       ->select(
         'id',
+        'employee_nickname',
         'employee_name',
+        'scholarship_name',
+        'employee_birthdate',
+        'employee_gender',
         'work_orders')
       ->findOrFail($id);
   }

@@ -47,10 +47,10 @@ class CreateEmployeesTable extends Migration
             `last_name_1`,
             `last_name_2`)
           ');
-      $table->timestamp('birthdate')
+      $table->date('employee_birthdate')
         ->nullable()
         ->default(null);
-      $table->boolean('gender')
+      $table->boolean('employee_gender')
         ->nullable()
         ->default('0');
       $table->timestamps();

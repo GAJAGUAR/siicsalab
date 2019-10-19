@@ -1,9 +1,9 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Migrations\Migration;
-use Illuminate\Support\Facades\Schema;
 
-class CreateExtendedEmployeesView extends Migration
+class CreateExtendedEmployeeView extends Migration
 {
   /**
    * Run the migrations.
@@ -19,11 +19,17 @@ class CreateExtendedEmployeesView extends Migration
         SQL SECURITY DEFINER
         VIEW `extended_employees` AS
         SELECT   `employees`.`id`,
+                 `employee_nickname`,
                  `employee_name`,
+                 `scholarship_name`,
+                 `employee_birthdate`,
+                 `employee_gender`,
                  COUNT(`work_orders`.`id`) AS `work_orders`
         FROM     `employees`
                  LEFT JOIN `work_orders`
                  ON `employees`.`id` = `work_orders`.`employee_id`
+                 LEFT JOIN `scholarship`
+                 ON `employees`.`scholarship_id` = `scholarship`.`id`
         GROUP BY `employees`.`id`
         ORDER BY `employees`.`id`;
     ');

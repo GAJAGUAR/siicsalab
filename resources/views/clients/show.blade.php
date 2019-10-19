@@ -13,7 +13,7 @@
   {{ route('works.create') }}
 @endsection
 @section('textAdd')
-  {{ __('Agregar obra') }}
+  {{ __('agregar obra') }}
 @endsection
 
 {{-- main --}}

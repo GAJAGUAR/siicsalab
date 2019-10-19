@@ -46,6 +46,18 @@ class ExtendedWorkOrder extends Model
       ->get();
   }
 
+  public function workOrdersByEmployee(int $id)
+  {
+    return $this
+      ->select(
+        'id',
+        'work_order_date',
+        'work_nickname',
+        'samples')
+      ->where('employee_id', $id)
+      ->get();
+  }
+
   public function workOrderIds()
   {
     return $this

@@ -13,7 +13,7 @@
   {{ route('work_orders.create') }}
 @endsection
 @section('textAdd')
-  {{ __('Agregar orden de trabajo') }}
+  {{ __('agregar orden de trabajo') }}
 @endsection
 
 {{-- main --}}

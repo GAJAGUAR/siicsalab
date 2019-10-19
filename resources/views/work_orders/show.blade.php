@@ -13,7 +13,7 @@
   {{ route('samples.create') }}
 @endsection
 @section('textAdd')
-  {{ __('Agregar ensaye') }}
+  {{ __('agregar ensaye') }}
 @endsection
 
 {{-- main --}}
