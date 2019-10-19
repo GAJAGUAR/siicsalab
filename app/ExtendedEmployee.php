@@ -21,7 +21,7 @@ class ExtendedEmployee extends Model
       ->get();
   }
 
-  public function showEmployee(int $id)
+  public function showEmployee(Int $id)
   {
     return $this
       ->select(

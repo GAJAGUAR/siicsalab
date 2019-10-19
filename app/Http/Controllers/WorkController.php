@@ -59,10 +59,10 @@ class WorkController extends Controller
   /**
    * Display the specified resource.
    *
-   * @param int $id
+   * @param Int $id
    * @return Response
    */
-  public function show(int $id)
+  public function show(Int $id)
   {
     $work = (new ExtendedWork)->showWork($id);
     $workOrders = (new ExtendedWorkOrder)->workOrdersByWork($id);
@@ -76,10 +76,10 @@ class WorkController extends Controller
   /**
    * Show the form for editing the specified resource.
    *
-   * @param int $id
+   * @param Int $id
    * @return Response
    */
-  public function edit(int $id)
+  public function edit(Int $id)
   {
     $work = Work::findOrFail($id);
     $clients = (new ExtendedClient)->clientNames();
@@ -94,10 +94,10 @@ class WorkController extends Controller
    * Update the specified resource in storage.
    *
    * @param WorkFormRequest $request
-   * @param int $id
+   * @param Int $id
    * @return Response
    */
-  public function update(WorkFormRequest $request, int $id)
+  public function update(WorkFormRequest $request, Int $id)
   {
     $request->validated();
     $work = Work::findOrFail($id);
@@ -109,10 +109,10 @@ class WorkController extends Controller
   /**
    * Remove the specified resource from storage.
    *
-   * @param int $id
+   * @param Int $id
    * @return Response
    */
-  public function destroy(int $id)
+  public function destroy(Int $id)
   {
     Work::findOrFail($id)->delete();
     return redirect('/works')->with('status', 'Registro eliminado exitosamente');

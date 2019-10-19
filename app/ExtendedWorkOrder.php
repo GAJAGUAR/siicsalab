@@ -18,7 +18,7 @@ class ExtendedWorkOrder extends Model
       ->get();
   }
 
-  public function showWorkOrder(int $id)
+  public function showWorkOrder(Int $id)
   {
     return $this
       ->select(
@@ -34,7 +34,7 @@ class ExtendedWorkOrder extends Model
       ->findOrFail($id);
   }
 
-  public function workOrdersByWork(int $id)
+  public function workOrdersByWork(Int $id)
   {
     return $this
       ->select(
@@ -46,7 +46,7 @@ class ExtendedWorkOrder extends Model
       ->get();
   }
 
-  public function workOrdersByEmployee(int $id)
+  public function workOrdersByEmployee(Int $id)
   {
     return $this
       ->select(

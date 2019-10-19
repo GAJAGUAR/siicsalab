@@ -18,7 +18,7 @@ class ExtendedSample extends Model
     ->get();
   }
 
-  public function showSample(int $id)
+  public function showSample(Int $id)
   {
     return $this
     ->select(
@@ -53,7 +53,7 @@ class ExtendedSample extends Model
     ->findOrFail($id);
   }
 
-  public function samplesByWorkOrder(int $id)
+  public function samplesByWorkOrder(Int $id)
   {
     return $this
     ->select(

@@ -21,7 +21,7 @@ class ExtendedClient extends Model
       ->get();
   }
 
-  public function showClient(int $id)
+  public function showClient(Int $id)
   {
     return $this
       ->select(

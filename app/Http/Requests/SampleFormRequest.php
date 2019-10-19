@@ -24,11 +24,11 @@ class SampleFormRequest extends FormRequest
   public function rules()
   {
     return [
-      'id' => 'required|integer',
-      'work_order_id' => 'required|integer',
-      'bank_id' => 'nullable|integer',
-      'purpose_id' => 'required|integer',
-      'weather_id' => 'nullable|integer',
+      'id' => 'required|integer|min:1',
+      'work_order_id' => 'required|integer|min:1',
+      'bank_id' => 'nullable|integer|min:1',
+      'purpose_id' => 'required|integer|min:1',
+      'weather_id' => 'nullable|integer|min:1',
       'priority_id' => 'required|integer|min:1|max:3',
       'status_id' => 'required|integer|min:1|max:5',
       'sample_time' => 'required',

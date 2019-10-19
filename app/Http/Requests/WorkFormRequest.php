@@ -24,7 +24,7 @@ class WorkFormRequest extends FormRequest
   public function rules()
   {
     return [
-      'client_id' => 'required',
+      'client_id' => 'required|integer|min:1',
       'work_name' => 'required|min:5|max:750',
       'work_nickname' => 'required|min:3|max:50',
       'work_location' => 'required|min:5|max:250'

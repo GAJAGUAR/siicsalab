@@ -61,10 +61,10 @@ class WorkOrderController extends Controller
   /**
    * Display the specified resource.
    *
-   * @param int $id
+   * @param Int $id
    * @return Response
    */
-  public function show(int $id)
+  public function show(Int $id)
   {
     $workOrder = (new ExtendedWorkOrder)->showWorkOrder($id);
     $samples = (new ExtendedSample)->samplesByWorkOrder($id);
@@ -78,10 +78,10 @@ class WorkOrderController extends Controller
   /**
    * Show the form for editing the specified resource.
    *
-   * @param int $id
+   * @param Int $id
    * @return Response
    */
-  public function edit(int $id)
+  public function edit(Int $id)
   {
     $workOrder = WorkOrder::findOrFail($id);
     $works = (new ExtendedWork)->workNames();
@@ -100,10 +100,10 @@ class WorkOrderController extends Controller
    * Update the specified resource in storage.
    *
    * @param WorkOrderFormRequest $request
-   * @param int $id
+   * @param Int $id
    * @return Response
    */
-  public function update(WorkOrderFormRequest $request, int $id)
+  public function update(WorkOrderFormRequest $request, Int $id)
   {
     $request->validated();
     $workOrder = WorkOrder::findOrFail($id);

@@ -86,10 +86,10 @@ class SampleController extends Controller
   /**
    * Display the specified resource.
    *
-   * @param int $id
+   * @param Int $id
    * @return Response
    */
-  public function show(int $id)
+  public function show(Int $id)
   {
     $sample = (new ExtendedSample)->showSample($id);
 
@@ -101,10 +101,10 @@ class SampleController extends Controller
   /**
    * Show the form for editing the specified resource.
    *
-   * @param int $id
+   * @param Int $id
    * @return Response
    */
-  public function edit(int $id)
+  public function edit(Int $id)
   {
     $sample = Sample::findOrFail($id);
     $workOrders = (new ExtendedWorkOrder)->workOrderIds();
@@ -149,10 +149,10 @@ class SampleController extends Controller
    * Update the specified resource in storage.
    *
    * @param SampleFormRequest $request
-   * @param int $id
+   * @param Int $id
    * @return Response
    */
-  public function update(SampleFormRequest $request, int $id)
+  public function update(SampleFormRequest $request, Int $id)
   {
     $request->validated();
     $sample = Sample::findOrFail($id);
@@ -164,10 +164,10 @@ class SampleController extends Controller
   /**
    * Remove the specified resource from storage.
    *
-   * @param int $id
+   * @param Int $id
    * @return Response
    */
-  public function destroy(int $id)
+  public function destroy(Int $id)
   {
     Sample::findOrFail($id)->delete();
     return redirect('/samples')->with('status', 'Registro eliminado exitosamente');

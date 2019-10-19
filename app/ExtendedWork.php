@@ -21,7 +21,7 @@ class ExtendedWork extends Model
       ->get();
   }
 
-  public function showWork(int $id)
+  public function showWork(Int $id)
   {
     return $this
       ->select(
@@ -34,7 +34,7 @@ class ExtendedWork extends Model
       ->findOrFail($id);
   }
 
-  public function worksByClient(int $id)
+  public function worksByClient(Int $id)
   {
     return $this
       ->select(

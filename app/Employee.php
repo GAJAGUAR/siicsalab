@@ -6,6 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Employee extends Model
 {
+  public function scholarship()
+  {
+    return $this->belongsTo(Scholarship::class);
+  }
+
   public function workOrders()
   {
     return $this->hasMany(WorkOrder::class);
@@ -16,11 +21,6 @@ class Employee extends Model
     return $this
       ->select('id', 'employee_name')
       ->get();
-  }
-
-  public function showEmployee(int $id)
-  {
-    //
   }
 
   public function employeeNames()

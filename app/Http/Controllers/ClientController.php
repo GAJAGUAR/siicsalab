@@ -55,10 +55,10 @@ class ClientController extends Controller
   /**
    * Display the specified resource.
    *
-   * @param int $id
+   * @param Int $id
    * @return Response
    */
-  public function show(int $id)
+  public function show(Int $id)
   {
     $client = (new ExtendedClient)->showClient($id);
     $works = (new ExtendedWork)->worksByClient($id);
@@ -72,10 +72,10 @@ class ClientController extends Controller
   /**
    * Show the form for editing the specified resource.
    *
-   * @param int $id
+   * @param Int $id
    * @return Response
    */
-  public function edit(int $id)
+  public function edit(Int $id)
   {
     $client = (new ExtendedClient)->showClient($id);
 
@@ -88,10 +88,10 @@ class ClientController extends Controller
    * Update the specified resource in storage.
    *
    * @param ClientFormRequest $request
-   * @param int $id
+   * @param Int $id
    * @return Response
    */
-  public function update(ClientFormRequest $request, int $id)
+  public function update(ClientFormRequest $request, Int $id)
   {
     $request->validated();
     $client = Client::findOrFail($id);
@@ -103,10 +103,10 @@ class ClientController extends Controller
   /**
    * Remove the specified resource from storage.
    *
-   * @param int $id
+   * @param Int $id
    * @return Response
    */
-  public function destroy(int $id)
+  public function destroy(Int $id)
   {
     Client::findOrFail($id)->delete();
     return redirect('/clients')->with('status', 'Registro eliminado exitosamente');

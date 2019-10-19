@@ -24,7 +24,7 @@ class WorkOrderFormRequest extends FormRequest
   public function rules()
   {
     return [
-      'id' => 'required|integer',
+      'id' => 'required|integer|min:1',
       'work_id' => 'required|integer',
       'employee_id' => 'required|integer',
       'work_order_date' => 'required|date|before:tomorrow'

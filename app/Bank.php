@@ -28,7 +28,7 @@ class Bank extends Model
       ->get();
   }
 
-  public function showBank(int $id)
+  public function showBank(Int $id)
   {
     //
   }

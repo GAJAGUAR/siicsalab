@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
  * @property mixed client_nickname
  * @property mixed client_register
  * @property mixed client_location
- * @method static findOrFail(int $id)
+ * @method static findOrFail(Int $id)
  */
 class Client extends Model
 {
