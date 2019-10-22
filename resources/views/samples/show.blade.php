@@ -164,6 +164,8 @@
   @endcomponent
 @endsection
 
+@section('tbody', 'empty')
+
 {{-- footer --}}
 @section('breadcrumb')
   @component('components.breadcrumbs.item')

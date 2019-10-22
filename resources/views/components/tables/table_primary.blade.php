@@ -1,4 +1,5 @@
-@if($slot != '')
+@if($slot == 'empty')
+@else
   <div class="table-responsive">
     <table class="table table-sm table-striped table-hover" id="table-primary">
       <thead>

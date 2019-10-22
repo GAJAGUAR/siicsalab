@@ -22,9 +22,6 @@
 
     {{-- main --}}
     @component('components.tables.table_primary')
-      @slot('responsive')
-        @yield('responsive')
-      @endslot
       @slot('thead')
         @yield('thead')
       @endslot
