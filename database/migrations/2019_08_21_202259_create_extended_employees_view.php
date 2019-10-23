@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateExtendedEmployeeView extends Migration
+class CreateExtendedEmployeesView extends Migration
 {
   /**
    * Run the migrations.
@@ -21,6 +21,7 @@ class CreateExtendedEmployeeView extends Migration
         SELECT   `employees`.`id`,
                  `employee_nickname`,
                  `employee_name`,
+                 `position_name`,
                  `scholarship_name`,
                  `employee_birthdate`,
                  `employee_gender`,
@@ -30,6 +31,8 @@ class CreateExtendedEmployeeView extends Migration
                  ON `employees`.`id` = `work_orders`.`employee_id`
                  LEFT JOIN `scholarship`
                  ON `employees`.`scholarship_id` = `scholarship`.`id`
+                 LEFT JOIN `positions`
+                 ON `employees`.`position_id` = `positions`.`id`
         GROUP BY `employees`.`id`
         ORDER BY `employees`.`id`;
     ');

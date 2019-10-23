@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
  * @property mixed work_name
  * @property mixed work_nickname
  * @property mixed work_location
+ * @method static findOrFail(Int $id)
  */
 class Work extends Model
 {

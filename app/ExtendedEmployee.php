@@ -17,6 +17,7 @@ class ExtendedEmployee extends Model
       ->select(
         'id',
         'employee_name',
+        'position_name',
         'work_orders')
       ->get();
   }
@@ -28,10 +29,10 @@ class ExtendedEmployee extends Model
         'id',
         'employee_nickname',
         'employee_name',
+        'position_name',
         'scholarship_name',
         'employee_birthdate',
-        'employee_gender',
-        'work_orders')
+        'employee_gender')
       ->findOrFail($id);
   }
 }

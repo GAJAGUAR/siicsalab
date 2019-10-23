@@ -25,13 +25,19 @@
     {{ $employee->employee_name }}
   @endcomponent
   @component('components.lists.term')
+    {{ __('Cargo:') }}
+  @endcomponent
+  @component('components.lists.description')
+    {{ $employee->position_name }}
+  @endcomponent
+  @component('components.lists.term')
     {{ __('Escolaridad:') }}
   @endcomponent
   @component('components.lists.description')
     {{ $employee->scholarship_name }}
   @endcomponent
   @component('components.lists.term')
-    {{ __('Cumpleaños:') }}
+    {{ __('Nacimiento:') }}
   @endcomponent
   @component('components.lists.description')
     {{ $employee->employee_birthdate }}
@@ -95,7 +101,7 @@
       @endcomponent
       @component('components.tables.td_detail')
         @slot('style', 'text-center')
-        /employee_orders/{{ $workOrder->id }}
+        {{ route('work_orders.index').'/'.$workOrder->id }}
       @endcomponent
     @endcomponent
   @endforeach

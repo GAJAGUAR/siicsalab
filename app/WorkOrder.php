@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\DB;
  * @property mixed work_id
  * @property mixed employee_id
  * @property mixed work_order_date
+ * @method static findOrFail(Int $id)
  */
 class WorkOrder extends Model
 {

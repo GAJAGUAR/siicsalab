@@ -38,6 +38,7 @@ use Illuminate\Support\Facades\DB;
  * @property mixed sample_longitude
  * @property mixed sketch_file
  * @property mixed stratigraphic_file
+ * @method static findOrFail(Int $id)
  */
 class Sample extends Model
 {

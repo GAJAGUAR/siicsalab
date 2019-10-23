@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\{Employee, ExtendedEmployee, ExtendedWorkOrder, Scholarship};
+use App\{Employee, ExtendedEmployee, ExtendedWorkOrder, Scholarship, Position};
 use App\Http\Requests\EmployeeFormRequest;
 use Illuminate\Http\Response;
 
@@ -34,10 +34,12 @@ class EmployeeController extends Controller
    */
   public function create()
   {
-    $scholarship = (new Scholarship)->scholarshipNames();
+    $scholarships = (new Scholarship)->scholarshipNames();
+    $positions = (new Position)->positionNames();
 
     return view('employees.create', [
-      'scholarship' => $scholarship
+      'scholarships' => $scholarships,
+      'positions' => $positions
     ]);
   }
 
@@ -47,7 +49,7 @@ class EmployeeController extends Controller
    * @param EmployeeFormRequest $request
    * @return Response
    */
-  public function store(Request $request)
+  public function store(EmployeeFormRequest $request)
   {
     $request->validated();
     $employee = new Employee();
@@ -82,11 +84,13 @@ class EmployeeController extends Controller
   public function edit(Int $id)
   {
     $employee = Employee::findOrFail($id);
-    $scholarship = (new Scholarship)->scholarshipNames();
+    $scholarships = (new Scholarship)->scholarshipNames();
+    $positions = (new Position)->positionNames();
 
     return view('employees.edit', [
       'employee' => $employee,
-      'scholarship' => $scholarship
+      'scholarships' => $scholarships,
+      'positions' => $positions
     ]);
   }
 
@@ -114,7 +118,7 @@ class EmployeeController extends Controller
    */
   public function destroy(Int $id)
   {
-    Work::findOrFail($id)->delete();
+    Employee::findOrFail($id)->delete();
     return redirect('/works')->with('status', 'Registro eliminado exitosamente');
   }
 }

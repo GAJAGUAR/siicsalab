@@ -53,6 +53,10 @@
       @slot('url', route('samples.create'))
       {{ __('ensaye') }}
     @endcomponent
+    @component('components.dropdowns.item')
+      @slot('url', route('employees.create'))
+      {{ __('personal') }}
+    @endcomponent
   @endcomponent
 
   {{-- pendings --}}

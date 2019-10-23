@@ -21,9 +21,12 @@ class CreateEmployeesTable extends Migration
       $table->charset = 'utf8mb4';
       $table->collation = 'utf8mb4_spanish_ci';
       $table->smallIncrements('id');
+      $table->unsignedSmallInteger('position_id')
+        ->nullable()
+        ->default(null);
       $table->unsignedSmallInteger('scholarship_id')
         ->nullable()
-        ->default('00005');
+        ->default(null);
       $table->string('employee_nickname', 30);
       $table->string('employee_title', 5)
         ->nullable()
@@ -36,12 +39,10 @@ class CreateEmployeesTable extends Migration
       $table->string('last_name_2', 15)
         ->nullable()
         ->default(null);
-      $table->string('position', 30)
-        ->nullable()
-        ->default(null);
       $table->string('employee_name', 70)
         ->virtualAs('
           CONCAT_WS(" ",
+            `employee_title`,
             `first_name_1`,
             `first_name_2`,
             `last_name_1`,
@@ -62,6 +63,11 @@ class CreateEmployeesTable extends Migration
       $table->foreign('scholarship_id')
         ->references('id')
         ->on('scholarship')
+        ->onDelete('cascade')
+        ->onUpdate('cascade');
+      $table->foreign('position_id')
+        ->references('id')
+        ->on('positions')
         ->onDelete('cascade')
         ->onUpdate('cascade');
     });
