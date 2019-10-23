@@ -13,7 +13,10 @@
     @slot('textHelp', 'workHelp')
     @slot('autofocus', 'true')
     @slot('textDescription', 'Lugar dónde se llevarán a cabo los trabajos.')
-    <option>Seleccionar</option>
+    @component('components.inputs.option')
+      @slot('value', '')
+      {{ __('Seleccionar') }}
+    @endcomponent
     @foreach ($works as $work)
       @component('components.inputs.option')
         @slot('value')
@@ -43,7 +46,10 @@
     @slot('value', old('employee_id'))
     @slot('textHelp', 'workHelp')
     @slot('textDescription', 'Lugar dónde se llevarán a cabo los trabajos.')
-    <option>Seleccionar</option>
+    @component('components.inputs.option')
+      @slot('value', '')
+      {{ __('Seleccionar') }}
+    @endcomponent
     @foreach ($employees as $employee)
       @component('components.inputs.option')
         @slot('value')

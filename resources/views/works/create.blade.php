@@ -12,7 +12,10 @@
     @slot('textHelp', 'clientHelp')
     @slot('autofocus', 'true')
     @slot('textDescription', 'Encargado de llevar a cabo los trabajos.')
-    <option>Seleccionar</option>
+    @component('components.inputs.option')
+      @slot('value', '')
+      {{ __('Seleccionar') }}
+    @endcomponent
     @foreach ($clients as $client)
       @component('components.inputs.option')
         @slot('value')

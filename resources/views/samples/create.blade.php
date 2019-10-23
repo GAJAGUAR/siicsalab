@@ -15,7 +15,10 @@
       @slot('textHelp', 'workOrderHelp')
       @slot('autofocus', 'true')
       @slot('textDescription', 'Orden de trabajo a la que pertenece el ensaye.')
-      <option value="">Seleccionar</option>
+      @component('components.inputs.option')
+        @slot('value', '')
+        {{ __('Seleccionar') }}
+      @endcomponent
       @foreach ($workOrders as $workOrder)
         @component('components.inputs.option')
           @slot('value')
@@ -244,7 +247,10 @@
     @slot('value', old('bank_id'))
     @slot('textHelp', 'bankHelp')
     @slot('textDescription', 'Banco de donde procede el material.')
-    <option value="">Seleccionar</option>
+    @component('components.inputs.option')
+      @slot('value', '')
+      {{ __('Seleccionar') }}
+    @endcomponent
     @foreach ($banks as $bank)
       @component('components.inputs.option')
         @slot('value')
@@ -265,7 +271,10 @@
     @slot('value', old('purpose_id'))
     @slot('textHelp', 'purposeHelp')
     @slot('textDescription', 'Empleo que se le dará al material.')
-    <option value="">Seleccionar</option>
+    @component('components.inputs.option')
+      @slot('value', '')
+      {{ __('Seleccionar') }}
+    @endcomponent
     @foreach ($purposes as $purpose)
       @component('components.inputs.option')
         @slot('value')
@@ -328,7 +337,10 @@
     @slot('value', old('weather_id'))
     @slot('textHelp', 'weatherHelp')
     @slot('textDescription', 'Condiciones climáticas al momento de tomar la muestra.')
-    <option value="">Seleccionar</option>
+    @component('components.inputs.option')
+      @slot('value', '')
+      {{ __('Seleccionar') }}
+    @endcomponent
     @foreach ($weathers as $weather)
       @component('components.inputs.option')
         @slot('value')
@@ -381,7 +393,10 @@
       @slot('value', old('priority_id'))
       @slot('textHelp', 'priorityHelp')
       @slot('textDescription', 'Relevancia con respecto de los demás trabajos.')
-      <option value="">Seleccionar</option>
+      @component('components.inputs.option')
+        @slot('value', '')
+        {{ __('Seleccionar') }}
+      @endcomponent
       @foreach ($priorities as $priority)
         @component('components.inputs.option')
           @slot('value')
@@ -403,7 +418,10 @@
       @slot('value', old('status_id'))
       @slot('textHelp', 'statusHelp')
       @slot('textDescription', 'Empleo que se le dará al material.')
-      <option value="">Seleccionar</option>
+      @component('components.inputs.option')
+        @slot('value', '')
+        {{ __('Seleccionar') }}
+      @endcomponent
       @foreach ($statuses as $status)
         @component('components.inputs.option')
           @slot('value')

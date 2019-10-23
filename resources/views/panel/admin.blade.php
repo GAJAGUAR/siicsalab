@@ -5,7 +5,7 @@
 
     {{-- header --}}
     @component('components.headings.title')
-      {{ __('Dashboard') }}
+      {{ __('panel de control') }}
     @endcomponent
 
     {{-- nav --}}
@@ -18,7 +18,7 @@
 
     {{-- main --}}
     <div class="card-deck mt-4">
-      <div class="card shadow-sm">
+      <div class="card shadow-sm border-left-primary-lg">
         <div class="card-body">
           <h2 class="card-title mb-2 text-capitalize">{{ __('32 clientes totales') }}</h2>
           <h3 class="card-subtitle mb-2 text-muted">{{ __('25 activos') }}</h3>
@@ -29,7 +29,7 @@
         </div>
       </div>
 
-      <div class="card shadow">
+      <div class="card shadow border-left-primary-lg">
         <div class="card-body">
           <h2 class="card-title mb-2 text-capitalize">{{ __('36 obras totales') }}</h2>
           <h3 class="card-subtitle mb-2 text-muted">{{ __('28 activas') }}</h3>
@@ -40,7 +40,7 @@
         </div>
       </div>
 
-      <div class="card shadow-lg">
+      <div class="card shadow-lg border-left-primary-lg">
         <div class="card-body">
           <h2 class="card-title mb-2 text-capitalize">{{ __('51 órdenes de trabajo totales') }}</h2>
           <h3 class="card-subtitle mb-2 text-muted">{{ __('42 activas') }}</h3>
