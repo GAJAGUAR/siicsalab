@@ -27,8 +27,8 @@ class CreateWorkOrdersTable extends Migration
       $table->timestamps();
 
       // Indexes
-      $table->index('employee_id');
       $table->index('work_id');
+      $table->index('employee_id');
 
       // Foreign keys
       $table->foreign('work_id')

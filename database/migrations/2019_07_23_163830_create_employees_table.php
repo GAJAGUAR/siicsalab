@@ -58,6 +58,7 @@ class CreateEmployeesTable extends Migration
 
       // Indexes
       $table->index('scholarship_id');
+      $table->index('position_id');
 
       // Foreign keys
       $table->foreign('scholarship_id')

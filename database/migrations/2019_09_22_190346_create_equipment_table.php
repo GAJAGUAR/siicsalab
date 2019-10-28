@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSievesTable extends Migration
+class CreateEquipmentTable extends Migration
 {
   /**
    * Run the migrations.
@@ -14,39 +14,46 @@ class CreateSievesTable extends Migration
   public function up()
   {
     Schema::disableForeignKeyConstraints();
-    Schema::create('sieves', function (Blueprint $table) {
+    Schema::create('equipment', function (Blueprint $table) {
       
       // DDL
       $table->engine = 'InnoDB';
       $table->charset = 'utf8mb4';
       $table->collation = 'utf8mb4_spanish_ci';
       $table->smallIncrements('id');
-      $table->unsignedSmallInteger('equipment_id');
-      $table->unsignedSmallInteger('opening_id');
-      $table->decimal('sieve_diameter', 3, 1)
+      $table->unsignedSmallInteger('equipment_type_id');
+      $table->unsignedSmallInteger('unit_id')
         ->nullable()
         ->default(null);
-      $table->date('sieve_verified_at')
+      $table->string('equipment_name');
+      $table->unsignedSmallInteger('equipment_capacity')
         ->nullable()
         ->default(null);
-      $table->date('sieve_valid_to')
+      $table->decimal('equipment_precision', 5, 3)
         ->nullable()
         ->default(null);
+      $table->string('equipment_trademark', 25)
+        ->nullable()
+        ->default(null);
+      $table->boolean('equipment_digital')
+        ->nullable()
+        ->default('0');
       $table->timestamps();
 
       // Indexes
-      $table->index('equipment_id');
-      $table->index('opening_id');
+      $table->index('equipment_type_id');
+      $table->index('unit_id');
+      $table->unique('equipment_name');
 
       // Foreign keys
-      $table->foreign('equipment_id')
+      $table->foreign('equipment_type_id')
         ->references('id')
-        ->on('equipment')
+        ->on('equipment_types')
         ->onDelete('cascade')
         ->onUpdate('cascade');
-      $table->foreign('opening_id')
+      $table->foreign('unit_id')
         ->references('id')
-        ->on('openings')
+        ->on('units')
         ->onDelete('cascade')
         ->onUpdate('cascade');
     });
@@ -61,7 +68,7 @@ class CreateSievesTable extends Migration
   public function down()
   {
     Schema::disableForeignKeyConstraints();
-    Schema::dropIfExists('sieves');
+    Schema::dropIfExists('equipment');
     Schema::enableForeignKeyConstraints();
   }
 }

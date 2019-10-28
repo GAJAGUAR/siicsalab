@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateScalesTable extends Migration
+class CreateEquipmentTypesTable extends Migration
 {
   /**
    * Run the migrations.
@@ -14,31 +14,18 @@ class CreateScalesTable extends Migration
   public function up()
   {
     Schema::disableForeignKeyConstraints();
-    Schema::create('scales', function (Blueprint $table) {
+    Schema::create('equipment_types', function (Blueprint $table) {
       
       // DDL
       $table->engine = 'InnoDB';
       $table->charset = 'utf8mb4';
       $table->collation = 'utf8mb4_spanish_ci';
       $table->smallIncrements('id');
-      $table->unsignedSmallInteger('equipment_id');
-      $table->date('scale_verified_at')
-        ->nullable()
-        ->default(null);
-      $table->date('scale_valid_to')
-        ->nullable()
-        ->default(null);
+      $table->string('equipment_type_name', 25);
       $table->timestamps();
 
       // Indexes
-      $table->index('equipment_id');
-
-      // Foreign keys
-      $table->foreign('equipment_id')
-        ->references('id')
-        ->on('equipment')
-        ->onDelete('cascade')
-        ->onUpdate('cascade');
+      $table->unique('equipment_type_name');
     });
     Schema::enableForeignKeyConstraints();
   }
@@ -51,7 +38,7 @@ class CreateScalesTable extends Migration
   public function down()
   {
     Schema::disableForeignKeyConstraints();
-    Schema::dropIfExists('scales');
+    Schema::dropIfExists('equipment_types');
     Schema::enableForeignKeyConstraints();
   }
 }

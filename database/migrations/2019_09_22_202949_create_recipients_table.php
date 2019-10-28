@@ -21,18 +21,12 @@ class CreateRecipientsTable extends Migration
       $table->charset = 'utf8mb4';
       $table->collation = 'utf8mb4_spanish_ci';
       $table->smallIncrements('id');
+      $table->unsignedSmallInteger('equipment_id');
       $table->unsignedSmallInteger('scale_id');
-      $table->string('recipient_name', 6);
       $table->decimal('recipient_mass_a', 5, 1)
         ->nullable()
         ->default(null);
       $table->decimal('recipient_mass_b', 5, 1)
-        ->nullable()
-        ->default(null);
-      $table->unsignedSmallInteger('recipient_capacity')
-        ->nullable()
-        ->default(null);
-      $table->string('recipient_trademark', 25)
         ->nullable()
         ->default(null);
       $table->date('recipient_verified_at')
@@ -44,10 +38,15 @@ class CreateRecipientsTable extends Migration
       $table->timestamps();
 
       // Indexes
+      $table->index('equipment_id');
       $table->index('scale_id');
-      $table->unique('recipient_name');
 
       // Foreign keys
+      $table->foreign('equipment_id')
+        ->references('id')
+        ->on('equipment')
+        ->onDelete('cascade')
+        ->onUpdate('cascade');
       $table->foreign('scale_id')
         ->references('id')
         ->on('scales')
