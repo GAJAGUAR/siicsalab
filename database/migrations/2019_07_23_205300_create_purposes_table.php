@@ -22,6 +22,9 @@ class CreatePurposesTable extends Migration
       $table->collation = 'utf8mb4_spanish_ci';
       $table->smallIncrements('id');
       $table->string('purpose_name', 100);
+      $table->string('purpose_standards', 100)
+        ->nullable()
+        ->default(null);
       $table->timestamps();
 
       // Indexes
