@@ -21,20 +21,7 @@ class CreateScalesTable extends Migration
       $table->charset = 'utf8mb4';
       $table->collation = 'utf8mb4_spanish_ci';
       $table->smallIncrements('id');
-      $table->unsignedSmallInteger('unit_id');
-      $table->string('scale_name', 6);
-      $table->unsignedSmallInteger('scale_capacity')
-        ->nullable()
-        ->default(null);
-      $table->decimal('scale_precision', 5, 3)
-        ->nullable()
-        ->default(null);
-      $table->boolean('scale_type')
-        ->nullable()
-        ->default('0');
-      $table->string('scale_trademark', 25)
-        ->nullable()
-        ->default(null);
+      $table->unsignedSmallInteger('equipment_id');
       $table->date('scale_verified_at')
         ->nullable()
         ->default(null);
@@ -44,12 +31,12 @@ class CreateScalesTable extends Migration
       $table->timestamps();
 
       // Indexes
-      $table->unique('scale_name');
+      $table->index('equipment_id');
 
       // Foreign keys
-      $table->foreign('unit_id')
+      $table->foreign('equipment_id')
         ->references('id')
-        ->on('units')
+        ->on('equipment')
         ->onDelete('cascade')
         ->onUpdate('cascade');
     });
