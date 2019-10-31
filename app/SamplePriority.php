@@ -4,21 +4,19 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-use Illuminate\Http\Request;
-
-class Purpose extends Model
+class SamplePriority extends Model
 {
   public function samples()
   {
     return $this->hasMany(Sample::class);
   }
 
-  public function purposeNames()
+  public function priorityNames()
   {
     return $this
       ->select(
         'id',
-        'purpose_name')
+        'sample_priority_name')
       ->get();
   }
 }

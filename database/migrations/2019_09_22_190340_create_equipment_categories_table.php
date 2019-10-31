@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateOpeningsTable extends Migration
+class CreateEquipmentCategoriesTable extends Migration
 {
   /**
    * Run the migrations.
@@ -14,20 +14,18 @@ class CreateOpeningsTable extends Migration
   public function up()
   {
     Schema::disableForeignKeyConstraints();
-    Schema::create('openings', function (Blueprint $table) {
-
+    Schema::create('equipment_categories', function (Blueprint $table) {
+      
       // DDL
       $table->engine = 'InnoDB';
       $table->charset = 'utf8mb4';
       $table->collation = 'utf8mb4_spanish_ci';
       $table->smallIncrements('id');
-      $table->string('opening_designation', 25);
-      $table->decimal('opening_dimension', 5, 3);
+      $table->string('equipment_category_name', 25);
       $table->timestamps();
 
       // Indexes
-      $table->unique('opening_designation');
-      $table->unique('opening_dimension');
+      $table->unique('equipment_category_name');
     });
     Schema::enableForeignKeyConstraints();
   }
@@ -40,7 +38,7 @@ class CreateOpeningsTable extends Migration
   public function down()
   {
     Schema::disableForeignKeyConstraints();
-    Schema::dropIfExists('openings');
+    Schema::dropIfExists('equipment_categories');
     Schema::enableForeignKeyConstraints();
   }
 }

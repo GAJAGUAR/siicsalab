@@ -27,10 +27,10 @@ class SampleFormRequest extends FormRequest
       'id' => 'required|integer|min:1',
       'work_order_id' => 'required|integer|min:1',
       'bank_id' => 'nullable|integer|min:1',
-      'purpose_id' => 'required|integer|min:1',
-      'weather_id' => 'nullable|integer|min:1',
-      'priority_id' => 'required|integer|min:1|max:3',
-      'status_id' => 'required|integer|min:1|max:5',
+      'sample_purpose_id' => 'required|integer|min:1',
+      'sample_weather_id' => 'nullable|integer|min:1',
+      'sample_priority_id' => 'required|integer|min:1|max:3',
+      'sample_status_id' => 'required|integer|min:1|max:5',
       'sample_time' => 'required',
       'sample_description' => 'required|min:5|max:250',
       'sample_treatment' => 'nullable|min:5|max:100',
@@ -42,15 +42,15 @@ class SampleFormRequest extends FormRequest
       'sample_road_body' => 'nullable|max:20',
       'sample_road_side' => 'nullable|max:20',
       'sample_road_stripe' => 'nullable|max:20',
-      'phreatic_level' => 'nullable|max:4',
+      'sample_phreatic_level' => 'nullable|max:4',
       'sampling_seq' => 'nullable|numeric|min:1',
-      'env_temp' => 'nullable|numeric|min:1|max:50',
+      'sampling_env_temp' => 'nullable|numeric|min:1|max:50',
       'sample_seq' => 'nullable|numeric|min:1',
       'sample_tests' => 'nullable|max:100',
       'sample_notes' => 'nullable|max:500',
       'sample_receipt_date' => 'required|date|before:tomorrow',
-      'sketch_file' => 'nullable|url|max:50',
-      'stratigraphic_file' => 'nullable|url|max:50'
+      'sample_sketch_file' => 'nullable|url|max:50',
+      'sample_stratigraphic_file' => 'nullable|url|max:50'
     ];
   }
 }

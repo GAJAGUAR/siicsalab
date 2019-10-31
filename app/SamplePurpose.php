@@ -4,19 +4,21 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Weather extends Model
+use Illuminate\Http\Request;
+
+class SamplePurpose extends Model
 {
   public function samples()
   {
     return $this->hasMany(Sample::class);
   }
 
-  public function weatherNames()
+  public function purposeNames()
   {
     return $this
       ->select(
         'id',
-        'weather_name')
+        'sample_purpose_name')
       ->get();
   }
 }

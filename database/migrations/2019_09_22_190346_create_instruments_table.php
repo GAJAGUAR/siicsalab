@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRecipientsTable extends Migration
+class CreateInstrumentsTable extends Migration
 {
   /**
    * Run the migrations.
@@ -14,7 +14,7 @@ class CreateRecipientsTable extends Migration
   public function up()
   {
     Schema::disableForeignKeyConstraints();
-    Schema::create('recipients', function (Blueprint $table) {
+    Schema::create('instruments', function (Blueprint $table) {
 
       // DDL
       $table->engine = 'InnoDB';
@@ -22,24 +22,31 @@ class CreateRecipientsTable extends Migration
       $table->collation = 'utf8mb4_spanish_ci';
       $table->smallIncrements('id');
       $table->unsignedSmallInteger('equipment_id');
-      $table->unsignedSmallInteger('scale_id');
-      $table->decimal('recipient_mass_a', 5, 1)
+      $table->unsignedSmallInteger('unit_id')
         ->nullable()
         ->default(null);
-      $table->decimal('recipient_mass_b', 5, 1)
+      $table->unsignedSmallInteger('equipment_status_id');
+      $table->decimal('instrument_capacity', 8, 3)
         ->nullable()
         ->default(null);
-      $table->date('recipient_verified_at')
+      $table->decimal('instrument_precision', 8, 3)
         ->nullable()
         ->default(null);
-      $table->date('recipient_valid_to')
+      $table->decimal('instrument_accuracy', 8, 3)
+        ->nullable()
+        ->default(null);
+      $table->date('instrument_calibrated_at')
+        ->nullable()
+        ->default(null);
+      $table->date('instrument_valid_to')
         ->nullable()
         ->default(null);
       $table->timestamps();
 
       // Indexes
       $table->index('equipment_id');
-      $table->index('scale_id');
+      $table->index('unit_id');
+      $table->index('equipment_status_id');
 
       // Foreign keys
       $table->foreign('equipment_id')
@@ -47,15 +54,20 @@ class CreateRecipientsTable extends Migration
         ->on('equipment')
         ->onDelete('cascade')
         ->onUpdate('cascade');
-      $table->foreign('scale_id')
+      $table->foreign('unit_id')
         ->references('id')
-        ->on('scales')
+        ->on('units')
+        ->onDelete('cascade')
+        ->onUpdate('cascade');
+      $table->foreign('equipment_status_id')
+        ->references('id')
+        ->on('equipment_statuses')
         ->onDelete('cascade')
         ->onUpdate('cascade');
     });
     Schema::enableForeignKeyConstraints();
   }
-  
+
   /**
    * Reverse the migrations.
    *
@@ -64,7 +76,7 @@ class CreateRecipientsTable extends Migration
   public function down()
   {
     Schema::disableForeignKeyConstraints();
-    Schema::dropIfExists('recipients');
+    Schema::dropIfExists('instruments');
     Schema::enableForeignKeyConstraints();
   }
 }

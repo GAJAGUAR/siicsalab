@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePrioritiesTable extends Migration
+class CreateSampleWeathersTable extends Migration
 {
   /**
    * Run the migrations.
@@ -14,20 +14,19 @@ class CreatePrioritiesTable extends Migration
   public function up()
   {
     Schema::disableForeignKeyConstraints();
-    Schema::create('priorities', function (Blueprint $table) {
+    Schema::create('sample_weathers', function (Blueprint $table) {
 
       // DDL
       $table->engine = 'InnoDB';
       $table->charset = 'utf8mb4';
       $table->collation = 'utf8mb4_spanish_ci';
       $table->smallIncrements('id');
-      $table->string('priority_name', 50);
+      $table->string('sample_weather_name', 50);
       $table->timestamps();
 
       // Indexes
-      $table->unique('priority_name');
+      $table->unique('sample_weather_name');
     });
-
     Schema::enableForeignKeyConstraints();
   }
 
@@ -39,7 +38,7 @@ class CreatePrioritiesTable extends Migration
   public function down()
   {
     Schema::disableForeignKeyConstraints();
-    Schema::dropIfExists('priorities');
+    Schema::dropIfExists('sample_weathers');
     Schema::enableForeignKeyConstraints();
   }
 }

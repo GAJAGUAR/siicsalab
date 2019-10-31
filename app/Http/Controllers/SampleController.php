@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\{Bank, ExtendedSample, ExtendedWorkOrder, Priority,
-  Purpose, Sample, Status, Weather};
+use App\{Bank, ExtendedSample, ExtendedWorkOrder, SamplePriority,
+  SamplePurpose, Sample, SampleStatus, SampleWeather};
 use App\Http\Requests\SampleFormRequest;
 use Illuminate\Http\Response;
 
@@ -37,10 +37,10 @@ class SampleController extends Controller
   {
     $workOrders = (new ExtendedWorkOrder)->workOrderIds();
     $banks = (new Bank)->bankNames();
-    $purposes = (new Purpose)->purposeNames();
-    $weathers = (new Weather)->weatherNames();
-    $priorities = (new Priority)->priorityNames();
-    $statuses = (new Status)->statusNames();
+    $purposes = (new SamplePurpose)->purposeNames();
+    $weathers = (new SampleWeather)->weatherNames();
+    $priorities = (new SamplePriority)->priorityNames();
+    $statuses = (new SampleStatus)->statusNames();
     $descriptions = (new ExtendedSample)->descriptionNames();
     $treatments = (new ExtendedSample)->treatmentNames();
     $locations = (new ExtendedSample)->locationNames();
@@ -109,10 +109,10 @@ class SampleController extends Controller
     $sample = Sample::findOrFail($id);
     $workOrders = (new ExtendedWorkOrder)->workOrderIds();
     $banks = (new Bank)->bankNames();
-    $purposes = (new Purpose)->purposeNames();
-    $weathers = (new Weather)->weatherNames();
-    $priorities = (new Priority)->priorityNames();
-    $statuses = (new Status)->statusNames();
+    $purposes = (new SamplePurpose)->purposeNames();
+    $weathers = (new SampleWeather)->weatherNames();
+    $priorities = (new SamplePriority)->priorityNames();
+    $statuses = (new SampleStatus)->statusNames();
     $descriptions = (new ExtendedSample)->descriptionNames();
     $treatments = (new ExtendedSample)->treatmentNames();
     $locations = (new ExtendedSample)->locationNames();

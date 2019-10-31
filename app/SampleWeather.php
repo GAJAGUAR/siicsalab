@@ -4,19 +4,19 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Status extends Model
+class SampleWeather extends Model
 {
   public function samples()
   {
     return $this->hasMany(Sample::class);
   }
 
-  public function statusNames()
+  public function weatherNames()
   {
     return $this
       ->select(
         'id',
-        'status_name')
+        'sample_weather_name')
       ->get();
   }
 }

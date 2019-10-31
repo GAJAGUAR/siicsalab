@@ -4,19 +4,19 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Priority extends Model
+class SampleStatus extends Model
 {
   public function samples()
   {
     return $this->hasMany(Sample::class);
   }
 
-  public function priorityNames()
+  public function statusNames()
   {
     return $this
       ->select(
         'id',
-        'priority_name')
+        'sample_status_name')
       ->get();
   }
 }

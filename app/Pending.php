@@ -16,13 +16,13 @@ class Pending extends Model
     ->select(
       'id',
       'work_order_id',
-      'purpose_name',
+      'sample_purpose_name',
       'sample_description',
       'sample_receipt_date')
-    ->where('status_name', 'PENDIENTE')
-    ->orWhere('status_name', 'EN PROCESO')
-    ->orWhere('status_name', 'FINALIZADO')
-    ->orWhere('status_name', 'CANCELADO')
+    ->where('sample_status_name', 'PENDIENTE')
+    ->orWhere('sample_status_name', 'EN PROCESO')
+    ->orWhere('sample_status_name', 'FINALIZADO')
+    ->orWhere('sample_status_name', 'CANCELADO')
     ->get();
   }
 }

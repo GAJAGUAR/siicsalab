@@ -82,7 +82,7 @@
     {{ __('Camino:') }}
   @endcomponent
   @component('components.lists.description')
-    {{ $sample->road }}
+    {{ $sample->sample_road }}
   @endcomponent
   @component('components.lists.term')
     {{ __('Banco de materiales:') }}
@@ -100,13 +100,13 @@
     {{ __('Empleo:') }}
   @endcomponent
   @component('components.lists.description')
-    {{ $sample->purpose_name }}
+    {{ $sample->sample_purpose_name }}
   @endcomponent
   @component('components.lists.term')
     {{ __('Nivel freático:') }}
   @endcomponent
   @component('components.lists.description')
-    {{ $sample->phreatic_level }}
+    {{ $sample->sample_phreatic_level }}
   @endcomponent
   @component('components.lists.term')
     {{ __('Sondeo:') }}
@@ -124,13 +124,13 @@
     {{ __('Temperatura ambiente:') }}
   @endcomponent
   @component('components.lists.description')
-    {{ $sample->env_temp }}
+    {{ $sample->sampling_env_temp }}
   @endcomponent
   @component('components.lists.term')
     {{ __('Condiciones climáticas:') }}
   @endcomponent
   @component('components.lists.description')
-    {{ $sample->weather_name }}
+    {{ $sample->sample_weather_name }}
   @endcomponent
   @component('components.lists.term')
     {{ __('Pruebas a realizar:') }}
@@ -148,13 +148,13 @@
     {{ __('Prioridad:') }}
   @endcomponent
   @component('components.lists.description')
-    {{ $sample->priority_name }}
+    {{ $sample->sample_priority_name }}
   @endcomponent
   @component('components.lists.term')
     {{ __('Estado:') }}
   @endcomponent
   @component('components.lists.description')
-    {{ $sample->status_name }}
+    {{ $sample->sample_status_name }}
   @endcomponent
   @component('components.lists.term')
     {{ __('URL:') }}

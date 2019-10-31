@@ -1,10 +1,10 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-class CreateStatusesTable extends Migration
+class CreateMagnitudesTable extends Migration
 {
   /**
    * Run the migrations.
@@ -14,22 +14,22 @@ class CreateStatusesTable extends Migration
   public function up()
   {
     Schema::disableForeignKeyConstraints();
-    Schema::create('statuses', function (Blueprint $table) {
-
+    Schema::create('magnitudes', function (Blueprint $table) {
+      
       // DDL
       $table->engine = 'InnoDB';
       $table->charset = 'utf8mb4';
       $table->collation = 'utf8mb4_spanish_ci';
       $table->smallIncrements('id');
-      $table->string('status_name', 50);
+      $table->string('magnitude_name', 25);
       $table->timestamps();
 
       // Indexes
-      $table->unique('status_name');
+      $table->unique('magnitude_name');
     });
     Schema::enableForeignKeyConstraints();
   }
-
+  
   /**
    * Reverse the migrations.
    *
@@ -38,7 +38,7 @@ class CreateStatusesTable extends Migration
   public function down()
   {
     Schema::disableForeignKeyConstraints();
-    Schema::dropIfExists('statuses');
+    Schema::dropIfExists('magnitudes');
     Schema::enableForeignKeyConstraints();
   }
 }

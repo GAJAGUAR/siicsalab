@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePurposesTable extends Migration
+class CreateSamplePrioritiesTable extends Migration
 {
   /**
    * Run the migrations.
@@ -14,22 +14,20 @@ class CreatePurposesTable extends Migration
   public function up()
   {
     Schema::disableForeignKeyConstraints();
-    Schema::create('purposes', function (Blueprint $table) {
+    Schema::create('sample_priorities', function (Blueprint $table) {
 
       // DDL
       $table->engine = 'InnoDB';
       $table->charset = 'utf8mb4';
       $table->collation = 'utf8mb4_spanish_ci';
       $table->smallIncrements('id');
-      $table->string('purpose_name', 100);
-      $table->string('purpose_standards', 100)
-        ->nullable()
-        ->default(null);
+      $table->string('sample_priority_name', 50);
       $table->timestamps();
 
       // Indexes
-      $table->unique('purpose_name');
+      $table->unique('sample_priority_name');
     });
+
     Schema::enableForeignKeyConstraints();
   }
 
@@ -41,7 +39,7 @@ class CreatePurposesTable extends Migration
   public function down()
   {
     Schema::disableForeignKeyConstraints();
-    Schema::dropIfExists('purposes');
+    Schema::dropIfExists('sample_priorities');
     Schema::enableForeignKeyConstraints();
   }
 }

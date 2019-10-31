@@ -25,13 +25,13 @@ class CreateSamplesTable extends Migration
       $table->unsignedSmallInteger('bank_id')
         ->nullable()
         ->default(null);
-      $table->unsignedSmallInteger('purpose_id');
-      $table->unsignedSmallInteger('weather_id')
+      $table->unsignedSmallInteger('sample_purpose_id');
+      $table->unsignedSmallInteger('sample_weather_id')
         ->nullable()
         ->default(1);
-      $table->unsignedSmallInteger('priority_id')
+      $table->unsignedSmallInteger('sample_priority_id')
         ->default(1);
-      $table->unsignedSmallInteger('status_id')
+      $table->unsignedSmallInteger('sample_status_id')
         ->default(1);
       $table->time('sample_time');
       $table->string('sample_description', 250);
@@ -74,13 +74,13 @@ class CreateSamplesTable extends Migration
             IF(`sample_road_stripe` <> "", CONCAT(" FRANJA ",`sample_road_stripe`), "")
           )
         ');
-      $table->decimal('phreatic_level', 4, 2)
+      $table->decimal('sample_phreatic_level', 4, 2)
         ->nullable()
         ->default(null);
       $table->unsignedTinyInteger('sampling_seq')
         ->nullable()
         ->default(null);
-      $table->unsignedTinyInteger('env_temp')
+      $table->unsignedTinyInteger('sampling_env_temp')
         ->nullable()
         ->default(null);
       $table->unsignedTinyInteger('sample_seq')
@@ -100,21 +100,21 @@ class CreateSamplesTable extends Migration
       $table->decimal('sample_longitude', 9, 6)
         ->nullable()
         ->default(null);
-      $table->string('sketch_file', 50)
+      $table->string('sample_sketch_file', 50)
         ->nullable()
         ->default(null);
-      $table->string('stratigraphic_file', 50)
+      $table->string('sample_stratigraphic_file', 50)
         ->nullable()
         ->default(null);
       $table->timestamps();
 
       // Indexes
-      $table->index('status_id');
       $table->index('work_order_id');
-      $table->index('priority_id');
       $table->index('bank_id');
-      $table->index('weather_id');
-      $table->index('purpose_id');
+      $table->index('sample_purpose_id');
+      $table->index('sample_weather_id');
+      $table->index('sample_priority_id');
+      $table->index('sample_status_id');
 
       // Foreign keys
       $table->foreign('work_order_id')
@@ -127,24 +127,24 @@ class CreateSamplesTable extends Migration
         ->on('banks')
         ->onDelete('cascade')
         ->onUpdate('cascade');
-      $table->foreign('purpose_id')
+      $table->foreign('sample_purpose_id')
         ->references('id')
-        ->on('purposes')
+        ->on('sample_purposes')
         ->onDelete('cascade')
         ->onUpdate('cascade');
-      $table->foreign('weather_id')
+      $table->foreign('sample_weather_id')
         ->references('id')
-        ->on('weathers')
+        ->on('sample_weathers')
         ->onDelete('cascade')
         ->onUpdate('cascade');
-      $table->foreign('priority_id')
+      $table->foreign('sample_priority_id')
         ->references('id')
-        ->on('priorities')
+        ->on('sample_priorities')
         ->onDelete('cascade')
         ->onUpdate('cascade');
-      $table->foreign('status_id')
+      $table->foreign('sample_status_id')
         ->references('id')
-        ->on('statuses')
+        ->on('sample_statuses')
         ->onDelete('cascade')
         ->onUpdate('cascade');
     });

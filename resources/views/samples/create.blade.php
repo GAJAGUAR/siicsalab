@@ -17,7 +17,7 @@
       @slot('textDescription', 'Orden de trabajo a la que pertenece el ensaye.')
       @component('components.inputs.option')
         @slot('value', '')
-        {{ __('Seleccionar') }}
+        {{ __('SELECCIONAR') }}
       @endcomponent
       @foreach ($workOrders as $workOrder)
         @component('components.inputs.option')
@@ -116,7 +116,7 @@
     @endforeach
   @endcomponent
 
-  {{-- road name field --}}
+  {{-- sample road name field --}}
   @component('components.inputs.list')
     @slot('label', 'Camino')
     @slot('fieldName', 'sample_road_name')
@@ -138,7 +138,7 @@
   @endcomponent
   @component('components.inputs.form_row')
 
-    {{-- road station start field --}}
+    {{-- sample road station start field --}}
     @component('components.inputs.text')
       @slot('style', 'col-12 col-md')
       @slot('label', 'Cadenamiento inicio')
@@ -149,7 +149,7 @@
       @slot('textDescription', 'Inicio del tramo que representa la muestra.')
     @endcomponent
 
-    {{-- road station end field --}}
+    {{-- sample road station end field --}}
     @component('components.inputs.text')
       @slot('style', 'col-12 col-md')
       @slot('label', 'Cadenamiento fin')
@@ -160,7 +160,7 @@
       @slot('textDescription', 'Fin del tramo que representa la muestra.')
     @endcomponent
 
-    {{-- road station field --}}
+    {{-- sample road station field --}}
     @component('components.inputs.text')
       @slot('style', 'col-12 col-md')
       @slot('label', 'Cadenamiento muestra')
@@ -173,7 +173,7 @@
   @endcomponent
   @component('components.inputs.form_row')
 
-    {{-- road body field --}}
+    {{-- sample road body field --}}
     @component('components.inputs.list')
       @slot('style', 'col-12 col-md')
       @slot('label', 'Cuerpo')
@@ -195,7 +195,7 @@
       @endforeach
     @endcomponent
 
-    {{-- road side field --}}
+    {{-- sample road side field --}}
     @component('components.inputs.list')
       @slot('style', 'col-12 col-md')
       @slot('label', 'Lado')
@@ -217,7 +217,7 @@
       @endforeach
     @endcomponent
 
-    {{-- road stripe field --}}
+    {{-- sample road stripe field --}}
     @component('components.inputs.list')
       @slot('style', 'col-12 col-md')
       @slot('label', 'Franja')
@@ -249,7 +249,7 @@
     @slot('textDescription', 'Banco de donde procede el material.')
     @component('components.inputs.option')
       @slot('value', '')
-      {{ __('Seleccionar') }}
+      {{ __('SELECCIONAR') }}
     @endcomponent
     @foreach ($banks as $bank)
       @component('components.inputs.option')
@@ -264,16 +264,16 @@
     @endforeach
   @endcomponent
 
-  {{-- purpose id field --}}
+  {{-- sample purpose id field --}}
   @component('components.inputs.select')
     @slot('label', 'Para utilizar en')
-    @slot('fieldName', 'purpose_id')
-    @slot('value', old('purpose_id'))
+    @slot('fieldName', 'sample_purpose_id')
+    @slot('value', old('sample_purpose_id'))
     @slot('textHelp', 'purposeHelp')
     @slot('textDescription', 'Empleo que se le dará al material.')
     @component('components.inputs.option')
       @slot('value', '')
-      {{ __('Seleccionar') }}
+      {{ __('SELECCIONAR') }}
     @endcomponent
     @foreach ($purposes as $purpose)
       @component('components.inputs.option')
@@ -281,20 +281,20 @@
           {{ $purpose->id }}
         @endslot
         @slot('selected')
-          {{ old('purpose_id') == $purpose->id ? 'selected' : '' }}
+          {{ old('sample_purpose_id') == $purpose->id ? 'selected' : '' }}
         @endslot
-        {{ $purpose->purpose_name }}
+        {{ $purpose->sample_purpose_name }}
       @endcomponent
     @endforeach
   @endcomponent
   @component('components.inputs.form_row')
 
-    {{-- phreatic level field --}}
+    {{-- sample phreatic level field --}}
     @component('components.inputs.number')
       @slot('style', 'col-12 col-md')
       @slot('label', 'N. A. F.')
-      @slot('fieldName', 'phreatic_level')
-      @slot('value', old('phreatic_level'))
+      @slot('fieldName', 'sample_phreatic_level')
+      @slot('value', old('sample_phreatic_level'))
       @slot('textHelp', 'phreaticHelp')
       @slot('textDescription', 'Nivel freático.')
     @endcomponent
@@ -319,27 +319,27 @@
       @slot('textDescription', 'Número de muestra.')
     @endcomponent
 
-    {{-- env temp field --}}
+    {{-- sampling env temp field --}}
     @component('components.inputs.number')
       @slot('style', 'col-12 col-md')
       @slot('label', 'Temperatura')
-      @slot('fieldName', 'env_temp')
-      @slot('value', old('env_temp'))
+      @slot('fieldName', 'sampling_env_temp')
+      @slot('value', old('sampling_env_temp'))
       @slot('textHelp', 'temperatureHelp')
       @slot('textDescription', 'Temperatura ambiente.')
     @endcomponent
   @endcomponent
 
-  {{-- weather id field --}}
+  {{-- sample weather id field --}}
   @component('components.inputs.select')
     @slot('label', 'Clima')
-    @slot('fieldName', 'weather_id')
-    @slot('value', old('weather_id'))
+    @slot('fieldName', 'sample_weather_id')
+    @slot('value', old('sample_weather_id'))
     @slot('textHelp', 'weatherHelp')
     @slot('textDescription', 'Condiciones climáticas al momento de tomar la muestra.')
     @component('components.inputs.option')
       @slot('value', '')
-      {{ __('Seleccionar') }}
+      {{ __('SELECCIONAR') }}
     @endcomponent
     @foreach ($weathers as $weather)
       @component('components.inputs.option')
@@ -347,9 +347,9 @@
           {{ $weather->id }}
         @endslot
         @slot('selected')
-          {{ old('weather_id') == $weather->id ? 'selected' : '' }}
+          {{ old('sample_weather_id') == $weather->id ? 'selected' : '' }}
         @endslot
-        {{ $weather->weather_name }}
+        {{ $weather->sample_weather_name }}
       @endcomponent
     @endforeach
   @endcomponent
@@ -385,17 +385,17 @@
       @slot('textDescription', 'Fecha de recibido en el laboratorio.')
     @endcomponent
 
-    {{-- priority id field --}}
+    {{-- sample priority id field --}}
     @component('components.inputs.select')
       @slot('style', 'col-12 col-md')
       @slot('label', 'Prioridad')
-      @slot('fieldName', 'priority_id')
-      @slot('value', old('priority_id'))
+      @slot('fieldName', 'sample_priority_id')
+      @slot('value', old('sample_priority_id'))
       @slot('textHelp', 'priorityHelp')
       @slot('textDescription', 'Relevancia con respecto de los demás trabajos.')
       @component('components.inputs.option')
         @slot('value', '')
-        {{ __('Seleccionar') }}
+        {{ __('SELECCIONAR') }}
       @endcomponent
       @foreach ($priorities as $priority)
         @component('components.inputs.option')
@@ -403,24 +403,24 @@
             {{ $priority->id }}
           @endslot
           @slot('selected')
-            {{ old('priority_id') == $priority->id ? 'selected' : '' }}
+            {{ old('sample_priority_id') == $priority->id ? 'selected' : '' }}
           @endslot
-          {{ $priority->priority_name }}
+          {{ $priority->sample_priority_name }}
         @endcomponent
       @endforeach
     @endcomponent
 
-    {{-- status id field --}}
+    {{-- sample status id field --}}
     @component('components.inputs.select')
       @slot('style', 'col-12 col-md')
       @slot('label', 'Estado')
-      @slot('fieldName', 'status_id')
-      @slot('value', old('status_id'))
+      @slot('fieldName', 'sample_status_id')
+      @slot('value', old('sample_status_id'))
       @slot('textHelp', 'statusHelp')
       @slot('textDescription', 'Empleo que se le dará al material.')
       @component('components.inputs.option')
         @slot('value', '')
-        {{ __('Seleccionar') }}
+        {{ __('SELECCIONAR') }}
       @endcomponent
       @foreach ($statuses as $status)
         @component('components.inputs.option')
@@ -428,9 +428,9 @@
             {{ $status->id }}
           @endslot
           @slot('selected')
-            {{ old('status_id') == $status->id ? 'selected' : '' }}
+            {{ old('sample_status_id') == $status->id ? 'selected' : '' }}
           @endslot
-          {{ $status->status_name }}
+          {{ $status->sample_status_name }}
         @endcomponent
       @endforeach
     @endcomponent

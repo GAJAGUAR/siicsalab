@@ -12,7 +12,7 @@ class ExtendedSample extends Model
     ->select(
       'id',
       'work_order_id',
-      'purpose_name',
+      'sample_purpose_name',
       'sample_description',
       'sample_receipt_date')
     ->get();
@@ -38,17 +38,17 @@ class ExtendedSample extends Model
       'sample_road',
       'bank_name',
       'bank_location',
-      'purpose_name',
-      'phreatic_level',
+      'sample_purpose_name',
+      'sample_phreatic_level',
       'sampling_seq',
       'sample_seq',
-      'env_temp',
-      'weather_name',
+      'sampling_env_temp',
+      'sample_weather_name',
       'sample_tests',
       'sample_notes',
       'sample_receipt_date',
-      'priority_name',
-      'status_name',
+      'sample_priority_name',
+      'sample_status_name',
       'sample_url')
     ->findOrFail($id);
   }
@@ -58,7 +58,7 @@ class ExtendedSample extends Model
     return $this
     ->select(
       'id',
-      'purpose_name',
+      'sample_purpose_name',
       'sample_description',
       'sample_receipt_date')
     ->where('work_order_id', $id)
