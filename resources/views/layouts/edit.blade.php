@@ -15,12 +15,18 @@
     @endcomponent
 
     {{-- nav --}}
-    @component('components.navs.containter')
-      @component('components.buttons.close')
-        @yield('urlToClose')
+    @component('components.nav')
+      @component('components.nav_link')
+        @slot('url')
+          @yield('urlToClose')
+        @endslot
+        {{ __('cerrar edición') }}
       @endcomponent
-      @component('components.buttons.exit')
-        @yield('urlToExit')
+      @component('components.nav_link')
+        @slot('url')
+          @yield('urlToExit')
+        @endslot
+        {{ __('salir') }}
       @endcomponent
     @endcomponent
 
@@ -33,7 +39,7 @@
       @method('put')
       @yield('formContent')
     </form>
-    
+
     @component('components.buttons.save')
     @endcomponent
     @component('components.buttons.delete')
@@ -43,7 +49,7 @@
     {{-- footer --}}
     @component('components.miscellaneous.hr_bottom')
     @endcomponent
-    
+
     @component('components.breadcrumbs.container')
       @yield('breadcrumb')
     @endcomponent

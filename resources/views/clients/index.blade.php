@@ -4,23 +4,8 @@
 @section('title', 'clientes')
 
 {{-- nav --}}
-@section('navLinks')
-  @component('components.navs.item')
-    @slot('url')
-      {{ route('clients.create') }}
-    @endslot
-    {{ __('nuevo') }}
-  @endcomponent
-  @component('components.navs.item')
-    @slot('url')
-      {{--{{ route('print.clients') }}--}}
-    @endslot
-    @slot('target')
-      {{ __('_blank') }}
-    @endslot
-    {{ __('imprimir') }}
-  @endcomponent
-@endsection
+@section('urlToNew', route('clients.create'))
+@section('urlToPrint', '#')
 
 {{-- main --}}
 @section('thead')

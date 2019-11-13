@@ -4,23 +4,8 @@
 @section('title', 'personal')
 
 {{-- nav --}}
-@section('navLinks')
-  @component('components.navs.item')
-    @slot('url')
-      {{ route('employees.create') }}
-    @endslot
-    {{ __('nuevo') }}
-  @endcomponent
-  @component('components.navs.item')
-    @slot('url')
-      {{--{{ route('print.employees') }}--}}
-    @endslot
-    @slot('target')
-      {{ __('_blank') }}
-    @endslot
-    {{ __('imprimir') }}
-  @endcomponent
-@endsection
+@section('urlToNew', route('employees.create'))
+@section('urlToPrint', '#')
 
 {{-- main --}}
 @section('thead')

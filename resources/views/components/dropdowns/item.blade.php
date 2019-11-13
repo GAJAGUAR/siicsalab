@@ -1,5 +1,7 @@
-<a class="dropdown-item text-capitalize"
-   {{ isset($accesskey) ? 'accesskey='.$accesskey : '' }}
-   href="{{ $url ?? '#' }}">
+<a
+  {{ isset($accesskey) ? 'accesskey='.$accesskey : '' }}
+  class="dropdown-item text-capitalize"
+  href="{{ $url ?? '#' }}"
+>
   {{ $slot }}
 </a>

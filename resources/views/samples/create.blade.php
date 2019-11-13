@@ -1,8 +1,13 @@
 @extends('layouts.create')
 
+{{-- header --}}
 @section('title', 'nuevo ensaye')
-@section('action', route('samples.store'))
+
+{{-- nav --}}
 @section('urlToExit', route('samples.index'))
+
+{{-- main --}}
+@section('action', route('samples.store'))
 @section('formContent')
   @component('components.inputs.form_row')
 

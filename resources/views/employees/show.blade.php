@@ -1,20 +1,12 @@
 @extends('layouts.show')
 
 {{-- header --}}
-@section('title')
-  {{ $employee->employee_nickname }}
-@endsection
+@section('title', $employee->employee_nickname)
 
 {{-- nav --}}
-@section('urlEdit')
-  {{ $employee->id }}/edit
-@endsection
-@section('urlAdd')
-  {{ route('employees.create') }}
-@endsection
-@section('textAdd')
-  {{ __('agregar personal') }}
-@endsection
+@section('urlToEdit', $employee->id.'/edit')
+@section('urlToAdd', route('work_orders.create'))
+@section('textAdd', 'agregar orden de trabajo')
 
 {{-- main --}}
 @section('detail')

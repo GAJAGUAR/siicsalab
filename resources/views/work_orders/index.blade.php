@@ -4,23 +4,8 @@
 @section('title', 'órdenes de trabajo')
 
 {{-- nav --}}
-@section('navLinks')
-  @component('components.navs.item')
-    @slot('url')
-      {{ route('work_orders.create') }}
-    @endslot
-    {{ __('nueva') }}
-  @endcomponent
-  @component('components.navs.item')
-    @slot('url')
-      {{--{{ route('print.work_orders') }}--}}
-    @endslot
-    @slot('target')
-      {{ __('_blank') }}
-    @endslot
-    {{ __('imprimir') }}
-  @endcomponent
-@endsection
+@section('urlToNew', route('work_orders.create'))
+@section('urlToPrint', '#')
 
 {{-- main --}}
 @section('thead')

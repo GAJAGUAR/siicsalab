@@ -1,9 +1,14 @@
 @extends('layouts.edit')
 
+{{-- header --}}
 @section('title', 'editar cliente')
-@section('action', route('clients.index').'/'.$client->id)
+
+{{-- nav --}}
 @section('urlToClose', route('clients.index').'/'.$client->id)
 @section('urlToExit', route('clients.index'))
+
+{{-- main --}}
+@section('action', route('clients.index').'/'.$client->id)
 @section('formContent')
 
   {{-- client name field --}}

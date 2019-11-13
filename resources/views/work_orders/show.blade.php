@@ -1,20 +1,12 @@
 @extends('layouts.show')
 
 {{-- header --}}
-@section('title')
-  órden de trabajo {{ $workOrder->id }}
-@endsection
+@section('title', 'órden de trabajo '.$workOrder->id)
 
 {{-- nav --}}
-@section('urlEdit')
-  {{ $workOrder->id }}/edit
-@endsection
-@section('urlAdd')
-  {{ route('samples.create') }}
-@endsection
-@section('textAdd')
-  {{ __('agregar ensaye') }}
-@endsection
+@section('urlToEdit', $workOrder->id.'/edit')
+@section('urlToAdd', route('samples.create'))
+@section('textAdd', 'agregar ensaye')
 
 {{-- main --}}
 @section('detail')

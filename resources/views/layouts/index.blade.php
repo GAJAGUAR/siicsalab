@@ -13,8 +13,20 @@
     @endcomponent
 
     {{-- nav --}}
-    @component('components.navs.containter')
-      @yield('navLinks')
+    @component('components.nav')
+      @component('components.nav_link')
+        @slot('url')
+          @yield('urlToNew')
+        @endslot
+        {{ __('nuevo') }}
+      @endcomponent
+      @component('components.nav_link')
+        @slot('url')
+          @yield('urlToPrint')
+        @endslot
+        @slot('target', '_blank')
+        {{ __('imprimir') }}
+      @endcomponent
     @endcomponent
 
     @component('components.miscellaneous.hr_top')

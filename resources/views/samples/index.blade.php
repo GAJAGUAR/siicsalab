@@ -4,23 +4,8 @@
 @section('title', 'ensayes')
 
 {{-- nav --}}
-@section('navLinks')
-  @component('components.navs.item')
-    @slot('url')
-      {{ route('samples.create') }}
-    @endslot
-    {{ __('nuevo') }}
-  @endcomponent
-  @component('components.navs.item')
-    @slot('url')
-      {{--{{ route('print.work_orders') }}--}}
-    @endslot
-    @slot('target')
-      {{ __('_blank') }}
-    @endslot
-    {{ __('imprimir') }}
-  @endcomponent
-@endsection
+@section('urlToNew', route('samples.create'))
+@section('urlToPrint', '#')
 
 {{-- main --}}
 @section('thead')

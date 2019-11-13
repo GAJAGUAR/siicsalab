@@ -1,20 +1,12 @@
 @extends('layouts.show')
 
 {{-- header --}}
-@section('title')
-  {{ $client->client_nickname }}
-@endsection
+@section('title', $client->client_nickname)
 
 {{-- nav --}}
-@section('urlEdit')
-  {{ $client->id }}/edit
-@endsection
-@section('urlAdd')
-  {{ route('works.create') }}
-@endsection
-@section('textAdd')
-  {{ __('agregar obra') }}
-@endsection
+@section('urlToEdit', $client->id.'/edit')
+@section('urlToAdd', route('works.create'))
+@section('textAdd', 'agregar obra')
 
 {{-- main --}}
 @section('detail')

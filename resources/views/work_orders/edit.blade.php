@@ -1,9 +1,14 @@
 @extends('layouts.edit')
 
+{{-- header --}}
 @section('title', 'editar orden de trabajo')
-@section('action', route('work_orders.index').'/'.$workOrder->id)
+
+{{-- nav --}}
 @section('urlToClose', route('work_orders.index').'/'.$workOrder->id)
 @section('urlToExit', route('work_orders.index'))
+
+{{-- main --}}
+@section('action', route('work_orders.index').'/'.$workOrder->id)
 @section('formContent')
 
   {{-- work id flield --}}

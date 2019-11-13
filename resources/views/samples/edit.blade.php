@@ -1,9 +1,14 @@
 @extends('layouts.edit')
 
+{{-- header --}}
 @section('title', 'editar ensaye')
-@section('action', route('samples.index').'/'.$sample->id)
+
+{{-- nav --}}
 @section('urlToClose', route('samples.index').'/'.$sample->id)
 @section('urlToExit', route('samples.index'))
+
+{{-- main --}}
+@section('action', route('samples.index').'/'.$sample->id)
 @section('formContent')
   @component('components.inputs.form_row')
 

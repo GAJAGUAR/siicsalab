@@ -15,9 +15,12 @@
     @endcomponent
 
     {{-- nav --}}
-    @component('components.navs.containter')
-      @component('components.buttons.exit')
-        @yield('urlToExit')
+    @component('components.nav')
+      @component('components.nav_link')
+        @slot('url')
+          @yield('urlToExit')
+        @endslot
+        {{ __('salir') }}
       @endcomponent
     @endcomponent
 
@@ -25,7 +28,11 @@
     @endcomponent
 
     {{-- main --}}
-    <form action="@yield('action')" method="POST" id="form">
+    <form
+      action="@yield('action')"
+      id="form"
+      method="POST"
+    >
       @csrf
       @yield('formContent')
     </form>

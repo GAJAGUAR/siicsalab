@@ -60,7 +60,7 @@
   @endcomponent
 
   {{-- pendings --}}
-  @component('components.navs.item')
+  @component('components.nav_link')
     @slot('url', route('pendings'))
     @slot('accesskey', 'p')
     {{ __('pendientes') }}

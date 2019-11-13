@@ -9,16 +9,16 @@
     @endcomponent
 
     {{-- nav --}}
-    @component('components.navs.containter')
-      @component('components.navs.item')
+    @component('components.nav')
+      @component('components.nav_link')
         @slot('url')
-          @yield('urlEdit')
+          @yield('urlToEdit')
         @endslot
         {{ __('Editar') }}
       @endcomponent
-      @component('components.navs.item')
+      @component('components.nav_link')
         @slot('url')
-          @yield('urlAdd')
+          @yield('urlToAdd')
         @endslot
         @yield('textAdd')
       @endcomponent

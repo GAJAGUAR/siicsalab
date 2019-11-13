@@ -1,9 +1,14 @@
 @extends('layouts.edit')
 
+{{-- header --}}
 @section('title', 'editar obra')
-@section('action', route('works.index').'/'.$work->id)
+
+{{-- nav --}}
 @section('urlToClose', route('works.index').'/'.$work->id)
 @section('urlToExit', route('works.index'))
+
+{{-- main --}}
+@section('action', route('works.index').'/'.$work->id)
 @section('formContent')
 
   {{-- client id flield --}}

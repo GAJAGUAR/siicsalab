@@ -1,15 +1,19 @@
 <div class="dropdown">
-  <a id="{{ $id }}"
-     class="{{ $type ?? 'nav-link' }} dropdown-toggle text-capitalize"
-     {{ isset($accesskey) ? 'accesskey='.$accesskey : '' }}
-     href="#" role="button"
-     data-toggle="dropdown"
-     aria-expanded="false"
-     aria-haspopup="true" >
+  <a
+    {{ isset($accesskey) ? 'accesskey='.$accesskey : '' }}
+    class="{{ $type ?? 'nav-link' }} dropdown-toggle text-capitalize"
+    id="{{ $id }}"
+    href="#" role="button"
+    aria-expanded="false"
+    aria-haspopup="true"
+    data-toggle="dropdown"
+  >
     {{ $text }}
   </a>
-  <div class="dropdown-menu"
-       aria-labelledby="{{ $id }}">
+  <div
+    class="dropdown-menu"
+    aria-labelledby="{{ $id }}"
+  >
     {{ $slot }}
   </div>
 </div>

@@ -1,4 +1,6 @@
-<option value="{{ $value }}"
-        {{ $selected ?? '' }}>
+<option
+  {{ $selected ?? '' }}
+  value="{{ $value }}"
+>
   {{ $slot }}
 </option>

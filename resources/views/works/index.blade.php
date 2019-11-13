@@ -4,23 +4,8 @@
 @section('title', 'obras')
 
 {{-- nav --}}
-@section('navLinks')
-  @component('components.navs.item')
-    @slot('url')
-      {{ route('works.create') }}
-    @endslot
-    {{ __('nueva') }}
-  @endcomponent
-  @component('components.navs.item')
-    @slot('url')
-      {{--{{ route('print.works') }}--}}
-    @endslot
-    @slot('target')
-      {{ __('_blank') }}
-    @endslot
-    {{ __('imprimir') }}
-  @endcomponent
-@endsection
+@section('urlToNew', route('works.create'))
+@section('urlToPrint', '#')
 
 {{-- main --}}
 @section('thead')

@@ -1,8 +1,13 @@
 @extends('layouts.create')
 
+{{-- header --}}
 @section('title', 'nueva obra')
-@section('action', route('works.store'))
+
+{{-- nav --}}
 @section('urlToExit', route('works.index'))
+
+{{-- main --}}
+@section('action', route('works.store'))
 @section('formContent')
 
   {{-- client id flield --}}

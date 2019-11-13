@@ -1,8 +1,13 @@
 @extends('layouts.create')
 
+{{-- header --}}
 @section('title', 'nuevo cliente')
-@section('action', route('clients.store'))
+
+{{-- nav --}}
 @section('urlToExit', route('clients.index'))
+
+{{-- main --}}
+@section('action', route('clients.store'))
 @section('formContent')
 
   {{-- client name field --}}

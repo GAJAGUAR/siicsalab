@@ -1,6 +1,8 @@
 @if (isset($active) && $active)
-  <li class="breadcrumb-item active"
-      aria-current="page">
+  <li
+    class="breadcrumb-item active"
+    aria-current="page"
+  >
     {{ $slot }}
   </li>
 @else

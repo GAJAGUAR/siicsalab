@@ -1,8 +1,13 @@
 @extends('layouts.create')
 
+{{-- header --}}
 @section('title', 'nueva orden de trabajo')
-@section('action', route('work_orders.store'))
+
+{{-- nav --}}
 @section('urlToExit', route('work_orders.index'))
+
+{{-- main --}}
+@section('action', route('work_orders.store'))
 @section('formContent')
 
   {{-- work id flield --}}

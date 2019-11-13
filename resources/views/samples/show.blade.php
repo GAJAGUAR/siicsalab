@@ -1,14 +1,10 @@
 @extends('layouts.show')
 
 {{-- header --}}
-@section('title')
-  Ensaye {{ $sample->id }}
-@endsection
+@section('title'. 'Ensaye'.$sample->id)
 
 {{-- nav --}}
-@section('urlEdit')
-  {{ $sample->id }}/edit
-@endsection
+@section('urlToEdit', $sample->id.'/edit')
 
 {{-- main --}}
 @section('detail')

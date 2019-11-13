@@ -1,9 +1,14 @@
 @extends('layouts.edit')
 
+{{-- header --}}
 @section('title', 'editar personal')
-@section('action', route('employees.index').'/'.$employee->id)
+
+{{-- nav --}}
 @section('urlToClose', route('employees.index').'/'.$employee->id)
 @section('urlToExit', route('employees.index'))
+
+{{-- main --}}
+@section('action', route('employees.index').'/'.$employee->id)
 @section('formContent')
   @component('components.inputs.form_row')
 
