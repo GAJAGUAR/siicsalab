@@ -15,7 +15,7 @@
     @slot('textDescription', 'Lugar dónde se llevarán a cabo los trabajos.')
     @component('components.inputs.option')
       @slot('value', '')
-      {{ __('Seleccionar') }}
+      {{ __('SELECCIONAR') }}
     @endcomponent
     @foreach ($works as $work)
       @component('components.inputs.option')
@@ -48,7 +48,7 @@
     @slot('textDescription', 'Lugar dónde se llevarán a cabo los trabajos.')
     @component('components.inputs.option')
       @slot('value', '')
-      {{ __('Seleccionar') }}
+      {{ __('SELECCIONAR') }}
     @endcomponent
     @foreach ($employees as $employee)
       @component('components.inputs.option')

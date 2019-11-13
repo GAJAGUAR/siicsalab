@@ -88,7 +88,7 @@
       @slot('textDescription', 'Cargo de acuerdo al perfil de puesto.')
       @component('components.inputs.option')
         @slot('value', '')
-        {{ __('Seleccionar') }}
+        {{ __('SELECCIONAR') }}
       @endcomponent
       @foreach ($positions as $position)
         @component('components.inputs.option')
@@ -109,7 +109,7 @@
       @slot('value', old('scholarship_id'))
       @slot('textHelp', 'workOrderHelp')
       @slot('textDescription', 'Máximo grado de estudios alcanzado.')
-      <option value="">Seleccionar</option>
+      <option value="">SELECCIONAR</option>
       @foreach ($scholarships as $scholarship)
         @component('components.inputs.option')
           @slot('value')

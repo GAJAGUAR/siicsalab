@@ -3,7 +3,7 @@
     {{ $label }}
   </label>
   <input id="{{ $fieldName }}"
-         class="form-control {{ $errors->has($fieldName) ? ' is-invalid' : '' }}"
+         class="form-control text-uppercase {{ $errors->has($fieldName) ? ' is-invalid' : '' }}"
          autocomplete="off"
          name="{{ $fieldName }}"
          type="date"
