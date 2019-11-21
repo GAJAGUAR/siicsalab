@@ -32,6 +32,7 @@ class CreateExtendedSamplesView extends Migration
                  `sample_treatment`,
                  `sample_location`,
                  `sample_road_name`,
+                 `sample_road_station`,
                  `sample_road_body`,
                  `sample_road_side`,
                  `sample_road_stripe`,
