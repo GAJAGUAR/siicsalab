@@ -82,7 +82,7 @@
         {{ $sample->sample_receipt_date }}
       @endcomponent
       @component('components.tables.td')
-        {{ $sample->purpose_name }}
+        {{ $sample->sample_purpose_name }}
       @endcomponent
       @component('components.tables.td')
         {{ $sample->sample_description }}
