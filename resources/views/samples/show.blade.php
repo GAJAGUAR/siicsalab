@@ -1,7 +1,7 @@
 @extends('layouts.show')
 
 {{-- header --}}
-@section('title'. 'Ensaye'.$sample->id)
+@section('title', 'Ensaye '.$sample->id)
 
 {{-- nav --}}
 @section('urlToEdit', $sample->id.'/edit')
