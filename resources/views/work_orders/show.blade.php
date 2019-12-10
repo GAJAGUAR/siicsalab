@@ -10,34 +10,34 @@
 
 {{-- main --}}
 @section('detail')
-  @component('components.lists.term')
+  @component('components.definition_term')
     {{ __('Fecha:') }}
   @endcomponent
-  @component('components.lists.description')
+  @component('components.definition_description')
     {{ $workOrder->work_order_date }}
   @endcomponent
-  @component('components.lists.term')
+  @component('components.definition_term')
     {{ __('Cliente:') }}
   @endcomponent
-  @component('components.lists.description')
+  @component('components.definition_description')
     {{ $workOrder->client_name }}
   @endcomponent
-  @component('components.lists.term')
+  @component('components.definition_term')
     {{ __('Obra:') }}
   @endcomponent
-  @component('components.lists.description')
+  @component('components.definition_description')
     {{ $workOrder->work_name }}
   @endcomponent
-  @component('components.lists.term')
+  @component('components.definition_term')
     {{ __('Localización:') }}
   @endcomponent
-  @component('components.lists.description')
+  @component('components.definition_description')
     {{ $workOrder->work_location }}
   @endcomponent
-  @component('components.lists.term')
+  @component('components.definition_term')
     {{ __('Personal:') }}
   @endcomponent
-  @component('components.lists.description')
+  @component('components.definition_description')
     {{ $workOrder->employee_name }}
   @endcomponent
 @endsection
@@ -46,25 +46,25 @@
 @endsection
 
 @section('thead')
-  @component('components.tables.tr')
-    @component('components.tables.th')
+  @component('components.table_row')
+    @component('components.table_cell_header')
       @slot('style', 'text-center th-w-sm')
       {{ __('#') }}
     @endcomponent
-    @component('components.tables.th')
+    @component('components.table_cell_header')
       @slot('style', 'text-center th-w-md')
       {{ __('recibido') }}
     @endcomponent
-    @component('components.tables.th')
+    @component('components.table_cell_header')
       @slot('style', 'text-center')
 
       {{ __('empleo') }}
     @endcomponent
-    @component('components.tables.th')
+    @component('components.table_cell_header')
       @slot('style', 'text-center')
       {{ __('material') }}
     @endcomponent
-    @component('components.tables.th')
+    @component('components.table_cell_header')
       @slot('style', 'text-center th-w-sm')
       {{ __(' ') }}
     @endcomponent
@@ -73,21 +73,21 @@
 
 @section('tbody')
   @foreach ($samples as $sample)
-    @component('components.tables.tr')
-      @component('components.tables.td')
+    @component('components.table_row')
+      @component('components.table_cell')
         @slot('style', 'text-center')
         {{ $sample->id }}
       @endcomponent
-      @component('components.tables.td')
+      @component('components.table_cell')
         {{ $sample->sample_receipt_date }}
       @endcomponent
-      @component('components.tables.td')
+      @component('components.table_cell')
         {{ $sample->sample_purpose_name }}
       @endcomponent
-      @component('components.tables.td')
+      @component('components.table_cell')
         {{ $sample->sample_description }}
       @endcomponent
-      @component('components.tables.td_detail')
+      @component('components.table_cell_finder')
         @slot('style', 'text-center')
         /samples/{{ $sample->id }}
       @endcomponent
@@ -97,27 +97,27 @@
 
 {{-- footer --}}
 @section('breadcrumb')
-  @component('components.breadcrumbs.item')
+  @component('components.breadcrumb_item')
     @slot('url', route('clients.index'))
     {{ __('clientes') }}
   @endcomponent
-  @component('components.breadcrumbs.item')
+  @component('components.breadcrumb_item')
     @slot('url', route('clients.index').'/'.$workOrder->client_id)
     {{ $workOrder->client_id }}
   @endcomponent
-  @component('components.breadcrumbs.item')
+  @component('components.breadcrumb_item')
     @slot('url', route('works.index'))
     {{ __('obras') }}
   @endcomponent
-  @component('components.breadcrumbs.item')
+  @component('components.breadcrumb_item')
   @slot('url', route('works.index').'/'.$workOrder->work_id)
     {{ $workOrder->work_id }}
   @endcomponent
-  @component('components.breadcrumbs.item')
+  @component('components.breadcrumb_item')
     @slot('url', route('work_orders.index'))
     {{ __('órdenes de trabajo') }}
   @endcomponent
-  @component('components.breadcrumbs.item')
+  @component('components.breadcrumb_item')
     @slot('active', true)
     {{ $workOrder->id }}
   @endcomponent

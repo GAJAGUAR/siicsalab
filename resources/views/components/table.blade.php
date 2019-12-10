@@ -6,11 +6,11 @@
       id="table-primary"
     >
       <thead>
-      {{ $thead }}
+        {{ $thead }}
       </thead>
 
       <tbody>
-      {{ $slot }}
+        {{ $slot }}
       </tbody>
     </table>
   </div>

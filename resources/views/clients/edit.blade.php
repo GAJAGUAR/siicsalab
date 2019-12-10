@@ -12,7 +12,7 @@
 @section('formContent')
 
   {{-- client name field --}}
-  @component('components.inputs.textarea')
+  @component('components.input_textarea')
     @slot('label', 'Razón Social')
     @slot('fieldName', 'client_name')
     @slot('value', $client->client_name))
@@ -23,7 +23,7 @@
   @endcomponent
 
   {{-- client nickname field --}}
-  @component('components.inputs.text')
+  @component('components.input_text')
     @slot('style', '')
     @slot('label', 'Alias')
     @slot('fieldName', 'client_nickname')
@@ -34,7 +34,7 @@
   @endcomponent
 
   {{-- register field --}}
-  @component('components.inputs.text')
+  @component('components.input_text')
     @slot('style', '')
     @slot('label', 'RFC')
     @slot('fieldName', 'client_register')
@@ -45,7 +45,7 @@
   @endcomponent
 
   {{-- client location field --}}
-  @component('components.inputs.textarea')
+  @component('components.input_textarea')
     @slot('label', 'Domicilio Fiscal')
     @slot('fieldName', 'client_location')
     @slot('value', $client->client_location))
@@ -57,15 +57,15 @@
 
 {{-- footer --}}
 @section('breadcrumb')
-  @component('components.breadcrumbs.item')
+  @component('components.breadcrumb_item')
     @slot('url', route('clients.index'))
     {{ __('clientes') }}
   @endcomponent
-  @component('components.breadcrumbs.item')
+  @component('components.breadcrumb_item')
     @slot('url', route('clients.index').'/'.$client->id)
     {{ $client->id }}
   @endcomponent
-  @component('components.breadcrumbs.item')
+  @component('components.breadcrumb_item')
     @slot('active', true)
     {{ __('editar') }}
   @endcomponent

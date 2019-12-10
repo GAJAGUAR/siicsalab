@@ -90,7 +90,7 @@
 <body>
   <div id="app">
     <main class="py-4">
-      @component('components.containers.container_fluid')
+      @component('components.container_fluid')
       <div class="flex-center position-ref full-height">
         @if (Route::has('login'))
         <div class="top-right links">

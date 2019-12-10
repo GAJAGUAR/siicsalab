@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-  @component('components.containers.container')
+  @component('components.container')
 
     {{-- header --}}
-    @component('components.headings.title')
+    @component('components.heading_title')
       @yield('title')
     @endcomponent
 
@@ -24,17 +24,17 @@
       @endcomponent
     @endcomponent
 
-    @component('components.miscellaneous.hr_top')
+    @component('components.rule_top')
     @endcomponent
 
     {{-- main --}}
-    @component('components.lists.container')
+    @component('components.definition')
       @yield('detail')
     @endcomponent
-    @component('components.headings.subtitle')
+    @component('components.heading_subtitle')
       @yield('subtitle')
     @endcomponent
-    @component('components.tables.table_primary')
+    @component('components.table')
       @slot('thead')
         @yield('thead')
       @endslot
@@ -42,10 +42,10 @@
     @endcomponent
 
     {{-- footer --}}
-    @component('components.miscellaneous.hr_bottom')
+    @component('components.rule_bottom')
     @endcomponent
 
-    @component('components.breadcrumbs.container')
+    @component('components.breadcrumb')
       @yield('breadcrumb')
     @endcomponent
   @endcomponent

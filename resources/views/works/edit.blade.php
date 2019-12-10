@@ -12,14 +12,14 @@
 @section('formContent')
 
   {{-- client id flield --}}
-  @component('components.inputs.select')
+  @component('components.input_select')
     @slot('label', 'Cliente')
     @slot('fieldName', 'client_id')
     @slot('textHelp', 'clientHelp')
     @slot('autofocus', 'true')
     @slot('textDescription', 'Encargado de llevar a cabo los trabajos.')
     @foreach ($clients as $client)
-      @component('components.inputs.option')
+      @component('components.input_select_option')
         @slot('value')
           {{ $client->id }}
         @endslot
@@ -32,7 +32,7 @@
   @endcomponent
 
   {{-- work name field --}}
-  @component('components.inputs.textarea')
+  @component('components.input_textarea')
     @slot('label', 'Nombre')
     @slot('fieldName', 'work_name')
     @slot('value', $work->work_name)
@@ -42,7 +42,7 @@
   @endcomponent
 
   {{-- work nickname field --}}
-  @component('components.inputs.text')
+  @component('components.input_text')
     @slot('style', '')
     @slot('label', 'Alias')
     @slot('fieldName', 'work_nickname')
@@ -53,7 +53,7 @@
   @endcomponent
 
   {{-- work location field --}}
-  @component('components.inputs.textarea')
+  @component('components.input_textarea')
     @slot('label', 'Ubicación')
     @slot('fieldName', 'work_location')
     @slot('value', $work->work_location)
@@ -65,23 +65,23 @@
 
 {{-- footer --}}
 @section('breadcrumb')
-  @component('components.breadcrumbs.item')
+  @component('components.breadcrumb_item')
     @slot('url', route('clients.index'))
     {{ __('clientes') }}
   @endcomponent
-  @component('components.breadcrumbs.item')
+  @component('components.breadcrumb_item')
     @slot('url', route('clients.index').'/'.$work->client_id)
     {{ $work->client_id }}
   @endcomponent
-  @component('components.breadcrumbs.item')
+  @component('components.breadcrumb_item')
     @slot('url', route('works.index'))
     {{ __('obras') }}
   @endcomponent
-  @component('components.breadcrumbs.item')
+  @component('components.breadcrumb_item')
     @slot('url', route('clients.index').'/'.$work->id)
     {{ $work->id }}
   @endcomponent
-  @component('components.breadcrumbs.item')
+  @component('components.breadcrumb_item')
     @slot('active', true)
     {{ __('editar') }}
   @endcomponent

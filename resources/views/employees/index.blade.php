@@ -9,20 +9,20 @@
 
 {{-- main --}}
 @section('thead')
-  @component('components.tables.tr')
-    @component('components.tables.th')
+  @component('components.table_row')
+    @component('components.table_cell_header')
       @slot('style', 'text-center th-w-sm')
       {{ __('#') }}
     @endcomponent
-    @component('components.tables.th')
+    @component('components.table_cell_header')
       @slot('style', 'text-center')
       {{ __('nombre') }}
     @endcomponent
-    @component('components.tables.th')
+    @component('components.table_cell_header')
       @slot('style', 'text-center th-w-sm')
       {{ __('ot') }}
     @endcomponent
-    @component('components.tables.th')
+    @component('components.table_cell_header')
       @slot('style', 'text-center th-w-sm')
       {{ __(' ') }}
     @endcomponent
@@ -31,19 +31,19 @@
 
 @section('tbody')
   @foreach ($employees as $employee)
-    @component('components.tables.tr')
-      @component('components.tables.td')
+    @component('components.table_row')
+      @component('components.table_cell')
         @slot('style', 'text-center')
         {{ $loop->iteration }}
       @endcomponent
-      @component('components.tables.td')
+      @component('components.table_cell')
         {{ $employee->employee_name }}
       @endcomponent
-      @component('components.tables.td')
+      @component('components.table_cell')
         @slot('style', 'text-center')
         {{ $employee->work_orders }}
       @endcomponent
-      @component('components.tables.td_detail')
+      @component('components.table_cell_finder')
         @slot('style', 'text-center')
         /employees/{{ $employee->id }}
       @endcomponent
@@ -53,7 +53,7 @@
 
 {{-- footer --}}
 @section('breadcrumb')
-  @component('components.breadcrumbs.item')
+  @component('components.breadcrumb_item')
     @slot('active', true)
     {{ __('personal') }}
   @endcomponent

@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-  @component('components.containers.container')
+  @component('components.container')
 
     {{-- header --}}
-    @component('components.headings.title')
+    @component('components.heading_title')
       {{ __('panel de control') }}
     @endcomponent
 
@@ -13,7 +13,7 @@
       @yield('navLinks')
     @endcomponent
 
-    @component('components.miscellaneous.hr_top')
+    @component('components.rule_top')
     @endcomponent
 
     {{-- main --}}

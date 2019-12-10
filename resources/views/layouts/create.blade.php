@@ -1,16 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
-  @component('components.containers.container')
+  @component('components.container')
 
     {{-- alerts --}}
-    @component('components.alerts.save')
+    @component('components.alert_save')
     @endcomponent
-    @component('components.alerts.error')
+    @component('components.alert_error')
     @endcomponent
 
     {{-- header --}}
-    @component('components.headings.title')
+    @component('components.heading_title')
       @yield('title')
     @endcomponent
 
@@ -24,7 +24,7 @@
       @endcomponent
     @endcomponent
 
-    @component('components.miscellaneous.hr_top')
+    @component('components.rule_top')
     @endcomponent
 
     {{-- main --}}
@@ -36,14 +36,14 @@
       @csrf
       @yield('formContent')
     </form>
-    @component('components.buttons.save')
+    @component('components.button_save')
     @endcomponent
 
     {{-- footer --}}
-    @component('components.miscellaneous.hr_bottom')
+    @component('components.rule_bottom')
     @endcomponent
 
-    @component('components.breadcrumbs.container')
+    @component('components.breadcrumb')
       @yield('breadcrumb')
     @endcomponent
   @endcomponent
