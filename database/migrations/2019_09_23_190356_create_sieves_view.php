@@ -18,7 +18,7 @@ class CreateSievesView extends Migration
         -- DEFINER = root@localhost
         SQL SECURITY DEFINER
         VIEW `sieves` AS
-        SELECT `id`,
+        SELECT `general_equipment`.`id`,
                `general_equipment_name` AS `sieve_name`,
                `sieve_opening_designation` AS `sieve_designation`,
                `sieve_opening_dimension` AS `sieve_opening`
