@@ -12,9 +12,9 @@ class ExtendedSample extends Model
     ->select(
       'id',
       'work_order_id',
-      'sample_purpose_name',
+      'work_order_date',
       'sample_description',
-      'sample_receipt_date')
+      'sample_purpose_name')
     ->get();
   }
 
@@ -58,9 +58,9 @@ class ExtendedSample extends Model
     return $this
     ->select(
       'id',
-      'sample_purpose_name',
+      'work_order_date',
       'sample_description',
-      'sample_receipt_date')
+      'sample_purpose_name')
     ->where('work_order_id', $id)
     ->get();
   }

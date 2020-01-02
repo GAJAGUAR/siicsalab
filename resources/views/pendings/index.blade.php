@@ -20,15 +20,15 @@
     @endcomponent
     @component('components.table_cell_header')
       @slot('style', 'text-center th-w-md')
-      {{ __('recibido') }}
-    @endcomponent
-    @component('components.table_cell_header')
-      @slot('style', 'text-center')
-      {{ __('empleo') }}
+      {{ __('muestreo') }}
     @endcomponent
     @component('components.table_cell_header')
       @slot('style', 'text-center')
       {{ __('material') }}
+    @endcomponent
+    @component('components.table_cell_header')
+      @slot('style', 'text-center')
+      {{ __('empleo') }}
     @endcomponent
     @component('components.table_cell_header')
       @slot('style', 'text-center th-w-sm')
@@ -48,13 +48,13 @@
         {{ $sample->work_order_id }}
       @endcomponent
       @component('components.table_cell')
-        {{ $sample->sample_receipt_date }}
-      @endcomponent
-      @component('components.table_cell')
-        {{ $sample->sample_purpose_name }}
+        {{ $sample->work_order_date }}
       @endcomponent
       @component('components.table_cell')
         {{ $sample->sample_description }}
+      @endcomponent
+      @component('components.table_cell')
+        {{ $sample->sample_purpose_name }}
       @endcomponent
       @component('components.table_cell_finder')
         @slot('style', 'text-center')
