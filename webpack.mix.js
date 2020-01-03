@@ -11,12 +11,17 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-   .extract([
-     'vue',
-     'select2',
-     'datatables.net',
-     'datatables.net-bs4'
-   ])
-   .sass('resources/sass/app.scss', 'public/css');
-mix.scripts(['resources/js/complement.js'], 'public/js/complement.js');
+mix.js([
+  'resources/js/app.js',
+  'resources/js/complement.js',
+  'node_modules/datatables.net/js/jquery.dataTables.min.js',
+  'node_modules/datatables.net-bs4/js/dataTables.bootstrap4.min.js',
+  'node_modules/select2/dist/js/select2.full.min.js'
+], 'public/js')
+  .extract([
+    'vue',
+    'datatables.net',
+    'datatables.net-bs4',
+    'select2'
+  ])
+  .sass('resources/sass/app.scss', 'public/css');

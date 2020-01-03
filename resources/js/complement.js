@@ -1,5 +1,5 @@
 /*!
- * SISLAB 
+ * SISLAB
  * Plugins and complements
  */
 
@@ -52,9 +52,9 @@ const datatablesInit = () => {
 // changing datatables DOM
 const moddingDatatablesDom = () => {
   let tablePrimaryWrapper
-  
+
   tablePrimaryWrapper = document.getElementById("table-primary_wrapper")
-  
+
   // check if datatable plugin is active
   if (typeof(tablePrimaryWrapper) !== undefined && tablePrimaryWrapper !== null) {
     let dataTablesLenght

@@ -1,38 +1,20 @@
-// Variables
-@import "variables";
-
-// Mixins
-@import "mixins";
-
-// Bootstrap
-@import "~bootstrap/scss/bootstrap";
-
-// Font Awesome
-@import "vendor/fontawesome/regular";
-@import "vendor/fontawesome/brands";
-@import "vendor/fontawesome/solid";
-@import "vendor/fontawesome/v4-shims";
-@import "vendor/fontawesome/fontawesome";
-
-// Data Tables
-@import "~datatables.net-bs4/css/dataTables.bootstrap4.css";
-
-// Select2
-@import "~select2/dist/css/select2.css";
-@import "vendor/select2-bootstrap-theme/0.1.0-beta.10/select2-bootstrap.min.css";
-
 // Fonts
-@import url("https://fonts.googleapis.com/css?family=Nunito");
-@import "fonts";
+@import url('https://fonts.googleapis.com/css?family=Nunito');
 
-// Buttons
-@import "buttons";
+// Variables
+@import 'variables';
 
-// Print layouts
-@import "print";
+//Vendor
+@import 'vendor';
+
+// Components
+@import "components";
 
 // Utilities
 @import "utilities";
+
+// Print layouts
+@import "print";
 
 // Corrections
 @import "corrections";
