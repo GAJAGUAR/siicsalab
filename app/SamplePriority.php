@@ -17,6 +17,7 @@ class SamplePriority extends Model
       ->select(
         'id',
         'sample_priority_name')
+      ->orderBy('id')
       ->get();
   }
 }

@@ -17,6 +17,7 @@ class SampleStatus extends Model
       ->select(
         'id',
         'sample_status_name')
+      ->orderBy('id')
       ->get();
   }
 }

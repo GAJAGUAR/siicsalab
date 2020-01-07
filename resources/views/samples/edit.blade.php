@@ -250,6 +250,10 @@
     @slot('value', $sample->bank_id)
     @slot('textHelp', 'bankHelp')
     @slot('textDescription', 'Banco de donde procede el material.')
+    @component('components.input_select_option')
+      @slot('value', '')
+      {{ __('NO ESPECIFICADO') }}
+    @endcomponent
     @foreach ($banks as $bank)
       @component('components.input_select_option')
         @slot('value')

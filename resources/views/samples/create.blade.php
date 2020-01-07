@@ -254,7 +254,7 @@
     @slot('textDescription', 'Banco de donde procede el material.')
     @component('components.input_select_option')
       @slot('value', '')
-      {{ __('SELECCIONAR') }}
+      {{ __('NO ESPECIFICADO') }}
     @endcomponent
     @foreach ($banks as $bank)
       @component('components.input_select_option')
@@ -398,10 +398,6 @@
       @slot('value', old('sample_priority_id'))
       @slot('textHelp', 'priorityHelp')
       @slot('textDescription', 'Relevancia con respecto de los demás trabajos.')
-      @component('components.input_select_option')
-        @slot('value', '')
-        {{ __('SELECCIONAR') }}
-      @endcomponent
       @foreach ($priorities as $priority)
         @component('components.input_select_option')
           @slot('value')
@@ -423,10 +419,6 @@
       @slot('value', old('sample_status_id'))
       @slot('textHelp', 'statusHelp')
       @slot('textDescription', 'Empleo que se le dará al material.')
-      @component('components.input_select_option')
-        @slot('value', '')
-        {{ __('SELECCIONAR') }}
-      @endcomponent
       @foreach ($statuses as $status)
         @component('components.input_select_option')
           @slot('value')
