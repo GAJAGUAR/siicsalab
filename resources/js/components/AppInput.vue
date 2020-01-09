@@ -1,42 +1,44 @@
 <template>
-  <div class="form-group" :class="style">
-    <label :for="fieldName">
+  <div class="form-group col-12 col-md">
+    <label :for="field">
       {{ label }}
     </label>
     <input
       autocomplete="off"
-      class="form-control" :class="{ 'is-invalid': hasError }"
-      :id="fieldName"
+      class="form-control"
+      :aria-describedby="aria"
+      :class="isValid"
+      :data-autofocus="isAutofocus"
+      :id="field"
       :max="max"
       :min="min"
-      :name="fieldName"
+      :name="field"
       :readonly="isReadonly"
       :step="step"
       :type="type"
       :value="value"
-      :aria-describedby="ariaCaption"
-      :data-autofocus="isAutofocus"
     >
-    <span v-if="hasError"
-      class="invalid-feedback"
-      role="alert"
-    >
-      {{ errorCaption }}
-    </span>
     <small
-      v-else
-      :id="ariaCaption"
+      v-if="hasError == 'false'"
       class="form-text text-muted"
+      :id="aria"
     >
       {{ description }}
     </small>
+    <span
+      v-else
+      class="invalid-feedback"
+      role="alert"
+    >
+      {{ error }}
+    </span>
   </div>
 </template>
 
 <script>
 export default {
   props: {
-    ariaCaption: {
+    aria: {
       type: String,
       required: false
     },
@@ -44,19 +46,19 @@ export default {
       type: String,
       required: false
     },
-    errorCaption: {
+    error: {
       type: String,
       required: true
     },
-    fieldName: {
+    field: {
       type: String,
       required: true
     },
     hasError: {
-      type: Boolean,
+      type: String,
       required: false,
       default: function() {
-        return false;
+        return 'false';
       }
     },
     isAutofocus: {
@@ -92,10 +94,6 @@ export default {
       type: Number,
       required: false
     },
-    style: {
-      type: Array,
-      required: false
-    },
     type: {
       type: String,
       required: true
@@ -103,6 +101,13 @@ export default {
     value: {
       type: String,
       required: false
+    }
+  },
+  computed: {
+    isValid: function() {
+      if (this.hasError == 'true') {
+        return 'is-invalid';
+      }
     }
   }
 };
