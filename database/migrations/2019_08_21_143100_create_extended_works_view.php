@@ -24,6 +24,7 @@ class CreateExtendedWorksView extends Migration
                  `work_name`,
                  `work_nickname`,
                  `work_location`,
+                 `work_notes`,
                  COUNT(`work_orders`.`id`) AS `work_orders`
         FROM     `works`
                  LEFT JOIN `clients`

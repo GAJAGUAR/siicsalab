@@ -25,6 +25,9 @@ class CreateWorksTable extends Migration
       $table->string('work_name', 750);
       $table->string('work_nickname', 50);
       $table->string('work_location', 250);
+      $table->text('work_notes')
+        ->nullable()
+        ->default(null);
       $table->timestamps();
 
       // Indexes

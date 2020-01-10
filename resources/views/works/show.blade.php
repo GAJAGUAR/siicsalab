@@ -28,6 +28,12 @@
   @component('components.definition_description')
     {{ $work->work_location }}
   @endcomponent
+  @component('components.definition_term')
+    {{ __('Notas:') }}
+  @endcomponent
+  @component('components.definition_description')
+    {{ $work->work_notes }}
+  @endcomponent
 @endsection
 
 @section('subtitle')

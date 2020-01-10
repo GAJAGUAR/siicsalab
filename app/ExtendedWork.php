@@ -30,7 +30,8 @@ class ExtendedWork extends Model
         'client_name',
         'work_name',
         'work_nickname',
-        'work_location')
+        'work_location',
+        'work_notes')
       ->findOrFail($id);
   }
 

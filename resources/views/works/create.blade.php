@@ -64,6 +64,16 @@
     @slot('maxLength', '250')
     @slot('textDescription', 'Calle, número, localidad, ciudad, estado, código postal.')
   @endcomponent
+
+  {{-- work notes field --}}
+  @component('components.input_textarea')
+    @slot('label', 'Notas')
+    @slot('fieldName', 'work_notes')
+    @slot('value', old('work_notes'))
+    @slot('textHelp', 'notesHelp')
+    @slot('maxLength', '500')
+    @slot('textDescription', 'Cualquier observación o comentario adicional.')
+  @endcomponent
 @endsection
 
 {{-- footer --}}

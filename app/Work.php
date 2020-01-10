@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
  * @property mixed work_name
  * @property mixed work_nickname
  * @property mixed work_location
+ * @property mixed work_notes
  * @method static findOrFail(Int $id)
  */
 class Work extends Model
@@ -32,6 +33,7 @@ class Work extends Model
     $work->work_name = $request->get('work_name');
     $work->work_nickname = $request->get('work_nickname');
     $work->work_location = $request->get('work_location');
+    $work->work_notes = $request->get('work_notes');
     $work->save();
   }
 }
