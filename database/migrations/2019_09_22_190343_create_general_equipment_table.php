@@ -84,6 +84,12 @@ class CreateGeneralEquipmentTable extends Migration
       $table->decimal('general_equipment_temperature_b', 8, 3)
         ->nullable()
         ->default(null);
+      $table->date('general_equipment_received_at')
+        ->nullable()
+        ->default(null);
+      $table->date('general_equipment_in_service_at')
+        ->nullable()
+        ->default(null);
       $table->date('general_equipment_verified_at')
         ->nullable()
         ->default(null);
