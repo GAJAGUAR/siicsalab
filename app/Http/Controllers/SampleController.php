@@ -5,23 +5,18 @@ namespace App\Http\Controllers;
 use App\{Bank, ExtendedSample, ExtendedWorkOrder, SamplePriority,
   SamplePurpose, Sample, SampleStatus, SampleWeather};
 use App\Http\Requests\SampleFormRequest;
-use Illuminate\Http\Response;
+use Illuminate\View\View;
 
 class SampleController extends Controller
 {
-  public function __construct()
-  {
-    $this->middleware('auth');
-  }
-
   /**
    * Display a listing of the resource.
    *
-   * @return Response
+   * @return View
    */
   public function index()
   {
-    $samples = (new ExtendedSample)->indexSample();
+    $samples = (new ExtendedSample)->list();
 
     return view('samples.index', [
       'samples' => $samples
@@ -80,6 +75,7 @@ class SampleController extends Controller
     $sample = new Sample();
 
     (new Sample)->saveSample($request, $sample);
+
     return back()->withInput()->with('status', 'Registro guardado exitosamente');
   }
 
@@ -87,11 +83,11 @@ class SampleController extends Controller
    * Display the specified resource.
    *
    * @param Int $id
-   * @return Response
+   * @return View
    */
   public function show(Int $id)
   {
-    $sample = (new ExtendedSample)->showSample($id);
+    $sample = (new ExtendedSample)->describe($id);
 
     return view('samples.show', [
       'sample' => $sample
@@ -102,7 +98,7 @@ class SampleController extends Controller
    * Show the form for editing the specified resource.
    *
    * @param Int $id
-   * @return Response
+   * @return View
    */
   public function edit(Int $id)
   {
@@ -121,8 +117,8 @@ class SampleController extends Controller
     $roadSides = (new ExtendedSample)->roadSideNames();
     $roadStripes = (new ExtendedSample)->roadStripeNames();
     $tests = (new ExtendedSample)->testNames();
-    $clientId = (new ExtendedSample)->showSample($id)->client_id;
-    $workId = (new ExtendedSample)->showSample($id)->work_id;
+    $clientId = (new ExtendedSample)->describe($id)->client_id;
+    $workId = (new ExtendedSample)->describe($id)->work_id;
 
     return view('samples.edit', [
       'sample' => $sample,
@@ -158,6 +154,7 @@ class SampleController extends Controller
     $sample = Sample::findOrFail($id);
 
     (new Sample)->saveSample($request, $sample);
+
     return back()->withInput()->with('status', 'Registro actualizado exitosamente');
   }
 
@@ -170,6 +167,7 @@ class SampleController extends Controller
   public function destroy(Int $id)
   {
     Sample::findOrFail($id)->delete();
+
     return redirect('/samples')->with('status', 'Registro eliminado exitosamente');
   }
 }

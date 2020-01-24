@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ExtendedSample extends Model
 {
-  public function indexSample()
+  public function list()
   {
     return $this
     ->select(
@@ -18,7 +18,7 @@ class ExtendedSample extends Model
     ->get();
   }
 
-  public function showSample(Int $id)
+  public function describe(Int $id)
   {
     return $this
     ->select(
@@ -49,7 +49,8 @@ class ExtendedSample extends Model
       'sample_receipt_date',
       'sample_priority_name',
       'sample_status_name',
-      'sample_url')
+      'sample_url'
+    )
     ->findOrFail($id);
   }
 

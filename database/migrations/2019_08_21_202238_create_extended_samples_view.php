@@ -26,7 +26,14 @@ class CreateExtendedSamplesView extends Migration
                  `work_id`,
                  `work_name`,
                  `work_location`,
-                 `employee_name`,
+                 CONCAT_WS(
+                   " ",
+                   `employee_title`,
+                   `first_name_1`,
+                   `first_name_2`,
+                   `last_name_1`,
+                   `last_name_2`
+                 ) AS `employee_name`,
                  `sample_time`,
                  `sample_description`,
                  `sample_treatment`,
