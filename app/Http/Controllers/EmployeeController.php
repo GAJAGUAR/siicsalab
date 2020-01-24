@@ -20,7 +20,7 @@ class EmployeeController extends Controller
    */
   public function index()
   {
-    $employees = (new ExtendedEmployee)->indexEmployee();
+    $employees = (new ExtendedEmployee)->list();
 
     return view('employees.index', [
       'employees' => $employees
@@ -66,7 +66,7 @@ class EmployeeController extends Controller
    */
   public function show(Int $id)
   {
-    $employee = (new ExtendedEmployee)->showEmployee($id);
+    $employee = (new ExtendedEmployee)->describe($id);
     $workOrders = (new ExtendedWorkOrder)->workOrdersByEmployee($id);
 
     return view('employees.show', [

@@ -11,18 +11,19 @@ class ExtendedEmployee extends Model
     return $this->hasMany(ExtendedWorkOrder::class);
   }
 
-  public function indexEmployee()
+  public function list()
   {
     return $this
       ->select(
         'id',
         'employee_name',
         'position_name',
-        'work_orders')
+        'work_orders'
+      )
       ->get();
   }
 
-  public function showEmployee(Int $id)
+  public function describe(Int $id)
   {
     return $this
       ->select(
@@ -32,7 +33,8 @@ class ExtendedEmployee extends Model
         'position_name',
         'scholarship_name',
         'employee_birthdate',
-        'employee_gender')
+        'employee_gender'
+      )
       ->findOrFail($id);
   }
 }

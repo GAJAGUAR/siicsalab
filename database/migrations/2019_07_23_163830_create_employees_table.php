@@ -39,15 +39,6 @@ class CreateEmployeesTable extends Migration
       $table->string('last_name_2', 15)
         ->nullable()
         ->default(null);
-      $table->string('employee_name', 70)
-        ->virtualAs('
-          CONCAT_WS(" ",
-            `employee_title`,
-            `first_name_1`,
-            `first_name_2`,
-            `last_name_1`,
-            `last_name_2`)
-          ');
       $table->date('employee_birthdate')
         ->nullable()
         ->default(null);

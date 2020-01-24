@@ -20,7 +20,14 @@ class CreateExtendedEmployeesView extends Migration
         VIEW `extended_employees` AS
         SELECT   `employees`.`id`,
                  `employee_nickname`,
-                 `employee_name`,
+                 CONCAT_WS(
+                   " ",
+                   `employee_title`,
+                   `first_name_1`,
+                   `first_name_2`,
+                   `last_name_1`,
+                   `last_name_2`
+                 ) AS `employee_name`,
                  `position_name`,
                  `scholarship_name`,
                  `employee_birthdate`,
@@ -37,7 +44,7 @@ class CreateExtendedEmployeesView extends Migration
         ORDER BY `employees`.`id`;
     ');
   }
-  
+
   /**
    * Reverse the migrations.
    *
