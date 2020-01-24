@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\{Employee, ExtendedSample, ExtendedWork, ExtendedWorkOrder, WorkOrder};
+use App\{ExtendedEmployee, ExtendedSample, ExtendedWork,
+  ExtendedWorkOrder, WorkOrder};
 use App\Http\Requests\WorkOrderFormRequest;
 use Illuminate\Http\Response;
 
@@ -35,7 +36,7 @@ class WorkOrderController extends Controller
   public function create()
   {
     $works = (new ExtendedWork)->workNames();
-    $employees = (new Employee)->employeeNames();
+    $employees = (new ExtendedEmployee)->list();
 
     return view('work_orders.create', [
       'works' => $works,

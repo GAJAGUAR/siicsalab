@@ -26,7 +26,14 @@ class CreateExtendedWorkOrdersView extends Migration
                  `client_id`,
                  `client_name`,
                  `employee_id`,
-                 `employee_name`,
+                 CONCAT_WS(
+                   " ",
+                   `employee_title`,
+                   `first_name_1`,
+                   `first_name_2`,
+                   `last_name_1`,
+                   `last_name_2`
+                 ) AS `employee_name`,
                  `employee_nickname`,
                  `work_order_date`,
                  COUNT(`samples`.`id`) AS `samples`

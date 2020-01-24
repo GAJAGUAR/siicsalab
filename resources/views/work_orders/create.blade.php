@@ -49,7 +49,7 @@
     @slot('label', 'Personal')
     @slot('fieldName', 'employee_id')
     @slot('value', old('employee_id'))
-    @slot('textHelp', 'workHelp')
+    @slot('textHelp', 'employeeHelp')
     @slot('textDescription', 'Lugar dónde se llevarán a cabo los trabajos.')
     @component('components.input_select_option')
       @slot('value', '')
