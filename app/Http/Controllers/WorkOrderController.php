@@ -23,7 +23,7 @@ class WorkOrderController extends Controller
   {
     $workOrders = (new ExtendedWorkOrder)->indexWorkOrder();
 
-    return view('work_orders.index', [
+    return view('work-orders.index', [
       'workOrders' => $workOrders
     ]);
   }
@@ -38,7 +38,7 @@ class WorkOrderController extends Controller
     $works = (new ExtendedWork)->workNames();
     $employees = (new ExtendedEmployee)->list();
 
-    return view('work_orders.create', [
+    return view('work-orders.create', [
       'works' => $works,
       'employees' => $employees
     ]);
@@ -70,7 +70,7 @@ class WorkOrderController extends Controller
     $workOrder = (new ExtendedWorkOrder)->showWorkOrder($id);
     $samples = (new ExtendedSample)->samplesByWorkOrder($id);
 
-    return view('work_orders.show', [
+    return view('work-orders.show', [
       'workOrder' => $workOrder,
       'samples' => $samples
     ]);
@@ -86,10 +86,10 @@ class WorkOrderController extends Controller
   {
     $workOrder = WorkOrder::findOrFail($id);
     $works = (new ExtendedWork)->workNames();
-    $employees = (new Employee)->employeeNames();
+    $employees = (new ExtendedEmployee)->list();
     $clientId = (new ExtendedWorkOrder)->showWorkOrder($id)->client_id;
 
-    return view('work_orders.edit', [
+    return view('work-orders.edit', [
       'workOrder' => $workOrder,
       'works' => $works,
       'employees' => $employees,
@@ -122,6 +122,6 @@ class WorkOrderController extends Controller
   public function destroy(Int $id)
   {
     WorkOrder::findOrFail($id)->delete();
-    return redirect('/work_orders')->with('status', 'Registro eliminado exitosamente');
+    return redirect('/work-orders')->with('status', 'Registro eliminado exitosamente');
   }
 }

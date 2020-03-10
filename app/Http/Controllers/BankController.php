@@ -2,27 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Response;
-
 use App\Bank;
-
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class BankController extends Controller
 {
-  public function __construct()
-  {
-    $this->middleware('auth');
-  }
-
   /**
    * Display a listing of the resource.
    *
-   * @return void
+   * @return View
    */
   public function index()
   {
-    //
+    $banks = (new Bank)->list();
+
+    return view('banks.index', [
+      'banks' => $banks
+    ]);
   }
 
   /**

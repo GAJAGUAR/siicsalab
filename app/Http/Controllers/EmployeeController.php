@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\{Employee, ExtendedEmployee, ExtendedWorkOrder, Scholarship, Position};
+use App\{Employee, ExtendedEmployee, ExtendedWorkOrder, Schooling, Position};
 use App\Http\Requests\EmployeeFormRequest;
 use Illuminate\Http\Response;
 
@@ -34,11 +34,11 @@ class EmployeeController extends Controller
    */
   public function create()
   {
-    $scholarships = (new Scholarship)->scholarshipNames();
-    $positions = (new Position)->positionNames();
+    $schoolings = (new Schooling)->list();
+    $positions = (new Position)->list();
 
     return view('employees.create', [
-      'scholarships' => $scholarships,
+      'schoolings' => $schoolings,
       'positions' => $positions
     ]);
   }
@@ -84,12 +84,12 @@ class EmployeeController extends Controller
   public function edit(Int $id)
   {
     $employee = Employee::findOrFail($id);
-    $scholarships = (new Scholarship)->scholarshipNames();
-    $positions = (new Position)->positionNames();
+    $schoolings = (new Schooling)->list();
+    $positions = (new Position)->list();
 
     return view('employees.edit', [
       'employee' => $employee,
-      'scholarships' => $scholarships,
+      'schoolings' => $schoolings,
       'positions' => $positions
     ]);
   }

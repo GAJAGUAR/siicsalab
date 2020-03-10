@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\SampleStatus;
+
 class PanelController extends Controller
 {
   /**
@@ -13,7 +15,7 @@ class PanelController extends Controller
   {
     $this->middleware('auth');
   }
-  
+
   /**
    * Show the application dashboard.
    *
@@ -21,6 +23,10 @@ class PanelController extends Controller
    */
   public function index()
   {
-    return view('panel.admin');
+    $statuses = (new SampleStatus)->list();
+
+    return view('panel.admin', [
+      'statuses' => $statuses
+    ]);
   }
 }
