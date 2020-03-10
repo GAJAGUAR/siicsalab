@@ -15,7 +15,7 @@ class EmployeeFormRequest extends FormRequest
   {
     return true;
   }
-  
+
   /**
    * Get the validation rules that apply to the request.
    *
@@ -24,7 +24,7 @@ class EmployeeFormRequest extends FormRequest
   public function rules()
   {
     return [
-      'scholarship_id' => 'nullable|integer|min:1',
+      'schooling_id' => 'nullable|integer|min:1',
       'position_id' => 'nullable|integer|min:1',
       'employee_nickname' => 'required|min:3|max:50',
       'employee_title' => 'nullable|max:5',
