@@ -62,6 +62,9 @@ class CreateSamplesTable extends Migration
       $table->string('sample_road_stripe', 20)
         ->nullable()
         ->default(null);
+      $table->string('sample_location_complement', 100)
+        ->nullable()
+        ->default(null);
       $table->string('sample_road', 200)
         ->virtualAs('
           CONCAT(
@@ -71,7 +74,8 @@ class CreateSamplesTable extends Migration
             IF(`sample_road_station` <> "", CONCAT(" KM ", `sample_road_station`), ""),
             IF(`sample_road_body` <> "", CONCAT(" CUERPO ",`sample_road_body`), ""),
             IF(`sample_road_side` <> "", CONCAT(" LADO ",`sample_road_side`), ""),
-            IF(`sample_road_stripe` <> "", CONCAT(" FRANJA ",`sample_road_stripe`), "")
+            IF(`sample_road_stripe` <> "", CONCAT(" FRANJA ",`sample_road_stripe`), ""),
+            IF(`sample_location_complement` <> "", CONCAT(" ",`sample_location_complement`), "")
           )
         ');
       $table->decimal('sample_phreatic_level', 4, 2)
@@ -89,7 +93,7 @@ class CreateSamplesTable extends Migration
       $table->string('sample_tests', 100)
         ->nullable()
         ->default(null);
-      $table->text('sample_notes')
+      $table->string('sample_notes', 500)
         ->nullable()
         ->default(null);
       $table->date('sample_receipt_date')

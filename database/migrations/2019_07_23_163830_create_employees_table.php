@@ -24,7 +24,7 @@ class CreateEmployeesTable extends Migration
       $table->unsignedSmallInteger('position_id')
         ->nullable()
         ->default(null);
-      $table->unsignedSmallInteger('scholarship_id')
+      $table->unsignedSmallInteger('schooling_id')
         ->nullable()
         ->default(null);
       $table->string('employee_nickname', 30);
@@ -48,13 +48,13 @@ class CreateEmployeesTable extends Migration
       $table->timestamps();
 
       // Indexes
-      $table->index('scholarship_id');
+      $table->index('schooling_id');
       $table->index('position_id');
 
       // Foreign keys
-      $table->foreign('scholarship_id')
+      $table->foreign('schooling_id')
         ->references('id')
-        ->on('scholarship')
+        ->on('schoolings')
         ->onDelete('cascade')
         ->onUpdate('cascade');
       $table->foreign('position_id')

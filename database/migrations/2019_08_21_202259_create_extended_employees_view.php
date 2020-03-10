@@ -29,15 +29,15 @@ class CreateExtendedEmployeesView extends Migration
                    `last_name_2`
                  ) AS `employee_name`,
                  `position_name`,
-                 `scholarship_name`,
+                 `schooling_name`,
                  `employee_birthdate`,
                  `employee_gender`,
                  COUNT(`work_orders`.`id`) AS `work_orders`
         FROM     `employees`
                  LEFT JOIN `work_orders`
                  ON `employees`.`id` = `work_orders`.`employee_id`
-                 LEFT JOIN `scholarship`
-                 ON `employees`.`scholarship_id` = `scholarship`.`id`
+                 LEFT JOIN `schoolings`
+                 ON `employees`.`schooling_id` = `schoolings`.`id`
                  LEFT JOIN `positions`
                  ON `employees`.`position_id` = `positions`.`id`
         GROUP BY `employees`.`id`

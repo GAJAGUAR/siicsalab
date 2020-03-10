@@ -44,6 +44,7 @@ class CreateExtendedSamplesView extends Migration
                  `sample_road_side`,
                  `sample_road_stripe`,
                  `sample_road`,
+                 `bank_id`,
                  `bank_name`,
                  `bank_location`,
                  `sample_purpose_name`,
@@ -56,13 +57,16 @@ class CreateExtendedSamplesView extends Migration
                  `sample_notes`,
                  `sample_receipt_date`,
                  `sample_priority_name`,
+                 `sample_status_id`,
                  `sample_status_name`,
-                 CONCAT_WS("-",
-                           `client_id`,
-                           `work_id`,
-                           `work_order_id`,
-                           `samples`.`id`,
-                           `sample_purpose_id`) AS `sample_url`
+                 CONCAT_WS(
+                   "-",
+                   `client_id`,
+                   `work_id`,
+                   `work_order_id`,
+                   `samples`.`id`,
+                   `sample_purpose_id`
+                 ) AS `sample_code`
         FROM     `samples`
                  LEFT JOIN `work_orders`
                  ON `samples`.`work_order_id` = `work_orders`.`id`

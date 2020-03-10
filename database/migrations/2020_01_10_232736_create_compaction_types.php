@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEquipmentTypesTable extends Migration
+class CreateCompactionTypes extends Migration
 {
   /**
    * Run the migrations.
@@ -14,27 +14,18 @@ class CreateEquipmentTypesTable extends Migration
   public function up()
   {
     Schema::disableForeignKeyConstraints();
-    Schema::create('equipment_types', function (Blueprint $table) {
+    Schema::create('compaction_types', function (Blueprint $table) {
 
       // DDL
       $table->engine = 'InnoDB';
       $table->charset = 'utf8mb4';
       $table->collation = 'utf8mb4_spanish_ci';
       $table->smallIncrements('id');
-      $table->unsignedSmallInteger('equipment_category_id');
-      $table->string('equipment_type_name', 25);
+      $table->string('compaction_type_name', 50);
       $table->timestamps();
 
       // Indexes
-      $table->index('equipment_category_id');
-      $table->unique('equipment_type_name');
-
-      // Foreign keys
-      $table->foreign('equipment_category_id')
-        ->references('id')
-        ->on('equipment_categories')
-        ->onDelete('cascade')
-        ->onUpdate('cascade');
+      $table->unique('compaction_type_name');
     });
     Schema::enableForeignKeyConstraints();
   }
@@ -47,7 +38,7 @@ class CreateEquipmentTypesTable extends Migration
   public function down()
   {
     Schema::disableForeignKeyConstraints();
-    Schema::dropIfExists('equipment_types');
+    Schema::dropIfExists('compaction_types');
     Schema::enableForeignKeyConstraints();
   }
 }
