@@ -19,7 +19,6 @@ mix.js([
   'node_modules/select2/dist/js/select2.full.min.js'
 ], 'public/js')
   .extract([
-    'vue',
     'datatables.net',
     'datatables.net-bs4',
     'select2'
