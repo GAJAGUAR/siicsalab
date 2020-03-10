@@ -17,7 +17,6 @@
       @slot('label', 'Orden de trabajo')
       @slot('fieldName', 'work_order_id')
       @slot('value', old('work_order_id'))
-      @slot('textHelp', 'workOrderHelp')
       @slot('autofocus', 'true')
       @slot('textDescription', 'Orden de trabajo a la que pertenece el ensaye.')
       @component('components.input_select_option')
@@ -43,7 +42,6 @@
       @slot('label', 'Ensaye')
       @slot('fieldName', 'id')
       @slot('value', old('id'))
-      @slot('textHelp', 'idHelp')
       @slot('textDescription', 'Número de ensaye.')
     @endcomponent
 
@@ -53,7 +51,6 @@
       @slot('label', 'Hora')
       @slot('fieldName', 'sample_time')
       @slot('value', old('sample_time'))
-      @slot('textHelp', 'timeHelp')
       @slot('textDescription', 'Hora en la que se tomó la muestra.')
     @endcomponent
   @endcomponent
@@ -63,7 +60,6 @@
     @slot('label', 'Descripción')
     @slot('fieldName', 'sample_description')
     @slot('value', old('sample_description'))
-    @slot('textHelp', 'descriptionHelp')
     @slot('maxLength', '250')
     @slot('textDescription', 'Información petrográfica del material.')
   @endcomponent
@@ -84,7 +80,6 @@
     @slot('label', 'Tratamiento')
     @slot('fieldName', 'sample_treatment')
     @slot('value', old('sample_treatment'))
-    @slot('textHelp', 'treatmentHelp')
     @slot('maxLength', '100')
     @slot('textDescription', 'Realizado sobre el material, previo al muestreo.')
   @endcomponent
@@ -105,7 +100,6 @@
     @slot('label', 'Localización')
     @slot('fieldName', 'sample_location')
     @slot('value', old('sample_location'))
-    @slot('textHelp', 'locationHelp')
     @slot('maxLength', '100')
     @slot('textDescription', 'Ubicación general de la muestra.')
   @endcomponent
@@ -126,7 +120,6 @@
     @slot('label', 'Camino')
     @slot('fieldName', 'sample_road_name')
     @slot('value', old('sample_road_name'))
-    @slot('textHelp', 'roadNameHelp')
     @slot('maxLength', '100')
     @slot('textDescription', 'Anotarlo si la muestra fue tomada en un camino o vía.')
   @endcomponent
@@ -149,7 +142,6 @@
       @slot('label', 'Cadenamiento inicio')
       @slot('fieldName', 'sample_road_station_start')
       @slot('value', old('sample_road_station_start'))
-      @slot('textHelp', 'roadStartHelp')
       @slot('maxLength', '11')
       @slot('textDescription', 'Inicio del tramo que representa la muestra.')
     @endcomponent
@@ -160,7 +152,6 @@
       @slot('label', 'Cadenamiento fin')
       @slot('fieldName', 'sample_road_station_end')
       @slot('value', old('sample_road_station_end'))
-      @slot('textHelp', 'roadEndHelp')
       @slot('maxLength', '11')
       @slot('textDescription', 'Fin del tramo que representa la muestra.')
     @endcomponent
@@ -171,7 +162,6 @@
       @slot('label', 'Cadenamiento muestra')
       @slot('fieldName', 'sample_road_station')
       @slot('value', old('sample_road_station'))
-      @slot('textHelp', 'roadStationHelp')
       @slot('maxLength', '11')
       @slot('textDescription', 'Kilometraje exacto donde se tomó la muestra.')
     @endcomponent
@@ -184,7 +174,6 @@
       @slot('label', 'Cuerpo')
       @slot('fieldName', 'sample_road_body')
       @slot('value', old('sample_road_body'))
-      @slot('textHelp', 'bodyHelp')
       @slot('maxLength', '20')
       @slot('textDescription', 'Designación del cuerpo del camino.')
     @endcomponent
@@ -206,7 +195,6 @@
       @slot('label', 'Lado')
       @slot('fieldName', 'sample_road_side')
       @slot('value', old('sample_road_side'))
-      @slot('textHelp', 'sideHelp')
       @slot('maxLength', '10')
       @slot('textDescription', 'Lado o desviación del camino.')
     @endcomponent
@@ -228,7 +216,6 @@
       @slot('label', 'Franja')
       @slot('fieldName', 'sample_road_stripe')
       @slot('value', old('sample_road_stripe'))
-      @slot('textHelp', 'stripeHelp')
       @slot('maxLength', '10')
       @slot('textDescription', 'Sección longitudinal.')
     @endcomponent
@@ -245,12 +232,20 @@
     @endcomponent
   @endcomponent
 
+  {{-- sample location complement field --}}
+  @component('components.input_list')
+    @slot('label', 'Complemento de localización')
+    @slot('fieldName', 'sample_location_complement')
+    @slot('value', old('sample_location_complement'))
+    @slot('maxLength', '100')
+    @slot('textDescription', 'Datos adicionales sobre la ubicación de la muestra.')
+  @endcomponent
+
   {{-- bank id field --}}
   @component('components.input_select')
     @slot('label', 'Banco')
     @slot('fieldName', 'bank_id')
     @slot('value', old('bank_id'))
-    @slot('textHelp', 'bankHelp')
     @slot('textDescription', 'Banco de donde procede el material.')
     @component('components.input_select_option')
       @slot('value', '')
@@ -274,7 +269,6 @@
     @slot('label', 'Para utilizar en')
     @slot('fieldName', 'sample_purpose_id')
     @slot('value', old('sample_purpose_id'))
-    @slot('textHelp', 'purposeHelp')
     @slot('textDescription', 'Empleo que se le dará al material.')
     @component('components.input_select_option')
       @slot('value', '')
@@ -300,7 +294,6 @@
       @slot('label', 'N. A. F.')
       @slot('fieldName', 'sample_phreatic_level')
       @slot('value', old('sample_phreatic_level'))
-      @slot('textHelp', 'phreaticHelp')
       @slot('textDescription', 'Nivel freático.')
     @endcomponent
 
@@ -310,7 +303,6 @@
       @slot('label', 'Muestreo')
       @slot('fieldName', 'sampling_seq')
       @slot('value', old('sampling_seq'))
-      @slot('textHelp', 'samplingHelp')
       @slot('textDescription', 'Número de muestreo.')
     @endcomponent
 
@@ -320,7 +312,6 @@
       @slot('label', 'Muestra')
       @slot('fieldName', 'sample_seq')
       @slot('value', old('sample_seq'))
-      @slot('textHelp', 'sampleHelp')
       @slot('textDescription', 'Número de muestra.')
     @endcomponent
 
@@ -330,7 +321,6 @@
       @slot('label', 'Temperatura')
       @slot('fieldName', 'sampling_env_temp')
       @slot('value', old('sampling_env_temp'))
-      @slot('textHelp', 'temperatureHelp')
       @slot('textDescription', 'Temperatura ambiente.')
     @endcomponent
   @endcomponent
@@ -340,7 +330,6 @@
     @slot('label', 'Clima')
     @slot('fieldName', 'sample_weather_id')
     @slot('value', old('sample_weather_id'))
-    @slot('textHelp', 'weatherHelp')
     @slot('textDescription', 'Condiciones climáticas al momento de tomar la muestra.')
     @component('components.input_select_option')
       @slot('value', '')
@@ -364,7 +353,6 @@
     @slot('label', 'Pruebas')
     @slot('fieldName', 'sample_tests')
     @slot('value', old('sample_tests'))
-    @slot('textHelp', 'testsHelp')
     @slot('maxLength', '100')
     @slot('textDescription', 'Estudios que se ralizarán al material.')
   @endcomponent
@@ -374,7 +362,6 @@
     @slot('label', 'Notas')
     @slot('fieldName', 'sample_notes')
     @slot('value', old('sample_notes'))
-    @slot('textHelp', 'notesHelp')
     @slot('maxLength', '500')
     @slot('textDescription', 'Cualquier observación o comentario adicional.')
   @endcomponent
@@ -386,7 +373,6 @@
       @slot('label', 'Recibido')
       @slot('fieldName', 'sample_receipt_date')
       @slot('value', old('sample_receipt_date'))
-      @slot('textHelp', 'receiptHelp')
       @slot('textDescription', 'Fecha de recibido en el laboratorio.')
     @endcomponent
 
@@ -396,7 +382,6 @@
       @slot('label', 'Prioridad')
       @slot('fieldName', 'sample_priority_id')
       @slot('value', old('sample_priority_id'))
-      @slot('textHelp', 'priorityHelp')
       @slot('textDescription', 'Relevancia con respecto de los demás trabajos.')
       @foreach ($priorities as $priority)
         @component('components.input_select_option')
@@ -417,7 +402,6 @@
       @slot('label', 'Estado')
       @slot('fieldName', 'sample_status_id')
       @slot('value', old('sample_status_id'))
-      @slot('textHelp', 'statusHelp')
       @slot('textDescription', 'Empleo que se le dará al material.')
       @foreach ($statuses as $status)
         @component('components.input_select_option')

@@ -156,7 +156,7 @@
     {{ __('URL:') }}
   @endcomponent
   @component('components.definition_description')
-    {{ $sample->sample_url }}
+    {{ $sample->sample_code }}
   @endcomponent
 @endsection
 
@@ -181,11 +181,11 @@
     {{ $sample->work_id }}
   @endcomponent
   @component('components.breadcrumb_item')
-    @slot('url', route('work_orders.index'))
+    @slot('url', route('work-orders.index'))
     {{ __('órdenes de trabajo') }}
   @endcomponent
   @component('components.breadcrumb_item')
-    @slot('url', route('work_orders.index').'/'.$sample->work_order_id)
+    @slot('url', route('work-orders.index').'/'.$sample->work_order_id)
     {{ $sample->work_order_id }}
   @endcomponent
   @component('components.breadcrumb_item')

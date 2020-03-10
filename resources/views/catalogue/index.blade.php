@@ -5,7 +5,7 @@
 
     {{-- header --}}
     @component('components.heading_title')
-      {{ __('panel de control') }}
+      {{ __('catálogo') }}
     @endcomponent
 
     {{-- nav --}}
@@ -18,16 +18,21 @@
 
     {{-- main --}}
     <div class="row row-cols-1 row-cols-md-3 mt-4">
-      @foreach ($statuses as $status)
+      @foreach ($elements as $element)
         <div class="col mb-4">
-          <div class="card h-100 shadow border-left-primary-lg">
+          <div class="card h-100 shadow border-left-primary-lg text-uppercase">
             <div class="card-body">
-              <h5 class="card-title mb-2 text-uppercase">{{ $status->sample_status_name }}</h5>
+              <h5 class="card-title mb-2">{{ $element['name'] }}</h5>
               <a
-                href="{{ '/statuses/'.$status->id }}"
-                class="h6 card-link mb-2 text-muted"
+                href="{{ $element['url'] }}"
+                class="card-link text-capitalize"
               >
-                {{ $status->samples.' ensayes' }}
+                {{ __('índice') }}</a>
+              <a
+                href="{{ $element['url'].'/create' }}"
+                class="card-link text-capitalize"
+              >
+                {{ __('agregar') }}
               </a>
             </div>
           </div>

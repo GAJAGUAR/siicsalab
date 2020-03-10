@@ -17,7 +17,6 @@
       @slot('label', 'Título')
       @slot('fieldName', 'employee_title')
       @slot('value', old('employee_title'))
-      @slot('textHelp', 'titleHelp')
       @slot('maxLength', '5')
       @slot('autofocus', 'true')
       @slot('textDescription', 'Título académico.')
@@ -29,7 +28,6 @@
       @slot('label', 'Primer nombre')
       @slot('fieldName', 'first_name_1')
       @slot('value', old('first_name_1'))
-      @slot('textHelp', 'firstName1Help')
       @slot('maxLength', '15')
       @slot('textDescription', 'Primer nombre.')
     @endcomponent
@@ -40,7 +38,6 @@
       @slot('label', 'Segundo nombre')
       @slot('fieldName', 'first_name_2')
       @slot('value', old('first_name_2'))
-      @slot('textHelp', 'firstName2Help')
       @slot('maxLength', '15')
       @slot('textDescription', 'Si tiene un segundo nombre.')
     @endcomponent
@@ -53,7 +50,6 @@
       @slot('label', 'Apellido paterno')
       @slot('fieldName', 'last_name_1')
       @slot('value', old('last_name_1'))
-      @slot('textHelp', 'lastName1Help')
       @slot('maxLength', '15')
       @slot('textDescription', 'Apellido del padre.')
     @endcomponent
@@ -64,7 +60,6 @@
       @slot('label', 'Apellido materno')
       @slot('fieldName', 'last_name_2')
       @slot('value', old('last_name_2'))
-      @slot('textHelp', 'lastName2Help')
       @slot('maxLength', '15')
       @slot('textDescription', 'Apellido de la madre.')
     @endcomponent
@@ -75,7 +70,6 @@
       @slot('label', 'Alias')
       @slot('fieldName', 'employee_nickname')
       @slot('value', old('employee_nickname'))
-      @slot('textHelp', 'nicknameHelp')
       @slot('maxLength', '50')
       @slot('textDescription', 'Usado para vistas compactas.')
     @endcomponent
@@ -88,7 +82,6 @@
       @slot('label', 'Puesto')
       @slot('fieldName', 'position_id')
       @slot('value', old('position_id'))
-      @slot('textHelp', 'positionHelp')
       @slot('maxLength', '30')
       @slot('textDescription', 'Cargo de acuerdo al perfil de puesto.')
       @component('components.input_select_option')
@@ -106,24 +99,23 @@
       @endforeach
     @endcomponent
 
-    {{-- scholarship id field --}}
+    {{-- schooling id field --}}
     @component('components.input_select')
       @slot('style', 'col-12 col-md')
       @slot('label', 'Escolaridad')
-      @slot('fieldName', 'scholarship_id')
-      @slot('value', old('scholarship_id'))
-      @slot('textHelp', 'workOrderHelp')
+      @slot('fieldName', 'schooling_id')
+      @slot('value', old('schooling_id'))
       @slot('textDescription', 'Máximo grado de estudios alcanzado.')
       <option value="">SELECCIONAR</option>
-      @foreach ($scholarships as $scholarship)
+      @foreach ($schoolings as $schooling)
         @component('components.input_select_option')
           @slot('value')
-            {{ $scholarship->id }}
+            {{ $schooling->id }}
           @endslot
           @slot('selected')
-            {{ old('scholarship_id') == $scholarship->id ? 'selected' : '' }}
+            {{ old('schooling_id') == $schooling->id ? 'selected' : '' }}
           @endslot
-          {{ $scholarship->scholarship_name }}
+          {{ $schooling->schooling_name }}
         @endcomponent
       @endforeach
     @endcomponent
@@ -136,7 +128,6 @@
       @slot('label', 'Nacimiento')
       @slot('fieldName', 'employee_birthdate')
       @slot('value', old('employee_birthdate'))
-      @slot('textHelp', 'receiptHelp')
       @slot('textDescription', 'Fecha de cumpleaños.')
     @endcomponent
 
@@ -146,7 +137,6 @@
       @slot('label', 'Género')
       @slot('fieldName', 'employee_gender')
       @slot('value', old('employee_gender'))
-      @slot('textHelp', 'weatherHelp')
       @slot('textDescription', 'Únicamente para fines estadísticos.')
       @component('components.input_select_option')
         @slot('value')

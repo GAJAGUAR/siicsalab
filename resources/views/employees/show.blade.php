@@ -5,7 +5,7 @@
 
 {{-- nav --}}
 @section('urlToEdit', $employee->id.'/edit')
-@section('urlToAdd', route('work_orders.create'))
+@section('urlToAdd', route('work-orders.create'))
 @section('textAdd', 'agregar orden de trabajo')
 
 {{-- main --}}
@@ -93,7 +93,7 @@
       @endcomponent
       @component('components.table_cell_finder')
         @slot('style', 'text-center')
-        {{ route('work_orders.index').'/'.$workOrder->id }}
+        {{ route('work-orders.index').'/'.$workOrder->id }}
       @endcomponent
     @endcomponent
   @endforeach
