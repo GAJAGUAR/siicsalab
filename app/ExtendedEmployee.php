@@ -13,8 +13,8 @@ class ExtendedEmployee extends Model
 
   public function list()
   {
-    return $this
-      ->select(
+    return
+      $this::select(
         'id',
         'employee_name',
         'position_name',
@@ -25,13 +25,13 @@ class ExtendedEmployee extends Model
 
   public function describe(Int $id)
   {
-    return $this
-      ->select(
+    return
+      $this::select(
         'id',
         'employee_nickname',
         'employee_name',
         'position_name',
-        'scholarship_name',
+        'schooling_name',
         'employee_birthdate',
         'employee_gender'
       )

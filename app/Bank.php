@@ -3,8 +3,18 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
 use Illuminate\Http\Request;
+
+/**
+ * @property mixed id
+ * @property mixed bank_name
+ * @property mixed bank_road_name
+ * @property mixed bank_road_station
+ * @property mixed bank_road_side
+ * @property mixed bank_location_complement
+ * @property mixed bank_latitude
+ * @property mixed bank_longitude
+ */
 
 class Bank extends Model
 {
@@ -18,13 +28,51 @@ class Bank extends Model
     //
   }
 
-  public function indexBank()
+  public function list()
   {
     return $this
-      ->select(
-        'id',
-        'bank_name',
-        'bank_location')
+      ->selectRaw('
+        `id`,
+        `bank_name`,
+        CONCAT(
+          IF(
+            `bank_road_name` <> "",
+            CONCAT(
+              `bank_road_name`,
+              " "
+            ),
+            ""
+          ),
+          IF(
+            `bank_road_station` <> "",
+            CONCAT(
+              "KM ",
+              `bank_road_station`,
+              " "
+            ),
+            ""
+          ),
+          IF(
+            `bank_road_side` <> "",
+            CONCAT(
+              "LADO ",
+              `bank_road_side`,
+              " "
+            ),
+            ""
+          ),
+          IF(
+            `bank_location_complement` <> "",
+            CONCAT(
+              " ",
+              `bank_location_complement`
+            ),
+            ""
+          )
+        ) AS `bank_location`,
+        `bank_latitude`,
+        `bank_longitude`
+      ')
       ->get();
   }
 

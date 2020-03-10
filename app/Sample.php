@@ -27,6 +27,7 @@ use Illuminate\Support\Facades\DB;
  * @property mixed sample_road_body
  * @property mixed sample_road_side
  * @property mixed sample_road_stripe
+ * @property mixed sample_location_complement
  * @property mixed sample_phreatic_level
  * @property mixed sampling_seq
  * @property mixed sampling_env_temp
@@ -92,6 +93,7 @@ class Sample extends Model
     $sample->sample_road_body = $request->get('sample_road_body');
     $sample->sample_road_side = $request->get('sample_road_side');
     $sample->sample_road_stripe = $request->get('sample_road_stripe');
+    $sample->sample_location_complement = $request->get('sample_location_complement');
     $sample->sample_phreatic_level = $request->get('sample_phreatic_level');
     $sample->sampling_seq = $request->get('sampling_seq');
     $sample->sampling_env_temp = $request->get('sampling_env_temp');

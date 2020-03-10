@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Position extends Model
+class Schooling extends Model
 {
   public function employees()
   {
@@ -13,6 +13,6 @@ class Position extends Model
 
   public function list()
   {
-    return $this::select('id', 'position_name')->get();
+    return $this::select('id', 'schooling_name')->get();
   }
 }

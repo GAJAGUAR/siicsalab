@@ -13,7 +13,6 @@ class Oven extends Model
 
   public function list()
   {
-    return $this
-      ->select('id', 'oven_name')->get();
+    return $this::select('id', 'oven_name')->get();
   }
 }

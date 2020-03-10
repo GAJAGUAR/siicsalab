@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 /**
  * @property mixed id
- * @property mixed scholarship_id
+ * @property mixed schooling_id
  * @property mixed position_id
  * @property mixed employee_nickname
  * @property mixed employee_title
@@ -23,9 +23,9 @@ use Illuminate\Http\Request;
 
 class Employee extends Model
 {
-  public function scholarship()
+  public function schooling()
   {
-    return $this->belongsTo(Scholarship::class);
+    return $this->belongsTo(Schooling::class);
   }
 
   public function position()
@@ -38,25 +38,14 @@ class Employee extends Model
     return $this->hasMany(WorkOrder::class);
   }
 
-  public function indexEmployee()
+  public function list()
   {
-    return $this
-      ->select('id', 'employee_name')
-      ->get();
-  }
-
-  public function employeeNames()
-  {
-    return $this
-      ->select(
-        'id',
-        'employee_name')
-      ->get();
+    return $this::select('id', 'employee_name')->get();
   }
 
   public function saveEmployee(Request $request, Employee $employee)
   {
-    $employee->scholarship_id = $request->get('scholarship_id');
+    $employee->schooling_id = $request->get('schooling_id');
     $employee->position_id = $request->get('position_id');
     $employee->employee_nickname = $request->get('employee_nickname');
     $employee->employee_title = $request->get('employee_title');

@@ -49,7 +49,7 @@ class ExtendedSample extends Model
       'sample_receipt_date',
       'sample_priority_name',
       'sample_status_name',
-      'sample_url'
+      'sample_code'
     )
     ->findOrFail($id);
   }
@@ -64,6 +64,19 @@ class ExtendedSample extends Model
       'sample_purpose_name')
     ->where('work_order_id', $id)
     ->get();
+  }
+
+  public function samplesByStatus(Int $id)
+  {
+    return
+      $this::select(
+        'id',
+        'work_order_id',
+        'work_order_date',
+        'sample_purpose_name',
+        'sample_description')
+      ->where('sample_status_id', $id)
+      ->get();
   }
 
   public function descriptionNames()
