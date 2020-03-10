@@ -4,10 +4,10 @@
 @section('title', 'nueva orden de trabajo')
 
 {{-- nav --}}
-@section('urlToExit', route('work_orders.index'))
+@section('urlToExit', route('work-orders.index'))
 
 {{-- main --}}
-@section('action', route('work_orders.store'))
+@section('action', route('work-orders.store'))
 @section('formContent')
 
   {{-- work id flield --}}
@@ -15,7 +15,6 @@
     @slot('label', 'Obra')
     @slot('fieldName', 'work_id')
     @slot('value', old('work_id'))
-    @slot('textHelp', 'workHelp')
     @slot('autofocus', 'true')
     @slot('textDescription', 'Lugar dónde se llevarán a cabo los trabajos.')
     @component('components.input_select_option')
@@ -40,7 +39,6 @@
     @slot('label', 'OT')
     @slot('fieldName', 'id')
     @slot('value', old('id'))
-    @slot('textHelp', 'idHelp')
     @slot('textDescription', 'Número de órden de trabajo.')
   @endcomponent
 
@@ -49,7 +47,6 @@
     @slot('label', 'Personal')
     @slot('fieldName', 'employee_id')
     @slot('value', old('employee_id'))
-    @slot('textHelp', 'employeeHelp')
     @slot('textDescription', 'Lugar dónde se llevarán a cabo los trabajos.')
     @component('components.input_select_option')
       @slot('value', '')
@@ -73,7 +70,6 @@
     @slot('label', 'Fecha')
     @slot('fieldName', 'work_order_date')
     @slot('value', old('work_order_date'))
-    @slot('textHelp', 'dateHelp')
     @slot('textDescription', 'Fecha de toma de la muestra.')
   @endcomponent
 @endsection
@@ -81,7 +77,7 @@
 {{-- footer --}}
 @section('breadcrumb')
   @component('components.breadcrumb_item')
-    @slot('url', route('work_orders.index'))
+    @slot('url', route('work-orders.index'))
     {{ __('órdenes de trabajo') }}
   @endcomponent
   @component('components.breadcrumb_item')

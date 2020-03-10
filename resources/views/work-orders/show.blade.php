@@ -114,7 +114,7 @@
     {{ $workOrder->work_id }}
   @endcomponent
   @component('components.breadcrumb_item')
-    @slot('url', route('work_orders.index'))
+    @slot('url', route('work-orders.index'))
     {{ __('órdenes de trabajo') }}
   @endcomponent
   @component('components.breadcrumb_item')

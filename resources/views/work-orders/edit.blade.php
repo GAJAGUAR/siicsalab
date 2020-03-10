@@ -4,18 +4,17 @@
 @section('title', 'editar orden de trabajo')
 
 {{-- nav --}}
-@section('urlToClose', route('work_orders.index').'/'.$workOrder->id)
-@section('urlToExit', route('work_orders.index'))
+@section('urlToClose', route('work-orders.index').'/'.$workOrder->id)
+@section('urlToExit', route('work-orders.index'))
 
 {{-- main --}}
-@section('action', route('work_orders.index').'/'.$workOrder->id)
+@section('action', route('work-orders.index').'/'.$workOrder->id)
 @section('formContent')
 
   {{-- work id flield --}}
   @component('components.input_select')
     @slot('label', 'Obra')
     @slot('fieldName', 'work_id')
-    @slot('textHelp', 'workHelp')
     @slot('autofocus', 'true')
     @slot('textDescription', 'Lugar dónde se llevarán a cabo los trabajos.')
     @foreach ($works as $work)
@@ -36,7 +35,6 @@
     @slot('label', 'OT')
     @slot('fieldName', 'id')
     @slot('value', $workOrder->id)
-    @slot('textHelp', 'idHelp')
     @slot('textDescription', 'Número de órden de trabajo.')
   @endcomponent
 
@@ -44,7 +42,6 @@
   @component('components.input_select')
     @slot('label', 'Personal')
     @slot('fieldName', 'employee_id')
-    @slot('textHelp', 'workHelp')
     @slot('textDescription', 'Lugar dónde se llevarán a cabo los trabajos.')
     @foreach ($employees as $employee)
       @component('components.input_select_option')
@@ -64,7 +61,6 @@
     @slot('label', 'Fecha')
     @slot('fieldName', 'work_order_date')
     @slot('value', $workOrder->work_order_date)
-    @slot('textHelp', 'dateHelp')
     @slot('textDescription', 'Fecha de toma de la muestra.')
   @endcomponent
 @endsection
@@ -88,11 +84,11 @@
     {{ $workOrder->work_id }}
   @endcomponent
   @component('components.breadcrumb_item')
-    @slot('url', route('work_orders.index'))
+    @slot('url', route('work-orders.index'))
     {{ __('órdenes de trabajo') }}
   @endcomponent
   @component('components.breadcrumb_item')
-    @slot('url', route('work_orders.index').'/'.$workOrder->id)
+    @slot('url', route('work-orders.index').'/'.$workOrder->id)
     {{ $workOrder->id }}
   @endcomponent
   @component('components.breadcrumb_item')

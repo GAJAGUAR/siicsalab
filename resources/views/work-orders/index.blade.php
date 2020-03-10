@@ -4,7 +4,7 @@
 @section('title', 'órdenes de trabajo')
 
 {{-- nav --}}
-@section('urlToNew', route('work_orders.create'))
+@section('urlToNew', route('work-orders.create'))
 @section('urlToPrint', '#')
 
 {{-- main --}}
@@ -60,7 +60,7 @@
       @endcomponent
       @component('components.table_cell_finder')
         @slot('style', 'text-center')
-        /work_orders/{{ $workOrder->id }}
+        /work-orders/{{ $workOrder->id }}
       @endcomponent
     @endcomponent
   @endforeach

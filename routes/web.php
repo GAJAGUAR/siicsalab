@@ -26,14 +26,22 @@ Route::get('/home', function () {
 
 Route::get('/panel', 'PanelController@index')->name('panel');
 
+Route::get('/catalogue', 'CatalogueController@index')->name('catalogue');
+
 Route::resource('/clients', 'ClientController');
 
 Route::resource('/works', 'WorkController');
 
 Route::resource('/employees', 'EmployeeController');
 
-Route::resource('/work_orders', 'WorkOrderController');
+Route::resource('/work-orders', 'WorkOrderController');
+
+Route::resource('/banks', 'BankController');
 
 Route::resource('/samples', 'SampleController');
 
-Route::get('/pendings', 'PendingController@index')->name('pendings');
+Route::resource('/compactions', 'DynamicCompactionController')
+  ->middleware('auth');
+
+Route::get('/statuses/{id}', 'StatusController@index')
+  ->middleware('auth');
