@@ -6,11 +6,10 @@
     autocomplete="off"
     class="form-control {{ $errors->has($fieldName) ? ' is-invalid' : '' }}"
     id="{{ $fieldName }}"
-    name="{{ $fieldName }}" aria-describedby="{{ $textHelp }}"
+    name="{{ $fieldName }}"
     {{ isset($readonly) && $readonly ? 'readonly' : '' }}
     type="time"
     value="{{ $value }}"
-    aria-describedby="{{ $textHelp }}"
     data-autofocus="{{ $autofocus ?? 'false' }}"
   >
 
@@ -24,7 +23,6 @@
   @else
     <small
       class="form-text text-muted"
-      id="{{ $textHelp }}"
     >
       {{ $textDescription }}
     </small>

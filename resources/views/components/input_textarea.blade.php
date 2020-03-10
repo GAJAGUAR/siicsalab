@@ -10,7 +10,6 @@
     name="{{ $fieldName }}"
     {{ isset($readonly) && $readonly ? 'readonly' : '' }}
     rows="5"
-    aria-describedby="{{ $textHelp }}"
     data-autofocus="{{ $autofocus ?? 'false' }}"
   >{{ $value }}</textarea>
 
@@ -23,7 +22,6 @@
     </span>
   @else
     <small
-      id="{{ $textHelp }}"
       class="form-text text-muted"
     >
       {{ $textDescription }}

@@ -10,7 +10,6 @@
     {{ isset($readonly) && $readonly ? 'readonly' : '' }}
     type="date"
     value="{{ $value }}"
-    aria-describedby="{{ $textHelp }}"
     data-autofocus="{{ $autofocus ?? 'false' }}"
   />
 
@@ -23,7 +22,6 @@
     </span>
   @else
     <small
-      id="{{ $textHelp }}"
       class="form-text text-muted"
     >
       {{ $textDescription }}

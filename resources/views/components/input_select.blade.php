@@ -8,7 +8,6 @@
     name="{{ $fieldName }}"
     {{ isset($readonly) && $readonly ? 'readonly' : '' }}
     data-autofocus="{{ $autofocus ?? 'false' }}"
-    aria-describedby="{{ $textHelp }}"
   >
     {{ $slot }}
   </select>
@@ -23,7 +22,6 @@
   @else
     <small
       class="form-text text-muted"
-      id="{{ $textHelp }}"
     >
       {{ $textDescription }}
     </small>

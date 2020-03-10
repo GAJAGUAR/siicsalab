@@ -1,42 +1,24 @@
 <div class="navbar-nav mr-auto">
 
-  {{-- dropdown catalogue --}}
-  @component('components.dropdown')
-    @slot('id', 'dropdown-catalogue')
-    @slot('accesskey', 'c')
-    @slot('text', 'catálogo')
-    @component('components.dropdown_item')
-      @slot('url', route('clients.index'))
-      @slot('accesskey', 'l')
-      {{ __('clientes') }}
-    @endcomponent
-    @component('components.dropdown_item')
-      @slot('url', route('works.index'))
-      @slot('accesskey', 'o')
-      {{ __('obras') }}
-    @endcomponent
-    @component('components.dropdown_item')
-      @slot('url', route('work_orders.index'))
-      @slot('accesskey', 't')
-      {{ __('órdenes de trabajo') }}
-    @endcomponent
-    @component('components.dropdown_item')
-      @slot('url', route('samples.index'))
-      @slot('accesskey', 'y')
-      {{ __('ensayes') }}
-    @endcomponent
-    @component('components.dropdown_item')
-      @slot('url', route('employees.index'))
-      @slot('accesskey', 'p')
-      {{ __('personal') }}
-    @endcomponent
+  {{-- panel --}}
+  @component('components.nav_link')
+    @slot('url', route('panel'))
+    @slot('accesskey', 'i')
+    {{ __('inicio') }}
   @endcomponent
 
-  {{-- dropdown new --}}
+  {{-- catalogue --}}
+  @component('components.nav_link')
+    @slot('url', route('catalogue'))
+    @slot('accesskey', 'c')
+    {{ __('catálogo') }}
+  @endcomponent
+
+  {{-- dropdown add --}}
   @component('components.dropdown')
-    @slot('id', 'dropdown-new')
-    @slot('accesskey', 'n')
-    @slot('text', 'nuevo')
+    @slot('id', 'dropdown-add')
+    @slot('accesskey', 'a')
+    @slot('text', 'agregar')
     @component('components.dropdown_item')
       @slot('url', route('clients.create'))
       {{ __('cliente') }}
@@ -46,7 +28,7 @@
       {{ __('obra') }}
     @endcomponent
     @component('components.dropdown_item')
-      @slot('url', route('work_orders.create'))
+      @slot('url', route('work-orders.create'))
       {{ __('orden de trabajo') }}
     @endcomponent
     @component('components.dropdown_item')
@@ -57,12 +39,5 @@
       @slot('url', route('employees.create'))
       {{ __('personal') }}
     @endcomponent
-  @endcomponent
-
-  {{-- pendings --}}
-  @component('components.nav_link')
-    @slot('url', route('pendings'))
-    @slot('accesskey', 'p')
-    {{ __('pendientes') }}
   @endcomponent
 </div>
