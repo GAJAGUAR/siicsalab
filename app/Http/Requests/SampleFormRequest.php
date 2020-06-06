@@ -30,7 +30,7 @@ class SampleFormRequest extends FormRequest
       'sample_purpose_id' => 'required|integer|min:1',
       'sample_weather_id' => 'nullable|integer|min:1',
       'sample_priority_id' => 'required|integer|min:1|max:3',
-      'sample_status_id' => 'required|integer|min:1|max:5',
+      'sample_status_id' => 'required|integer|min:1|max:6',
       'sample_time' => 'required',
       'sample_description' => 'required|min:5|max:250',
       'sample_treatment' => 'nullable|min:5|max:100',
